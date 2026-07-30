@@ -1,0 +1,78 @@
+.legalContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-md);
+  padding-top: 120px;
+}
+
+.title {
+  font-family: var(--font-en-heading);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: var(--space-lg);
+  color: var(--brand-text-primary);
+  line-height: 1.2;
+}
+
+.lastUpdated {
+  font-size: 0.875rem;
+  color: var(--brand-text-secondary);
+  margin-bottom: var(--space-xl);
+  display: block;
+}
+
+.content {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--brand-text-primary);
+}
+
+.content h2 {
+  font-family: var(--font-en-heading);
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-md);
+  color: var(--brand-text-primary);
+}
+
+.content h3 {
+  font-family: var(--font-en-heading);
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-sm);
+}
+
+.content p {
+  margin-bottom: var(--space-md);
+}
+
+.content ul,
+.content ol {
+  margin-bottom: var(--space-md);
+  padding-inline-start: var(--space-lg);
+}
+
+.content li {
+  margin-bottom: var(--space-xs);
+}
+
+.content a {
+  color: var(--brand-text-highlight);
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.3);
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.2s ease;
+}
+
+.content a:hover {
+  text-decoration-color: var(--brand-text-highlight);
+}
+
+/* RTL Support via general selector */
+:global([dir="rtl"]) .title,
+:global([dir="rtl"]) .content h2,
+:global([dir="rtl"]) .content h3 {
+  font-family: var(--font-ar);
+}

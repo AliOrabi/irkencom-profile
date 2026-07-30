@@ -1,0 +1,26 @@
+@import '../styles/design-system.css';
+@import '../styles/layout.css';
+@import '../styles/components.css';
+
+/* Typography Context based on Language */
+body.font-english {
+  font-family: var(--font-en-body);
+}
+
+body.font-english h1, 
+body.font-english h2, 
+body.font-english h3, 
+body.font-english h4, 
+body.font-english h5, 
+body.font-english h6 {
+  font-family: var(--font-en-heading);
+}
+
+body.font-arabic,
+body.font-arabic * {
+  font-family: var(--font-ar) !important;
+}
+
+body.font-arabic {
+  font-size: 1.1rem; /* Adjust base size for Arabic legibility */
+}

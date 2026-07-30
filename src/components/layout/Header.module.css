@@ -1,0 +1,40 @@
+.header {
+  border-bottom: var(--brand-border-thin) solid var(--brand-secondary);
+  padding: var(--brand-space-md) 0;
+  background-color: var(--brand-primary);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  min-width: 120px;
+  min-height: 40px;
+  padding: var(--brand-space-sm);
+  display: flex;
+}
+
+.navLinks {
+  display: flex;
+  gap: var(--brand-space-lg);
+  align-items: center;
+  list-style: none;
+}
+
+.navLink {
+  color: var(--brand-text-primary);
+  text-decoration: none;
+  font-weight: 500;
+  font-family: var(--font-en-heading);
+  transition: color 0.3s ease;
+}
+
+.navLink:hover {
+  color: var(--brand-accent);
+}

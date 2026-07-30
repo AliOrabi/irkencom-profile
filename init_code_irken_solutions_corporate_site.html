@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Irken Solutions | Unlocking Urban Potential</title>
+  <meta name="description" content="Asset-Light digital infrastructure for real estate developers and municipalities in Egypt.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@400;500;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Brand Geometry Rule: Absolute Precision */
+      --brand-radius: 0rem !important; 
+      --brand-border-thin: 1px;
+      --brand-border-thick: 2px;
+      
+      /* Primary Brand Colors */
+      --brand-primary: #0A192F;
+      --brand-secondary: #112240;
+      --brand-accent: #64FFDA;
+      
+      /* Text Palette */
+      --brand-text-primary: #CCD6F6;
+      --brand-text-secondary: #8892B0;
+      --brand-text-highlight: #FAFAFA;
+      
+      /* Digital Blueprint Grid System */
+      --grid-pattern: linear-gradient(to right, rgba(100, 255, 218, 0.05) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(100, 255, 218, 0.05) 1px, transparent 1px);
+      --grid-size: 24px 24px;
+
+      /* Typography */
+      --font-en-heading: 'Space Grotesk', system-ui, sans-serif;
+      --font-en-body: 'Inter', system-ui, sans-serif;
+      --font-ar: 'Tajawal', 'Cairo', sans-serif;
+      
+      /* Spacing System */
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 2rem;
+      --space-xl: 4rem;
+      --space-2xl: 8rem;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      border-radius: var(--brand-radius) !important;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--brand-primary);
+      background-image: var(--grid-pattern);
+      background-size: var(--grid-size);
+      background-attachment: fixed;
+      color: var(--brand-text-secondary);
+      font-family: var(--font-en-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* RTL Support */
+    body[dir="rtl"] { font-family: var(--font-ar); }
+    body[dir="rtl"] h1, body[dir="rtl"] h2, body[dir="rtl"] h3, 
+    body[dir="rtl"] .btn-primary, body[dir="rtl"] .btn-secondary,
+    body[dir="rtl"] .nav-links { font-family: var(--font-ar); }
+
+    /* Typography Hierarchy */
+    h1, h2, h3, h4, h5, h6 { font-family: var(--font-en-heading); color: var(--brand-text-primary); font-weight: 700; line-height: 1.2; }
+    h1 { font-size: clamp(40px, 5vw, 56px); }
+    h2 { font-size: clamp(28px, 4vw, 36px); }
+    h3 { font-size: 24px; color: var(--brand-text-highlight); }
+    p { margin-bottom: var(--space-md); font-size: 16px; }
+    a { color: var(--brand-text-primary); text-decoration: none; transition: color 0.3s ease; }
+    a:hover { color: var(--brand-accent); }
+
+    .container { max-width: 80rem; margin: 0 auto; padding: 0 var(--space-lg); width: 100%; }
+    .section { padding: var(--space-2xl) 0; position: relative; }
+    .section-border-top { border-top: var(--brand-border-thin) solid var(--brand-secondary); }
+
+    /* Buttons */
+    .btn-primary, .btn-secondary {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 12px 24px; font-family: var(--font-en-heading); font-size: 14px;
+      font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px;
+      cursor: pointer; transition: all 0.2s ease; text-decoration: none;
+    }
+    .btn-primary { background-color: rgba(100, 255, 218, 0.05); color: var(--brand-accent); border: var(--brand-border-thin) solid var(--brand-accent); }
+    .btn-primary:hover { background-color: rgba(100, 255, 218, 0.15); box-shadow: 0 0 15px rgba(100, 255, 218, 0.2); }
+    .btn-secondary { background-color: transparent; color: var(--brand-text-primary); border: var(--brand-border-thin) solid var(--brand-text-secondary); }
+    .btn-secondary:hover { border-color: var(--brand-accent); color: var(--brand-accent); }
+
+    .tech-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: var(--brand-border-thin) solid var(--brand-secondary);
+      background-color: rgba(17, 34, 64, 0.5); padding: 6px 16px;
+      font-family: var(--font-en-heading); font-size: 12px; color: var(--brand-accent);
+      text-transform: uppercase; letter-spacing: 2px; margin-bottom: var(--space-lg);
+      backdrop-filter: blur(4px);
+    }
+
+    /* Forms */
+    .form-group { margin-bottom: var(--space-md); }
+    .form-label { display: block; font-family: var(--font-en-heading); font-size: 12px; color: var(--brand-text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+    body[dir="rtl"] .form-label { font-family: var(--font-ar); }
+    .form-control { width: 100%; background-color: rgba(10, 25, 47, 0.8); border: var(--brand-border-thin) solid var(--brand-text-secondary); color: var(--brand-text-primary); padding: 12px 16px; font-family: inherit; font-size: 16px; outline: none; transition: border-color 0.3s; backdrop-filter: blur(4px); }
+    .form-control:focus { border-color: var(--brand-accent); box-shadow: inset 4px 0 0 var(--brand-accent); }
+    body[dir="rtl"] .form-control:focus { box-shadow: inset -4px 0 0 var(--brand-accent); }
+    select.form-control { appearance: none; background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%238892B0%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22square%22%20stroke-linejoin%3D%22miter%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E"); background-repeat: no-repeat; background-position: right 12px center; background-size: 16px; }
+    body[dir="rtl"] select.form-control { background-position: left 12px center; }
+
+    /* Header */
+    .global-header { background-color: rgba(10, 25, 47, 0.85); backdrop-filter: blur(12px); border-bottom: var(--brand-border-thin) solid var(--brand-secondary); position: sticky; top: 0; z-index: 1000; }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+    .brand-logo { height: 32px; object-fit: contain; }
+    
+    /* Navigation & Dropdowns */
+    .nav-links { display: flex; gap: var(--space-lg); font-family: var(--font-en-heading); font-size: 14px; letter-spacing: 1px; text-transform: uppercase; align-items: center; }
+    .nav-item { position: relative; display: inline-block; padding: 8px 0; }
+    .nav-item > a { position: relative; padding-bottom: 8px; cursor: pointer; color: var(--brand-text-primary); text-decoration: none; transition: color 0.3s ease; }
+    .nav-item > a:hover { color: var(--brand-accent); }
+    .nav-item > a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0%; height: 2px; background-color: var(--brand-accent); transition: width 0.3s ease; }
+    body[dir="rtl"] .nav-item > a::after { left: auto; right: 0; }
+    .nav-item:hover > a::after { width: 100%; }
+    
+    .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background-color: rgba(10, 25, 47, 0.95); backdrop-filter: blur(8px); border: var(--brand-border-thin) solid var(--brand-secondary); border-top: 2px solid var(--brand-accent); min-width: 280px; z-index: 1001; box-shadow: 10px 10px 0px rgba(5, 13, 26, 0.8); padding: var(--space-sm) 0; }
+    body[dir="rtl"] .dropdown-menu { left: auto; right: 0; box-shadow: -10px 10px 0px rgba(5, 13, 26, 0.8); }
+    .nav-item:hover .dropdown-menu { display: block; animation: slideDown 0.2s ease forwards; }
+    
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    
+    .dropdown-menu a { display: block; padding: 12px 20px; color: var(--brand-text-secondary); font-size: 13px; font-family: var(--font-en-body); border-bottom: 1px solid rgba(136, 146, 176, 0.1); transition: all 0.2s; letter-spacing: 0.5px; text-transform: none; }
+    body[dir="rtl"] .dropdown-menu a { font-family: var(--font-ar); font-size: 14px; letter-spacing: 0; }
+    .dropdown-menu a:last-child { border-bottom: none; }
+    .dropdown-menu a:hover { background-color: rgba(100, 255, 218, 0.05); color: var(--brand-text-highlight); padding-left: 26px; }
+    body[dir="rtl"] .dropdown-menu a:hover { padding-left: 20px; padding-right: 26px; }
+
+    .header-actions { display: flex; align-items: center; gap: var(--space-lg); }
+
+    /* Lang Switch (Square, 0rem) */
+    .lang-switch { display: inline-flex; position: relative; background-color: var(--brand-primary); border: var(--brand-border-thin) solid var(--brand-text-secondary); cursor: pointer; align-items: center; width: 64px; height: 28px; user-select: none; }
+    .lang-switch-indicator { position: absolute; top: 0; left: 0; width: 50%; height: 100%; background-color: var(--brand-accent); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1; }
+    html[dir="rtl"] .lang-switch-indicator { left: auto; right: 0; }
+    .lang-switch-label { flex: 1; text-align: center; font-size: 11px; font-family: var(--font-en-heading); z-index: 2; transition: color 0.3s ease; text-transform: uppercase; letter-spacing: 1px; }
+    html[dir="ltr"] .lang-switch-label.en { color: var(--brand-primary); font-weight: bold; }
+    html[dir="ltr"] .lang-switch-label.ar { color: var(--brand-text-secondary); }
+    html[dir="rtl"] .lang-switch-label.ar { color: var(--brand-primary); font-weight: bold; }
+    html[dir="rtl"] .lang-switch-label.en { color: var(--brand-text-secondary); }
+
+    /* Grids & Layout */
+    .hero-grid, .diff-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: var(--space-xl); align-items: center; }
+    .feature-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-md); }
+    .solutions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-lg); }
+    
+    .hero-section { min-height: 90vh; display: flex; align-items: center; }
+    .hero-content h1 { margin-bottom: var(--space-md); }
+    .hero-content p { max-width: 90%; margin-bottom: var(--space-lg); font-size: 18px; }
+
+    /* Dashboard UI */
+    .dashboard-showcase { position: relative; background-color: rgba(17, 34, 64, 0.85); backdrop-filter: blur(8px); border: var(--brand-border-thin) solid var(--brand-text-secondary); padding: var(--space-lg); box-shadow: 20px 20px 0px rgba(10, 25, 47, 0.8), 20px 20px 0px 1px var(--brand-accent); }
+    html[dir="rtl"] .dashboard-showcase { box-shadow: -20px 20px 0px rgba(10, 25, 47, 0.8), -20px 20px 0px 1px var(--brand-accent); }
+    .dashboard-showcase::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--brand-accent); }
+    html[dir="rtl"] .dashboard-showcase::before { left: auto; right: 0; }
+    
+    .dash-header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px dashed var(--brand-text-secondary); padding-bottom: var(--space-md); margin-bottom: var(--space-lg); }
+    .live-pulse { display: inline-block; width: 8px; height: 8px; background-color: var(--brand-accent); box-shadow: 0 0 10px var(--brand-accent); animation: pulse 2s infinite; margin-right: 8px; }
+    html[dir="rtl"] .live-pulse { margin-right: 0; margin-left: 8px; }
+    @keyframes pulse { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.2); } 100% { opacity: 1; transform: scale(1); } }
+
+    .metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); margin-bottom: var(--space-lg); }
+    .metric-box { background: rgba(10, 25, 47, 0.6); border: 1px solid var(--brand-text-secondary); padding: var(--space-md); }
+    .metric-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--brand-text-secondary); margin-bottom: 8px; }
+    .metric-value { font-family: var(--font-en-heading); font-size: 32px; color: var(--brand-text-primary); line-height: 1; }
+    .metric-value.active { color: var(--brand-accent); }
+    
+    .terminal-output { font-family: monospace; font-size: 13px; color: var(--brand-text-secondary); background: rgba(5, 13, 26, 0.9); padding: var(--space-md); border: 1px solid #1f3659; line-height: 1.8; }
+    body[dir="rtl"] .terminal-output { text-align: left; direction: ltr; }
+    .terminal-output span { color: var(--brand-accent); font-weight: bold;}
+
+    /* Ticker */
+    .ticker-section { border-top: var(--brand-border-thin) solid var(--brand-secondary); border-bottom: var(--brand-border-thin) solid var(--brand-secondary); background: rgba(17, 34, 64, 0.5); backdrop-filter: blur(4px); padding: var(--space-md) 0; overflow: hidden; }
+    .ticker-track { display: flex; justify-content: center; gap: 100px; align-items: center; opacity: 0.5; }
+    .ticker-track span { font-family: var(--font-en-heading); font-size: 16px; font-weight: 700; color: var(--brand-text-primary); letter-spacing: 1px; }
+
+    .section-header { max-width: 700px; margin-bottom: var(--space-xl); }
+    .section-header .sub-badge { color: var(--brand-accent); font-size: 14px; text-transform: uppercase; letter-spacing: 2px; font-family: var(--font-en-heading); margin-bottom: 16px; display: block; }
+    
+    .feature-card { background-color: rgba(17, 34, 64, 0.7); backdrop-filter: blur(4px); border: var(--brand-border-thin) solid var(--brand-text-secondary); padding: var(--space-lg); transition: all 0.3s ease; display: flex; flex-direction: column; }
+    .feature-card:hover { border-color: var(--brand-accent); background-color: rgba(17, 34, 64, 0.95); box-shadow: inset 4px 0 0 var(--brand-accent); }
+    html[dir="rtl"] .feature-card:hover { box-shadow: inset -4px 0 0 var(--brand-accent); }
+    .icon-wrapper { width: 40px; height: 40px; margin-bottom: var(--space-md); display: flex; align-items: center; justify-content: flex-start; }
+
+    /* Mobility Diagram */
+    @keyframes data-route-flow { from { stroke-dashoffset: 24; } to { stroke-dashoffset: 0; } }
+    .mobility-route-line { stroke: var(--brand-accent); stroke-width: 2; stroke-dasharray: 6 6; animation: data-route-flow 1.5s linear infinite; }
+    .mobility-diagram { display: grid; grid-template-columns: 1fr 40px 1.5fr 40px 1fr; align-items: center; gap: var(--space-md); background: rgba(10, 25, 47, 0.7); backdrop-filter: blur(4px); border: 1px solid var(--brand-secondary); padding: var(--space-xl); margin-top: var(--space-lg); }
+    .mobility-node { background: rgba(17, 34, 64, 0.9); border: 1px solid var(--brand-text-secondary); padding: var(--space-lg); text-align: center; position: relative; }
+    .mobility-node::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: var(--brand-accent); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease; }
+    html[dir="rtl"] .mobility-node::after { transform-origin: right; }
+    .mobility-node:hover::after { transform: scaleX(1); }
+    .mobility-node:hover { border-color: var(--brand-accent); }
+
+    /* Competitive Diff */
+    .diff-section { background: linear-gradient(180deg, rgba(10, 25, 47, 0) 0%, rgba(17, 34, 64, 0.7) 100%); backdrop-filter: blur(4px); }
+    .diff-grid { border: var(--brand-border-thin) solid var(--brand-secondary); background: rgba(10, 25, 47, 0.5); }
+    .diff-panel { padding: var(--space-xl); }
+    .diff-panel-legacy { border-right: var(--brand-border-thin) solid var(--brand-secondary); opacity: 0.6; }
+    html[dir="rtl"] .diff-panel-legacy { border-right: none; border-left: var(--brand-border-thin) solid var(--brand-secondary); }
+    .diff-panel-irken { background: rgba(100, 255, 218, 0.05); position: relative; }
+    .diff-panel-irken::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: var(--brand-accent); }
+    .diff-tag { display: inline-block; font-size: 12px; font-family: monospace; padding: 4px 8px; margin-bottom: var(--space-md); border: 1px solid currentColor; }
+
+    .form-container { background: rgba(10, 25, 47, 0.85); backdrop-filter: blur(8px); border: 1px solid var(--brand-text-secondary); padding: var(--space-xl); max-width: 600px; }
+
+    /* System Message Box */
+    .system-message-box {
+      position: fixed; bottom: -100px; right: 24px;
+      background-color: var(--brand-secondary); border: var(--brand-border-thin) solid var(--brand-accent);
+      padding: var(--space-md) var(--space-lg); z-index: 9999;
+      transition: bottom 0.4s ease-in-out;
+      box-shadow: 10px 10px 0px rgba(10, 25, 47, 0.9);
+    }
+    html[dir="rtl"] .system-message-box { right: auto; left: 24px; box-shadow: -10px 10px 0px rgba(10, 25, 47, 0.9); }
+    .system-message-box.active { bottom: 24px; }
+
+    /* Footer */
+    .corporate-footer { background-color: rgba(5, 13, 26, 0.95); backdrop-filter: blur(12px); border-top: var(--brand-border-thin) solid var(--brand-secondary); padding: var(--space-xl) 0 var(--space-lg) 0; position: relative; z-index: 2; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: var(--space-xl); margin-bottom: var(--space-xl); }
+    .footer-heading { color: var(--brand-text-highlight); font-family: var(--font-en-heading); font-size: 14px; margin-bottom: var(--space-md); text-transform: uppercase; letter-spacing: 1px; }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 12px; }
+    .footer-links a { font-size: 14px; color: var(--brand-text-secondary); }
+    .consumer-portal-box { border: 1px solid var(--brand-secondary); padding: 16px; background: rgba(10, 25, 47, 0.5); }
+    .footer-bottom { border-top: 1px solid var(--brand-secondary); padding-top: var(--space-md); display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--brand-text-secondary); }
+
+    @media (max-width: 1024px) {
+      .hero-grid, .diff-grid { grid-template-columns: 1fr; }
+      .feature-grid { grid-template-columns: repeat(2, 1fr); }
+      .solutions-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+      .mobility-diagram { grid-template-columns: 1fr; text-align: center; }
+      .mobility-route-line { display: none; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; } 
+      .diff-panel-legacy { border: none; border-bottom: var(--brand-border-thin) solid var(--brand-secondary); }
+      .footer-grid { grid-template-columns: 1fr; }
+      .ticker-track { flex-wrap: wrap; gap: 30px; text-align: center; }
+      .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- GLOBAL HEADER -->
+  <header class="global-header">
+    <div class="container header-inner">
+      <a href="#" aria-label="Irken Solutions Home">
+        <img src="1.png" alt="Irken Solutions" class="brand-logo" onerror="this.src='https://placehold.co/200x40/0A192F/64FFDA?text=IRKEN+SOLUTIONS'">
+      </a>
+      
+      <nav class="nav-links">
+        <div class="nav-item">
+          <a href="#" data-en="Home" data-ar="الرئيسية">Home</a>
+        </div>
+        
+        <div class="nav-item">
+          <a data-en="Services ▾" data-ar="الخدمات ▾">Services ▾</a>
+          <div class="dropdown-menu">
+            <a href="#parking-management" data-en="Parking Management" data-ar="إدارة المواقف">Parking Management</a>
+            <a href="#access-control" data-en="Access Control Systems" data-ar="أنظمة التحكم بالوصول">Access Control Systems</a>
+            <a href="#lpr" data-en="License Plate Recognition" data-ar="أنظمة التعرف على اللوحات">License Plate Recognition</a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a data-en="Service Providers ▾" data-ar="مزودي الخدمات ▾">Service Providers ▾</a>
+          <div class="dropdown-menu">
+            <a href="#reservation" data-en="Online Parking Reservation" data-ar="نظام الحجز الإلكتروني">Online Parking Reservation</a>
+            <a href="#attendant-mgmt" data-en="Attendant Management System" data-ar="نظام إدارة موظفي المواقف">Attendant Management System</a>
+            <a href="#epayment" data-en="ePayment" data-ar="الدفع الإلكتروني">ePayment</a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a data-en="Company ▾" data-ar="الشركة ▾">Company ▾</a>
+          <div class="dropdown-menu">
+            <a href="#about" data-en="About Us" data-ar="من نحن">About Us</a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="#contact" data-en="Contact Us" data-ar="اتصل بنا">Contact Us</a>
+        </div>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Technical Toggle Switch -->
+        <div class="lang-switch" onclick="toggleLanguage()" title="Toggle Language">
+          <div class="lang-switch-indicator"></div>
+          <span class="lang-switch-label en">EN</span>
+          <span class="lang-switch-label ar">ع</span>
+        </div>
+        <a href="#integration" class="btn-primary" data-en="Request Integration" data-ar="طلب تكامل">Request Integration</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="section hero-section">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="tech-badge" data-en="Enterprise Mobility Infrastructure" data-ar="بنية تحتية لتنقل المؤسسات">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+          </svg>
+          Enterprise Mobility Infrastructure
+        </div>
+        <h1 data-en="Unlocking Urban<br>Potential." data-ar="إطلاق إمكانات<br>المدينة.">Unlocking Urban<br>Potential.</h1>
+        <p data-en="We architect scalable, Asset-Light digital infrastructure. Converting underutilized physical spaces into dynamic mobility networks for Egyptian real estate developers, municipalities, and smart cities." data-ar="نحن نبني بنية تحتية رقمية قابلة للتطوير بأقل قدر من الأصول المادية. نقوم بتحويل المساحات الفعلية غير المستغلة إلى شبكات تنقل ديناميكية للمطورين العقاريين والبلديات والمدن الذكية في مصر.">We architect scalable, Asset-Light digital infrastructure. Converting underutilized physical spaces into dynamic mobility networks for Egyptian real estate developers, municipalities, and smart cities.</p>
+        
+        <div style="margin-top: var(--space-lg); display: flex; gap: var(--space-md); flex-wrap: wrap;">
+          <a href="#integration" class="btn-primary" data-en="Deploy Architecture" data-ar="نشر البنية التحتية">Deploy Architecture</a>
+          <a href="#platform" class="btn-secondary" data-en="Explore Platform" data-ar="استكشف المنصة">Explore Platform</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="dashboard-showcase">
+          <img src="Monogram (Icon Only).png" alt="" style="position:absolute; bottom:-10%; right:-5%; width:150px; opacity:0.03; pointer-events:none;" onerror="this.style.display='none'">
+          
+          <div class="dash-header">
+            <div>
+              <div style="font-family: var(--font-en-heading); font-size: 20px; color: var(--brand-text-highlight);" data-en="Systemic Yield Engine" data-ar="محرك العوائد المنهجي">Systemic Yield Engine</div>
+              <div style="font-size: 12px; font-family: monospace; color: var(--brand-text-secondary); margin-top: 4px;">IRKEN.CORE_NODE_01</div>
+            </div>
+            <div style="font-size: 12px; font-family: var(--font-en-heading); color: var(--brand-accent); display: flex; align-items: center;" data-en="SYSTEM LIVE" data-ar="النظام نشط">
+              <span class="live-pulse"></span> SYSTEM LIVE
+            </div>
+          </div>
+
+          <div class="metric-grid">
+            <div class="metric-box">
+              <div class="metric-label" data-en="Total Static Capacity" data-ar="السعة الثابتة الإجمالية">Total Static Capacity</div>
+              <div class="metric-value">1,250</div>
+              <div style="font-size: 11px; color: var(--brand-text-secondary); margin-top: 4px;" data-en="Spaces Provisioned" data-ar="المساحات المتوفرة">Spaces Provisioned</div>
+            </div>
+            <div class="metric-box" style="border-color: var(--brand-accent);">
+              <div class="metric-label" style="color: var(--brand-accent);" data-en="Active Bookings Vol." data-ar="حجم الحجوزات النشطة">Active Bookings Vol.</div>
+              <div class="metric-value active">847</div>
+              <div style="font-size: 11px; color: var(--brand-text-secondary); margin-top: 4px;" data-en="Current Occupancy Load" data-ar="حمل الإشغال الحالي">Current Occupancy Load</div>
+            </div>
+          </div>
+
+          <div class="terminal-output">
+            > INITIATING CAPACITY ALGORITHM...<br>
+            > STATUS: <span>YIELD_OPTIMIZED</span><br>
+            > ACTIVE_LOAD: <span>67.76%</span><br>
+            > ROUTING REVENUE TO OPERATOR_ID: 9942
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker-section">
+    <div class="container">
+      <div class="ticker-track">
+        <span data-en="URBAN MOBILITY" data-ar="التنقل الحضري">URBAN MOBILITY</span> <span>•</span>
+        <span data-en="DIGITAL TRANSFORMATION" data-ar="التحول الرقمي">DIGITAL TRANSFORMATION</span> <span>•</span>
+        <span data-en="REAL ESTATE DEVELOPERS" data-ar="المطورين العقاريين">REAL ESTATE DEVELOPERS</span> <span>•</span>
+        <span data-en="MUNICIPALITIES" data-ar="البلديات والجهات الحكومية">MUNICIPALITIES</span> <span>•</span>
+        <span data-en="SMART PARKING" data-ar="المواقف الذكية">SMART PARKING</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLATFORM SECTION -->
+  <section id="platform" class="section section-border-top">
+    <div class="container">
+      <div class="section-header">
+        <span class="sub-badge" data-en="Platform & Technology" data-ar="المنصة والتكنولوجيا">Platform & Technology</span>
+        <h2 data-en="Asset-Light Infrastructure." data-ar="بنية تحتية مرنة الأصول.">Asset-Light Infrastructure.</h2>
+        <p data-en="Eliminate expensive hardware sensors. Our ecosystem operates on pure architectural logic, seamless software integrations, and precise data calculation to maximize yield." data-ar="تخلص من مستشعرات الأجهزة المكلفة. تعمل منظومتنا على المنطق المعماري البحت، والتكامل البرمجي السلس، وحساب البيانات الدقيق لزيادة العوائد إلى أقصى حد.">Eliminate expensive hardware sensors. Our ecosystem operates on pure architectural logic, seamless software integrations, and precise data calculation to maximize yield.</p>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand-accent)" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter">
+              <rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect>
+              <path d="M10 6.5H14M17.5 10V14M6.5 10V17.5H14" stroke-dasharray="1.5 1.5"></path>
+            </svg>
+          </div>
+          <h3 data-en="Asset-Light Integration" data-ar="تكامل مرن الأصول">Asset-Light Integration</h3>
+          <p style="font-size: 14px; margin-top: 8px;" data-en="Deploy enterprise capacity tracking without heavy physical infrastructure upgrades." data-ar="نشر تتبع سعة المؤسسات دون الحاجة لترقيات فيزيائية ثقيلة للبنية التحتية.">Deploy enterprise capacity tracking without heavy physical infrastructure upgrades.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand-accent)" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter">
+              <rect x="2" y="2" width="20" height="20"></rect>
+              <path d="M6 18V12M10 18V8M14 18V14" stroke-width="2"></path>
+              <line x1="2" y1="6" x2="22" y2="6" stroke-dasharray="2 2"></line>
+            </svg>
+          </div>
+          <h3 data-en="Dynamic Capacity" data-ar="سعة ديناميكية">Dynamic Capacity</h3>
+          <p style="font-size: 14px; margin-top: 8px;" data-en="Calculates availability by comparing total static space against real-time active bookings." data-ar="حساب التوافر بدقة عن طريق مقارنة إجمالي المساحة الثابتة مع الحجوزات النشطة في الوقت الفعلي.">Calculates availability by comparing total static space against real-time active bookings.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand-accent)" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter">
+              <rect x="2" y="4" width="20" height="16"></rect>
+              <path d="M6 9L9 12L6 15" stroke-width="2"></path>
+              <line x1="12" y1="15" x2="17" y2="15" stroke-width="2"></line>
+            </svg>
+          </div>
+          <h3 data-en="Operator Terminal" data-ar="لوحة المشغلين">Operator Terminal</h3>
+          <p style="font-size: 14px; margin-top: 8px;" data-en="An elite dashboard granting real-time control over inventory and financial reporting." data-ar="لوحة تحكم متقدمة تمنح تحكماً في الوقت الفعلي على المخزون والتقارير المالية.">An elite dashboard granting real-time control over inventory and financial reporting.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand-accent)" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter">
+              <path d="M3 21H21"></path><path d="M3 17L9 11L13 15L21 5" stroke-width="2"></path><polyline points="15 5 21 5 21 11"></polyline>
+            </svg>
+          </div>
+          <h3 data-en="Yield Routing" data-ar="توجيه العوائد">Yield Routing</h3>
+          <p style="font-size: 14px; margin-top: 8px;" data-en="Securely collects payments, deducts commissions, and routes net yields to operators." data-ar="جمع المدفوعات بأمان، خصم العمولات، وتوجيه الصافي للمشغلين.">Securely collects payments, deducts commissions, and routes net yields to operators.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOBILITY SECTION -->
+  <section id="mobility" class="section section-border-top">
+    <div class="container">
+      <div class="section-header">
+        <span class="sub-badge" data-en="Mobility Ecosystem" data-ar="نظام التنقل البيئي">Mobility Ecosystem</span>
+        <h2 data-en="Transforming Urban Mobility." data-ar="تحويل التنقل الحضري.">Transforming Urban Mobility.</h2>
+        <p data-en="By digitizing physical parking assets, we actively eliminate urban traffic congestion caused by cruising. Our systemic intelligence routes drivers directly to available capacity." data-ar="من خلال رقمنة أصول المواقف الفيزيائية، نقوم فعلياً بالقضاء على الازدحام المروري الحضري الناتج عن البحث العشوائي. نظامنا الذكي يوجه السائقين مباشرة للسعة المتاحة.">By digitizing physical parking assets, we actively eliminate urban traffic congestion caused by cruising. Our systemic intelligence routes drivers directly to available capacity.</p>
+      </div>
+
+      <div class="mobility-diagram">
+        <div class="mobility-node">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--brand-text-primary)" stroke-width="1.5" stroke-linecap="square" style="margin-bottom: 16px;">
+            <rect x="3" y="3" width="18" height="18"></rect><line x1="3" y1="9" x2="21" y2="9"></line>
+          </svg>
+          <div style="font-family: var(--font-en-heading); font-size: 14px; color: var(--brand-text-highlight); margin-bottom: 4px;" data-en="Static Physical Asset" data-ar="أصل فيزيائي ثابت">Static Physical Asset</div>
+          <div style="font-size: 11px; color: var(--brand-text-secondary); text-transform: uppercase;" data-en="Underutilized Space" data-ar="مساحة غير مستغلة">Underutilized Space</div>
+        </div>
+
+        <div>
+          <svg width="40" height="24" viewBox="0 0 40 24">
+            <line x1="0" y1="12" x2="40" y2="12" class="mobility-route-line"></line>
+            <polyline points="32 6 38 12 32 18" fill="none" stroke="var(--brand-accent)" stroke-width="2" stroke-linecap="square"></polyline>
+          </svg>
+        </div>
+
+        <div class="mobility-node" style="border-color: var(--brand-accent); background: rgba(10, 25, 47, 0.95);">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--brand-accent)" stroke-width="1.5" stroke-linecap="square" style="margin-bottom: 16px;">
+            <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5"></polygon>
+            <polyline points="2 8.5 12 15.5 22 8.5"></polyline>
+            <line x1="12" y1="22" x2="12" y2="15.5"></line>
+          </svg>
+          <div style="font-family: var(--font-en-heading); font-size: 18px; color: var(--brand-accent); margin-bottom: 4px;" data-en="Dynamic Capacity Engine" data-ar="محرك السعة الديناميكي">Dynamic Capacity Engine</div>
+          <div style="font-size: 12px; color: var(--brand-text-secondary); text-transform: uppercase;" data-en="Algorithmic Routing" data-ar="توجيه خوارزمي">Algorithmic Routing</div>
+        </div>
+
+        <div>
+          <svg width="40" height="24" viewBox="0 0 40 24">
+            <line x1="0" y1="12" x2="40" y2="12" class="mobility-route-line"></line>
+            <polyline points="32 6 38 12 32 18" fill="none" stroke="var(--brand-accent)" stroke-width="2" stroke-linecap="square"></polyline>
+          </svg>
+        </div>
+
+        <div class="mobility-node">
+           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--brand-text-primary)" stroke-width="1.5" stroke-linecap="square" style="margin-bottom: 16px;">
+            <circle cx="12" cy="12" r="10" stroke-dasharray="4 4"></circle>
+            <path d="M12 6v6l4 2"></path>
+          </svg>
+          <div style="font-family: var(--font-en-heading); font-size: 14px; color: var(--brand-text-highlight); margin-bottom: 4px;" data-en="Frictionless Mobility" data-ar="تنقل بلا احتكاك">Frictionless Mobility</div>
+          <div style="font-size: 11px; color: var(--brand-text-secondary); text-transform: uppercase;" data-en="Zero Congestion" data-ar="صفر ازدحام">Zero Congestion</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIGITAL TRANSFORMATION -->
+  <section id="transformation" class="section section-border-top">
+    <div class="container">
+      <div class="section-header">
+        <span class="sub-badge" data-en="Digital Transformation Services" data-ar="خدمات التحول الرقمي">Digital Transformation Services</span>
+        <h2 data-en="Digitizing the Parking Sector." data-ar="رقمنة قطاع المواقف.">Digitizing the Parking Sector.</h2>
+        <p data-en="We do not just install software; we engineer a complete paradigm shift. We transition legacy parking facilities into automated, data-driven digital assets." data-ar="نحن لا نقوم بتثبيت البرمجيات فحسب؛ بل نهندس نقلة نوعية كاملة. نحول مرافق المواقف القديمة إلى أصول رقمية مؤتمتة تعتمد على البيانات.">We do not just install software; we engineer a complete paradigm shift. We transition legacy parking facilities into automated, data-driven digital assets.</p>
+      </div>
+
+      <div class="solutions-grid">
+        <div class="feature-card">
+          <div class="icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand-text-primary)" stroke-width="1.5" stroke-linecap="square">
+              <rect x="3" y="3" width="18" height="18"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line>
+            </svg>
+          </div>
+          <h3 style="margin-bottom: 16px; font-size: 20px;" data-en="1. Infrastructure Audit" data-ar="1. تدقيق البنية التحتية">1. Infrastructure Audit</h3>
+          <p style="font-size: 15px;" data-en="Mapping physical capacity and identifying revenue leakages in current legacy systems." data-ar="تخطيط السعة الفيزيائية وتحديد تسرب الإيرادات في الأنظمة الإدارية القديمة.">Mapping physical capacity and identifying revenue leakages in current legacy systems.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand-accent)" stroke-width="1.5" stroke-linecap="square">
+              <rect x="2" y="4" width="20" height="16"></rect><path d="M6 9L9 12L6 15" stroke-width="2"></path><line x1="12" y1="15" x2="17" y2="15" stroke-width="2"></line>
+            </svg>
+          </div>
+          <h3 style="margin-bottom: 16px; font-size: 20px;" data-en="2. Asset-Light Deployment" data-ar="2. نشر البنية المرنة">2. Asset-Light Deployment</h3>
+          <p style="font-size: 15px;" data-en="Overlaying our systemic intelligence software engine without requiring expensive hardware." data-ar="إضافة طبقة برمجيات الذكاء المنهجي الخاصة بنا دون الحاجة إلى أجهزة مادية مكلفة.">Overlaying our systemic intelligence software engine without requiring expensive hardware.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="icon-wrapper">
+             <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand-accent)" stroke-width="1.5" stroke-linecap="square">
+              <path d="M3 21H21"></path><path d="M3 17L9 11L13 15L21 5" stroke-width="2"></path><polyline points="15 5 21 5 21 11"></polyline>
+            </svg>
+          </div>
+          <h3 style="margin-bottom: 16px; font-size: 20px;" data-en="3. Yield Digitization" data-ar="3. رقمنة العوائد">3. Yield Digitization</h3>
+          <p style="font-size: 15px;" data-en="Converting real-time occupancy data into direct financial yield, fully managed via the Terminal." data-ar="تحويل بيانات الإشغال في الوقت الفعلي إلى عوائد مالية مباشرة، تدار بالكامل عبر لوحة التحكم.">Converting real-time occupancy data into direct financial yield, fully managed via the Terminal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTIONS SECTION -->
+  <section id="solutions" class="section section-border-top">
+    <div class="container">
+      <div class="section-header">
+        <span class="sub-badge" data-en="Engineered For" data-ar="تمت هندستها لأجل">Engineered For</span>
+        <h2 data-en="Sectors We Digitize." data-ar="القطاعات التي نرقمنها.">Sectors We Digitize.</h2>
+      </div>
+
+      <div class="solutions-grid">
+        <div class="feature-card">
+          <h3 style="margin-bottom: 16px;" data-en="Real Estate Developers" data-ar="المطورين العقاريين">Real Estate Developers</h3>
+          <p data-en="Convert underutilized physical spaces in developments into profitable digital assets." data-ar="تحويل المساحات الفيزيائية غير المستغلة في المشاريع إلى أصول رقمية مربحة.">Convert underutilized physical spaces in developments into profitable digital assets.</p>
+        </div>
+        <div class="feature-card">
+          <h3 style="margin-bottom: 16px;" data-en="Municipalities & Smart Cities" data-ar="البلديات والمدن الذكية">Municipalities & Smart Cities</h3>
+          <p data-en="Manage urban capacity and reduce traffic congestion caused by cruising." data-ar="إدارة السعة الحضرية وتقليل الازدحام المروري الناتج عن البحث عن مواقف.">Manage urban capacity and reduce traffic congestion caused by cruising.</p>
+        </div>
+        <div class="feature-card">
+          <h3 style="margin-bottom: 16px;" data-en="Mall & Parking Operators" data-ar="مشغلي المراكز والمواقف">Mall & Parking Operators</h3>
+          <p data-en="Reduce physical maintenance costs while managing bookings precisely." data-ar="تقليل تكاليف الصيانة المادية مع إدارة الحجوزات بدقة عالية.">Reduce physical maintenance costs while managing bookings precisely.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFFERENTIATION -->
+  <section class="section diff-section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; margin: 0 auto var(--space-xl) auto;">
+        <h2 data-en="The Competitive Advantage" data-ar="الميزة التنافسية">The Competitive Advantage</h2>
+        <p data-en="Why enterprise leaders choose algorithmic accuracy over physical constraints." data-ar="لماذا يختار قادة الأعمال الدقة الخوارزمية بدلاً من القيود الفيزيائية.">Why enterprise leaders choose algorithmic accuracy over physical constraints.</p>
+      </div>
+
+      <div class="diff-grid">
+        <div class="diff-panel diff-panel-legacy">
+          <div class="diff-tag" style="color: var(--brand-text-secondary);" data-en="LEGACY SYSTEM" data-ar="النظام القديم">LEGACY SYSTEM</div>
+          <h3 style="font-size: 24px; margin-bottom: 16px;" data-en="Binary Toggles & Hardware" data-ar="المستشعرات والأجهزة القديمة">Binary Toggles & Hardware</h3>
+          <p data-en="Traditional management relies on expensive physical sensors. This causes high maintenance costs and inaccurate reporting." data-ar="تعتمد الإدارة التقليدية على مستشعرات فيزيائية مكلفة. يؤدي هذا لارتفاع تكاليف الصيانة وعدم دقة التقارير.">Traditional management relies on expensive physical sensors. This causes high maintenance costs and inaccurate reporting.</p>
+        </div>
+        
+        <div class="diff-panel diff-panel-irken">
+          <div class="diff-tag" style="color: var(--brand-accent); border-color: var(--brand-accent);" data-en="IRKEN ARCHITECTURE" data-ar="معمارية إيركن">IRKEN ARCHITECTURE</div>
+          <h3 style="font-size: 24px; color: var(--brand-text-highlight); margin-bottom: 16px;" data-en="Dynamic Capacity Calculation" data-ar="الحساب الديناميكي للسعة">Dynamic Capacity Calculation</h3>
+          <p style="color: var(--brand-text-primary);" data-en="Availability is dynamically calculated by measuring total static space against real-time active bookings, ensuring 100% accuracy." data-ar="يتم حساب التوفر ديناميكياً عن طريق قياس المساحة الثابتة الإجمالية مقابل الحجوزات النشطة الحية، مما يضمن دقة 100%.">Availability is dynamically calculated by measuring total static space against real-time active bookings, ensuring 100% accuracy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTEGRATION FORM -->
+  <section id="integration" class="section">
+    <div class="container">
+      <div style="display: flex; flex-wrap: wrap; gap: var(--space-xl); justify-content: space-between; align-items: center;">
+        
+        <div style="flex: 1; min-width: 300px;">
+          <h2 style="margin-bottom: 16px;" data-en="Deploy Architecture." data-ar="نشر البنية التحتية.">Deploy Architecture.</h2>
+          <p style="max-width: 400px;" data-en="Request an infrastructure assessment to integrate your physical assets with our digital ecosystem." data-ar="اطلب تقييم البنية التحتية لدمج أصولك الفيزيائية مع منظومتنا الرقمية.">Request an infrastructure assessment to integrate your physical assets with our digital ecosystem.</p>
+        </div>
+
+        <div class="form-container" style="flex: 1; min-width: 320px;">
+          <div style="font-family: var(--font-en-heading); font-size: 18px; color: var(--brand-text-highlight); margin-bottom: 24px; border-bottom: 1px dashed var(--brand-text-secondary); padding-bottom: 16px;" data-en="Infrastructure Assessment Form" data-ar="نموذج تقييم البنية التحتية">
+            Infrastructure Assessment Form
+          </div>
+          
+          <form onsubmit="event.preventDefault(); showSystemMessage(isRTL ? '> تم بدء الطلب... تم إبلاغ الفريق الهندسي.' : '> INITIATING REQUEST... ENGINEERING TEAM NOTIFIED.');">
+            <div class="form-group">
+              <label class="form-label" data-en="Company / Institution Name" data-ar="اسم الشركة / المؤسسة">Company / Institution Name</label>
+              <input type="text" class="form-control" required data-en-placeholder="e.g. Acme Developments" data-ar-placeholder="مثال: شركة التطوير العقاري" placeholder="e.g. Acme Developments">
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" data-en="Sector Type" data-ar="نوع القطاع">Sector Type</label>
+              <select class="form-control" required>
+                <option value="" disabled selected data-en="Select Sector" data-ar="اختر القطاع">Select Sector</option>
+                <option value="developer" data-en="Real Estate Developer" data-ar="مطور عقاري">Real Estate Developer</option>
+                <option value="municipality" data-en="Municipality / Gov" data-ar="جهة حكومية / بلدية">Municipality / Gov</option>
+                <option value="operator" data-en="Mall / Parking Operator" data-ar="مشغل مواقف / مركز تجاري">Mall / Parking Operator</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" data-en="Total Static Capacity (Approximate Spaces)" data-ar="السعة الثابتة الإجمالية (عدد المواقف التقريبي)">Total Static Capacity (Approximate Spaces)</label>
+              <input type="number" class="form-control" required data-en-placeholder="e.g. 500" data-ar-placeholder="مثال: 500" placeholder="e.g. 500">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" data-en="Work Email" data-ar="البريد الإلكتروني للعمل">Work Email</label>
+              <input type="email" class="form-control" required data-en-placeholder="contact@company.com" data-ar-placeholder="contact@company.com" placeholder="contact@company.com">
+            </div>
+
+            <button type="submit" class="btn-primary" style="width: 100%; margin-top: 16px;" data-en="Initialize Request" data-ar="تهيئة الطلب">Initialize Request</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CORPORATE CONTACT -->
+  <section id="contact" class="section section-border-top">
+    <div class="container">
+      <div class="section-header">
+        <span class="sub-badge" data-en="Corporate Directory" data-ar="الدليل المؤسسي">Corporate Directory</span>
+        <h2 data-en="Establish Contact." data-ar="تأسيس اتصال.">Establish Contact.</h2>
+        <p data-en="For investor relations, and general corporate inquiries." data-ar="لعلاقات المستثمرين، والاستفسارات المؤسسية العامة.">For investor relations, and general corporate inquiries.</p>
+      </div>
+
+      <div class="diff-grid" style="border: none; gap: var(--space-xl); background: transparent;">
+        <div style="padding-right: var(--space-lg);">
+          <div style="margin-bottom: var(--space-lg);">
+            <h3 style="font-size: 14px; color: var(--brand-text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;" data-en="Headquarters" data-ar="المقر الرئيسي">Headquarters</h3>
+            <p style="color: var(--brand-text-highlight); font-family: var(--font-en-heading); font-size: 20px;" data-en="New Cairo City<br>Cairo Governorate, Egypt" data-ar="مدينة القاهرة الجديدة<br>محافظة القاهرة، مصر">New Cairo City<br>Cairo Governorate, Egypt</p>
+          </div>
+          
+          <div style="margin-bottom: var(--space-lg);">
+            <h3 style="font-size: 14px; color: var(--brand-text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;" data-en="Direct Comm Channels" data-ar="قنوات الاتصال المباشرة">Direct Comm Channels</h3>
+            <p style="margin-bottom: 4px;"><strong>Enterprise:</strong> enterprise@irkensolutions.com</p>
+            <p><strong>Careers:</strong> build@irkensolutions.com</p>
+          </div>
+        </div>
+
+        <div class="form-container" style="border-color: var(--brand-secondary); width: 100%;">
+          <form onsubmit="event.preventDefault(); showSystemMessage(isRTL ? '> نجاح الإرسال. تم توجيه الرسالة للمقر الرئيسي.' : '> TRANSMISSION SUCCESSFUL. MESSAGE ROUTED TO HQ.');">
+            <div class="form-group">
+              <label class="form-label" data-en="Full Name" data-ar="الاسم الكامل">Full Name</label>
+              <input type="text" class="form-control" required data-en-placeholder="Enter your name" data-ar-placeholder="أدخل اسمك" placeholder="Enter your name">
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" data-en="Corporate Email" data-ar="البريد الإلكتروني للشركات">Corporate Email</label>
+              <input type="email" class="form-control" required data-en-placeholder="contact@company.com" data-ar-placeholder="contact@company.com" placeholder="contact@company.com">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" data-en="Inquiry Routing" data-ar="توجيه الاستفسار">Inquiry Routing</label>
+              <select class="form-control" required>
+                <option value="" disabled selected data-en="Select Department" data-ar="اختر القسم">Select Department</option>
+                <option value="investors" data-en="Investor Relations" data-ar="علاقات المستثمرين">Investor Relations</option>
+                <option value="general" data-en="General Inquiry" data-ar="استفسار عام">General Inquiry</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" data-en="Transmission Payload (Message)" data-ar="محتوى الإرسال (الرسالة)">Transmission Payload (Message)</label>
+              <textarea class="form-control" required rows="4" data-en-placeholder="Enter your inquiry details..." data-ar-placeholder="أدخل تفاصيل استفسارك..." placeholder="Enter your inquiry details..." style="resize: vertical;"></textarea>
+            </div>
+
+            <button type="submit" class="btn-secondary" style="width: 100%; margin-top: 8px;" data-en="Transmit Message" data-ar="إرسال الرسالة">Transmit Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="corporate-footer">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <div>
+          <img src="2.png" alt="Irken Solutions Stacked Logo" style="height: 60px; margin-bottom: 24px;" onerror="this.src='https://placehold.co/100x100/0A192F/64FFDA?text=IRKEN'">
+          <p style="font-size: 13px; max-width: 280px;" data-en="A venture-building technology firm dedicated to digitizing the mobility and parking sector through asset-light infrastructure." data-ar="شركة بناء مشاريع تقنية مكرسة لرقمنة قطاع التنقل والمواقف من خلال بنية تحتية مرنة الأصول.">A venture-building technology firm dedicated to digitizing the mobility and parking sector through asset-light infrastructure.</p>
+        </div>
+        
+        <div>
+          <h4 class="footer-heading" data-en="Platform" data-ar="المنصة">Platform</h4>
+          <ul class="footer-links">
+            <li><a href="#mobility" data-en="Urban Mobility Ecosystem" data-ar="نظام التنقل الحضري">Urban Mobility Ecosystem</a></li>
+            <li><a href="#platform" data-en="Dynamic Capacity Engine" data-ar="محرك السعة الديناميكي">Dynamic Capacity Engine</a></li>
+            <li><a href="#platform" data-en="Operator Terminal" data-ar="لوحة المشغلين">Operator Terminal</a></li>
+          </ul>
+        </div>
+        
+        <div id="company">
+          <h4 class="footer-heading" data-en="Corporate" data-ar="الشركة">Corporate</h4>
+          <ul class="footer-links">
+            <li><a href="#contact" data-en="Contact Us" data-ar="تواصل معنا">Contact Us</a></li>
+            <li><a href="#" data-en="Press & Media" data-ar="الصحافة والإعلام">Press & Media</a></li>
+            <li><a href="#" data-en="Careers" data-ar="الوظائف">Careers</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading" data-en="For Drivers" data-ar="للسائقين">For Drivers</h4>
+          <div class="consumer-portal-box">
+            <p style="font-size: 13px; margin-bottom: 12px; color: var(--brand-text-primary);" data-en="Looking for a parking space?" data-ar="تبحث عن مساحة للركن؟">Looking for a parking space?</p>
+            <a href="https://irken.eg" class="btn-primary" style="padding: 8px 16px; font-size: 12px; border-color: var(--brand-text-secondary); color: var(--brand-text-highlight);">Visit irken.eg ↗</a>
+          </div>
+        </div>
+
+      </div>
+      
+      <div class="footer-bottom">
+        <div class="legal-disclaimer">
+          <span data-en="© 2026 Irken Solutions. All rights reserved." data-ar="© 2026 إيركن سوليوشنز. جميع الحقوق محفوظة.">© 2026 Irken Solutions. All rights reserved.</span> <br>
+          <span style="opacity: 0.6; font-size: 10px;" data-en="TRADEMARK NOTICE: 'Irken Solutions' (B2B) and 'irken.eg' (Consumer) are separate intellectual properties." data-ar="إشعار العلامة التجارية: 'إيركن سوليوشنز' للشركات وتطبيق 'irken.eg' للمستهلكين هي ملكيات فكرية منفصلة.">TRADEMARK NOTICE: 'Irken Solutions' (B2B) and 'irken.eg' (Consumer) are separate intellectual properties.</span>
+        </div>
+        <div style="display: flex; gap: var(--space-md);">
+          <a href="#" style="color: inherit; text-decoration: underline;" data-en="Privacy Policy" data-ar="سياسة الخصوصية">Privacy Policy</a>
+          <a href="#" style="color: inherit; text-decoration: underline;" data-en="Enterprise Terms" data-ar="شروط خدمات الشركات">Enterprise Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="systemMessageBox" class="system-message-box">
+    <div style="font-family: monospace; font-size: 11px; color: var(--brand-accent); margin-bottom: 4px;" data-en="SYS_NOTIFICATION" data-ar="إشعار_النظام">SYS_NOTIFICATION</div>
+    <div id="systemMessageText" style="font-family: var(--font-en-heading); font-size: 16px; color: var(--brand-text-highlight);"></div>
+  </div>
+
+  <script>
+    /* SYSTEM MESSAGE HANDLER */
+    function showSystemMessage(msg) {
+      const msgBox = document.getElementById('systemMessageBox');
+      const msgText = document.getElementById('systemMessageText');
+      msgText.textContent = msg;
+      msgBox.classList.add('active');
+      setTimeout(() => { msgBox.classList.remove('active'); }, 4000);
+    }
+
+    /* LANGUAGE TOGGLE SYSTEM */
+    let isRTL = false;
+    function toggleLanguage() {
+      const htmlTag = document.documentElement;
+      const bodyTag = document.body;
+      
+      isRTL = !isRTL;
+      htmlTag.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+      bodyTag.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+      
+      // Translate elements while preserving SVG children
+      document.querySelectorAll('[data-en][data-ar]').forEach(el => {
+        const translation = isRTL ? el.getAttribute('data-ar') : el.getAttribute('data-en');
+        const svgChild = el.querySelector('svg');
+        const spanChild = el.querySelector('span.live-pulse'); 
+        
+        if (svgChild) {
+          el.innerHTML = '';
+          el.appendChild(svgChild);
+          el.appendChild(document.createTextNode(' ' + translation));
+        } else if (spanChild) {
+          el.innerHTML = '';
+          el.appendChild(spanChild);
+          el.appendChild(document.createTextNode(' ' + translation));
+        } else {
+          el.innerHTML = translation;
+        }
+      });
+
+      // Translate placeholders
+      document.querySelectorAll('[data-en-placeholder][data-ar-placeholder]').forEach(el => {
+        const translation = isRTL ? el.getAttribute('data-ar-placeholder') : el.getAttribute('data-en-placeholder');
+        el.setAttribute('placeholder', translation);
+      });
+      
+      showSystemMessage(isRTL ? '> تم تحويل لغة النظام بنجاح.' : '> SYSTEM LANGUAGE OVERRIDDEN.');
+    }
+  </script>
+</body>
+</html>
