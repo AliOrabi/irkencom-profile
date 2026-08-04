@@ -2,54 +2,60 @@
 
 import React from 'react';
 import Translate from '@/components/ui/Translate';
+import Reveal from '@/components/ui/Reveal';
 
 export default function CompetitiveDiff() {
   return (
-    <section className="section diff-section">
-      <div className="container">
-        <div className="section-header" style={{ textAlign: 'center', margin: '0 auto var(--space-xl) auto' }}>
-          <h2>
-            <Translate en="The Competitive Advantage" ar="الميزة التنافسية" />
-          </h2>
-          <p>
-            <Translate 
-              en="Why enterprise leaders choose algorithmic accuracy over physical constraints." 
-              ar="لماذا يختار قادة الأعمال الدقة الخوارزمية بدلاً من القيود الفيزيائية." 
-            />
-          </p>
-        </div>
+    <section className="py-24 relative border-t border-brand-secondary overflow-hidden">
+      <div className="max-w-[1280px] mx-auto px-8 w-full relative z-10">
+        <Reveal direction="up" delay={0.1}>
+          <div className="mb-16 text-center max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold font-enHeading text-text-primary mb-6">
+              <Translate en="There's a smarter way to do this." ar="في طريقة أذكى من كده." />
+            </h2>
+            <p className="text-base text-text-secondary">
+              <Translate
+                en="Traditional parking systems make you buy expensive hardware, then pay to maintain it. We took a different approach."
+                ar="أنظمة المواقف التقليدية بتخليك تشتري أجهزة غالية، وبعدين تدفع صيانة. إحنا اخترنا طريق تاني."
+              />
+            </p>
+          </div>
+        </Reveal>
 
-        <div className="diff-grid">
-          <div className="diff-panel diff-panel-legacy">
-            <div className="diff-tag" style={{ color: 'var(--brand-text-secondary)' }}>
-              <Translate en="LEGACY SYSTEM" ar="النظام القديم" />
+        <Reveal direction="up" delay={0.2}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="border border-brand-secondary bg-brand-primary/50 p-10 opacity-70">
+              <div className="text-xs font-enHeading tracking-[2px] uppercase text-text-secondary mb-6 border border-brand-secondary inline-block px-3 py-1">
+                <Translate en="The Old Way" ar="الطريقة القديمة" />
+              </div>
+              <h3 className="text-2xl font-enHeading text-text-primary mb-4">
+                <Translate en="Sensors, cables, and constant maintenance." ar="مستشعرات وكابلات وصيانة ما بتخلصش." />
+              </h3>
+              <p className="text-sm text-text-secondary leading-relaxed">
+                <Translate
+                  en="You install sensors in every spot, run cables, hope they don't fail — and when they do, you call a technician. High costs. Inaccurate reports. Constant headaches."
+                  ar="بتركّب مستشعرات في كل موقف، بتمدّ كابلات، وبتتمنى ما تعطلش. لو عطلت، بتستنى التقني. تكلفة عالية. تقارير غلط. ضغط مستمر."
+                />
+              </p>
             </div>
-            <h3 style={{ fontSize: '24px', marginBottom: '16px' }}>
-              <Translate en="Binary Toggles & Hardware" ar="المستشعرات والأجهزة القديمة" />
-            </h3>
-            <p>
-              <Translate 
-                en="Traditional management relies on expensive physical sensors. This causes high maintenance costs and inaccurate reporting." 
-                ar="تعتمد الإدارة التقليدية على مستشعرات فيزيائية مكلفة. يؤدي هذا لارتفاع تكاليف الصيانة وعدم دقة التقارير." 
-              />
-            </p>
-          </div>
-          
-          <div className="diff-panel diff-panel-irken">
-            <div className="diff-tag" style={{ color: 'var(--brand-accent)', borderColor: 'var(--brand-accent)' }}>
-              <Translate en="IRKEN ARCHITECTURE" ar="معمارية إيركن" />
+
+            <div className="border border-brand-accent bg-brand-primary/90 p-10 relative shadow-[0_0_30px_rgba(100,255,218,0.1)]">
+              <div className="absolute top-0 left-0 w-full h-[2px] bg-brand-accent shadow-[0_0_10px_#64FFDA]"></div>
+              <div className="text-xs font-enHeading tracking-[2px] uppercase text-brand-accent mb-6 border border-brand-accent inline-block px-3 py-1 bg-brand-accent/10">
+                <Translate en="The Irken Way" ar="طريقة إيركن" />
+              </div>
+              <h3 className="text-2xl font-enHeading text-brand-accent mb-4">
+                <Translate en="Real-time tracking. Nothing to maintain." ar="تتبع فوري. مفيش حاجة تتعطل." />
+              </h3>
+              <p className="text-sm text-text-primary leading-relaxed">
+                <Translate
+                  en="We calculate available spaces by comparing your total capacity against active bookings — live, accurate, and hardware-free. The only thing you'll notice is the revenue."
+                  ar="بنحسب المساحات المتاحة بمقارنة سعتك الكلية بالحجوزات الشغّالة — لحظياً، وبدقة، وبدون أي أجهزة. اللي هتلاحقه بس هو الإيرادات."
+                />
+              </p>
             </div>
-            <h3 style={{ fontSize: '24px', color: 'var(--brand-text-highlight)', marginBottom: '16px' }}>
-              <Translate en="Dynamic Capacity Calculation" ar="الحساب الديناميكي للسعة" />
-            </h3>
-            <p style={{ color: 'var(--brand-text-primary)' }}>
-              <Translate 
-                en="Availability is dynamically calculated by measuring total static space against real-time active bookings, ensuring 100% accuracy." 
-                ar="يتم حساب التوفر ديناميكياً عن طريق قياس المساحة الثابتة الإجمالية مقابل الحجوزات النشطة الحية، مما يضمن دقة 100%." 
-              />
-            </p>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

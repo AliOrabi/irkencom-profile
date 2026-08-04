@@ -5,71 +5,74 @@ import Translate from '@/components/ui/Translate';
 
 export default function TransformationSection() {
   return (
-    <section id="transformation" className="section section-border-top">
-      <div className="container">
-        <div className="section-header">
-          <span className="sub-badge">
-            <Translate en="Digital Transformation Services" ar="خدمات التحول الرقمي" />
+    <section id="transformation" className="py-24 relative border-t border-brand-secondary overflow-hidden">
+      <div className="max-w-[1280px] mx-auto px-8 w-full relative z-10">
+        <div className="mb-16 max-w-3xl">
+          <span className="inline-block px-3 py-1 border border-brand-secondary text-brand-accent text-xs font-enHeading uppercase tracking-[2px] mb-6 bg-brand-secondary/30">
+            <Translate en="Our Process" ar="كيف نعمل" />
           </span>
-          <h2>
-            <Translate en="Digitizing the Parking Sector." ar="رقمنة قطاع المواقف." />
+          <h2 className="text-3xl md:text-4xl font-bold font-enHeading text-text-primary mb-6">
+            <Translate en="Three steps from idle space to active income." ar="ثلاث خطوات من موقف فارغ إلى دخل حقيقي." />
           </h2>
-          <p>
-            <Translate 
-              en="We do not just install software; we engineer a complete paradigm shift. We transition legacy parking facilities into automated, data-driven digital assets." 
-              ar="نحن لا نقوم بتثبيت البرمجيات فحسب؛ بل نهندس نقلة نوعية كاملة. نحول مرافق المواقف القديمة إلى أصول رقمية مؤتمتة تعتمد على البيانات." 
+          <p className="text-base text-text-secondary">
+            <Translate
+              en="We don't just install software. We redesign how your parking facility earns — from day one."
+              ar="مش بس بنركّب برنامج. بنغير الطريقة اللي بيكسب بيها موقفك — من أول يوم."
             />
           </p>
         </div>
 
-        <div className="solutions-grid">
-          <div className="feature-card">
-            <div className="icon-wrapper">
-              <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand-text-primary)" strokeWidth="1.5" strokeLinecap="square">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="border border-brand-secondary bg-brand-primary/80 p-8 hover:border-brand-accent/50 transition-colors duration-300 group relative">
+            <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-brand-accent/0 to-transparent group-hover:via-brand-accent/50 transition-all duration-500"></div>
+            <div className="w-12 h-12 flex items-center justify-center mb-6 bg-brand-secondary/50 border border-brand-secondary text-brand-accent group-hover:border-brand-accent/30 transition-colors">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" className="w-6 h-6">
                 <rect x="3" y="3" width="18" height="18"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line>
               </svg>
             </div>
-            <h3 style={{ marginBottom: '16px', fontSize: '20px' }}>
-              <Translate en="1. Infrastructure Audit" ar="1. تدقيق البنية التحتية" />
+            <h3 className="text-xl font-enHeading text-text-highlight mb-4">
+              <Translate en="1. We look at what you have." ar="١. بنفهم وضعك الحالي." />
             </h3>
-            <p style={{ fontSize: '15px' }}>
-              <Translate 
-                en="Mapping physical capacity and identifying revenue leakages in current legacy systems." 
-                ar="تخطيط السعة الفيزيائية وتحديد تسرب الإيرادات في الأنظمة الإدارية القديمة." 
+            <p className="text-sm text-text-secondary leading-relaxed">
+              <Translate
+                en="We assess your facility's layout and current operations to find where you're losing money — before touching anything."
+                ar="بندرس تصميم منشأتك وطريقة شغلها الحالية عشان نكتشف فين بتخسر — قبل ما نعمل أي حاجة."
               />
             </p>
           </div>
 
-          <div className="feature-card">
-            <div className="icon-wrapper">
-              <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand-accent)" strokeWidth="1.5" strokeLinecap="square">
+          <div className="border border-brand-secondary bg-brand-primary/80 p-8 hover:border-brand-accent/50 transition-colors duration-300 group relative">
+            <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-brand-accent/0 to-transparent group-hover:via-brand-accent/50 transition-all duration-500"></div>
+            <div className="w-12 h-12 flex items-center justify-center mb-6 bg-brand-secondary/50 border border-brand-secondary text-brand-accent group-hover:border-brand-accent/30 transition-colors">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" className="w-6 h-6">
                 <rect x="2" y="4" width="20" height="16"></rect><path d="M6 9L9 12L6 15" strokeWidth="2"></path><line x1="12" y1="15" x2="17" y2="15" strokeWidth="2"></line>
               </svg>
             </div>
-            <h3 style={{ marginBottom: '16px', fontSize: '20px' }}>
-              <Translate en="2. Asset-Light Deployment" ar="2. نشر البنية المرنة" />
+            <h3 className="text-xl font-enHeading text-text-highlight mb-4">
+              <Translate en="2. We set everything up for you." ar="٢. بنجهّز كل شيء." />
             </h3>
-            <p style={{ fontSize: '15px' }}>
-              <Translate 
-                en="Overlaying our systemic intelligence software engine without requiring expensive hardware." 
-                ar="إضافة طبقة برمجيات الذكاء المنهجي الخاصة بنا دون الحاجة إلى أجهزة مادية مكلفة." 
+            <p className="text-sm text-text-secondary leading-relaxed">
+              <Translate
+                en="We deploy our management system over your existing infrastructure. No drilling, no downtime, no disruption to your daily operations."
+                ar="بننشر نظام الإدارة على بنيتك الموجودة. من غير حفر، ومن غير أي توقف في شغلك اليومي."
               />
             </p>
           </div>
 
-          <div className="feature-card">
-            <div className="icon-wrapper">
-               <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand-accent)" strokeWidth="1.5" strokeLinecap="square">
+          <div className="border border-brand-secondary bg-brand-primary/80 p-8 hover:border-brand-accent/50 transition-colors duration-300 group relative">
+            <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-brand-accent/0 to-transparent group-hover:via-brand-accent/50 transition-all duration-500"></div>
+            <div className="w-12 h-12 flex items-center justify-center mb-6 bg-brand-secondary/50 border border-brand-secondary text-brand-accent group-hover:border-brand-accent/30 transition-colors">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" className="w-6 h-6">
                 <path d="M3 21H21"></path><path d="M3 17L9 11L13 15L21 5" strokeWidth="2"></path><polyline points="15 5 21 5 21 11"></polyline>
               </svg>
             </div>
-            <h3 style={{ marginBottom: '16px', fontSize: '20px' }}>
-              <Translate en="3. Yield Digitization" ar="3. رقمنة العوائد" />
+            <h3 className="text-xl font-enHeading text-text-highlight mb-4">
+              <Translate en="3. Your spaces start earning." ar="٣. مواقفك تبدأ تكسب." />
             </h3>
-            <p style={{ fontSize: '15px' }}>
-              <Translate 
-                en="Converting real-time occupancy data into direct financial yield, fully managed via the Terminal." 
-                ar="تحويل بيانات الإشغال في الوقت الفعلي إلى عوائد مالية مباشرة، تدار بالكامل عبر لوحة التحكم." 
+            <p className="text-sm text-text-secondary leading-relaxed">
+              <Translate
+                en="Your facility goes live on our booking network. Every booking is tracked, every payment is recorded, and your revenue is reported automatically."
+                ar="منشأتك بتبدأ على شبكة الحجز بتاعتنا. كل حجز بيتتبع، كل دفعة بتتسجل، وتقرير إيراداتك بيجيلك تلقائياً."
               />
             </p>
           </div>

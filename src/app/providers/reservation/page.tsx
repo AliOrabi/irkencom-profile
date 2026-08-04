@@ -1,38 +1,38 @@
 import React from 'react';
+import { Feature } from '@/types';
 import PageHero from '@/components/sections/PageHero';
 import FeatureGrid from '@/components/sections/FeatureGrid';
 import PartnerForm from '@/components/sections/PartnerForm';
-import { CalendarCheck, Map, Clock, TrendingUp } from 'lucide-react';
 
 export default function ReservationPage() {
-  const features = [
+  const features: Feature[] = [
     {
-      icon: <CalendarCheck />,
-      titleEn: "Pre-Booking Engine",
-      titleAr: "محرك الحجز المسبق",
-      descriptionEn: "Enable users to secure spots in advance, guaranteeing revenue before arrival.",
-      descriptionAr: "تمكين المستخدمين من تأمين الأماكن مسبقاً، مما يضمن الإيرادات قبل الوصول."
+      icon: "CalendarCheck",
+      title: { en: "Pre-Booking Engine", ar: "محرك الحجز المسبق" },
+      description: { en: "Enable users to secure spots in advance, guaranteeing revenue before arrival.", ar: "تمكين المستخدمين من تأمين الأماكن مسبقاً، مما يضمن الإيرادات قبل الوصول." },
+      id: "f" + Math.random().toString(),
+      order: 1
     },
     {
-      icon: <TrendingUp />,
-      titleEn: "Yield Optimization",
-      titleAr: "تحسين العوائد",
-      descriptionEn: "Dynamic capacity allocation algorithms that maximize occupancy rates.",
-      descriptionAr: "خوارزميات تخصيص السعة الديناميكية التي تزيد من معدلات الإشغال."
+      icon: "TrendingUp",
+      title: { en: "Yield Optimization", ar: "تحسين العوائد" },
+      description: { en: "Dynamic capacity allocation algorithms that maximize occupancy rates.", ar: "خوارزميات تخصيص السعة الديناميكية التي تزيد من معدلات الإشغال." },
+      id: "f" + Math.random().toString(),
+      order: 1
     },
     {
-      icon: <Map />,
-      titleEn: "Interactive Mapping",
-      titleAr: "خرائط تفاعلية",
-      descriptionEn: "Visual spot selection and real-time availability broadcasting.",
-      descriptionAr: "اختيار المواقف بصرياً وبث التوافر في الوقت الفعلي."
+      icon: "Map",
+      title: { en: "Interactive Mapping", ar: "خرائط تفاعلية" },
+      description: { en: "Visual spot selection and real-time availability broadcasting.", ar: "اختيار المواقف بصرياً وبث التوافر في الوقت الفعلي." },
+      id: "f" + Math.random().toString(),
+      order: 1
     },
     {
-      icon: <Clock />,
-      titleEn: "Flexible Durations",
-      titleAr: "مدد مرنة",
-      descriptionEn: "Support for hourly, daily, and monthly subscription models.",
-      descriptionAr: "دعم لنماذج الاشتراك بالساعة واليومية والشهرية."
+      icon: "Clock",
+      title: { en: "Flexible Durations", ar: "مدد مرنة" },
+      description: { en: "Support for hourly, daily, and monthly subscription models.", ar: "دعم لنماذج الاشتراك بالساعة واليومية والشهرية." },
+      id: "f" + Math.random().toString(),
+      order: 1
     }
   ];
 

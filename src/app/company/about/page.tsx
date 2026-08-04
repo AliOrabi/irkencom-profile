@@ -6,35 +6,35 @@ import ConversionCTA from '@/components/sections/ConversionCTA';
 export default function AboutPage() {
   return (
     <main>
-      <PageHero 
-        titleEn="Architecting the Future of Urban Mobility"
-        titleAr="هندسة مستقبل التنقل الحضري"
-        descriptionEn="We are the engineers behind Egypt's #1 Online Parking Reservation platform, transforming static assets into dynamic digital ecosystems."
-        descriptionAr="نحن المهندسون وراء منصة حجز مواقف السيارات الأكبر في مصر، نحول الأصول الثابتة إلى أنظمة رقمية ديناميكية."
+      <PageHero
+        titleEn="We turn concrete into cash flow."
+        titleAr="بنحوّل الخرسانة لدخل حقيقي."
+        descriptionEn="Irken Solutions builds the software that makes parking facilities earn their keep — for real estate developers, operators, and cities across Egypt and MENA."
+        descriptionAr="إيركن سولوشنز بتبني البرمجيات اللي بتخلي مواقف السيارات تكسب فعلاً — للمطورين العقاريين والمشغلين والمدن في مصر ومنطقة الشرق الأوسط وشمال إفريقيا."
       />
 
-      <ContentSection 
-        titleEn="Asset-Light Philosophy"
-        titleAr="فلسفة الأصول الخفيفة"
+      <ContentSection
+        titleEn="Smart systems. No heavy investment."
+        titleAr="أنظمة ذكية. من غير استثمار ضخم."
         contentEn={
           <>
-            <p>Our methodology focuses on maximizing yield from existing infrastructure rather than pouring capital into new construction. By layering our proprietary software stack over underutilized physical spaces, we unlock new revenue streams with near-zero CapEx.</p>
-            <p style={{ marginTop: '1rem' }}>We operate the technology, you capture the value.</p>
+            <p>Most parking facilities are sitting on untapped value. The problem isn't the space — it's how it's managed. We fix that by layering our smart software over what you already have, so you start generating revenue without buying a single piece of hardware.</p>
+            <p style={{ marginTop: '1rem' }}>We run the technology. You keep the revenue.</p>
           </>
         }
         contentAr={
           <>
-            <p>تركز منهجيتنا على تعظيم العائد من البنية التحتية الحالية بدلاً من ضخ رأس المال في بناء جديد. من خلال تطبيق حزمة برمجياتنا الخاصة على المساحات الفعلية غير المستغلة، نفتح مصادر إيرادات جديدة بنفقات رأسمالية تكاد تكون معدومة.</p>
-            <p style={{ marginTop: '1rem' }}>نحن ندير التكنولوجيا، وأنت تحصد القيمة.</p>
+            <p>معظم مرافق المواقف فيها قيمة مش متكسّبة. المشكلة مش في المساحة — المشكلة في طريقة الإدارة. إحنا بنحل ده عن طريق إضافة برمجياتنا الذكية فوق اللي عندك موجود، عشان تبدأ تكسب من غير ما تشتري أي جهاز.</p>
+            <p style={{ marginTop: '1rem' }}>إحنا بنشغّل التكنولوجيا. أنت بتحتفظ بالإيرادات.</p>
           </>
         }
       />
 
-      <ConversionCTA 
-        titleEn="Deploy Our Architecture"
-        titleAr="انشر بنيتنا التحتية"
-        descriptionEn="Ready to digitize your parking infrastructure and connect to Egypt's largest reservation network?"
-        descriptionAr="هل أنت مستعد لرقمنة بنية مواقف السيارات الخاصة بك والانضمام إلى أكبر شبكة حجز في مصر؟"
+      <ConversionCTA
+        titleEn="Curious how much your facility could earn?"
+        titleAr="عايز تعرف موقفك ممكن يكسب كام؟"
+        descriptionEn="Talk to our team. We'll assess your current setup and give you a clear picture — no commitment needed."
+        descriptionAr="كلّم فريقنا. هنقيّم وضعك الحالي ونوريك الصورة كاملة — من غير أي التزام."
       />
     </main>
   );

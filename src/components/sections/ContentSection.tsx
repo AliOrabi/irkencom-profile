@@ -1,6 +1,7 @@
 import React from 'react';
 import Translate from '@/components/ui/Translate';
 import Image from 'next/image';
+import Reveal from '@/components/ui/Reveal';
 
 interface ContentSectionProps {
   titleEn: string;
@@ -26,34 +27,34 @@ export default function ContentSection({
   className = ''
 }: ContentSectionProps) {
   return (
-    <section className={`section content-section ${className}`} style={{ padding: 'var(--space-2xl) 0' }}>
-      <div className="container">
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: imageSrc ? 'repeat(auto-fit, minmax(300px, 1fr))' : '1fr',
-          gap: 'var(--space-xl)',
-          alignItems: 'center'
-        }}>
-          <div style={{ order: imagePosition === 'left' ? 2 : 1 }}>
-            <h2 style={{ marginBottom: 'var(--space-lg)' }}>
-              <Translate en={titleEn} ar={titleAr} />
-            </h2>
-            <div style={{ color: 'var(--brand-text-secondary)', lineHeight: 1.8 }}>
-              <Translate en={contentEn} ar={contentAr} />
+    <section className={`py-24 relative border-b border-brand-secondary overflow-hidden ${className}`}>
+      <div className="max-w-[1280px] mx-auto px-8 w-full relative z-10">
+        <Reveal direction="up" delay={0.1}>
+          <div className={`grid ${imageSrc ? 'grid-cols-1 lg:grid-cols-2' : 'grid-cols-1'} gap-12 items-center`}>
+            
+            <div className={imagePosition === 'left' ? 'order-2' : 'order-1'}>
+              <h2 className="text-3xl md:text-4xl font-enHeading text-text-primary mb-6">
+                <Translate en={titleEn} ar={titleAr} />
+              </h2>
+              <div className="text-text-secondary leading-relaxed space-y-4">
+                <Translate en={contentEn} ar={contentAr} />
+              </div>
             </div>
+            
+            {imageSrc && (
+              <div className={`relative w-full aspect-video border border-brand-secondary bg-brand-primary/50 overflow-hidden ${imagePosition === 'left' ? 'order-1' : 'order-2'}`}>
+                <div className="absolute inset-0 bg-brand-accent/5 pointer-events-none z-10"></div>
+                <Image 
+                  src={imageSrc} 
+                  alt={imageAltEn} 
+                  fill 
+                  className="object-cover"
+                />
+              </div>
+            )}
+            
           </div>
-          
-          {imageSrc && (
-            <div style={{ order: imagePosition === 'left' ? 1 : 2, position: 'relative', width: '100%', aspectRatio: '16/9', backgroundColor: 'rgba(255, 255, 255, 0.02)', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
-              <Image 
-                src={imageSrc} 
-                alt={imageAltEn} // In a real app we'd switch based on locale, but for Next.js Image component it's ok to use EN for now or a generic alt.
-                fill 
-                style={{ objectFit: 'cover' }} 
-              />
-            </div>
-          )}
-        </div>
+        </Reveal>
       </div>
     </section>
   );

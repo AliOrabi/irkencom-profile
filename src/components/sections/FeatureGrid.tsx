@@ -1,47 +1,44 @@
 import React from 'react';
 import Translate from '@/components/ui/Translate';
-import '@/styles/components/feature-grid.css';
-
-export interface FeatureItem {
-  icon?: React.ReactNode;
-  titleEn: string;
-  titleAr: string;
-  descriptionEn: string;
-  descriptionAr: string;
-}
+import Reveal from '@/components/ui/Reveal';
+import { Feature } from '@/types';
+import * as LucideIcons from 'lucide-react';
 
 interface FeatureGridProps {
-  features: FeatureItem[];
+  features: Feature[];
   columns?: 2 | 3 | 4;
 }
 
 export default function FeatureGrid({ features, columns = 3 }: FeatureGridProps) {
+  const gridClass = 
+    columns === 2 ? 'md:grid-cols-2' : 
+    columns === 4 ? 'md:grid-cols-2 lg:grid-cols-4' : 
+    'md:grid-cols-2 lg:grid-cols-3';
+
   return (
-    <section className="section feature-grid-section">
-      <div className="container">
-        <div 
-          className="feature-grid"
-          style={{ 
-            display: 'grid', 
-            gridTemplateColumns: `repeat(auto-fit, minmax(calc(100% / ${columns} - 2rem), 1fr))`,
-            gap: 'var(--space-xl)'
-          }}
-        >
-          {features.map((feature, index) => (
-            <div key={index} className="feature-card">
-              {feature.icon && (
-                <div className="feature-icon" style={{ color: 'var(--brand-accent)', marginBottom: 'var(--space-sm)' }}>
-                  {feature.icon}
+    <section className="py-24 bg-brand-primary">
+      <div className="max-w-[1280px] mx-auto px-8 w-full">
+        <div className={`grid gap-8 ${gridClass}`}>
+          {features.map((feature, index) => {
+            const Icon = LucideIcons[feature.icon as keyof typeof LucideIcons] as React.ElementType;
+            return (
+              <Reveal key={feature.id || index} delay={index * 0.1}>
+                <div className="border border-brand-secondary p-8 bg-brand-primary/50 group hover:border-brand-accent transition-colors h-full">
+                  {Icon && (
+                    <div className="text-brand-accent mb-6 group-hover:scale-110 transition-transform origin-left">
+                      <Icon size={24} />
+                    </div>
+                  )}
+                  <h3 className="text-xl font-enHeading text-text-primary mb-4">
+                    <Translate en={feature.title.en} ar={feature.title.ar} />
+                  </h3>
+                  <p className="text-sm text-text-secondary leading-relaxed">
+                    <Translate en={feature.description.en} ar={feature.description.ar} />
+                  </p>
                 </div>
-              )}
-              <h3 style={{ marginBottom: 'var(--space-xs)', fontSize: '1.25rem' }}>
-                <Translate en={feature.titleEn} ar={feature.titleAr} />
-              </h3>
-              <p style={{ color: 'var(--brand-text-secondary)', lineHeight: 1.6 }}>
-                <Translate en={feature.descriptionEn} ar={feature.descriptionAr} />
-              </p>
-            </div>
-          ))}
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>

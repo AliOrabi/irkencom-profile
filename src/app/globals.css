@@ -1,10 +1,55 @@
-@import '../styles/design-system.css';
-@import '../styles/layout.css';
-@import '../styles/components.css';
+@config "../../tailwind.config.js";
+@import "tailwindcss";
+
+@layer base {
+  * {
+    /* Brand Geometry Rule: Absolute Precision */
+    border-radius: 0rem !important;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: theme('colors.brand.primary');
+    color: theme('colors.text.secondary');
+    /* Digital Blueprint Grid System */
+    background-image: 
+      linear-gradient(to right, rgba(100, 255, 218, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(100, 255, 218, 0.05) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-attachment: fixed;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 font-enHeading text-sm font-medium uppercase tracking-[1.5px] cursor-pointer transition-all duration-300 no-underline bg-brand-accent/5 text-brand-accent border border-brand-accent hover:bg-brand-accent/15 hover:shadow-[0_0_15px_rgba(100,255,218,0.2)];
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 font-enHeading text-sm font-medium uppercase tracking-[1.5px] cursor-pointer transition-all duration-300 no-underline bg-transparent text-text-primary border border-text-secondary hover:border-brand-accent hover:text-brand-accent;
+  }
+  .tech-badge {
+    @apply inline-flex items-center gap-2 border border-brand-secondary bg-brand-secondary/50 px-4 py-1.5 font-enHeading text-xs text-brand-accent uppercase tracking-[2px] mb-8 backdrop-blur-sm relative overflow-hidden;
+  }
+  .tech-badge::after {
+    content: '';
+    @apply absolute top-0 -left-[100%] w-full h-full bg-gradient-to-r from-transparent via-brand-accent/20 to-transparent;
+    animation: scanline 4s infinite linear;
+  }
+}
+
+@keyframes scanline {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
 
 /* Typography Context based on Language */
 body.font-english {
-  font-family: var(--font-en-body);
+  font-family: theme('fontFamily.enBody');
 }
 
 body.font-english h1, 
@@ -13,12 +58,12 @@ body.font-english h3,
 body.font-english h4, 
 body.font-english h5, 
 body.font-english h6 {
-  font-family: var(--font-en-heading);
+  font-family: theme('fontFamily.enHeading');
 }
 
 body.font-arabic,
 body.font-arabic * {
-  font-family: var(--font-ar) !important;
+  font-family: theme('fontFamily.ar') !important;
 }
 
 body.font-arabic {

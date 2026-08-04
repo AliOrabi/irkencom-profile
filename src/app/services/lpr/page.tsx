@@ -1,38 +1,38 @@
 import React from 'react';
+import { Feature } from '@/types';
 import PageHero from '@/components/sections/PageHero';
 import FeatureGrid from '@/components/sections/FeatureGrid';
 import ConversionCTA from '@/components/sections/ConversionCTA';
-import { Camera, Zap, FileSearch, ShieldCheck } from 'lucide-react';
 
 export default function LPRPage() {
-  const features = [
+  const features: Feature[] = [
     {
-      icon: <Camera />,
-      titleEn: "99.8% Accuracy",
-      titleAr: "دقة 99.8%",
-      descriptionEn: "Machine learning models trained specifically on Egyptian and regional license plate formats.",
-      descriptionAr: "نماذج تعلم آلي تم تدريبها خصيصاً على تنسيقات لوحات الترخيص المصرية والإقليمية."
+      icon: "Camera",
+      title: { en: "99.8% Accuracy", ar: "دقة 99.8%" },
+      description: { en: "Machine learning models trained specifically on Egyptian and regional license plate formats.", ar: "نماذج تعلم آلي تم تدريبها خصيصاً على تنسيقات لوحات الترخيص المصرية والإقليمية." },
+      id: "f" + Math.random().toString(),
+      order: 1
     },
     {
-      icon: <Zap />,
-      titleEn: "Sub-second Processing",
-      titleAr: "معالجة في أقل من ثانية",
-      descriptionEn: "Edge-computed recognition ensures barriers open instantly without network latency.",
-      descriptionAr: "المعالجة الطرفية تضمن فتح الحواجز على الفور دون تأخير في الشبكة."
+      icon: "Zap",
+      title: { en: "Sub-second Processing", ar: "معالجة في أقل من ثانية" },
+      description: { en: "Edge-computed recognition ensures barriers open instantly without network latency.", ar: "المعالجة الطرفية تضمن فتح الحواجز على الفور دون تأخير في الشبكة." },
+      id: "f" + Math.random().toString(),
+      order: 1
     },
     {
-      icon: <FileSearch />,
-      titleEn: "Blacklist Monitoring",
-      titleAr: "مراقبة القائمة السوداء",
-      descriptionEn: "Automated alerts for unauthorized or flagged vehicles attempting entry.",
-      descriptionAr: "تنبيهات تلقائية للمركبات غير المصرح لها أو المشبوهة التي تحاول الدخول."
+      icon: "FileSearch",
+      title: { en: "Blacklist Monitoring", ar: "مراقبة القائمة السوداء" },
+      description: { en: "Automated alerts for unauthorized or flagged vehicles attempting entry.", ar: "تنبيهات تلقائية للمركبات غير المصرح لها أو المشبوهة التي تحاول الدخول." },
+      id: "f" + Math.random().toString(),
+      order: 1
     },
     {
-      icon: <ShieldCheck />,
-      titleEn: "Ticketless Entry",
-      titleAr: "دخول بدون تذاكر",
-      descriptionEn: "The license plate becomes the identity. Frictionless flow for pre-booked and monthly subscribers.",
-      descriptionAr: "لوحة الترخيص تصبح هي الهوية. تدفق سلس للمشتركين مسبقاً والشهريين."
+      icon: "ShieldCheck",
+      title: { en: "Ticketless Entry", ar: "دخول بدون تذاكر" },
+      description: { en: "The license plate becomes the identity. Frictionless flow for pre-booked and monthly subscribers.", ar: "لوحة الترخيص تصبح هي الهوية. تدفق سلس للمشتركين مسبقاً والشهريين." },
+      id: "f" + Math.random().toString(),
+      order: 1
     }
   ];
 

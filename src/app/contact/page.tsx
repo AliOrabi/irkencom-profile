@@ -3,6 +3,13 @@ import PageHero from '@/components/sections/PageHero';
 import ContactForm from '@/components/sections/ContactForm';
 import Translate from '@/components/ui/Translate';
 import { Mail, Phone, MapPin } from 'lucide-react';
+import { contactChannels } from '@/config/contact';
+
+const Icons = {
+  Phone,
+  Mail,
+  MapPin
+};
 
 export default function ContactPage() {
   return (
@@ -14,63 +21,53 @@ export default function ContactPage() {
         descriptionAr="نحن هنا لهندسة حلول التنقل الحضري القادمة الخاصة بك."
       />
 
-      <section className="section" style={{ position: 'relative' }}>
-        <div className="grid-background" style={{ zIndex: -1 }}></div>
-        <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'var(--space-2xl)' }}>
+      <section className="relative py-24 overflow-hidden">
+        {/* Grid Background */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(100,255,218,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(100,255,218,0.05)_1px,transparent_1px)] bg-[size:24px_24px] -z-10"></div>
+        
+        <div className="max-w-[1280px] mx-auto px-8 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             
             {/* Contact Info */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-xl)' }}>
+            <div className="flex flex-col gap-12">
               <div>
-                <h2 style={{ fontSize: '28px', marginBottom: 'var(--space-md)', color: 'var(--brand-text-highlight)' }}>
+                <h2 className="text-3xl font-enHeading text-white mb-4">
                   <Translate en="Contact Information" ar="معلومات الاتصال" />
                 </h2>
-                <p style={{ color: 'var(--text-secondary)' }}>
+                <p className="text-text-secondary leading-relaxed max-w-md">
                   <Translate en="Reach out to us through any of the channels below. Our team is ready to assist you." ar="تواصل معنا عبر أي من القنوات أدناه. فريقنا مستعد لمساعدتك." />
                 </p>
               </div>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-lg)' }}>
-                <div className="feature-card" style={{ display: 'flex', gap: 'var(--space-md)', alignItems: 'flex-start', padding: 'var(--space-md)' }}>
-                  <div style={{ color: 'var(--brand-accent)' }}>
-                    <Phone size={24} />
-                  </div>
-                  <div>
-                    <div style={{ fontWeight: 600, marginBottom: '4px', color: 'var(--brand-text-highlight)' }}><Translate en="Phone" ar="الهاتف" /></div>
-                    <div style={{ color: 'var(--text-secondary)' }}>+20 1222200479</div>
-                  </div>
-                </div>
-
-                <div className="feature-card" style={{ display: 'flex', gap: 'var(--space-md)', alignItems: 'flex-start', padding: 'var(--space-md)' }}>
-                  <div style={{ color: 'var(--brand-accent)' }}>
-                    <Mail size={24} />
-                  </div>
-                  <div>
-                    <div style={{ fontWeight: 600, marginBottom: '4px', color: 'var(--brand-text-highlight)' }}><Translate en="Email" ar="البريد الإلكتروني" /></div>
-                    <div style={{ color: 'var(--text-secondary)' }}>info@irken.com.eg</div>
-                  </div>
-                </div>
-
-                <div className="feature-card" style={{ display: 'flex', gap: 'var(--space-md)', alignItems: 'flex-start', padding: 'var(--space-md)' }}>
-                  <div style={{ color: 'var(--brand-accent)' }}>
-                    <MapPin size={24} />
-                  </div>
-                  <div>
-                    <div style={{ fontWeight: 600, marginBottom: '4px', color: 'var(--brand-text-highlight)' }}><Translate en="Headquarters" ar="المقر الرئيسي" /></div>
-                    <div style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-                      <Translate 
-                        en="1 Mustafa El Nahhas Street, intersection with Abbas El Akkad Street, Nasr City, Cairo" 
-                        ar="١ شارع مصطفى النحاس، تقاطع مع شارع عباس العقاد، مدينة نصر، القاهرة" 
-                      />
+              <div className="flex flex-col gap-6">
+                {contactChannels.map(channel => {
+                  const Icon = Icons[channel.icon as keyof typeof Icons];
+                  return (
+                    <div key={channel.id} className="border border-brand-secondary bg-brand-primary/50 p-6 flex gap-6 items-start hover:border-brand-accent transition-colors group">
+                      <div className="text-brand-accent group-hover:scale-110 transition-transform">
+                        {Icon && <Icon size={24} />}
+                      </div>
+                      <div>
+                        <div className="font-enHeading text-white font-medium mb-1 tracking-wider uppercase text-sm">
+                          <Translate en={channel.label.en} ar={channel.label.ar} />
+                        </div>
+                        <div className="text-text-secondary leading-relaxed">
+                          {channel.displayValue ? (
+                            <Translate en={channel.displayValue.en} ar={channel.displayValue.ar} />
+                          ) : (
+                            channel.value
+                          )}
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
+                  );
+                })}
               </div>
             </div>
 
             {/* Form */}
-            <div className="form-container" style={{ width: '100%', maxWidth: '100%' }}>
-              <h2 style={{ fontSize: '24px', marginBottom: 'var(--space-xl)', color: 'var(--brand-text-highlight)' }}>
+            <div className="w-full">
+              <h2 className="text-2xl font-enHeading text-white mb-8">
                 <Translate en="Send us a Message" ar="أرسل لنا رسالة" />
               </h2>
               <ContactForm />

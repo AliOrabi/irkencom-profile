@@ -1,38 +1,38 @@
 import React from 'react';
+import { Feature } from '@/types';
 import PageHero from '@/components/sections/PageHero';
 import FeatureGrid from '@/components/sections/FeatureGrid';
 import PartnerForm from '@/components/sections/PartnerForm';
-import { Shield, Smartphone, Zap, Activity } from 'lucide-react';
 
 export default function AttendantManagementPage() {
-  const features = [
+  const features: Feature[] = [
     {
-      icon: <Smartphone />,
-      titleEn: "Mobile-First Interface",
-      titleAr: "واجهة تعتمد على الهاتف المحمول",
-      descriptionEn: "Deploy instantly on any device. No proprietary hardware required.",
-      descriptionAr: "انشر فوراً على أي جهاز. لا يتطلب أجهزة خاصة."
+      icon: "Smartphone",
+      title: { en: "Mobile-First Interface", ar: "واجهة تعتمد على الهاتف المحمول" },
+      description: { en: "Deploy instantly on any device. No proprietary hardware required.", ar: "انشر فوراً على أي جهاز. لا يتطلب أجهزة خاصة." },
+      id: "f" + Math.random().toString(),
+      order: 1
     },
     {
-      icon: <Activity />,
-      titleEn: "Real-Time Sync",
-      titleAr: "مزامنة في الوقت الفعلي",
-      descriptionEn: "Live capacity tracking and instant booking verification.",
-      descriptionAr: "تتبع السعة المباشر والتحقق الفوري من الحجز."
+      icon: "Activity",
+      title: { en: "Real-Time Sync", ar: "مزامنة في الوقت الفعلي" },
+      description: { en: "Live capacity tracking and instant booking verification.", ar: "تتبع السعة المباشر والتحقق الفوري من الحجز." },
+      id: "f" + Math.random().toString(),
+      order: 1
     },
     {
-      icon: <Shield />,
-      titleEn: "Fraud Prevention",
-      titleAr: "منع الاحتيال",
-      descriptionEn: "Digital audit trails eliminate cash leakage and unauthorized entry.",
-      descriptionAr: "مسارات التدقيق الرقمية تقضي على تسرب النقود والدخول غير المصرح به."
+      icon: "Shield",
+      title: { en: "Fraud Prevention", ar: "منع الاحتيال" },
+      description: { en: "Digital audit trails eliminate cash leakage and unauthorized entry.", ar: "مسارات التدقيق الرقمية تقضي على تسرب النقود والدخول غير المصرح به." },
+      id: "f" + Math.random().toString(),
+      order: 1
     },
     {
-      icon: <Zap />,
-      titleEn: "Shift Automation",
-      titleAr: "أتمتة المناوبات",
-      descriptionEn: "Automated shift reporting and performance analytics.",
-      descriptionAr: "تقارير المناوبات الآلية وتحليلات الأداء."
+      icon: "Zap",
+      title: { en: "Shift Automation", ar: "أتمتة المناوبات" },
+      description: { en: "Automated shift reporting and performance analytics.", ar: "تقارير المناوبات الآلية وتحليلات الأداء." },
+      id: "f" + Math.random().toString(),
+      order: 1
     }
   ];
 

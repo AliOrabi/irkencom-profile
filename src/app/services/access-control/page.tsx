@@ -1,38 +1,38 @@
 import React from 'react';
+import { Feature } from '@/types';
 import PageHero from '@/components/sections/PageHero';
 import FeatureGrid from '@/components/sections/FeatureGrid';
 import ConversionCTA from '@/components/sections/ConversionCTA';
-import { ToggleRight, Link as LinkIcon, SmartphoneNfc, KeySquare } from 'lucide-react';
 
 export default function AccessControlPage() {
-  const features = [
+  const features: Feature[] = [
     {
-      icon: <LinkIcon />,
-      titleEn: "Hardware Agnostic",
-      titleAr: "مستقل عن الأجهزة",
-      descriptionEn: "Integrates seamlessly with legacy barriers, gates, and bollards via our IoT edge nodes.",
-      descriptionAr: "يتكامل بسلاسة مع الحواجز والبوابات القديمة عبر عقد إنترنت الأشياء الخاصة بنا."
+      icon: "LinkIcon",
+      title: { en: "Hardware Agnostic", ar: "مستقل عن الأجهزة" },
+      description: { en: "Integrates seamlessly with legacy barriers, gates, and bollards via our IoT edge nodes.", ar: "يتكامل بسلاسة مع الحواجز والبوابات القديمة عبر عقد إنترنت الأشياء الخاصة بنا." },
+      id: "f" + Math.random().toString(),
+      order: 1
     },
     {
-      icon: <ToggleRight />,
-      titleEn: "Automated Triggers",
-      titleAr: "محفزات آلية",
-      descriptionEn: "Zero-touch entry mapping to reservation IDs or license plates.",
-      descriptionAr: "دخول آلي بالكامل مرتبط بمعرفات الحجز أو لوحات الترخيص."
+      icon: "ToggleRight",
+      title: { en: "Automated Triggers", ar: "محفزات آلية" },
+      description: { en: "Zero-touch entry mapping to reservation IDs or license plates.", ar: "دخول آلي بالكامل مرتبط بمعرفات الحجز أو لوحات الترخيص." },
+      id: "f" + Math.random().toString(),
+      order: 1
     },
     {
-      icon: <SmartphoneNfc />,
-      titleEn: "Digital Keys",
-      titleAr: "مفاتيح رقمية",
-      descriptionEn: "Mobile-based access credentials (NFC, QR, Bluetooth) for residents and VIPs.",
-      descriptionAr: "بيانات اعتماد وصول تعتمد على الهاتف (NFC، QR، بلوتوث) للمقيمين وكبار الشخصيات."
+      icon: "SmartphoneNfc",
+      title: { en: "Digital Keys", ar: "مفاتيح رقمية" },
+      description: { en: "Mobile-based access credentials (NFC, QR, Bluetooth) for residents and VIPs.", ar: "بيانات اعتماد وصول تعتمد على الهاتف (NFC، QR، بلوتوث) للمقيمين وكبار الشخصيات." },
+      id: "f" + Math.random().toString(),
+      order: 1
     },
     {
-      icon: <KeySquare />,
-      titleEn: "Centralized Command",
-      titleAr: "قيادة مركزية",
-      descriptionEn: "Remote override and monitoring of all physical access points.",
-      descriptionAr: "تجاوز ومراقبة عن بُعد لجميع نقاط الوصول الفعلية."
+      icon: "KeySquare",
+      title: { en: "Centralized Command", ar: "قيادة مركزية" },
+      description: { en: "Remote override and monitoring of all physical access points.", ar: "تجاوز ومراقبة عن بُعد لجميع نقاط الوصول الفعلية." },
+      id: "f" + Math.random().toString(),
+      order: 1
     }
   ];
 

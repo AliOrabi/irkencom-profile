@@ -4,59 +4,46 @@ import React from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 import Translate from '@/components/ui/Translate';
+import { mainNav } from '@/config/navigation';
 
 export default function Header() {
   const { language, toggleLanguage } = useLanguage();
 
   return (
-    <header className="global-header">
-      <div className="container header-inner">
+    <header className="sticky top-0 z-50 bg-brand-primary/95 backdrop-blur-sm border-b border-brand-secondary shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
+      <div className="max-w-[1280px] mx-auto px-8 w-full flex items-center justify-between h-20">
         <Link href="/" aria-label="Irken Solutions Home">
-          <img src="/irken_solutions.svg" alt="Irken Solutions" className="brand-logo" />
+          <img src="/irken_solutions.svg" alt="Irken Solutions" className="w-[160px] min-w-[150px] h-auto" />
         </Link>
         
-        <nav className="nav-links">
-          <div className="nav-item">
-            <Link href="/">
-              <Translate en="Home" ar="الرئيسية" />
-            </Link>
-          </div>
-          
-          <div className="nav-item">
-            <a role="button" tabIndex={0}><Translate en="Services ▾" ar="الخدمات ▾" /></a>
-            <div className="dropdown-menu">
-              <Link href="/services/parking-management"><Translate en="Parking Management" ar="إدارة المواقف" /></Link>
-              <Link href="/services/access-control"><Translate en="Access Control Systems" ar="أنظمة التحكم بالوصول" /></Link>
-              <Link href="/services/lpr"><Translate en="License Plate Recognition" ar="أنظمة التعرف على اللوحات" /></Link>
+        <nav className="hidden lg:flex items-center gap-8">
+          {mainNav.map((item) => (
+            <div key={item.id} className="relative group py-6">
+              {item.subItems ? (
+                <>
+                  <a role="button" tabIndex={0} className="text-xs font-enHeading tracking-[2px] text-text-primary hover:text-brand-accent cursor-pointer uppercase transition-colors">
+                    <Translate en={item.label.en} ar={item.label.ar} />
+                  </a>
+                  <div className="absolute top-full left-0 w-64 bg-brand-primary border border-brand-secondary p-6 hidden group-hover:flex flex-col gap-5 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+                    {item.subItems.map(subItem => (
+                      <Link key={subItem.id} href={subItem.href || '#'} className="text-xs font-enHeading text-text-secondary hover:text-brand-accent uppercase tracking-wider transition-colors">
+                        <Translate en={subItem.label.en} ar={subItem.label.ar} />
+                      </Link>
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <Link href={item.href || '#'} className="text-xs font-enHeading tracking-[2px] text-text-primary hover:text-brand-accent cursor-pointer uppercase transition-colors">
+                  <Translate en={item.label.en} ar={item.label.ar} />
+                </Link>
+              )}
             </div>
-          </div>
-
-          <div className="nav-item">
-            <a role="button" tabIndex={0}><Translate en="Service Providers ▾" ar="مزودي الخدمات ▾" /></a>
-            <div className="dropdown-menu">
-              <Link href="/providers/reservation"><Translate en="Online Parking Reservation" ar="نظام الحجز الإلكتروني" /></Link>
-              <Link href="/providers/attendant-mgmt"><Translate en="Attendant Management System" ar="نظام إدارة موظفي المواقف" /></Link>
-              <Link href="/providers/epayment"><Translate en="ePayment" ar="الدفع الإلكتروني" /></Link>
-            </div>
-          </div>
-
-          <div className="nav-item">
-            <a role="button" tabIndex={0}><Translate en="Company ▾" ar="الشركة ▾" /></a>
-            <div className="dropdown-menu">
-              <Link href="/company/about"><Translate en="About Us" ar="من نحن" /></Link>
-            </div>
-          </div>
-
-          <div className="nav-item">
-            <Link href="/contact">
-              <Translate en="Contact Us" ar="اتصل بنا" />
-            </Link>
-          </div>
+          ))}
         </nav>
 
-        <div className="header-actions">
+        <div className="flex items-center gap-6">
           <button 
-            className="lang-switch-btn" 
+            className="text-text-secondary hover:text-brand-accent transition-colors" 
             onClick={toggleLanguage} 
             title="Toggle Language"
             aria-label={`Switch to ${language === 'en' ? 'Arabic' : 'English'}`}
@@ -67,7 +54,7 @@ export default function Header() {
               <path d="M2 12h20" />
             </svg>
           </button>
-          <Link href="/contact" className="btn-primary">
+          <Link href="/contact" className="inline-block px-6 py-3 bg-brand-accent/10 border border-brand-accent text-brand-accent font-enHeading text-xs uppercase tracking-[2px] hover:bg-brand-accent/20 hover:shadow-[0_0_15px_rgba(100,255,218,0.2)] transition-all">
             <Translate en="Request Integration" ar="طلب تكامل" />
           </Link>
         </div>
