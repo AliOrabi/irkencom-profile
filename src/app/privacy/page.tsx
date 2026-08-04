@@ -111,8 +111,8 @@ export default function PrivacyPolicy() {
         </h2>
         <p>
           <Translate 
-            en="If you have any questions or concerns regarding this Privacy Policy, please contact our Data Protection Officer at privacy@irken.eg." 
-            ar="إذا كان لديك أي أسئلة أو مخاوف بشأن سياسة الخصوصية هذه، يرجى الاتصال بمسؤول حماية البيانات لدينا على privacy@irken.eg." 
+            en="If you have any questions or concerns regarding this Privacy Policy, please contact our Data Protection Officer at privacy@irken.com.eg." 
+            ar="إذا كان لديك أي أسئلة أو مخاوف بشأن سياسة الخصوصية هذه، يرجى الاتصال بمسؤول حماية البيانات لدينا على privacy@irken.com.eg." 
           />
         </p>
       </div>

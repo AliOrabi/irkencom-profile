@@ -73,5 +73,6 @@ export const footerNav = {
   legal: [
     { id: 'f-leg-1', label: { en: 'Privacy Policy', ar: 'سياسة الخصوصية' }, href: '/privacy', order: 1 },
     { id: 'f-leg-2', label: { en: 'Enterprise Terms', ar: 'شروط خدمات الشركات' }, href: '/terms', order: 2 },
+    { id: 'f-leg-3', label: { en: 'Cookie Policy', ar: 'سياسة ملفات الارتباط' }, href: '/cookies', order: 3 },
   ] as NavItem[]
 };
