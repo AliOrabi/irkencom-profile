@@ -11,7 +11,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 mb-16">
 
           <div className="lg:col-span-1">
-            <img src="/irken_solutions.svg" alt="Irken Solutions Logo" className="h-14 w-auto mb-6" />
+            <img src="/irken_logo_white.svg" alt="Irken Solutions Logo" className="h-14 w-auto mb-6" />
             <p className="text-sm text-text-secondary leading-relaxed max-w-[280px]">
               <Translate
                 en="A venture-building technology firm dedicated to digitizing the mobility and parking sector through asset-light infrastructure."

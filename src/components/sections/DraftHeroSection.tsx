@@ -4,6 +4,7 @@ import React from 'react';
 import Translate from '@/components/ui/Translate';
 import Reveal from '@/components/ui/Reveal';
 import Image from 'next/image';
+import DashboardShowcase from '@/components/sections/DashboardShowcase';
 
 export default function DraftHeroSection() {
   return (
@@ -22,8 +23,8 @@ export default function DraftHeroSection() {
         <div className="absolute inset-0 bg-black/60 z-10" />
       </div>
 
-      <div className="max-w-[1280px] mx-auto px-8 w-full relative z-20">
-        <div className="flex flex-col items-start w-full lg:w-2/3">
+      <div className="max-w-[1280px] mx-auto px-8 w-full grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-center relative z-20">
+        <div className="flex flex-col items-start w-full">
           <Reveal delay={0.1}>
             <div className="tech-badge bg-black/50 border-brand-accent/50 text-white backdrop-blur-md">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="square" strokeLinejoin="miter" className="text-brand-accent">
@@ -60,6 +61,12 @@ export default function DraftHeroSection() {
                 <Translate en="See How It Works" ar="اكتشف كيف يعمل" />
               </a>
             </div>
+          </Reveal>
+        </div>
+
+        <div className="relative w-full">
+          <Reveal delay={0.5} direction="left">
+            <DashboardShowcase />
           </Reveal>
         </div>
       </div>
