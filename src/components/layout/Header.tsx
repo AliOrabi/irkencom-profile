@@ -11,9 +11,9 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-brand-primary/95 backdrop-blur-sm border-b border-brand-secondary shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
-      <div className="max-w-[1280px] mx-auto px-8 w-full flex items-center justify-between h-20">
-        <Link href="/" aria-label="Irken Solutions Home">
-          <img src="/irken_logo_white.svg" alt="Irken Solutions" className="w-[160px] min-w-[150px] h-auto" />
+      <div className="max-w-[1280px] mx-auto px-8 w-full flex items-center justify-between h-16">
+        <Link href="/" aria-label="Irken Solutions Home" className="flex items-center">
+          <img src="/irken_logo_white.svg" alt="Irken Solutions" className="h-8 md:h-10 w-auto" />
         </Link>
         
         <nav className="hidden lg:flex items-center gap-8">

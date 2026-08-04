@@ -1,4 +1,4 @@
-import HeroSection from '@/components/sections/HeroSection';
+import DraftHeroSection from '@/components/sections/DraftHeroSection';
 import Ticker from '@/components/sections/Ticker';
 import PlatformSection from '@/components/sections/PlatformSection';
 import MobilitySection from '@/components/sections/MobilitySection';
@@ -10,7 +10,7 @@ import IntegrationForm from '@/components/sections/IntegrationForm';
 export default function Home() {
   return (
     <>
-      <HeroSection />
+      <DraftHeroSection />
       <Ticker />
       <PlatformSection />
       <MobilitySection />
