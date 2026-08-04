@@ -25,7 +25,7 @@ export default function FeatureGrid({ features, columns = 3 }: FeatureGridProps)
               <Reveal key={feature.id || index} delay={index * 0.1}>
                 <div className="border border-brand-secondary p-8 bg-brand-primary/50 group hover:border-brand-accent transition-colors h-full">
                   {Icon && (
-                    <div className="text-brand-accent mb-6 group-hover:scale-110 transition-transform origin-left">
+                    <div className="text-brand-accent mb-6 group-hover:scale-110 transition-transform origin-left rtl:origin-right">
                       <Icon size={24} />
                     </div>
                   )}

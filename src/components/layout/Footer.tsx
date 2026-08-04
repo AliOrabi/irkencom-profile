@@ -98,12 +98,12 @@ export default function Footer() {
         <div className="pt-8 border-t border-brand-secondary flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-text-secondary">
           <div className="flex flex-col gap-2">
             <span>
-              <Translate en="© 2026 Irken Solutions. All rights reserved." ar="© 2026 إيركن سوليوشنز. جميع الحقوق محفوظة." />
+              <Translate en="© 2026 Irken Solutions. All rights reserved." ar="© 2026 إركن سوليوشنز. جميع الحقوق محفوظة." />
             </span>
             <span className="opacity-60 text-[10px]">
               <Translate
                 en="TRADEMARK NOTICE: 'Irken Solutions' (B2B) and 'irken.eg' (Consumer) are separate intellectual properties."
-                ar="إشعار العلامة التجارية: 'إيركن سوليوشنز' للشركات وتطبيق 'irken.eg' للمستهلكين هي ملكيات فكرية منفصلة."
+                ar="إشعار العلامة التجارية: 'إركن سوليوشنز' للشركات وتطبيق 'irken.eg' للمستهلكين هي ملكيات فكرية منفصلة."
               />
             </span>
           </div>

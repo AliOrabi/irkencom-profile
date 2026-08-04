@@ -12,12 +12,12 @@ export default function TransformationSection() {
             <Translate en="Our Process" ar="كيف نعمل" />
           </span>
           <h2 className="text-3xl md:text-4xl font-bold font-enHeading text-text-primary mb-6">
-            <Translate en="Three steps from idle space to active income." ar="ثلاث خطوات من موقف فارغ إلى دخل حقيقي." />
+            <Translate en="Three steps from idle space to active income." ar="ثلاث خطوات من مساحة شاغرة إلى دخل مستدام." />
           </h2>
           <p className="text-base text-text-secondary">
             <Translate
               en="We don't just install software. We redesign how your parking facility earns — from day one."
-              ar="مش بس بنركّب برنامج. بنغير الطريقة اللي بيكسب بيها موقفك — من أول يوم."
+              ar="نحن لا نكتفي بتركيب البرمجيات، بل نُحدث ثورة في آلية توليد الأرباح لمواقفك — منذ اليوم الأول."
             />
           </p>
         </div>
@@ -31,12 +31,12 @@ export default function TransformationSection() {
               </svg>
             </div>
             <h3 className="text-xl font-enHeading text-text-highlight mb-4">
-              <Translate en="1. We look at what you have." ar="١. بنفهم وضعك الحالي." />
+              <Translate en="1. We look at what you have." ar="١. تقييم الوضع الحالي." />
             </h3>
             <p className="text-sm text-text-secondary leading-relaxed">
               <Translate
                 en="We assess your facility's layout and current operations to find where you're losing money — before touching anything."
-                ar="بندرس تصميم منشأتك وطريقة شغلها الحالية عشان نكتشف فين بتخسر — قبل ما نعمل أي حاجة."
+                ar="نقوم بدراسة تصميم منشأتك وآلية عملها الحالية لنكتشف مناطق هدر الإيرادات — قبل الشروع في أي خطوة."
               />
             </p>
           </div>
@@ -49,12 +49,12 @@ export default function TransformationSection() {
               </svg>
             </div>
             <h3 className="text-xl font-enHeading text-text-highlight mb-4">
-              <Translate en="2. We set everything up for you." ar="٢. بنجهّز كل شيء." />
+              <Translate en="2. We set everything up for you." ar="٢. تجهيز النظام بالكامل." />
             </h3>
             <p className="text-sm text-text-secondary leading-relaxed">
               <Translate
                 en="We deploy our management system over your existing infrastructure. No drilling, no downtime, no disruption to your daily operations."
-                ar="بننشر نظام الإدارة على بنيتك الموجودة. من غير حفر، ومن غير أي توقف في شغلك اليومي."
+                ar="ننشر نظام الإدارة على بنيتك التحتية الحالية. دون الحاجة لأي أعمال مدنية، ودون أي تعطيل لعملياتك اليومية."
               />
             </p>
           </div>
@@ -67,12 +67,12 @@ export default function TransformationSection() {
               </svg>
             </div>
             <h3 className="text-xl font-enHeading text-text-highlight mb-4">
-              <Translate en="3. Your spaces start earning." ar="٣. مواقفك تبدأ تكسب." />
+              <Translate en="3. Your spaces start earning." ar="٣. إطلاق النظام وتحقيق الإيرادات." />
             </h3>
             <p className="text-sm text-text-secondary leading-relaxed">
               <Translate
                 en="Your facility goes live on our booking network. Every booking is tracked, every payment is recorded, and your revenue is reported automatically."
-                ar="منشأتك بتبدأ على شبكة الحجز بتاعتنا. كل حجز بيتتبع، كل دفعة بتتسجل، وتقرير إيراداتك بيجيلك تلقائياً."
+                ar="تندمج منشأتك فوراً ضمن شبكة الحجز الخاصة بنا. يتم تتبع كل حجز، وتسجيل كل دفعة مالية، وتصلك تقارير الإيرادات تلقائياً."
               />
             </p>
           </div>

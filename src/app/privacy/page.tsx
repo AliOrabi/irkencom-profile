@@ -16,7 +16,7 @@ export default function PrivacyPolicy() {
         <p>
           <Translate 
             en="At Irken Solutions, we take your privacy and the security of your data seriously. This Privacy Policy outlines how we collect, use, process, and protect the information provided by our enterprise partners (B2B clients) and the end-users of the irken.eg platform." 
-            ar="في إيركن سوليوشنز، نأخذ خصوصيتك وأمن بياناتك على محمل الجد. توضح سياسة الخصوصية هذه كيفية جمعنا، استخدامنا، معالجتنا، وحمايتنا للمعلومات المقدمة من شركائنا (عملاء الأعمال) والمستخدمين النهائيين لمنصة irken.eg." 
+            ar="في إركن سوليوشنز، نأخذ خصوصيتك وأمن بياناتك على محمل الجد. توضح سياسة الخصوصية هذه كيفية جمعنا، استخدامنا، معالجتنا، وحمايتنا للمعلومات المقدمة من شركائنا (عملاء الأعمال) والمستخدمين النهائيين لمنصة irken.eg." 
           />
         </p>
 
@@ -102,7 +102,7 @@ export default function PrivacyPolicy() {
         <p>
           <Translate 
             en="Irken Solutions operates as a B2B platform. Data handled on behalf of enterprise clients is governed by separate Data Processing Agreements (DPAs). Consumer data collected via the irken.eg app is handled according to the specific consumer privacy terms presented within the app." 
-            ar="تعمل شركة إيركن سوليوشنز كمنصة أعمال للشركات. تخضع البيانات التي يتم التعامل معها نيابة عن عملاء الشركات لاتفاقيات معالجة بيانات (DPAs) منفصلة. يتم التعامل مع بيانات المستهلكين التي يتم جمعها عبر تطبيق irken.eg وفقًا لشروط خصوصية المستهلك المحددة المعروضة داخل التطبيق." 
+            ar="تعمل شركة إركن سوليوشنز كمنصة أعمال للشركات. تخضع البيانات التي يتم التعامل معها نيابة عن عملاء الشركات لاتفاقيات معالجة بيانات (DPAs) منفصلة. يتم التعامل مع بيانات المستهلكين التي يتم جمعها عبر تطبيق irken.eg وفقًا لشروط خصوصية المستهلك المحددة المعروضة داخل التطبيق." 
           />
         </p>
 

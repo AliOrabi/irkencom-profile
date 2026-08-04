@@ -16,12 +16,12 @@ export default function SolutionsSection() {
               <Translate en="Who Do We Help" ar="من نساعد" />
             </span>
             <h2 className="text-3xl md:text-4xl font-bold font-enHeading text-text-primary mb-6">
-              <Translate en="Built for the people who run our cities." ar="مصمم للناس اللي بيديهم مدننا." />
+              <Translate en="Built for the people who run our cities." ar="مصمم للقادة الذين يديرون مدننا." />
             </h2>
             <p className="text-base text-text-secondary">
               <Translate
                 en="Whether you manage a building, a parking lot, or an entire city — we have a solution that fits your operation."
-                ar="سواء كنت بتدير عمارة أو موقفاً أو مدينة بالكامل — عندنا حل يناسب عملك."
+                ar="سواء كنت تدير مبنى تجارياً، أو منشأة مواقف مخصصة، أو مدينة بأكملها — لدينا الحل التقني الأمثل لعملك."
               />
             </p>
           </div>
@@ -34,7 +34,7 @@ export default function SolutionsSection() {
               <Reveal key={solution.id} delay={0.2 + (index * 0.1)} direction="up">
                 <div className="border border-brand-secondary bg-brand-primary/80 p-8 hover:border-brand-accent/50 transition-colors duration-300 group relative h-full">
                   <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-brand-accent/0 to-transparent group-hover:via-brand-accent/50 transition-all duration-500"></div>
-                  {Icon && <Icon className="text-brand-accent mb-6 w-8 h-8 group-hover:scale-110 transition-transform origin-left" />}
+                  {Icon && <Icon className="text-brand-accent mb-6 w-8 h-8 group-hover:scale-110 transition-transform origin-left rtl:origin-right" />}
                   <h3 className="text-xl font-enHeading text-text-highlight mb-4">
                     <Translate en={solution.title.en} ar={solution.title.ar} />
                   </h3>

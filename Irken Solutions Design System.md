@@ -72,40 +72,49 @@ Our "Deep Tech" palette instantly positions Irken Solutions alongside global Saa
 | **Slate Grey** | \#8892B0 | 136, 146, 176 | Secondary text, microcopy, form labels, and UI container borders. |
 | **Corporate White** | \#FAFAFA | 250, 250, 250 | Strictly for high-contrast highlights or alternate light-mode documents. |
 
-### **Core CSS Tokens (Deep Tech Theme)**
+### **Core CSS Tokens (Deep Tech Theme - shadcn/ui Compliant)**
 
-/\* Irken Solutions Design System Variables \*/  
+/* Irken Solutions Design System Variables - shadcn/ui */  
 :root {  
-  /\* Brand Geometry Rule: Absolute Precision \*/  
-  \--brand-radius: 0rem;              /\* Strictly enforced: No rounded corners \*/  
-  \--brand-border-thin: 1px;  
-  \--brand-border-thick: 2px;
+  /* Brand Geometry Rule: Absolute Precision */  
+  --radius: 0rem;              /* Strictly enforced: No rounded corners */  
 
-  /\* Primary Brand Colors (Dark Mode Default) \*/  
-  \--brand-primary: \#0A192F;          /\* Space Navy: Main background \*/  
-  \--brand-secondary: \#112240;        /\* Onyx: Elevated UI cards/containers \*/  
-  \--brand-accent: \#64FFDA;           /\* Electric Cyan: Active states, CTAs \*/  
-    
-  /\* Text & Neutral Palette \*/  
-  \--brand-text-primary: \#CCD6F6;     /\* Ice Blue: Headings \*/  
-  \--brand-text-secondary: \#8892B0;   /\* Slate Grey: Body text, borders \*/  
-  \--brand-text-highlight: \#FAFAFA;   /\* Corporate White: Highlights \*/  
-    
-  /\* Brand Spacing System (4px Base Grid) \*/  
-  \--brand-space-xs: 0.25rem;         /\* 4px \*/  
-  \--brand-space-sm: 0.5rem;          /\* 8px \*/  
-  \--brand-space-md: 1rem;            /\* 16px \*/  
-  \--brand-space-lg: 2rem;            /\* 32px \*/  
-  \--brand-space-xl: 4rem;            /\* 64px \*/  
-  \--brand-space-2xl: 8rem;           /\* 128px \*/  
-    
-  /\* Container Architecture \*/  
-  \--brand-container-max: 80rem;      /\* 1280px max-width for enterprise UI \*/  
+  /* shadcn/ui Theme Mapping (Dark Mode Default) */
+  --background: 217 65% 11%;       /* #0A192F Space Navy */
+  --foreground: 226 65% 88%;       /* #CCD6F6 Ice Blue */
+  
+  --card: 218 58% 16%;             /* #112240 Onyx */
+  --card-foreground: 226 65% 88%;  /* #CCD6F6 Ice Blue */
+  
+  --popover: 218 58% 16%;          /* #112240 Onyx */
+  --popover-foreground: 226 65% 88%;
+  
+  --primary: 164 100% 70%;         /* #64FFDA Electric Cyan */
+  --primary-foreground: 217 65% 11%;/* #0A192F Space Navy */
+  
+  --secondary: 218 58% 16%;        /* #112240 Onyx */
+  --secondary-foreground: 226 65% 88%;
+  
+  --muted: 218 58% 16%;
+  --muted-foreground: 225 27% 61%; /* #8892B0 Slate Grey */
+  
+  --accent: 164 100% 70%;          /* #64FFDA */
+  --accent-foreground: 217 65% 11%;
+  
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 40% 98%;
+  
+  --border: 225 27% 61%;           /* #8892B0 Slate Grey */
+  --input: 225 27% 61%;
+  --ring: 164 100% 70%;
+
+  /* Container Architecture */  
+  --brand-container-max: 80rem;      /* 1280px max-width for enterprise UI */  
 }
 
-/\* Global Component Overrides \*/  
-\* {  
-  border-radius: var(--brand-radius) \!important;  
+/* Global Component Overrides */  
+* {  
+  border-radius: var(--radius) !important;  
 }
 
 ### **Visual & UI Assets**

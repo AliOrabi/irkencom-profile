@@ -41,7 +41,7 @@ export default function HeroSection() {
                 <Translate en="Talk to Our Team" ar="تحدث مع فريقنا" />
               </a>
               <a href="#platform" className="btn-secondary">
-                <Translate en="See How It Works" ar="شوف كيف يعمل" />
+                <Translate en="See How It Works" ar="اكتشف كيف يعمل" />
               </a>
             </div>
           </Reveal>

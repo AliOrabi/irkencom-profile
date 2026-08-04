@@ -23,12 +23,12 @@ export default function IntegrationForm() {
           
           <div className="flex-1 min-w-[300px]">
             <h2 className="text-3xl md:text-4xl font-bold font-enHeading text-text-primary mb-6">
-              <Translate en="What are your parking spaces worth right now?" ar="مواقفك بتكسب كام فعلاً دلوقتي؟" />
+              <Translate en="What are your parking spaces worth right now?" ar="ما هي القيمة الفعلية لمواقفك الحالية؟" />
             </h2>
             <p className="text-base text-text-secondary max-w-md">
               <Translate
                 en="Most operators don't know. Tell us about your facility and we'll show you — for free."
-                ar="معظم المشغلين ما بيعرفوش. حدّثنا عن منشأتك وهنوريك — مجاناً."
+                ar="يجهل الكثير من المشغلين هذه القيمة. زوّدنا بتفاصيل منشأتك وسنقدم لك التقييم — مجاناً."
               />
             </p>
           </div>

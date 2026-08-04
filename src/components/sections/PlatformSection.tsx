@@ -19,7 +19,7 @@ export default function PlatformSection() {
             <p className="text-base text-text-secondary">
               <Translate
                 en="Most parking systems need you to drill holes, run cables, and buy hardware. Ours doesn't. We connect to what you already have and get you up and running — fast."
-                ar="معظم أنظمة المواقف تحتاج منك حفراً وكابلات وأجهزة. نظامنا لا يحتاج لشيء من هذا. نتصل بما عندك ونبدأ فوراً."
+                ar="تتطلب معظم أنظمة المواقف حفريات، تمديدات، وأجهزة باهظة. نظامنا لا يحتاج لأي من ذلك. نرتبط بأنظمتك الحالية ونبدأ فوراً."
               />
             </p>
           </div>
@@ -42,7 +42,7 @@ export default function PlatformSection() {
               <p className="text-sm text-text-secondary leading-relaxed">
                 <Translate
                   en="We plug into your existing setup and start tracking space availability across your entire facility — no new hardware required."
-                  ar="نربط نظامنا بما عندك ونبدأ في تتبع المساحات المتاحة في كل منشأتك — بدون أي جهاز جديد."
+                  ar="نربط نظامنا ببنيتك التحتية ونبدأ بتتبع المساحات المتاحة في منشأتك — دون الحاجة لشراء معدات جديدة."
                 />
               </p>
             </div>
@@ -57,12 +57,12 @@ export default function PlatformSection() {
                 </svg>
               </div>
               <h3 className="text-xl font-enHeading text-text-highlight mb-3">
-                <Translate en="Always know what's available." ar="دايماً تعرف إيه المتاح." />
+                <Translate en="Always know what's available." ar="ابقَ على اطلاع دائم بالسعة المتاحة." />
               </h3>
               <p className="text-sm text-text-secondary leading-relaxed">
                 <Translate
                   en="Our system compares your total capacity against active bookings to show real availability — updated live, always accurate."
-                  ar="النظام بيقارن السعة الكلية بالحجوزات الموجودة ويعرف لك المساحات المتاحة — محدّثة لحظة بلحظة وبدقة تامة."
+                  ar="يقارن النظام السعة الإجمالية بالحجوزات الحالية لتحديد المساحات الشاغرة — محدّثة لحظة بلحظة وبدقة متناهية."
                 />
               </p>
             </div>
@@ -77,12 +77,12 @@ export default function PlatformSection() {
                 </svg>
               </div>
               <h3 className="text-xl font-enHeading text-text-highlight mb-3">
-                <Translate en="Run everything from your desk." ar="أدر كل شيء من مكتبك." />
+                <Translate en="Run everything from your desk." ar="أدر عملياتك بالكامل من مكتبك." />
               </h3>
               <p className="text-sm text-text-secondary leading-relaxed">
                 <Translate
                   en="See occupancy rates, peak hours, and revenue reports the moment you open your dashboard. No more manual counts or guesswork."
-                  ar="شوف نسب الإشغال وساعات الذروة والإيرادات بمجرد ما تفتح لوحة التحكم. لا عدّ يدوي، لا تخمين."
+                  ar="راقب نسب الإشغال، أوقات الذروة، والإيرادات من خلال لوحة تحكم متكاملة. لا مزيد من العد اليدوي أو التخمين."
                 />
               </p>
             </div>
@@ -100,7 +100,7 @@ export default function PlatformSection() {
               <p className="text-sm text-text-secondary leading-relaxed">
                 <Translate
                   en="Payments are collected, commissions deducted automatically, and your net revenue arrives without lifting a finger."
-                  ar="المدفوعات تتجمع، العمولات تتخصم تلقائياً، وإيرادك الصافي يوصلك من غير أي تعب."
+                  ar="يتم تجميع المدفوعات آلياً وخصم العمولات، لتصلك إيراداتك الصافية بشكل مباشر ودون أي عناء."
                 />
               </p>
             </div>

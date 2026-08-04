@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter, Tajawal } from "next/font/google";
+import { Space_Grotesk, Inter, Tajawal, Geist } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import LanguageProvider from "@/components/providers/LanguageProvider";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-en-heading",
@@ -34,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" dir="ltr" className={`${spaceGrotesk.variable} ${inter.variable} ${tajawal.variable}`} suppressHydrationWarning>
+    <html lang="en" dir="ltr" className={cn(spaceGrotesk.variable, inter.variable, tajawal.variable, "font-sans", geist.variable)} suppressHydrationWarning>
       <body className="font-english">
         <LanguageProvider>
           <Header />

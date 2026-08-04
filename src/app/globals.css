@@ -1,14 +1,17 @@
-@config "../../tailwind.config.js";
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer base {
   * {
     /* Brand Geometry Rule: Absolute Precision */
     border-radius: 0rem !important;
+    @apply border-border outline-ring/50;
   }
-  
+
   html {
     scroll-behavior: smooth;
+    @apply font-sans;
   }
 
   body {
@@ -22,6 +25,54 @@
     background-attachment: fixed;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+    @apply bg-background text-foreground;
+  }
+  .theme {
+    --font-heading: var(--font-sans);
+    --font-sans: var(--font-sans);
+  }
+  :root {
+    --background: 217 65% 11%;
+    --foreground: 226 65% 88%;
+    --card: 218 58% 16%;
+    --card-foreground: 226 65% 88%;
+    --popover: 218 58% 16%;
+    --popover-foreground: 226 65% 88%;
+    --primary: 164 100% 70%;
+    --primary-foreground: 217 65% 11%;
+    --secondary: 218 58% 16%;
+    --secondary-foreground: 226 65% 88%;
+    --muted: 218 58% 16%;
+    --muted-foreground: 225 27% 61%;
+    --accent: 164 100% 70%;
+    --accent-foreground: 217 65% 11%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 225 27% 61%;
+    --input: 225 27% 61%;
+    --ring: 164 100% 70%;
+    --radius: 0rem;
+  }
+  .dark {
+    --background: 217 65% 11%;
+    --foreground: 226 65% 88%;
+    --card: 218 58% 16%;
+    --card-foreground: 226 65% 88%;
+    --popover: 218 58% 16%;
+    --popover-foreground: 226 65% 88%;
+    --primary: 164 100% 70%;
+    --primary-foreground: 217 65% 11%;
+    --secondary: 218 58% 16%;
+    --secondary-foreground: 226 65% 88%;
+    --muted: 218 58% 16%;
+    --muted-foreground: 225 27% 61%;
+    --accent: 164 100% 70%;
+    --accent-foreground: 217 65% 11%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 225 27% 61%;
+    --input: 225 27% 61%;
+    --ring: 164 100% 70%;
   }
 }
 

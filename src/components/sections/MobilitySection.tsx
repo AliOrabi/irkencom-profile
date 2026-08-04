@@ -14,12 +14,12 @@ export default function MobilitySection() {
               <Translate en="Urban Impact" ar="الأثر الحضري" />
             </span>
             <h2 className="text-3xl md:text-4xl font-bold font-enHeading text-text-primary mb-6">
-              <Translate en="One driver parked = one less car circling the block." ar="سيارة وقفت = شارع أكثر انسيابية." />
+              <Translate en="One driver parked = one less car circling the block." ar="سيارة واحدة تم إيقافها = سيارة أقل تجوب الشوارع بحثاً عن موقف." />
             </h2>
             <p className="text-base text-text-secondary">
               <Translate
                 en="When drivers find their spot in seconds, traffic eases, emissions drop, and city streets breathe again. That's what a connected parking network does."
-                ar="لما السائق يلاقي موقفه في ثواني، الشوارع بتتفسح والضغط بينخفض. ده اللي بتعمله شبكة مواقف متصلة."
+                ar="عندما يجد السائق موقفه في ثوانٍ، تقل الكثافة المرورية وينخفض الضغط على البنية التحتية. هذا هو الأثر الحقيقي لشبكة المواقف المتصلة."
               />
             </p>
           </div>
@@ -60,7 +60,7 @@ export default function MobilitySection() {
                 </svg>
               </div>
               <div className="font-enHeading text-lg text-brand-accent mb-2">
-                <Translate en="Irken Smart Network" ar="شبكة إيركن الذكية" />
+                <Translate en="Irken Smart Network" ar="شبكة إركن الذكية" />
               </div>
               <div className="text-xs text-text-secondary uppercase tracking-widest">
                 <Translate en="Real-Time. Accurate. Always On." ar="لحظية. دقيقة. لا تتوقف." />
