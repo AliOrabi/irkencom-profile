@@ -22,8 +22,7 @@ export default function ContactPage() {
       />
 
       <section className="relative py-24 overflow-hidden">
-        {/* Grid Background */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(100,255,218,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(100,255,218,0.05)_1px,transparent_1px)] bg-[size:24px_24px] -z-10"></div>
+        {/* Clean Background */}
         
         <div className="max-w-[1280px] mx-auto px-8 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -31,7 +30,7 @@ export default function ContactPage() {
             {/* Contact Info */}
             <div className="flex flex-col gap-12">
               <div>
-                <h2 className="text-3xl font-enHeading text-white mb-4">
+                <h2 className="text-3xl font-enHeading text-text-primary mb-4">
                   <Translate en="Contact Information" ar="معلومات الاتصال" />
                 </h2>
                 <p className="text-text-secondary leading-relaxed max-w-md">
@@ -48,15 +47,20 @@ export default function ContactPage() {
                         {Icon && <Icon size={24} />}
                       </div>
                       <div>
-                        <div className="font-enHeading text-white font-medium mb-1 tracking-wider uppercase text-sm">
+                        <div className="font-enHeading text-text-primary font-medium mb-1 tracking-wider uppercase text-sm">
                           <Translate en={channel.label.en} ar={channel.label.ar} />
                         </div>
                         <div className="text-text-secondary leading-relaxed">
-                          {channel.displayValue ? (
-                            <Translate en={channel.displayValue.en} ar={channel.displayValue.ar} />
-                          ) : (
-                            channel.value
-                          )}
+                          <span 
+                            dir={channel.type === 'phone' || channel.type === 'email' ? 'ltr' : undefined} 
+                            className={channel.type === 'phone' || channel.type === 'email' ? 'inline-block' : undefined}
+                          >
+                            {channel.displayValue ? (
+                              <Translate en={channel.displayValue.en} ar={channel.displayValue.ar} />
+                            ) : (
+                              channel.value
+                            )}
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -66,8 +70,9 @@ export default function ContactPage() {
             </div>
 
             {/* Form */}
-            <div className="w-full">
-              <h2 className="text-2xl font-enHeading text-white mb-8">
+            <div className="w-full relative z-10 border border-brand-accent/40 bg-brand-secondary/50 p-8 md:p-12 shadow-glow-accent">
+              <div className="absolute top-0 left-0 w-full h-[2px] bg-brand-accent shadow-glow-accent-sm" aria-hidden="true" />
+              <h2 className="text-2xl font-enHeading text-text-primary mb-8">
                 <Translate en="Send us a Message" ar="أرسل لنا رسالة" />
               </h2>
               <ContactForm />

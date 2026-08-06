@@ -4,8 +4,6 @@
 
 @layer base {
   * {
-    /* Brand Geometry Rule: Absolute Precision */
-    border-radius: 0rem !important;
     @apply border-border outline-ring/50;
   }
 
@@ -16,13 +14,7 @@
 
   body {
     background-color: theme('colors.brand.primary');
-    color: theme('colors.text.secondary');
-    /* Digital Blueprint Grid System */
-    background-image: 
-      linear-gradient(to right, rgba(100, 255, 218, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(100, 255, 218, 0.05) 1px, transparent 1px);
-    background-size: 24px 24px;
-    background-attachment: fixed;
+    color: theme('colors.text.primary');
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
     @apply bg-background text-foreground;
@@ -32,59 +24,59 @@
     --font-sans: var(--font-sans);
   }
   :root {
-    --background: 217 65% 11%;
-    --foreground: 226 65% 88%;
-    --card: 218 58% 16%;
-    --card-foreground: 226 65% 88%;
-    --popover: 218 58% 16%;
-    --popover-foreground: 226 65% 88%;
-    --primary: 164 100% 70%;
-    --primary-foreground: 217 65% 11%;
-    --secondary: 218 58% 16%;
-    --secondary-foreground: 226 65% 88%;
-    --muted: 218 58% 16%;
-    --muted-foreground: 225 27% 61%;
-    --accent: 164 100% 70%;
-    --accent-foreground: 217 65% 11%;
-    --destructive: 0 84% 60%;
+    --background: 210 29% 15%; /* #1A2530 */
+    --foreground: 210 40% 98%; /* #F1F5F9 */
+    --card: 200 35% 26%; /* #2C4A5B */
+    --card-foreground: 210 40% 98%;
+    --popover: 200 35% 26%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 191 33% 50%; /* #569BAA */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 193 36% 45%; /* #4A8B9C */
+    --secondary-foreground: 0 0% 100%;
+    --muted: 215 25% 27%;
+    --muted-foreground: 215 16% 65%;
+    --accent: 191 33% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-    --border: 225 27% 61%;
-    --input: 225 27% 61%;
-    --ring: 164 100% 70%;
-    --radius: 0rem;
+    --border: 200 35% 26%;
+    --input: 200 35% 26%;
+    --ring: 191 33% 50%;
+    --radius: 0.375rem; /* Approachable rounded-md */
   }
   .dark {
-    --background: 217 65% 11%;
-    --foreground: 226 65% 88%;
-    --card: 218 58% 16%;
-    --card-foreground: 226 65% 88%;
-    --popover: 218 58% 16%;
-    --popover-foreground: 226 65% 88%;
-    --primary: 164 100% 70%;
-    --primary-foreground: 217 65% 11%;
-    --secondary: 218 58% 16%;
-    --secondary-foreground: 226 65% 88%;
-    --muted: 218 58% 16%;
-    --muted-foreground: 225 27% 61%;
-    --accent: 164 100% 70%;
-    --accent-foreground: 217 65% 11%;
-    --destructive: 0 84% 60%;
+    --background: 210 29% 15%;
+    --foreground: 210 40% 98%;
+    --card: 200 35% 26%;
+    --card-foreground: 210 40% 98%;
+    --popover: 200 35% 26%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 191 33% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 193 36% 45%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 215 25% 27%;
+    --muted-foreground: 215 16% 65%;
+    --accent: 191 33% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-    --border: 225 27% 61%;
-    --input: 225 27% 61%;
-    --ring: 164 100% 70%;
+    --border: 200 35% 26%;
+    --input: 200 35% 26%;
+    --ring: 191 33% 50%;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 font-enHeading text-sm font-medium uppercase tracking-[1.5px] cursor-pointer transition-all duration-300 no-underline bg-brand-accent/5 text-brand-accent border border-brand-accent hover:bg-brand-accent/15 hover:shadow-[0_0_15px_rgba(100,255,218,0.2)];
+    @apply inline-flex items-center justify-center px-6 py-3 font-enHeading text-sm font-medium uppercase tracking-[1.5px] cursor-pointer transition-all duration-300 no-underline bg-brand-accent text-brand-on-accent hover:bg-brand-accent-hover rounded-md shadow-sm;
   }
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-6 py-3 font-enHeading text-sm font-medium uppercase tracking-[1.5px] cursor-pointer transition-all duration-300 no-underline bg-transparent text-text-primary border border-text-secondary hover:border-brand-accent hover:text-brand-accent;
+    @apply inline-flex items-center justify-center px-6 py-3 font-enHeading text-sm font-medium uppercase tracking-[1.5px] cursor-pointer transition-all duration-300 no-underline bg-transparent text-text-primary border border-text-secondary hover:border-brand-accent hover:text-brand-accent rounded-md;
   }
   .tech-badge {
-    @apply inline-flex items-center gap-2 border border-brand-secondary bg-brand-secondary/50 px-4 py-1.5 font-enHeading text-xs text-brand-accent uppercase tracking-[2px] mb-8 backdrop-blur-sm relative overflow-hidden;
+    @apply inline-flex items-center gap-2 border border-brand-secondary bg-brand-secondary/50 px-4 py-1.5 font-enHeading text-xs text-brand-accent uppercase tracking-[2px] mb-8 backdrop-blur-sm relative overflow-hidden rounded-md;
   }
   .tech-badge::after {
     content: '';

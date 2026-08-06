@@ -12,7 +12,7 @@ export default function SolutionsSection() {
       <div className="max-w-[1280px] mx-auto px-8 w-full relative z-10">
         <Reveal direction="up" delay={0.1}>
           <div className="mb-16 max-w-3xl">
-            <span className="inline-block px-3 py-1 border border-brand-secondary text-brand-accent text-xs font-enHeading uppercase tracking-[2px] mb-6 bg-brand-secondary/30">
+            <span className="inline-block px-3 py-1 border border-brand-secondary text-brand-accent text-xs font-enHeading uppercase tracking-[2px] mb-6 bg-brand-secondary/30 rounded-full">
               <Translate en="Who Do We Help" ar="من نساعد" />
             </span>
             <h2 className="text-3xl md:text-4xl font-bold font-enHeading text-text-primary mb-6">
@@ -32,9 +32,13 @@ export default function SolutionsSection() {
             const Icon = LucideIcons[solution.icon as keyof typeof LucideIcons] as React.ElementType;
             return (
               <Reveal key={solution.id} delay={0.2 + (index * 0.1)} direction="up">
-                <div className="border border-brand-secondary bg-brand-primary/80 p-8 hover:border-brand-accent/50 transition-colors duration-300 group relative h-full">
-                  <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-brand-accent/0 to-transparent group-hover:via-brand-accent/50 transition-all duration-500"></div>
-                  {Icon && <Icon className="text-brand-accent mb-6 w-8 h-8 group-hover:scale-110 transition-transform origin-left rtl:origin-right" />}
+                <div className="border border-brand-secondary bg-brand-primary/80 p-8 hover:border-brand-accent/50 transition-colors duration-300 group relative h-full rounded-md">
+                  <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-brand-accent/0 to-transparent group-hover:via-brand-accent/50 transition-all duration-500 rounded-t-md"></div>
+                  {Icon && (
+                    <div className="bg-brand-accent/10 w-12 h-12 rounded-full flex items-center justify-center mb-6 group-hover:bg-brand-accent/20 transition-colors">
+                      <Icon className="text-brand-accent w-6 h-6 group-hover:scale-110 transition-transform origin-left rtl:origin-right" strokeWidth={1.5} />
+                    </div>
+                  )}
                   <h3 className="text-xl font-enHeading text-text-highlight mb-4">
                     <Translate en={solution.title.en} ar={solution.title.ar} />
                   </h3>

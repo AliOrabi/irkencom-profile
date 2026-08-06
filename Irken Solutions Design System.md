@@ -1,179 +1,123 @@
-# **Irken Solutions Master Brand Guidelines & Design System**
+# Irken Solutions Comprehensive Design System
 
-**Version:** 1.0.0
+## 🎯 1. Brand Strategy & Foundation
 
-**Brand Guardian:** AI Core Systems / ArchitectUX
+### Brand Foundation
+**Purpose**: To drive comprehensive digital transformation in the parking sector.
+**Vision**: To transform traditional parking business models into modern, smart parking ecosystems across the MENA region using an Asset-Light approach.
+**Mission**: To empower traditional parking operators and real estate developers to modernize their assets seamlessly and profitably through our consultative, Asset-Light digital infrastructure.
+**Values**: 
+1. **Transformative Partnership**: We guide our clients through digital transformation.
+2. **Architectural Precision**: We engineer systems rooted in data and logic.
+3. **Operational Fluidity**: We remove friction from physical infrastructure.
+4. **Elite Intelligence**: We build venture-grade technology.
+**Personality**: Consultative, Authoritative, Visionary, Partner-focused, Transformative.
 
-**Target Audience:** B2B Enterprise (Parking operators,  Real estate developers, municipalities, mobility businesses)
+### Brand Positioning & Messaging
+**Target Audience**: B2B Enterprise (Traditional parking operators, Real estate developers, municipalities, mobility businesses in Egypt and MENA).
+**Positioning Statement**: For Egyptian enterprises seeking to modernize their assets, Irken Solutions provides a seamless, zero-cost, Asset-Light ecosystem to optimize physical parking spaces.
+**Tagline**: Leading Digital Transformation in Parking. *(قيادة التحول الرقمي في مواقف السيارات)*
 
-**Brand Pillars:** Deep-Tech Architecture, Asset-Light Scalability, Data-Driven Yield Optimization
+## 🎨 2. Visual Identity & Color System
 
-## **🎯 1\. Brand Strategy & Foundation**
+The default mode is **Ergonomic Soft Dark**, ensuring a deep-tech aesthetic comfortable for operational use.
 
-### **Purpose**
+### Base Color Tokens
+**Primary Backgrounds**:
+- `FAAC Navy / Slate`: `#1A2530` (The primary canvas)
+- `Deep Teal`: `#2C4A5B` (Elevated cards and modules)
 
-To architect and engineer scalable digital infrastructure for tomorrow's smart cities in the MENA region, converting underutilized physical spaces into highly profitable digital assets.
+**Brand Accents (The Transformation Color)**:
+- `FAAC Teal`: `#569BAA` (Primary CTAs, active states)
+- `Light Teal`: `#4A8B9C` (Hover states and interactive highlights)
 
-### **Vision**
+**Typography & Neutrals**:
+- `Slate White`: `#F1F5F9` (Primary text for high legibility on dark)
+- `Slate Grey`: `#94A3B8` (Secondary text, borders, microcopy)
 
-To completely transform urban mobility and asset management in Egypt by deploying intelligent, hardware-minimal software ecosystems.
+**Semantic Colors**:
+- **Success**: `#10b981` (Validated states)
+- **Warning**: `#f59e0b` (Alert states)
+- **Error**: `#ef4444` (Strict error states only - PROHIBIT warm colors otherwise)
 
-### **Mission**
+## 📐 3. Mathematical Typography Scale
 
-To empower real estate developers, municipalities, and parking operators with an Asset-Light digital infrastructure that dynamically optimizes space utilization, reduces operational costs, and eliminates urban congestion.
+Arabic-first (RTL) paired with European precision.
 
-### **Core Values**
+### Typefaces
+- **Primary / Arabic**: Tajawal (Geometric Naskh)
+- **Headings (EN)**: Space Grotesk (Technical, geometric)
+- **Body UI (EN)**: Inter (High legibility for data)
 
-1. **Architectural Precision:** We engineer systems rooted in data, logic, and structural integrity. *(Behavior: We eliminate manual guesswork and rely on algorithmic capacity calculation.)*  
-2. **Operational Fluidity:** We remove friction from physical infrastructure. *(Behavior: We deploy Asset-Light integrations that require minimal hardware upgrades.)*  
-3. **Elite Intelligence:** We build venture-grade technology. *(Behavior: We project quiet confidence and prioritize deep-tech aesthetics over consumer trends.)*
+### Font Scale (Pixel-Perfect Values)
+- **xs**: `0.75rem` / `12px` (UI Labels, Metadata)
+- **sm**: `0.875rem` / `14px` (Secondary Text, Navigation)
+- **base**: `1rem` / `16px` (Body Text)
+- **lg**: `1.125rem` / `18px` (Large Body)
+- **xl**: `1.25rem` / `20px` (H4)
+- **2xl**: `1.5rem` / `24px` (H3 Card Titles)
+- **3xl**: `1.875rem` / `30px` (H2 Section Titles)
+- **4xl**: `2.25rem` / `36px` (H1 Hero Subtitles)
+- **5xl**: `3rem` / `48px` (Hero Primary)
 
-**Personality:** Authoritative, Visionary, Precise, Engineered, Uncompromising.
+**Font Weights**: `400` (Regular), `500` (Medium), `600` (Semi-bold), `700` (Bold).
 
-### **Positioning Statement**
+## 📏 4. Spacing & Layout System
 
-For Egyptian enterprises and municipalities seeking to maximize infrastructure yield, Irken Solutions is the premier venture-building technology firm that provides a seamless, Asset-Light digital ecosystem to digitize and optimize physical parking assets.
+### The 4px Base Grid
+- **space-1**: `0.25rem` / `4px`
+- **space-2**: `0.5rem` / `8px`
+- **space-3**: `0.75rem` / `12px`
+- **space-4**: `1rem` / `16px` (Default UI gap)
+- **space-6**: `1.5rem` / `24px`
+- **space-8**: `2rem` / `32px` (Section inner padding)
+- **space-12**: `3rem` / `48px`
+- **space-16**: `4rem` / `64px` (Section gaps)
 
-**Competitive Differentiation:** An uncompromising Asset-Light operational model that dynamically calculates real-time availability by measuring static total capacity against active booking volume, rather than relying on flawed binary toggles or expensive hardware sensors.
+### Responsive Breakpoints
+Mobile-first approach.
+- **Mobile (Base)**: 320px - 639px
+- **Tablet (sm)**: 640px+ (Max container `640px`)
+- **Tablet Landscape (md)**: 768px+ (Max container `768px`)
+- **Desktop (lg)**: 1024px+ (Max container `1024px`)
+- **Widescreen (xl)**: 1280px+ (Max container `1280px`)
 
-## **🖼️ 2\. Logo System & Usage**
+## 🧱 5. Component Architecture & UI Elements
 
-The corporate logo projects uncompromising architectural precision, distinguishing the B2B enterprise firm from the consumer-facing marketplace.
+### Baseline Framework
+- **shadcn/ui**: All UI elements (Buttons, Inputs, Cards, etc.) MUST be scaffolded using the `shadcn/ui` MCP tools. We do not build base components from scratch.
+- **Strict Override Rule**: Once a `shadcn/ui` component is generated, its Tailwind classes must be manually audited and overridden to match the exact mathematical constraints outlined below (e.g., overriding `rounded-xl` to `rounded-md`, stripping warm colors).
 
-### **Master Logo Assets**
+### Shapes & Depth
+- **Border Radius**: Strictly `rounded-md` (`0.375rem` / `6px`) globally to maintain the approachable, partner-focused feel. `0px` radius is PROHIBITED.
+- **Shadows**: Soft, teal-tinted dropshadows for depth.
+  - `shadow-sm`: `0 1px 2px 0 rgba(86, 155, 170, 0.15)`
+  - `shadow-md`: `0 4px 6px -1px rgba(86, 155, 170, 0.25)`
+  - `shadow-lg`: `0 10px 15px -3px rgba(86, 155, 170, 0.35)`
 
-| Variation | Asset Preview | Primary Use Case |
-| :---- | :---- | :---- |
-| **Horizontal (Primary)** |  | Corporate website header, official B2B documentation, API portals, email signatures. |
-| **Stacked (Secondary 1\)** |  | Investor pitch deck covers, vertical print materials, social media cards. |
-| **Stacked (Secondary 2\)** |  | Alternate layouts requiring a centered, stacked visual hierarchy. |
-| **Monogram (Icon Only)** | \!\[Monogram\](Monogram (Icon Only).png) | Favicons, social media avatars, discrete UI watermarks in the Data-Driven Dashboard. |
+### Interactive States (Mandatory)
+All interactive elements MUST implement these strict states:
+1. **Default**: Base color (`#569BAA` for primary).
+2. **Hover**: Slight transform (`translateY(-1px)`) + Secondary Accent (`#4A8B9C`) + `shadow-md`.
+3. **Active/Press**: Scale down (`scale-95`).
+4. **Focus**: Visible focus ring. `outline-2 outline-offset-2 outline-[#569BAA]`.
+5. **Disabled**: `opacity-60 cursor-not-allowed pointer-events-none`.
 
-### **Structural Constraints**
+### Core Components
+- **Buttons**: Must follow the interactive states above. Min-height `44px` for touch targets.
+- **Cards**: Background `#2C4A5B`, border `1px solid rgba(148, 163, 184, 0.2)`. Hover lifts with `shadow-md`.
+- **Inputs**: Background `#1A2530`, text `#F1F5F9`. Focus must trigger the teal focus ring.
+- **Icons**: All icons must be rendered without borders.
 
-* **The Container:** A sharp, 90-degree square (0rem border radius) reflecting structural integrity.  
-* **The Symbol:** Three sharp, diagonal rectangles (never rounded pills) representing digital data flows and server infrastructure.  
-* **Clear Space:** The minimum protective padding around the entire logo must equal the height of the capital "I" in the "IRKEN" wordmark.  
-* **Minimum Size:** To ensure legibility of the "SOLUTIONS" tag, the horizontal logo must never be rendered smaller than 150px wide in digital formats.  
-* **Prohibitions:** Never round the corners of the container. Never apply drop shadows or gradients. Never render the logo in consumer-friendly warm colors (e.g., red or orange).
+## ♿ 6. Accessibility (A11y) Standards
 
-## **🎨 3\. Visual Identity & CSS Architecture**
+- **WCAG AA Compliance**: Ensure 4.5:1 color contrast ratio for normal text and 3:1 for large text. The primary text (`#F1F5F9`) against the navy background (`#1A2530`) easily passes.
+- **Touch Targets**: Minimum 44px for all interactive elements (buttons, mobile menus).
+- **Keyboard Navigation**: Full semantic HTML and ARIA labels. No `:focus` state removal without a suitable replacement.
+- **Motion**: Respect user preferences for reduced motion (`@media (prefers-reduced-motion)`).
 
-### **Primary Color Palette (Dark Mode Default)**
+## 🛡️ 7. Brand Protection & Enforcement
 
-Our "Deep Tech" palette instantly positions Irken Solutions alongside global SaaS and infrastructure leaders, optimizing screen legibility for operators.
-
-| Color Name | Hex Code | RGB | Usage |
-| :---- | :---- | :---- | :---- |
-| **Space Navy** | \#0A192F | 10, 25, 47 | Primary corporate background. Conveys depth, security, and elite tech. |
-| **Electric Cyan** | \#64FFDA | 100, 255, 218 | Active states, primary CTAs, active booking data visualization, and grid lines. |
-| **Onyx** | \#112240 | 17, 34, 64 | Elevated UI cards, feature containers, and operator dashboard modules. |
-| **Ice Blue** | \#CCD6F6 | 204, 214, 246 | Primary headings (H1, H2, H3) and main body text on dark backgrounds. |
-| **Slate Grey** | \#8892B0 | 136, 146, 176 | Secondary text, microcopy, form labels, and UI container borders. |
-| **Corporate White** | \#FAFAFA | 250, 250, 250 | Strictly for high-contrast highlights or alternate light-mode documents. |
-
-### **Core CSS Tokens (Deep Tech Theme - shadcn/ui Compliant)**
-
-/* Irken Solutions Design System Variables - shadcn/ui */  
-:root {  
-  /* Brand Geometry Rule: Absolute Precision */  
-  --radius: 0rem;              /* Strictly enforced: No rounded corners */  
-
-  /* shadcn/ui Theme Mapping (Dark Mode Default) */
-  --background: 217 65% 11%;       /* #0A192F Space Navy */
-  --foreground: 226 65% 88%;       /* #CCD6F6 Ice Blue */
-  
-  --card: 218 58% 16%;             /* #112240 Onyx */
-  --card-foreground: 226 65% 88%;  /* #CCD6F6 Ice Blue */
-  
-  --popover: 218 58% 16%;          /* #112240 Onyx */
-  --popover-foreground: 226 65% 88%;
-  
-  --primary: 164 100% 70%;         /* #64FFDA Electric Cyan */
-  --primary-foreground: 217 65% 11%;/* #0A192F Space Navy */
-  
-  --secondary: 218 58% 16%;        /* #112240 Onyx */
-  --secondary-foreground: 226 65% 88%;
-  
-  --muted: 218 58% 16%;
-  --muted-foreground: 225 27% 61%; /* #8892B0 Slate Grey */
-  
-  --accent: 164 100% 70%;          /* #64FFDA */
-  --accent-foreground: 217 65% 11%;
-  
-  --destructive: 0 84% 60%;
-  --destructive-foreground: 210 40% 98%;
-  
-  --border: 225 27% 61%;           /* #8892B0 Slate Grey */
-  --input: 225 27% 61%;
-  --ring: 164 100% 70%;
-
-  /* Container Architecture */  
-  --brand-container-max: 80rem;      /* 1280px max-width for enterprise UI */  
-}
-
-/* Global Component Overrides */  
-* {  
-  border-radius: var(--radius) !important;  
-}
-
-### **Visual & UI Assets**
-
-* **Strict Geometry:** Irken Solutions utilizes an uncompromising 0rem (0px) border radius globally. This visual rule separates the enterprise holding firm from the softer aesthetics typical of consumer apps.  
-* **The Digital Blueprint Grid:** Backgrounds leverage a subtle matrix overlay to visualize infrastructure architecture. Implemented as a CSS linear-gradient with a 24px grid size, rendered in Electric Cyan at 5% opacity over Space Navy.  
-* **Data Visualization:** Use dynamic area charts. The horizontal static line (Ice Blue) represents total space inventory; the filled area beneath (Electric Cyan) represents active bookings.  
-* **Photography:** Focus on nighttime or twilight shots of modern Egyptian infrastructure (New Cairo skylines, smart parking structures). Slightly desaturate images with deep blue/cyan undertones. Avoid generic, bright daytime stock imagery.
-
-## **🔠 4\. Typography System**
-
-Our typography is natively Arabic-first (RTL) to establish authority in the Egyptian market, seamlessly paired with highly technical English typefaces.
-
-* **Primary Arabic:** Tajawal (Fallback: Cairo). A geometric Naskh font.  
-* **English Headings:** Space Grotesk. Used for English titles, numbers, and tech terminology.  
-* **English Body:** Inter. Used for dense English documentation and dashboard UI elements.
-
-| Hierarchy | Font Name (EN / AR) | Size | Weight | Color Token |
-| :---- | :---- | :---- | :---- | :---- |
-| **H1 (Hero)** | Space Grotesk / Tajawal | 56px | Bold / عريض | \--brand-text-primary |
-| **H2 (Section)** | Space Grotesk / Tajawal | 36px | Medium / متوسط | \--brand-text-primary |
-| **H3 (Card)** | Space Grotesk / Tajawal | 24px | Medium / متوسط | \--brand-text-highlight |
-| **Body Text** | Inter / Tajawal | 16px | Regular / عادي | \--brand-text-secondary |
-| **UI Labels** | Space Grotesk / Tajawal | 14px | Medium / متوسط | \--brand-accent (if active) |
-
-## **🗣️ 5\. Voice & Messaging**
-
-The tone is authoritative, visionary, and engineered. We speak with the quiet confidence of elite software architects, avoiding consumer marketing fluff when addressing B2B partners.
-
-### **Core Messaging Framework**
-
-* **Corporate Tagline:** Unlocking Urban Potential. *(إطلاق إمكانات المدينة)*  
-* **Consumer Platform Tagline (irken.eg):** Smarter Parking. Better Cities. *(مواقف أذكى. مدن أفضل)*
-
-### **Key Value Propositions**
-
-1. Convert underutilized physical spaces into profitable revenue-generating assets without heavy infrastructure upgrades.  
-2. Maximize yield and optimize space with automated, real-time capacity management.  
-3. Reduce traffic congestion and build sustainable urban environments with intelligent mobility data.
-
-### **Tone Variations by Audience**
-
-* **Real Estate Developers:** Focus on ROI & Asset Utilization. *"Convert underutilized physical spaces into profitable digital assets via our Asset-Light integration."*  
-* **Parking Operators:** Focus on Operational Efficiency. *"Manage inventory precisely through a Data-Driven Dashboard that dynamically calculates capacity against active bookings."*  
-* **Drivers (irken.eg):** Focus on Speed & Frictionless UI. *"Find the nearest space instantly and pay seamlessly via your mobile device."*
-
-## **🛡️ 6\. Brand Protection & Compliance**
-
-### **Trademark Strategy**
-
-The dual-brand architecture requires strict separation. The venture-building parent firm (**Irken Solutions**) and the two-sided marketplace (**irken.eg**) must be trademarked in Egypt as distinct intellectual properties to protect B2B equity from consumer market volatility.
-
-### **UI Compliance Directives**
-
-* Design and engineering teams are strictly prohibited from deviating from the 0rem border radius rule and the "Deep Tech" color palette.  
-* Any UI components introduced by third-party libraries (e.g., Recharts, Tailwind UI, Material UI) **must be manually overridden** to strip away rounded corners, soft shadows, and non-compliant typefaces.
-
-### **Monitoring Plan**
-
-Quarterly visual and code-level audits of the Data-Driven Dashboard and B2B marketing materials to ensure 100% compliance with the Deep Tech aesthetic and architectural precision standards.
-
-*End of Document. Mastered by ArchitectUX Core Systems.*
+- **Strict Adherence**: UI Designers and Frontend Developers must adhere to these mathematical scales. Avoid arbitrary pixel values.
+- **Third-Party Libraries**: Any imported UI components must be overridden to match the `rounded-md` radius and teal-tinted shadows.
+- **Monitoring**: Automated QA processes should flag hardcoded colors or missing focus states.

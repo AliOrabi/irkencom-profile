@@ -13,7 +13,7 @@ export default function PageHero({ titleEn, titleAr, descriptionEn, descriptionA
   return (
     <section className="min-h-[50vh] flex flex-col justify-center relative overflow-hidden bg-brand-primary border-b border-brand-secondary">
       {/* CSS-based Grid Background Layer */}
-      <div className="absolute inset-0 z-0 pointer-events-none bg-[linear-gradient(rgba(100,255,218,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(100,255,218,0.05)_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+      <div className="absolute inset-0 z-0 pointer-events-none bg-[linear-gradient(theme(colors.brand.accent)_1px,transparent_1px),linear-gradient(90deg,theme(colors.brand.accent)_1px,transparent_1px)] bg-[size:24px_24px] opacity-10"></div>
       
       <Reveal delay={0.2} direction="up">
         <div className="relative z-10 text-center max-w-3xl mx-auto px-8">
