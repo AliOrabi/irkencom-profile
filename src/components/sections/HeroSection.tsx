@@ -11,18 +11,18 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-[100svh] flex items-center pt-20 pb-16 overflow-hidden"
+      className="relative min-h-[100svh] flex flex-col pt-20 pb-8 overflow-hidden"
       aria-labelledby="hero-headline"
     >
       {/* ── Background image ───────────────────────────────────────────── */}
       <div className="absolute inset-0 z-0" aria-hidden="true">
-        <Image
-          src="/hero-bg.jpeg"
-          alt="Aerial view of modern Cairo city infrastructure at night"
-          fill
-          sizes="100vw"
-          className="object-cover object-center"
-          priority
+        <video
+          src="/Animate_bg-parking.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="object-cover object-center w-full h-full"
         />
         {/* Dark gradient overlay for text legibility */}
         <div className="absolute inset-0 bg-gradient-to-r from-brand-primary/95 via-brand-primary/80 to-brand-primary/40" />
@@ -43,7 +43,7 @@ export default function HeroSection() {
       {/* ── Content grid ───────────────────────────────────────────────── */}
       <div
         id="hero-content"
-        className="max-w-[1280px] mx-auto px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-center relative z-10"
+        className="max-w-[1280px] mx-auto my-auto px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-center relative z-10"
       >
         {/* ── Left column — copy ───────────────────────────────────────── */}
         <div className="flex flex-col items-start">
@@ -135,7 +135,7 @@ export default function HeroSection() {
       {/* ── Scroll cue ────────────────────────────────────────────────── */}
       <button
         onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
-        className="absolute bottom-8 inset-x-0 mx-auto w-fit z-10 flex flex-col items-center gap-2 text-text-secondary hover:text-brand-accent transition-colors duration-300 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent rounded-md p-2"
+        className="mx-auto w-fit z-10 flex flex-col items-center gap-2 text-text-secondary hover:text-brand-accent transition-colors duration-300 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent rounded-md p-2 mt-8"
         aria-label="Scroll down"
       >
         <span className="text-[10px] font-enHeading uppercase tracking-[0.2em]">Scroll</span>

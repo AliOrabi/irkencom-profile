@@ -11,7 +11,7 @@ interface PageHeroProps {
 
 export default function PageHero({ titleEn, titleAr, descriptionEn, descriptionAr }: PageHeroProps) {
   return (
-    <section className="min-h-[50vh] flex flex-col justify-center relative overflow-hidden bg-brand-primary border-b border-brand-secondary">
+    <section className="min-h-[50vh] flex flex-col justify-center relative overflow-hidden bg-brand-primary border-b border-brand-secondary pt-28 pb-16">
       {/* CSS-based Grid Background Layer */}
       <div className="absolute inset-0 z-0 pointer-events-none bg-[linear-gradient(theme(colors.brand.accent)_1px,transparent_1px),linear-gradient(90deg,theme(colors.brand.accent)_1px,transparent_1px)] bg-[size:24px_24px] opacity-10"></div>
       

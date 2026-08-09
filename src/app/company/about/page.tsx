@@ -1,5 +1,6 @@
 import React from 'react';
 import PageHero from '@/components/sections/PageHero';
+import MissionVisionSection from '@/components/sections/MissionVisionSection';
 import ContentSection from '@/components/sections/ContentSection';
 import ConversionCTA from '@/components/sections/ConversionCTA';
 
@@ -12,6 +13,8 @@ export default function AboutPage() {
         descriptionEn="Irken Solutions builds the software that makes parking facilities earn their keep — for real estate developers, operators, and cities across Egypt and MENA."
         descriptionAr="تبني إركن سوليوشنز البرمجيات التي تضاعف من ربحية مواقف السيارات — لخدمة المطورين العقاريين، المشغلين، والمدن في مصر ومنطقة الشرق الأوسط وشمال إفريقيا."
       />
+
+      <MissionVisionSection />
 
       <ContentSection
         titleEn="Smart systems. No heavy investment."
