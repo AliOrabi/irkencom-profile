@@ -9,49 +9,49 @@ export default function LPRPage() {
     {
       icon: "Camera",
       title: { en: "99.8% Accuracy", ar: "دقة 99.8%" },
-      description: { en: "Machine learning models trained specifically on Egyptian and regional license plate formats.", ar: "نماذج تعلم آلي تم تدريبها خصيصاً على تنسيقات لوحات الترخيص المصرية والإقليمية." },
-      id: "f" + Math.random().toString(),
+      description: { en: "Machine learning models trained specifically on Egyptian license plate formats for unmatched accuracy.", ar: "نماذج تعلم آلي تم تدريبها خصيصاً على تنسيقات اللوحات المصرية لضمان دقة لا مثيل لها." },
+      id: "f1",
       order: 1
     },
     {
       icon: "Zap",
-      title: { en: "Sub-second Processing", ar: "معالجة في أقل من ثانية" },
-      description: { en: "Edge-computed recognition ensures barriers open instantly without network latency.", ar: "المعالجة الطرفية تضمن فتح الحواجز على الفور دون تأخير في الشبكة." },
-      id: "f" + Math.random().toString(),
-      order: 1
+      title: { en: "Instant Recognition", ar: "تعرف فوري" },
+      description: { en: "Edge-computed recognition ensures barriers open instantly, maximizing traffic throughput.", ar: "تضمن المعالجة الطرفية فتح الحواجز على الفور، مما يعظم من سرعة تدفق المرور." },
+      id: "f2",
+      order: 2
     },
     {
       icon: "FileSearch",
-      title: { en: "Blacklist Monitoring", ar: "مراقبة القائمة السوداء" },
-      description: { en: "Automated alerts for unauthorized or flagged vehicles attempting entry.", ar: "تنبيهات تلقائية للمركبات غير المصرح لها أو المشبوهة التي تحاول الدخول." },
-      id: "f" + Math.random().toString(),
-      order: 1
+      title: { en: "Security & Monitoring", ar: "أمان ومراقبة" },
+      description: { en: "Automated alerts for unauthorized vehicles, integrating seamlessly with your facility's security protocols.", ar: "تنبيهات تلقائية للمركبات غير المصرح لها، مع تكامل سلس مع بروتوكولات الأمان في منشأتك." },
+      id: "f3",
+      order: 3
     },
     {
       icon: "ShieldCheck",
-      title: { en: "Ticketless Entry", ar: "دخول بدون تذاكر" },
-      description: { en: "The license plate becomes the identity. Frictionless flow for pre-booked and monthly subscribers.", ar: "لوحة الترخيص تصبح هي الهوية. تدفق سلس للمشتركين مسبقاً والشهريين." },
-      id: "f" + Math.random().toString(),
-      order: 1
+      title: { en: "Ticketless Operations", ar: "عمليات بدون تذاكر" },
+      description: { en: "The license plate becomes the identity. Frictionless flow for subscribed drivers, reducing operational overhead.", ar: "تصبح لوحة الترخيص هي الهوية. تدفق سلس للسائقين المشتركين، مما يقلل من النفقات التشغيلية." },
+      id: "f4",
+      order: 4
     }
   ];
 
   return (
     <main>
       <PageHero 
-        titleEn="License Plate Recognition (ALPR)"
-        titleAr="التعرف على لوحات الترخيص"
-        descriptionEn="High-throughput, AI-powered computer vision. Eliminate tickets and accelerate entry workflows."
-        descriptionAr="رؤية حاسوبية عالية الإنتاجية مدعومة بالذكاء الاصطناعي. تخلص من التذاكر وسرّع سير عمل الدخول."
+        titleEn="AI License Plate Recognition"
+        titleAr="التعرف بالذكاء الاصطناعي على اللوحات"
+        descriptionEn="High-throughput computer vision. Eliminate paper tickets and accelerate entry workflows without costly infrastructure."
+        descriptionAr="رؤية حاسوبية عالية الإنتاجية. تخلص من التذاكر الورقية وسرّع سير العمل بدون بنية تحتية مكلفة."
       />
 
       <FeatureGrid features={features} columns={2} />
 
       <ConversionCTA 
-        titleEn="Upgrade to Ticketless"
-        titleAr="الترقية إلى الدخول بدون تذاكر"
-        descriptionEn="Eliminate consumable costs and hardware maintenance. Let's architect your ALPR integration."
-        descriptionAr="تخلص من التكاليف الاستهلاكية وصيانة الأجهزة. دعنا نصمم تكامل التعرف على لوحات الترخيص الخاص بك."
+        titleEn="Ready to eliminate tickets?"
+        titleAr="هل أنت مستعد للتخلص من التذاكر؟"
+        descriptionEn="Digitize your entry points and calculate your revenue potential with our smart LPR solutions."
+        descriptionAr="قم برقمنة نقاط الدخول الخاصة بك واحسب أرباحك المحتملة مع حلول التعرف على اللوحات الذكية لدينا."
       />
     </main>
   );

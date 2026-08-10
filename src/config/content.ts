@@ -11,29 +11,29 @@ export const fetchSolutions = async (): Promise<Solution[]> => {
 export const features: Feature[] = [
   {
     id: 'feat-1',
-    title: { en: 'Prices that adjust themselves.', ar: 'أسعار بتتعدل لوحدها.' },
-    description: { en: 'Our system reads demand patterns and adjusts pricing automatically — so you earn more during busy hours without doing anything.', ar: 'النظام بيقرأ الطلب ويضبط الأسعار تلقائياً — فبتكسب أكثر في ساعات الذروة من غير ما تتدخل.' },
+    title: { en: 'Dynamic Pricing', ar: 'تسعير ديناميكي' },
+    description: { en: 'Our system analyzes demand patterns and adjusts pricing automatically, maximizing your yield during peak hours.', ar: 'يقوم نظامنا بتحليل أنماط الطلب وتعديل الأسعار تلقائياً، لتعظيم عوائدك خلال ساعات الذروة.' },
     icon: 'Brain',
     order: 1
   },
   {
     id: 'feat-2',
-    title: { en: 'In and out. No stops.', ar: 'دخول وخروج. بدون وقوف.' },
-    description: { en: 'Our camera-based system reads license plates and gives drivers instant access — no tickets, no barriers slowing things down.', ar: 'النظام بيقرأ اللوحات بالكاميرات ويدي السائقين وصول فوري — بدون تذاكر وبدون أي تأخير.' },
+    title: { en: 'Ticketless Entry', ar: 'دخول بدون تذاكر' },
+    description: { en: 'AI-powered License Plate Recognition (LPR) gives drivers instant access, eliminating paper tickets and reducing entry bottlenecks.', ar: 'تتيح تقنية التعرف على اللوحات بالذكاء الاصطناعي (LPR) وصولاً فورياً للسائقين، مما يلغي التذاكر الورقية ويقلل طوابير الدخول.' },
     icon: 'ScanLine',
     order: 2
   },
   {
     id: 'feat-3',
-    title: { en: 'See everything. In real-time.', ar: 'شوف كل حاجة. لحظة بلحظة.' },
-    description: { en: 'Your dashboard shows occupancy, peak hours, and revenue — updated live, so you always know what\'s happening in your facility.', ar: 'لوحة التحكم بتعرض الإشغال وساعات الذروة والإيرادات — محدّثة لحظياً، عشان دايماً تعرف إيه اللي بيحصل.' },
+    title: { en: 'Live Operational Dashboard', ar: 'لوحة تحكم تشغيلية فورية' },
+    description: { en: 'Monitor occupancy, peak hours, and net revenue in real-time. Full operational visibility from a single screen.', ar: 'راقب معدلات الإشغال، وساعات الذروة، وصافي الإيرادات لحظياً. رؤية تشغيلية كاملة من شاشة واحدة.' },
     icon: 'BarChart3',
     order: 3
   },
   {
     id: 'feat-4',
-    title: { en: 'Up and running. Fast.', ar: 'جاهز للشغل. بسرعة.' },
-    description: { en: 'No civil works. No downtime. We connect to your existing infrastructure and have you live in days, not months.', ar: 'بدون أعمال مدنية. بدون توقف. بنتصل ببنيتك الموجودة وبنخليك شغّال في أيام.' },
+    title: { en: 'Zero CapEx Deployment', ar: 'نشر بدون نفقات رأسمالية' },
+    description: { en: 'No heavy hardware or civil works. We integrate directly with your existing barrier gates and cameras, getting you live in days.', ar: 'بدون أجهزة باهظة أو أعمال مدنية. نتكامل مباشرة مع بواباتك وكاميراتك الحالية لتشغيل نظامك خلال أيام.' },
     icon: 'CloudLightning',
     order: 4
   }
@@ -41,24 +41,24 @@ export const features: Feature[] = [
 
 export const solutions: Solution[] = [
   {
-    id: 'sol-1',
-    title: { en: 'For Smart Cities', ar: 'للمدن الذكية' },
-    description: { en: 'Give your city real-time visibility over every parking space — so traffic flows better, emissions drop, and residents stop wasting time searching.', ar: 'خلّي مدينتك تشوف كل موقف في الوقت الحقيقي — عشان المرور ينسجم، الانبعاثات تنخفض، والناس تبطّل تدور.' },
-    icon: 'Building2',
+    id: 'sol-3',
+    title: { en: 'For Operators', ar: 'لمشغلي المواقف' },
+    description: { en: 'Stop losing money to manual errors and cash leakages. Digitize payments, maximize daily turnover, and manage your entire operation from one centralized dashboard.', ar: 'أوقف خسائر الأخطاء اليدوية وتسرب الإيرادات النقدية. قم برقمنة المدفوعات، وضاعف معدلات التشغيل اليومية، وأدر عملياتك بالكامل من لوحة تحكم واحدة.' },
+    icon: 'SmartphoneNfc',
     order: 1
   },
   {
     id: 'sol-2',
-    title: { en: 'For Developers', ar: 'للمطورين العقاريين' },
-    description: { en: 'Your parking floors are an asset, not a liability. We turn them into a steady income stream — with no hardware investment and no operational headaches.', ar: 'طوابق موقفك أصل، مش عبء. بنحوّلهم لمصدر دخل منتظم — بدون استثمار في أجهزة وبدون متاعب تشغيلية.' },
+    title: { en: 'For Real Estate Developers', ar: 'للمطورين العقاريين' },
+    description: { en: 'Your parking floors are an untapped asset. Turn them into a steady revenue stream with zero capital expenditure (Zero CapEx) and no operational headaches.', ar: 'طوابق المواقف في عقاراتك هي أصول غير مستغلة. حوّلها لمصدر دخل مستدام بدون أي نفقات رأسمالية (Zero CapEx) وبدون متاعب تشغيلية.' },
     icon: 'Coins',
     order: 2
   },
   {
-    id: 'sol-3',
-    title: { en: 'For Operators', ar: 'لمشغلي المواقف' },
-    description: { en: 'Stop losing money to manual errors and cash handling. Digitize payments, automate reports, and manage your whole operation from one screen.', ar: 'بطّل تخسر بسبب الأخطاء اليدوية والكاش. رقمّن المدفوعات، أتمت التقارير، وأدر كل شغلك من شاشة واحدة.' },
-    icon: 'SmartphoneNfc',
+    id: 'sol-1',
+    title: { en: 'For Smart Cities', ar: 'للمدن الذكية' },
+    description: { en: 'Gain real-time visibility over your urban parking network. Ease traffic congestion, lower emissions, and modernize city infrastructure without heavy civic works.', ar: 'احصل على رؤية شاملة ولحظية لشبكة المواقف الحضرية. قلل الازدحام المروري، وخفف الانبعاثات، وحدّث البنية التحتية للمدينة بدون أعمال مدنية مكلفة.' },
+    icon: 'Building2',
     order: 3
   }
 ];

@@ -6,16 +6,16 @@ import Reveal from '@/components/ui/Reveal';
 import SectionBadge from '@/components/ui/SectionBadge';
 
 const oldWayPoints = [
-  { id: 'ow-1', en: '✗ Buy and install sensors in every space', ar: '✗ شراء وتركيب مستشعرات في كل موقف' },
-  { id: 'ow-2', en: '✗ Run cables and plan civil works',         ar: '✗ تمديد كابلات وأعمال مدنية مكلفة' },
-  { id: 'ow-3', en: '✗ Pay for ongoing hardware maintenance',    ar: '✗ صيانة دورية مستمرة وتكاليف مرتفعة' },
-  { id: 'ow-4', en: '✗ Inaccurate binary reports: available/not', ar: '✗ تقارير غير دقيقة: متاح أو غير متاح فقط' },
+  { id: 'ow-1', en: '✗ Heavy capital expenditure on hardware', ar: '✗ نفقات رأسمالية باهظة على المعدات' },
+  { id: 'ow-2', en: '✗ Expensive civil works and cabling',         ar: '✗ أعمال مدنية وتمديد كابلات مكلفة' },
+  { id: 'ow-3', en: '✗ Ongoing maintenance fees and downtime',    ar: '✗ رسوم صيانة مستمرة وفترات توقف' },
+  { id: 'ow-4', en: '✗ Revenue loss during installation', ar: '✗ خسارة إيرادات أثناء فترة التركيب' },
 ];
 
 const irkenWayPoints = [
-  { id: 'iw-1', en: '✓ Live capacity calculation — no sensors', ar: '✓ حساب السعة الفوري — بدون معدات' },
-  { id: 'iw-2', en: '✓ Zero hardware installs or civil works',  ar: '✓ لا تركيبات ولا أعمال مدنية' },
-  { id: 'iw-3', en: '✓ Automated revenue, direct to you',       ar: '✓ إيرادات آلية تصلك مباشرة' },
+  { id: 'iw-1', en: '✓ Asset-light integration — Zero CapEx', ar: '✓ تكامل برمجي مرن — بدون نفقات رأسمالية' },
+  { id: 'iw-2', en: '✓ Plug into existing barrier gates & cameras',  ar: '✓ ربط مباشر مع البوابات والكاميرات الحالية' },
+  { id: 'iw-3', en: '✓ Maximize yield from day one',       ar: '✓ تعظيم العوائد من اليوم الأول' },
 ];
 
 export default function CompetitiveDiff() {
@@ -32,8 +32,8 @@ export default function CompetitiveDiff() {
             </h2>
             <p className="text-base text-text-secondary">
               <Translate
-                en="Traditional parking systems make you buy expensive hardware, then pay to maintain it. We took a different approach."
-                ar="تجبرك أنظمة المواقف التقليدية على شراء معدات باهظة وتحمّل تكاليف صيانتها. نحن اتخذنا مساراً مختلفاً تماماً."
+                en="Traditional parking systems drain your budget with heavy hardware and maintenance costs. We took a Zero CapEx approach."
+                ar="تستنزف أنظمة المواقف التقليدية ميزانيتك في شراء المعدات وتكاليف صيانتها. نحن اتخذنا مساراً يعفيك من النفقات الرأسمالية تماماً."
               />
             </p>
           </div>
@@ -49,12 +49,12 @@ export default function CompetitiveDiff() {
                 <Translate en="The Old Way" ar="الطريقة القديمة" />
               </div>
               <h3 className="text-2xl font-enHeading text-text-primary mb-4">
-                <Translate en="Sensors, cables, and constant maintenance." ar="مستشعرات، كابلات، وصيانة لا تنتهي." />
+                <Translate en="Heavy CapEx, cables, and constant downtime." ar="نفقات رأسمالية ضخمة، كابلات، وتوقف مستمر." />
               </h3>
               <p className="text-sm text-text-secondary leading-relaxed mb-6">
                 <Translate
-                  en="You install sensors in every spot, run cables, hope they don't fail — and when they do, you call a technician."
-                  ar="تقوم بتركيب مستشعرات في كل موقف وتمديد الكابلات وتأمل ألا تتعطل."
+                  en="You buy expensive hardware, run miles of cables, shut down your facility for weeks, and hope it doesn't break."
+                  ar="تشتري معدات باهظة، تمدد كيلومترات من الكابلات، توقف عمل منشأتك لأسابيع، وتأمل ألا تتعطل."
                 />
               </p>
               <ul className="flex flex-col gap-3" role="list">
@@ -75,12 +75,12 @@ export default function CompetitiveDiff() {
                 <Translate en="The Irken Way" ar="طريقة إركن" />
               </div>
               <h3 className="text-2xl font-enHeading text-brand-accent mb-4">
-                <Translate en="Real-time tracking. Nothing to maintain." ar="تتبع فوري. وبدون أي أعطال." />
+                <Translate en="Zero CapEx. Live in days." ar="بدون نفقات رأسمالية. جاهز في أيام." />
               </h3>
               <p className="text-sm text-text-primary leading-relaxed mb-6">
                 <Translate
-                  en="We calculate available spaces by comparing your total capacity against active bookings — live, accurate, and hardware-free."
-                  ar="نحسب المساحات المتاحة من خلال مطابقة السعة الإجمالية مع الحجوزات النشطة — فوري، دقيق، ودون أجهزة."
+                  en="We integrate directly with your existing barrier gates and cameras. No civil works, no new hardware, just instant revenue."
+                  ar="نتكامل فوراً مع بواباتك وكاميراتك الحالية. بدون أعمال مدنية، وبدون معدات جديدة، فقط إيرادات فورية."
                 />
               </p>
               <ul className="flex flex-col gap-3" role="list">

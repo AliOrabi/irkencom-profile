@@ -15,10 +15,10 @@ export default function ContactPage() {
   return (
     <main>
       <PageHero 
-        titleEn="Get in Touch"
-        titleAr="تواصل معنا"
-        descriptionEn="We're here to architect your next urban mobility solution."
-        descriptionAr="نحن هنا لهندسة حلول التنقل الحضري القادمة الخاصة بك."
+        titleEn="Calculate Your Revenue"
+        titleAr="احسب أرباحك المحتملة"
+        descriptionEn="Talk to our team. Find out how much revenue your parking facility is leaving on the table."
+        descriptionAr="تحدث إلى فريقنا. واكتشف حجم الإيرادات غير المستغلة في منشأتك."
       />
 
       <section className="relative py-24 overflow-hidden">

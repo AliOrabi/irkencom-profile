@@ -66,8 +66,8 @@ export default function HeroSection() {
               className="text-5xl md:text-6xl lg:text-7xl font-bold font-enHeading text-text-highlight leading-[1.05] mb-6 tracking-tight"
             >
               <Translate
-                en={<>Unlocking<br />Urban<br />Potential.</>}
-                ar={<>إطلاق الإمكانات<br />الحضرية.</>}
+                en={<>Maximize<br />Your Parking<br />Revenue.</>}
+                ar={<>ضاعف<br />أرباح<br />مواقفك.</>}
               />
             </h1>
           </Reveal>
@@ -76,8 +76,8 @@ export default function HeroSection() {
           <Reveal delay={0.18}>
             <p className="text-base md:text-lg text-text-secondary mb-10 max-w-[520px] leading-relaxed">
               <Translate
-                en="Asset-Light infrastructure that converts idle parking spaces into trackable, automated revenue — without sensors, civil works, or hardware upgrades."
-                ar="بنية تحتية مرنة الأصول تحوّل المواقف الشاغرة إلى إيرادات آلية قابلة للقياس — دون معدات، أو أعمال مدنية، أو ترقيات للأجهزة."
+                en="Upgrade your parking facility with zero capital expenditure (Zero CapEx). Our asset-light software turns idle spaces into automated revenue without the need for expensive hardware or civil works."
+                ar="قم بترقية مواقفك بدون أي نفقات رأسمالية (Zero CapEx). يحوّل نظامنا المرن مساحاتك الشاغرة إلى أرباح آلية، دون الحاجة لأجهزة باهظة أو أعمال مدنية."
               />
             </p>
           </Reveal>
@@ -86,8 +86,8 @@ export default function HeroSection() {
           <Reveal delay={0.25}>
             <div className="flex flex-wrap gap-4">
               <PrimaryButton
-                en="Request a Demo"
-                ar="طلب عرض توضيحي"
+                en="Calculate Your Revenue"
+                ar="احسب أرباحك المحتملة"
                 href="#integration"
                 aria-describedby="hero-headline"
               />
@@ -104,7 +104,7 @@ export default function HeroSection() {
             <div className="mt-12 flex flex-wrap items-center gap-6 text-[11px] font-enHeading uppercase tracking-[0.12em] text-text-secondary">
               <span className="flex items-center gap-2">
                 <span className="w-4 h-px bg-brand-accent" aria-hidden="true" />
-                <Translate en="0 Hardware Installs" ar="بدون أي أجهزة" />
+                <Translate en="Zero CapEx" ar="بدون نفقات رأسمالية" />
               </span>
               <span className="flex items-center gap-2">
                 <span className="w-4 h-px bg-brand-accent" aria-hidden="true" />

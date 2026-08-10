@@ -11,7 +11,7 @@ const stats = [
     value: '0',
     unit: '',
     label: { en: 'Hardware Installs Required', ar: 'أجهزة مطلوبة للتركيب' },
-    sub:   { en: 'Pure software deployment', ar: 'نشر برمجي بالكامل' },
+    sub:   { en: 'Zero CapEx deployment', ar: 'بدون أي نفقات رأسمالية' },
   },
   {
     id: 'stat-booking',
@@ -24,8 +24,8 @@ const stats = [
     id: 'stat-occupancy',
     value: '47',
     unit: '%',
-    label: { en: 'Avg. Occupancy Lift', ar: 'متوسط رفع نسبة الإشغال' },
-    sub:   { en: 'Across live integrations', ar: 'عبر عمليات التكامل النشطة' },
+    label: { en: 'Avg. Revenue Lift', ar: 'متوسط زيادة الإيرادات' },
+    sub:   { en: 'Across our operator network', ar: 'عبر شبكة مشغلينا' },
   },
   {
     id: 'stat-uptime',
@@ -71,8 +71,8 @@ export default function StatsSection() {
             </h2>
             <p className="text-base text-text-secondary max-w-lg mx-auto">
               <Translate
-                en="Every metric below reflects live operational data from Irken-integrated facilities."
-                ar="كل رقم أدناه يعكس بيانات تشغيلية حقيقية من منشآت مدمجة مع نظام إركن."
+                en="Every metric below reflects the real business value delivered to our operator network."
+                ar="كل رقم أدناه يعكس القيمة التجارية الحقيقية التي نقدمها لشبكة مشغلينا."
               />
             </p>
           </div>

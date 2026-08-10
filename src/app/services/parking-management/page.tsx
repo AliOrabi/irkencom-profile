@@ -8,50 +8,50 @@ export default function ParkingManagementPage() {
   const features: Feature[] = [
     {
       icon: "Database",
-      title: { en: "Centralized Data Lake", ar: "بحيرة بيانات مركزية" },
-      description: { en: "All transactional, access, and capacity data consolidated into a single pane of glass.", ar: "يتم توحيد جميع بيانات المعاملات والوصول والسعة في شاشة واحدة." },
-      id: "f" + Math.random().toString(),
+      title: { en: "Centralized Operations", ar: "عمليات مركزية" },
+      description: { en: "Monitor transactions, capacity, and access data across your entire portfolio from a single, intuitive dashboard.", ar: "راقب بيانات المعاملات والسعة والدخول عبر محفظتك بالكامل من لوحة تحكم واحدة وسهلة الاستخدام." },
+      id: "f1",
       order: 1
     },
     {
       icon: "BarChart3",
-      title: { en: "Predictive Analytics", ar: "تحليلات تنبؤية" },
-      description: { en: "Forecast peak loads and optimize pricing models utilizing historical trends.", ar: "توقع أوقات الذروة وتحسين نماذج التسعير باستخدام الاتجاهات التاريخية." },
-      id: "f" + Math.random().toString(),
-      order: 1
+      title: { en: "Dynamic Pricing & Analytics", ar: "تسعير ديناميكي وتحليلات" },
+      description: { en: "Forecast peak hours and automatically adjust pricing to maximize your revenue yield.", ar: "توقع أوقات الذروة واضبط الأسعار تلقائياً لتعظيم عوائدك بشكل مستمر." },
+      id: "f2",
+      order: 2
     },
     {
       icon: "Network",
-      title: { en: "Multi-Facility Rollup", ar: "تجميع متعدد المنشآت" },
-      description: { en: "Manage portfolios of parking assets across the city from one dashboard.", ar: "إدارة محافظ أصول مواقف السيارات عبر المدينة من لوحة تحكم واحدة." },
-      id: "f" + Math.random().toString(),
-      order: 1
+      title: { en: "Multi-Facility Management", ar: "إدارة متعددة المنشآت" },
+      description: { en: "Manage multiple parking assets effortlessly, with real-time aggregated metrics and site-specific controls.", ar: "أدر عدة مرافق لمواقف السيارات بسهولة، مع مقاييس مجمعة لحظية وتحكم خاص بكل موقع." },
+      id: "f3",
+      order: 3
     },
     {
       icon: "Settings",
-      title: { en: "API Extensibility", ar: "قابلية التوسعة عبر API" },
-      description: { en: "Integrate deeply with your existing ERP, accounting, or tenant management software.", ar: "تكامل عميق مع أنظمة تخطيط موارد المؤسسات أو المحاسبة أو إدارة المستأجرين الحالية." },
-      id: "f" + Math.random().toString(),
-      order: 1
+      title: { en: "Seamless ERP Integration", ar: "تكامل سلس مع أنظمة الإدارة" },
+      description: { en: "Integrate deeply with your existing accounting or property management software to streamline financial reporting.", ar: "تكامل بعمق مع برامج المحاسبة أو إدارة العقارات الحالية لتبسيط التقارير المالية." },
+      id: "f4",
+      order: 4
     }
   ];
 
   return (
     <main>
       <PageHero 
-        titleEn="Parking Management Dashboard"
-        titleAr="لوحة تحكم إدارة مواقف السيارات"
-        descriptionEn="The ultimate macro-pitch for our data-driven ecosystem. Complete operational visibility and control."
-        descriptionAr="الملخص الشامل لنظامنا البيئي القائم على البيانات. رؤية وتحكم تشغيلي كامل."
+        titleEn="Smart Parking Management"
+        titleAr="الإدارة الذكية للمواقف"
+        descriptionEn="Take complete control of your operations. Maximize daily turnover, monitor real-time occupancy, and automate your revenue streams."
+        descriptionAr="تحكم بالكامل في عملياتك. ضاعف معدلات التشغيل اليومية، وراقب الإشغال لحظياً، وأتمت مصادر إيراداتك."
       />
 
       <FeatureGrid features={features} columns={2} />
 
       <ConversionCTA 
-        titleEn="Request a Demo"
-        titleAr="طلب عرض توضيحي"
-        descriptionEn="See the dashboard in action and understand how our infrastructure can optimize your portfolio."
-        descriptionAr="شاهد لوحة التحكم أثناء العمل وافهم كيف يمكن لبنيتنا التحتية تحسين محفظتك."
+        titleEn="Take Control of Your Revenue"
+        titleAr="تحكم في إيراداتك"
+        descriptionEn="See the platform in action and calculate the revenue uplift for your facilities."
+        descriptionAr="شاهد المنصة أثناء العمل واحسب الزيادة المحتملة في إيرادات منشآتك."
       />
     </main>
   );

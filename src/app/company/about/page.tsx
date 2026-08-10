@@ -17,11 +17,11 @@ export default function AboutPage() {
       <MissionVisionSection />
 
       <ContentSection
-        titleEn="Smart systems. No heavy investment."
-        titleAr="أنظمة ذكية. بدون استثمارات ضخمة."
+        titleEn="Smart systems. Zero CapEx."
+        titleAr="أنظمة ذكية. بدون نفقات رأسمالية."
         contentEn={
           <>
-            <p>Most parking facilities are sitting on untapped value. The problem isn't the space — it's how it's managed. We fix that by layering our smart software over what you already have, so you start generating revenue without buying a single piece of hardware.</p>
+            <p>Most parking facilities are sitting on untapped value. The problem isn't the space — it's how it's managed. We fix that by layering our smart software over what you already have, so you start generating revenue without any capital expenditure (Zero CapEx).</p>
             <p style={{ marginTop: '1rem' }}>We run the technology. You keep the revenue.</p>
           </>
         }

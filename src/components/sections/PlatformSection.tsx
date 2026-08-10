@@ -63,12 +63,12 @@ export default function PlatformSection() {
           <div className="mb-16 max-w-3xl">
             <SectionBadge en="How It Works" ar="كيف يعمل النظام" />
             <h2 id="platform-heading" className="text-3xl md:text-4xl font-bold font-enHeading text-text-primary mb-6">
-              <Translate en="No sensors. No civil works. Just results." ar="بدون معدات. بدون حفر. فقط نتائج." />
+              <Translate en="Zero CapEx. Zero friction. Just revenue." ar="بدون معدات. بدون تعقيد. فقط إيرادات." />
             </h2>
             <p className="text-base text-text-secondary max-w-2xl">
               <Translate
-                en="Most parking systems need you to drill holes, run cables, and buy hardware. Ours doesn't. We connect to what you already have and get you up and running — fast."
-                ar="تتطلب معظم أنظمة المواقف حفريات وتمديدات وأجهزة. نظامنا لا يحتاج لأي من ذلك."
+                en="Most parking systems require massive upfront hardware investments. We don't. We connect seamlessly to your existing barrier gates and cameras, unlocking your facility's earning potential instantly."
+                ar="تتطلب معظم أنظمة المواقف استثمارات ضخمة في البنية التحتية. نظامنا لا يحتاج لذلك، فهو يتكامل بسلاسة مع بواباتك وكاميراتك الحالية ليضاعف أرباح منشأتك فوراً."
               />
             </p>
           </div>

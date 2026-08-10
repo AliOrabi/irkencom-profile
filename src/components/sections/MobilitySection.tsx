@@ -25,8 +25,8 @@ export default function MobilitySection() {
             </h2>
             <p className="text-base text-text-secondary max-w-2xl">
               <Translate
-                en="When drivers find their spot in seconds, traffic eases, emissions drop, and city streets breathe again. That's what a connected parking network does."
-                ar="عندما يجد السائق موقفه في ثوانٍ، تقل الكثافة المرورية وينخفض الضغط على البنية التحتية."
+                en="When drivers find their spot in seconds, your facility maximizes its daily turnover while city traffic eases. That's the power of a connected parking network."
+                ar="عندما يجد السائق موقفه في ثوانٍ، تتضاعف معدلات التشغيل اليومية لمنشأتك ويقل الازدحام المروري. هذه هي قوة شبكة المواقف المتصلة."
               />
             </p>
           </div>
