@@ -28,7 +28,7 @@ export default function DashboardShowcase() {
       
       {/* Main Card */}
       <div className="relative border border-brand-accent bg-[#0a1120] shadow-glow-accent-sm overflow-hidden p-8 border-l-4 border-l-brand-accent rounded-md">
-        <img src="/irken_logo_white.svg" alt="" className="absolute -bottom-[10%] -right-[5%] w-[150px] opacity-[0.03] pointer-events-none" />
+        <img src="/newiRkenLogo.png" alt="" className="absolute -bottom-[10%] -right-[5%] w-[150px] opacity-[0.03] pointer-events-none" />
         
         {/* Header */}
         <div className="flex justify-between items-start border-b border-brand-secondary/50 pb-6 mb-6">

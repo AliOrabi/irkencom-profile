@@ -60,7 +60,7 @@ export default function Header() {
           {/* ── Logo ────────────────────────────────────────────────────── */}
           <Link href="/" aria-label="Irken Solutions — Home" className="flex items-center shrink-0">
             <img
-              src="/irken_logo_white.svg"
+              src="/newiRkenLogo.png"
               alt="Irken Solutions"
               className="h-7 md:h-9 w-auto"
             />
@@ -184,7 +184,7 @@ export default function Header() {
         {/* Top bar (matches header height) */}
         <div className="flex items-center justify-between px-6 h-18 md:h-20 shrink-0 border-b border-brand-secondary relative z-10">
           <Link href="/" onClick={() => setMobileOpen(false)} aria-label="Irken Solutions — Home">
-            <img src="/irken_logo_white.svg" alt="Irken Solutions" className="h-7 md:h-9 w-auto" />
+            <img src="/newiRkenLogo.png" alt="Irken Solutions" className="h-7 md:h-9 w-auto" />
           </Link>
           <button
             onClick={() => setMobileOpen(false)}

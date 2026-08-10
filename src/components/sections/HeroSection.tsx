@@ -66,8 +66,8 @@ export default function HeroSection() {
               className="text-5xl md:text-6xl lg:text-7xl font-bold font-enHeading text-text-highlight leading-[1.05] mb-6 tracking-tight"
             >
               <Translate
-                en={<>Maximize<br />Your Parking<br />Revenue.</>}
-                ar={<>ضاعف<br />أرباح<br />مواقفك.</>}
+                en="Maximize Your Parking Revenue."
+                ar="ضاعف أرباح مواقفك."
               />
             </h1>
           </Reveal>

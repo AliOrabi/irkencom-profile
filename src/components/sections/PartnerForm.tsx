@@ -6,9 +6,24 @@ import Translate from '@/components/ui/Translate';
 export default function PartnerForm() {
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+    
+    try {
+      await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          source: 'partner_form',
+          ...data
+        })
+      });
+      setSubmitted(true);
+    } catch (error) {
+      console.error("Failed to submit", error);
+    }
   };
 
   return (
@@ -48,6 +63,7 @@ export default function PartnerForm() {
                 <Translate en="Company / Facility Name" ar="اسم الشركة / المنشأة" />
               </label>
               <input 
+                name="company"
                 type="text" 
                 required 
                 className="w-full bg-brand-secondary border border-brand-secondary text-text-primary px-4 py-3 font-enBody text-sm md:text-base outline-none transition-all duration-200 placeholder:text-text-secondary/40 focus:border-brand-accent focus:shadow-[inset_3px_0_0_theme(colors.brand.accent)] rtl:focus:shadow-[inset_-3px_0_0_theme(colors.brand.accent)] hover:border-text-secondary/60 rounded-md" 
@@ -60,6 +76,7 @@ export default function PartnerForm() {
                   <Translate en="Contact Name" ar="اسم جهة الاتصال" />
                 </label>
                 <input 
+                  name="name"
                   type="text" 
                   required 
                   className="w-full bg-brand-secondary border border-brand-secondary text-text-primary px-4 py-3 font-enBody text-sm md:text-base outline-none transition-all duration-200 placeholder:text-text-secondary/40 focus:border-brand-accent focus:shadow-[inset_3px_0_0_theme(colors.brand.accent)] rtl:focus:shadow-[inset_-3px_0_0_theme(colors.brand.accent)] hover:border-text-secondary/60 rounded-md" 
@@ -70,6 +87,7 @@ export default function PartnerForm() {
                   <Translate en="Email Address" ar="البريد الإلكتروني" />
                 </label>
                 <input 
+                  name="email"
                   type="email" 
                   required 
                   className="w-full bg-brand-secondary border border-brand-secondary text-text-primary px-4 py-3 font-enBody text-sm md:text-base outline-none transition-all duration-200 placeholder:text-text-secondary/40 focus:border-brand-accent focus:shadow-[inset_3px_0_0_theme(colors.brand.accent)] rtl:focus:shadow-[inset_-3px_0_0_theme(colors.brand.accent)] hover:border-text-secondary/60 rounded-md" 
@@ -83,6 +101,7 @@ export default function PartnerForm() {
               </label>
               <div className="relative">
                 <select 
+                  name="capacity"
                   className="w-full bg-brand-secondary border border-brand-secondary text-text-primary px-4 py-3 font-enBody text-sm md:text-base outline-none transition-all duration-200 focus:border-brand-accent focus:shadow-[inset_3px_0_0_theme(colors.brand.accent)] rtl:focus:shadow-[inset_-3px_0_0_theme(colors.brand.accent)] hover:border-text-secondary/60 appearance-none cursor-pointer rounded-md"
                   defaultValue=""
                   required

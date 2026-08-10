@@ -23,8 +23,8 @@ export default function DraftHeroSection() {
           playsInline
           className="object-cover object-center w-full h-full"
         />
-        {/* Dark gradient overlay for text legibility */}
-        <div className="absolute inset-0 bg-brand-primary/80" />
+        {/* Dark overlay with 50% opacity */}
+        <div className="absolute inset-0 bg-brand-primary/50" />
         {/* Blueprint grid overlay */}
         <div
           className="absolute inset-0 opacity-40"

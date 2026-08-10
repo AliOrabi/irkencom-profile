@@ -3,6 +3,7 @@ import Ticker from '@/components/sections/Ticker';
 import PlatformSection from '@/components/sections/PlatformSection';
 import MobilitySection from '@/components/sections/MobilitySection';
 import StatsSection from '@/components/sections/StatsSection';
+import CaseStudies from '@/components/sections/CaseStudies';
 import TransformationSection from '@/components/sections/TransformationSection';
 import SolutionsSection from '@/components/sections/SolutionsSection';
 import CompetitiveDiff from '@/components/sections/CompetitiveDiff';
@@ -16,6 +17,7 @@ export default function Home() {
       <PlatformSection />
       <MobilitySection />
       <StatsSection />
+      <CaseStudies />
       <TransformationSection />
       <SolutionsSection />
       <CompetitiveDiff />

@@ -38,7 +38,7 @@ export default function Footer() {
 
           {/* Brand column */}
           <div className="lg:col-span-4">
-            <img src="/irken_logo_white.svg" alt="Irken Solutions" className="h-10 w-auto mb-6" />
+            <img src="/newiRkenLogo.png" alt="Irken Solutions" className="h-10 w-auto mb-6" />
             <p className="text-sm text-text-secondary leading-relaxed max-w-[300px] mb-6">
               <Translate
                 en="A venture-building technology firm dedicated to digitizing the mobility and parking sector through asset-light infrastructure."

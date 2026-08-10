@@ -74,9 +74,21 @@ export default function ContactForm() {
     e.preventDefault();
     if (!validate()) return;
     setStatus('submitting');
-    // Replace with real API call
-    await new Promise(r => setTimeout(r, 1000));
-    setStatus('success');
+    
+    try {
+      await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          source: 'contact_form',
+          ...data
+        })
+      });
+      setStatus('success');
+    } catch (error) {
+      console.error('Submission failed', error);
+      setStatus('error');
+    }
   };
 
   // ── Success State ─────────────────────────────────────────────────────────
