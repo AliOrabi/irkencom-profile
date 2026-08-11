@@ -62,9 +62,32 @@ export default function IntegrationForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
-    // Simulate async submission (replace with real API call)
-    await new Promise((r) => setTimeout(r, 900));
-    setState('success');
+
+    try {
+      const res = await fetch('/api/integration', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (res.ok) {
+        setState('success');
+        return;
+      }
+
+      const json = await res.json().catch(() => ({}));
+
+      // Handle Zod field-level validation errors (422)
+      if (res.status === 422 && json.fields) {
+        setErrors(json.fields as Partial<FormData>);
+        return;
+      }
+
+      // Handle rate limiting (429) or server error (500)
+      setState('error');
+    } catch {
+      setState('error');
+    }
   };
 
   return (
@@ -156,6 +179,15 @@ export default function IntegrationForm() {
                   <p id={`${formId}-desc`} className="text-[11px] font-enHeading uppercase tracking-[0.15em] text-text-secondary mb-2">
                     <Translate en="Integration Assessment Request" ar="طلب تقييم التكامل" />
                   </p>
+
+                  {state === 'error' && (
+                    <div role="alert" className="bg-red-500/10 border border-red-500/40 rounded-md px-4 py-3 text-sm text-red-400 font-enBody mb-2">
+                      <Translate
+                        en="Something went wrong. Please try again or contact us directly."
+                        ar="حدث خطأ ما. يرجى المحاولة مجدداً أو التواصل معنا مباشرة."
+                      />
+                    </div>
+                  )}
 
                   {/* Name */}
                   <div>
