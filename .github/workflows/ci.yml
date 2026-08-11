@@ -35,5 +35,5 @@ jobs:
         run: npm run build
         env:
           # Provide placeholder env vars so build doesn't fail on missing secrets
-          NEXT_PUBLIC_APP_URL: ${{ secrets.NEXT_PUBLIC_APP_URL || 'https://irken.eg' }}
+          NEXT_PUBLIC_APP_URL: 'https://irken.com.eg'
           NODE_ENV: production

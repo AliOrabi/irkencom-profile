@@ -5,6 +5,8 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import LanguageProvider from "@/components/providers/LanguageProvider";
 import CookieConsent from "@/components/ui/CookieConsent";
+import { CSPostHogProvider } from "@/components/providers/PostHogProvider";
+import { Analytics } from "@vercel/analytics/react";
 import { cn } from "@/lib/utils";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
@@ -28,8 +30,48 @@ const tajawal = Tajawal({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://irken.com.eg"),
   title: "Irken Solutions | Unlocking Urban Potential",
+  description: "Asset-Light digital infrastructure for real estate developers and municipalities in Egypt. PropTech, Smart Parking, and Access Control solutions.",
+  openGraph: {
+    title: "Irken Solutions | Asset-Light Digital Infrastructure",
+    description: "Transforming Egypt's real estate and municipalities with cutting-edge PropTech and Smart Parking solutions.",
+    url: "https://irken.com.eg",
+    siteName: "Irken Solutions",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: "en_US",
+    alternateLocale: "ar_EG",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Irken Solutions",
+    description: "Asset-Light digital infrastructure for real estate developers in Egypt.",
+    images: ["/opengraph-image.png"],
+  },
+};
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Irken Solutions",
+  url: "https://irken.com.eg",
+  logo: "https://irken.com.eg/logo.png",
   description: "Asset-Light digital infrastructure for real estate developers and municipalities in Egypt.",
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "EG",
+  },
+  sameAs: [
+    "https://linkedin.com/company/irken-solutions",
+    "https://x.com/irken_solutions",
+  ],
 };
 
 export default function RootLayout({
@@ -39,14 +81,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" dir="ltr" className={cn(spaceGrotesk.variable, inter.variable, tajawal.variable, "font-sans", geist.variable)} suppressHydrationWarning>
-      <body className="font-english">
-        <LanguageProvider>
-          <Header />
-          <main>{children}</main>
-          <Footer />
-          <CookieConsent />
-        </LanguageProvider>
-      </body>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+      </head>
+      <CSPostHogProvider>
+        <body className="font-english">
+          <LanguageProvider>
+            <Header />
+            <main>{children}</main>
+            <Footer />
+            <CookieConsent />
+          </LanguageProvider>
+          <Analytics />
+        </body>
+      </CSPostHogProvider>
     </html>
   );
 }
