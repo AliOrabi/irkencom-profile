@@ -70,7 +70,6 @@ const structuredData = {
   },
   sameAs: [
     "https://linkedin.com/company/irken-solutions",
-    "https://x.com/irken_solutions",
   ],
 };
 

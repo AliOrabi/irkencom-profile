@@ -1,6 +1,6 @@
 # 🚀 Irken Solutions — Phase 4 Launch Posts
 
-Use these templates to announce the launch of the new corporate profile on LinkedIn and X (Twitter). They are tailored for real estate developers, compound operators, and municipalities in Egypt.
+Use these templates to announce the launch of the new corporate profile on LinkedIn. They are tailored for real estate developers, compound operators, and municipalities in Egypt.
 
 ---
 
@@ -22,26 +22,7 @@ Ready to unlock your urban potential? Visit our new site to explore our mobility
 
 #PropTech #SmartCities #AccessControl #RealEstateEgypt #UrbanMobility #IrkenSolutions #TechLaunch
 
----
 
-## ⬛ X (Twitter)
-
-**Target Audience:** Tech enthusiasts, innovators, startups, local tech ecosystem.
-
-**Post Copy:**
-🚀 We just shipped the new http://irken.com.eg! 
-
-Irken Solutions is bringing Asset-Light Digital Infrastructure to Egypt’s real estate developers and municipalities. 🇪🇬🏢 
-
-🚘 Smart Parking
-🔐 Automated Access Control
-💻 Operator Dashboards
-
-Unlock your urban potential today. Check out how we're redefining PropTech: https://irken.com.eg
-
-#PropTech #EgyptTech #SmartCity #RealEstate #Launch
-
----
 
 **Instructions for Posting:**
 - Attach the newly generated `opengraph-image.png` if the platform doesn't auto-fetch the link preview card properly (though it should fetch automatically since we added OpenGraph tags!).
