@@ -45,8 +45,8 @@ export const metadata: Metadata = {
         height: 630,
       },
     ],
-    locale: "en_US",
-    alternateLocale: "ar_EG",
+    locale: "ar_EG",
+    alternateLocale: "en_US",
     type: "website",
   },
   twitter: {
@@ -79,7 +79,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" dir="ltr" className={cn(spaceGrotesk.variable, inter.variable, tajawal.variable, "font-sans", geist.variable)} suppressHydrationWarning>
+    <html lang="ar" dir="rtl" className={cn(spaceGrotesk.variable, inter.variable, tajawal.variable, "font-sans", geist.variable)} suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
@@ -87,7 +87,7 @@ export default function RootLayout({
         />
       </head>
       <CSPostHogProvider>
-        <body className="font-english">
+        <body className="font-arabic">
           <LanguageProvider>
             <Header />
             <main>{children}</main>
