@@ -67,8 +67,8 @@ export default function HeroSection() {
               className="text-5xl md:text-6xl lg:text-7xl font-bold font-enHeading text-text-highlight leading-[1.05] mb-6 tracking-tight"
             >
               <Translate
-                en="Maximize Your Parking Revenue."
-                ar="ضاعف أرباح مواقفك."
+                en="Zero Hardware. 100% Automated Revenue."
+                ar="بدون أجهزة معقدة. أرباح مؤتمتة بالكامل."
               />
             </h1>
           </Reveal>
@@ -77,8 +77,8 @@ export default function HeroSection() {
           <Reveal delay={0.18}>
             <p className="text-base md:text-lg text-text-secondary mb-10 max-w-[520px] leading-relaxed">
               <Translate
-                en="Upgrade your parking facility with zero capital expenditure (Zero CapEx). Our asset-light software turns idle spaces into automated revenue without the need for expensive hardware or civil works."
-                ar="قم بترقية مواقفك بدون أي نفقات رأسمالية (Zero CapEx). يحوّل نظامنا المرن مساحاتك الشاغرة إلى أرباح آلية، دون الحاجة لأجهزة باهظة أو أعمال مدنية."
+                en="Stop bleeding cash on obsolete barriers. Our asset-light software transforms your idle parking real estate into high-yield mobility hubs in days, not months."
+                ar="توقف عن إهدار أموالك على الحواجز التقليدية. نظامنا البرمجي المرن يحوّل مساحاتك الشاغرة إلى مراكز ربحية ذكية خلال أيام، وليس شهور."
               />
             </p>
           </Reveal>

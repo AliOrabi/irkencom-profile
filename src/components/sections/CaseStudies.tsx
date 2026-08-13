@@ -1,5 +1,13 @@
+'use client';
+
 import React from 'react';
 import Translate from '@/components/ui/Translate';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Autoplay } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 export default function CaseStudies() {
   const caseStudies = [
@@ -32,11 +40,21 @@ export default function CaseStudies() {
         en: "Replaced 3 shifts of manual attendants with a centralized digital management dashboard.", 
         ar: "استبدال 3 ورديات من العمال اليدويين بلوحة تحكم رقمية مركزية للإدارة." 
       }
+    },
+    {
+      id: 4,
+      metric: "100%",
+      metricLabel: { en: "Digital Payments", ar: "مدفوعات رقمية" },
+      title: { en: "Smart City Infrastructure", ar: "بنية المدن الذكية" },
+      description: { 
+        en: "Converted a massive municipality parking network to fully digital and cashless payments via the Irken platform.", 
+        ar: "تحويل شبكة مواقف ضخمة لبلدية إلى مدفوعات رقمية بالكامل وغير نقدية عبر منصة إركن." 
+      }
     }
   ];
 
   return (
-    <section className="py-24 bg-brand-primary border-t border-brand-secondary">
+    <section className="py-24 bg-brand-primary border-t border-brand-secondary overflow-hidden">
       <div className="max-w-[1280px] mx-auto px-8 w-full">
         <div className="text-center mb-16 max-w-2xl mx-auto">
           <h2 className="text-3xl md:text-5xl font-bold font-enHeading text-text-primary mb-6">
@@ -50,29 +68,60 @@ export default function CaseStudies() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {caseStudies.map(study => (
-            <div key={study.id} className="border border-brand-secondary bg-brand-secondary/30 p-8 flex flex-col gap-6 rounded-md hover:border-brand-accent/50 transition-colors group">
-              <div className="border-b border-brand-secondary pb-6">
-                <div className="text-4xl md:text-5xl font-mono font-bold text-brand-accent mb-2">
-                  {study.metric}
+        <div className="relative -mx-4 px-4 sm:mx-0 sm:px-0">
+          <Swiper
+            modules={[Pagination, Autoplay]}
+            spaceBetween={32}
+            slidesPerView={1}
+            pagination={{ clickable: true, dynamicBullets: true }}
+            autoplay={{ delay: 5000, disableOnInteraction: true }}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+              },
+              1024: {
+                slidesPerView: 3,
+              },
+            }}
+            className="pb-16"
+          >
+            {caseStudies.map(study => (
+              <SwiperSlide key={study.id} className="h-auto">
+                <div className="border border-brand-secondary bg-brand-secondary/30 p-8 flex flex-col gap-6 rounded-md hover:border-brand-accent/50 transition-colors group h-full cursor-grab active:cursor-grabbing">
+                  <div className="border-b border-brand-secondary pb-6">
+                    <div className="text-4xl md:text-5xl font-mono font-bold text-brand-accent mb-2">
+                      {study.metric}
+                    </div>
+                    <div className="text-sm font-enHeading tracking-[0.1em] text-text-secondary uppercase">
+                      <Translate en={study.metricLabel.en} ar={study.metricLabel.ar} />
+                    </div>
+                  </div>
+                  <div className="flex-grow">
+                    <h3 className="text-xl font-enHeading text-text-primary mb-3">
+                      <Translate en={study.title.en} ar={study.title.ar} />
+                    </h3>
+                    <p className="text-text-secondary leading-relaxed">
+                      <Translate en={study.description.en} ar={study.description.ar} />
+                    </p>
+                  </div>
                 </div>
-                <div className="text-sm font-enHeading tracking-[0.1em] text-text-secondary uppercase">
-                  <Translate en={study.metricLabel.en} ar={study.metricLabel.ar} />
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-enHeading text-text-primary mb-3">
-                  <Translate en={study.title.en} ar={study.title.ar} />
-                </h3>
-                <p className="text-text-secondary leading-relaxed">
-                  <Translate en={study.description.en} ar={study.description.ar} />
-                </p>
-              </div>
-            </div>
-          ))}
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
+      
+      {/* Global override for swiper pagination dots to match brand colors */}
+      <style dangerouslySetInnerHTML={{__html: `
+        .swiper-pagination-bullet {
+          background-color: var(--text-secondary, #94A3B8);
+          opacity: 0.5;
+        }
+        .swiper-pagination-bullet-active {
+          background-color: var(--brand-accent, #2563EB);
+          opacity: 1;
+        }
+      `}} />
     </section>
   );
 }

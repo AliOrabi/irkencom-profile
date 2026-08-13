@@ -5,6 +5,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import LanguageProvider from "@/components/providers/LanguageProvider";
 import CookieConsent from "@/components/ui/CookieConsent";
+import FloatingCTA from "@/components/ui/FloatingCTA";
 import { CSPostHogProvider } from "@/components/providers/PostHogProvider";
 import { Analytics } from "@vercel/analytics/react";
 import { cn } from "@/lib/utils";
@@ -93,6 +94,7 @@ export default function RootLayout({
             <main>{children}</main>
             <Footer />
             <CookieConsent />
+            <FloatingCTA />
           </LanguageProvider>
           <Analytics />
         </body>

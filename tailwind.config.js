@@ -42,30 +42,30 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // ── Irken Solutions Brand Tokens (DESIGN.md canonical) ─────────────
+        // ── Irken Solutions Brand Tokens (UI/UX Pro Max) ─────────────
         brand: {
-          primary:    '#1A2530',   // FAAC Dark Navy/Slate — canvas background
-          secondary:  '#2C4A5B',   // Deep Teal — elevated cards, modules
-          accent:     '#569BAA',   // FAAC Teal — CTAs, active states, data viz
-          'accent-hover': '#4A8B9C',
-          'on-accent': '#FFFFFF',  // Text/icon color on Teal backgrounds
+          primary:    '#0F172A',   // Slate 900 — Deep corporate canvas
+          secondary:  '#1E293B',   // Slate 800 — Elevated cards
+          accent:     '#2563EB',   // Electric Blue — Trust, CTAs, highlight
+          'accent-hover': '#1D4ED8',
+          'on-accent': '#FFFFFF',  // Text/icon color on accent backgrounds
         },
         text: {
-          primary:    '#F1F5F9',   // Slate-100 — headings, main body on dark
-          secondary:  '#94A3B8',   // Slate-400 — microcopy, labels, borders
-          highlight:  '#FFFFFF',   // Corporate White — max-contrast callouts
+          primary:    '#F8FAFC',   // Slate 50 — headings
+          secondary:  '#94A3B8',   // Slate 400 — body, labels
+          highlight:  '#FFFFFF',   // Max contrast
         },
       },
 
       fontFamily: {
-        enHeading: ['var(--font-en-heading)', 'sans-serif'],
-        enBody:    ['var(--font-en-body)', 'sans-serif'],
-        ar:        ['var(--font-ar)', 'sans-serif'],
+        enHeading: ['var(--font-en-heading)', 'Inter', 'sans-serif'],
+        enBody:    ['var(--font-en-body)', 'Inter', 'sans-serif'],
+        ar:        ['var(--font-ar)', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        'glow-accent':    '0 4px 14px 0 rgba(86, 155, 170, 0.25)',
-        'glow-accent-sm': '0 2px 8px 0 rgba(86, 155, 170, 0.15)',
-        'glow-accent-lg': '0 10px 30px 0 rgba(86, 155, 170, 0.3)',
+        'glow-accent':    '0 4px 14px 0 rgba(37, 99, 235, 0.3)',
+        'glow-accent-sm': '0 2px 8px 0 rgba(37, 99, 235, 0.15)',
+        'glow-accent-lg': '0 10px 30px 0 rgba(37, 99, 235, 0.4)',
       },
       keyframes: {
         scanline: {

@@ -32,7 +32,7 @@ export default function SolutionsSection() {
             const Icon = LucideIcons[solution.icon as keyof typeof LucideIcons] as React.ElementType;
             return (
               <Reveal key={solution.id} delay={0.2 + (index * 0.1)} direction="up">
-                <div className="border border-brand-secondary bg-brand-primary/80 p-8 hover:border-brand-accent/50 transition-colors duration-300 group relative h-full rounded-md">
+                <div className="border border-brand-secondary bg-brand-primary/80 p-8 hover:border-brand-accent/50 transition-colors duration-300 group relative h-full rounded-md cursor-pointer">
                   <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-brand-accent/0 to-transparent group-hover:via-brand-accent/50 transition-all duration-500 rounded-t-md"></div>
                   {Icon && (
                     <div className="bg-brand-accent/10 w-12 h-12 rounded-full flex items-center justify-center mb-6 group-hover:bg-brand-accent/20 transition-colors">

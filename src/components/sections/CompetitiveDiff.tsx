@@ -4,18 +4,19 @@ import React from 'react';
 import Translate from '@/components/ui/Translate';
 import Reveal from '@/components/ui/Reveal';
 import SectionBadge from '@/components/ui/SectionBadge';
+import { X, Check } from 'lucide-react';
 
 const oldWayPoints = [
-  { id: 'ow-1', en: '✗ Heavy capital expenditure on hardware', ar: '✗ نفقات رأسمالية باهظة على المعدات' },
-  { id: 'ow-2', en: '✗ Expensive civil works and cabling',         ar: '✗ أعمال مدنية وتمديد كابلات مكلفة' },
-  { id: 'ow-3', en: '✗ Ongoing maintenance fees and downtime',    ar: '✗ رسوم صيانة مستمرة وفترات توقف' },
-  { id: 'ow-4', en: '✗ Revenue loss during installation', ar: '✗ خسارة إيرادات أثناء فترة التركيب' },
+  { id: 'ow-1', en: 'Heavy capital expenditure on hardware', ar: 'نفقات رأسمالية باهظة على المعدات' },
+  { id: 'ow-2', en: 'Expensive civil works and cabling',         ar: 'أعمال مدنية وتمديد كابلات مكلفة' },
+  { id: 'ow-3', en: 'Ongoing maintenance fees and downtime',    ar: 'رسوم صيانة مستمرة وفترات توقف' },
+  { id: 'ow-4', en: 'Revenue loss during installation', ar: 'خسارة إيرادات أثناء فترة التركيب' },
 ];
 
 const irkenWayPoints = [
-  { id: 'iw-1', en: '✓ Asset-light integration — Zero CapEx', ar: '✓ تكامل برمجي مرن — بدون نفقات رأسمالية' },
-  { id: 'iw-2', en: '✓ Plug into existing barrier gates & cameras',  ar: '✓ ربط مباشر مع البوابات والكاميرات الحالية' },
-  { id: 'iw-3', en: '✓ Maximize yield from day one',       ar: '✓ تعظيم العوائد من اليوم الأول' },
+  { id: 'iw-1', en: 'Asset-light integration — Zero CapEx', ar: 'تكامل برمجي مرن — بدون نفقات رأسمالية' },
+  { id: 'iw-2', en: 'Plug into existing barrier gates & cameras',  ar: 'ربط مباشر مع البوابات والكاميرات الحالية' },
+  { id: 'iw-3', en: 'Maximize yield from day one',       ar: 'تعظيم العوائد من اليوم الأول' },
 ];
 
 export default function CompetitiveDiff() {
@@ -44,7 +45,7 @@ export default function CompetitiveDiff() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
             {/* Old Way */}
-            <div className="border border-brand-secondary bg-brand-primary/40 p-10 relative opacity-70 hover:opacity-80 transition-opacity duration-300 rounded-md">
+            <div className="border border-brand-secondary bg-brand-primary/40 p-10 relative opacity-70 hover:opacity-80 transition-opacity duration-300 rounded-md cursor-pointer">
               <div className="text-[10px] font-enHeading tracking-[0.2em] uppercase text-text-secondary mb-6 border border-brand-secondary inline-block px-3 py-1 rounded-md">
                 <Translate en="The Old Way" ar="الطريقة القديمة" />
               </div>
@@ -60,6 +61,7 @@ export default function CompetitiveDiff() {
               <ul className="flex flex-col gap-3" role="list">
                 {oldWayPoints.map((pt) => (
                   <li key={pt.id} className="text-sm text-text-secondary font-enBody flex items-start gap-2">
+                    <X className="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" strokeWidth={2} aria-hidden="true" />
                     <Translate en={pt.en} ar={pt.ar} />
                   </li>
                 ))}
@@ -67,7 +69,7 @@ export default function CompetitiveDiff() {
             </div>
 
             {/* Irken Way */}
-            <div className="border border-brand-accent bg-brand-primary/90 p-10 relative shadow-glow-accent rounded-md">
+            <div className="border border-brand-accent bg-brand-primary/90 p-10 relative shadow-glow-accent rounded-md cursor-pointer">
               {/* Cyan top bar */}
               <div className="absolute top-0 inset-x-0 h-[2px] bg-brand-accent shadow-glow-accent-sm rounded-t-md" aria-hidden="true" />
 
@@ -86,6 +88,7 @@ export default function CompetitiveDiff() {
               <ul className="flex flex-col gap-3" role="list">
                 {irkenWayPoints.map((pt) => (
                   <li key={pt.id} className="text-sm text-brand-accent font-enBody flex items-start gap-2">
+                    <Check className="w-4 h-4 text-brand-accent flex-shrink-0 mt-0.5" strokeWidth={2} aria-hidden="true" />
                     <Translate en={pt.en} ar={pt.ar} />
                   </li>
                 ))}
