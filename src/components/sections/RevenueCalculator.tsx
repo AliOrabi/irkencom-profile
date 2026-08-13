@@ -3,9 +3,11 @@
 import React, { useState } from 'react';
 import Translate from '@/components/ui/Translate';
 import { useLanguage } from '@/components/providers/LanguageProvider';
+import { usePostHog } from 'posthog-js/react';
 
 export default function RevenueCalculator() {
   const { language } = useLanguage();
+  const posthog = usePostHog();
   
   const [spots, setSpots] = useState(100);
   const [ticketPrice, setTicketPrice] = useState(20);
@@ -45,6 +47,13 @@ export default function RevenueCalculator() {
         projectedRevenueIncrease: revenueIncrease
       })
     }).catch(console.error);
+
+    posthog?.capture('calculator_used', { 
+      spots, 
+      ticket_price: ticketPrice, 
+      occupancy,
+      projected_increase: revenueIncrease 
+    });
 
     setSubmitted(true);
   };

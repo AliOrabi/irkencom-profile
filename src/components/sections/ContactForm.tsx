@@ -2,6 +2,7 @@
 
 import React, { useState, useId } from 'react';
 import Translate from '@/components/ui/Translate';
+import { usePostHog } from 'posthog-js/react';
 
 // ── Types ──────────────────────────────────────────────────────────────────
 type SubmitStatus = 'idle' | 'submitting' | 'success' | 'error';
@@ -49,6 +50,7 @@ const labelClass =
 
 export default function ContactForm() {
   const uid    = useId();
+  const posthog = usePostHog();
   const [status, setStatus] = useState<SubmitStatus>('idle');
   const [data, setData]     = useState<ContactFormData>({ name: '', email: '', inquiry: '', message: '' });
   const [errors, setErrors] = useState<Partial<ContactFormData>>({});
@@ -84,6 +86,7 @@ export default function ContactForm() {
           ...data
         })
       });
+      posthog?.capture('form_submission', { form_id: 'contact_form', inquiry_type: data.inquiry });
       setStatus('success');
     } catch (error) {
       console.error('Submission failed', error);

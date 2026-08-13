@@ -6,9 +6,11 @@ import { useLanguage } from '@/components/providers/LanguageProvider';
 import Translate from '@/components/ui/Translate';
 import { mainNav } from '@/config/navigation';
 import { PrimaryButton } from '@/components/ui/Buttons';
+import { usePostHog } from 'posthog-js/react';
 
 export default function Header() {
   const { language, toggleLanguage } = useLanguage();
+  const posthog = usePostHog();
   const [scrolled, setScrolled]     = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -59,6 +61,7 @@ export default function Header() {
 
           {/* ── Logo ────────────────────────────────────────────────────── */}
           <Link href="/" aria-label="Irken Solutions — Home" className="flex items-center shrink-0">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/newiRkenLogo.png"
               alt="Irken Solutions"
@@ -129,7 +132,11 @@ export default function Header() {
           <div className="hidden lg:flex items-center gap-5">
             {/* Language toggle */}
             <button
-              onClick={toggleLanguage}
+              onClick={() => {
+                const newLocale = language === 'en' ? 'ar' : 'en';
+                toggleLanguage();
+                posthog?.capture('language_changed', { new_locale: newLocale });
+              }}
               className="text-text-secondary hover:text-brand-accent transition-colors flex items-center gap-1.5 text-[11px] font-enHeading tracking-widest uppercase min-h-[44px] min-w-[44px] justify-center"
               aria-label={`Switch to ${language === 'en' ? 'Arabic' : 'English'}`}
             >
@@ -184,6 +191,7 @@ export default function Header() {
         {/* Top bar (matches header height) */}
         <div className="flex items-center justify-between px-6 h-18 md:h-20 shrink-0 border-b border-brand-secondary relative z-10">
           <Link href="/" onClick={() => setMobileOpen(false)} aria-label="Irken Solutions — Home">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/newiRkenLogo.png" alt="Irken Solutions" className="h-7 md:h-9 w-auto" />
           </Link>
           <button
@@ -234,7 +242,12 @@ export default function Header() {
         {/* Bottom actions */}
         <div className="px-6 pb-10 pt-6 border-t border-brand-secondary flex flex-col gap-4 relative z-10">
           <button
-            onClick={() => { toggleLanguage(); setMobileOpen(false); }}
+            onClick={() => { 
+              const newLocale = language === 'en' ? 'ar' : 'en';
+              toggleLanguage(); 
+              posthog?.capture('language_changed', { new_locale: newLocale });
+              setMobileOpen(false); 
+            }}
             className="flex items-center gap-2 text-sm font-enHeading text-text-secondary hover:text-brand-accent transition-colors uppercase tracking-widest min-h-[44px]"
             aria-label={`Switch to ${language === 'en' ? 'Arabic' : 'English'}`}
           >

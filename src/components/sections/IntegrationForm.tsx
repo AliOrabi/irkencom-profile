@@ -5,6 +5,7 @@ import Translate from '@/components/ui/Translate';
 import Reveal from '@/components/ui/Reveal';
 import SectionBadge from '@/components/ui/SectionBadge';
 import { PrimaryButton } from '@/components/ui/Buttons';
+import { usePostHog } from 'posthog-js/react';
 
 type FieldState = 'idle' | 'success' | 'error';
 
@@ -28,6 +29,7 @@ const ROLES = [
 
 export default function IntegrationForm() {
   const formId = useId();
+  const posthog = usePostHog();
   const [state, setState]   = useState<FieldState>('idle');
   const [data, setData]     = useState<FormData>({ name: '', company: '', role: '', email: '', phone: '', spaces: '' });
   const [errors, setErrors] = useState<Partial<FormData>>({});
@@ -71,6 +73,7 @@ export default function IntegrationForm() {
       });
 
       if (res.ok) {
+        posthog?.capture('form_submission', { form_id: 'integration_form', role: data.role });
         setState('success');
         return;
       }

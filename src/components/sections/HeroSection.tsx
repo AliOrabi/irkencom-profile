@@ -1,13 +1,14 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 import Translate from '@/components/ui/Translate';
 import Reveal from '@/components/ui/Reveal';
 import DashboardShowcase from '@/components/sections/DashboardShowcase';
 import { PrimaryButton, GhostButton } from '@/components/ui/Buttons';
+import { usePostHog } from 'posthog-js/react';
 
 export default function HeroSection() {
+  const posthog = usePostHog();
   return (
     <section
       id="hero"
@@ -89,12 +90,14 @@ export default function HeroSection() {
                 en="Calculate Your Revenue"
                 ar="احسب أرباحك المحتملة"
                 href="#integration"
+                onClick={() => posthog?.capture('cta_clicked', { cta_name: 'Calculate Your Revenue', location: 'Hero' })}
                 aria-describedby="hero-headline"
               />
               <GhostButton
                 en="See How It Works"
                 ar="اكتشف كيف يعمل"
                 href="#platform"
+                onClick={() => posthog?.capture('cta_clicked', { cta_name: 'See How It Works', location: 'Hero' })}
               />
             </div>
           </Reveal>

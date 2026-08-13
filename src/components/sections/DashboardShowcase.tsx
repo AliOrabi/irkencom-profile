@@ -5,8 +5,6 @@ import Translate from '@/components/ui/Translate';
 
 export default function DashboardShowcase() {
   const [activeBookings, setActiveBookings] = useState(843);
-  const [load, setLoad] = useState(67.44);
-  
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveBookings(prev => {
@@ -17,9 +15,7 @@ export default function DashboardShowcase() {
     return () => clearInterval(interval);
   }, []);
 
-  useEffect(() => {
-    setLoad(Number(((activeBookings / 1250) * 100).toFixed(2)));
-  }, [activeBookings]);
+  const load = Number(((activeBookings / 1250) * 100).toFixed(2));
 
   return (
     <div className="relative z-10 w-full max-w-lg mx-auto">
@@ -28,6 +24,7 @@ export default function DashboardShowcase() {
       
       {/* Main Card */}
       <div className="relative border border-brand-accent bg-[#0a1120] shadow-glow-accent-sm overflow-hidden p-8 border-l-4 border-l-brand-accent rounded-md">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/newiRkenLogo.png" alt="" className="absolute -bottom-[10%] -right-[5%] w-[150px] opacity-[0.03] pointer-events-none" />
         
         {/* Header */}

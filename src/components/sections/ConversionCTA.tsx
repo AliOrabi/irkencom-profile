@@ -1,7 +1,10 @@
+'use client';
+
 import React from 'react';
 import Translate from '@/components/ui/Translate';
 import Reveal from '@/components/ui/Reveal';
 import Link from 'next/link';
+import { usePostHog } from 'posthog-js/react';
 
 interface ConversionCTAProps {
   titleEn: string;
@@ -22,6 +25,7 @@ export default function ConversionCTA({
   primaryButtonTextAr = "صمم حلك",
   primaryButtonHref = "/contact"
 }: ConversionCTAProps) {
+  const posthog = usePostHog();
   return (
     <section className="py-24 bg-brand-primary border-y border-brand-secondary relative overflow-hidden">
       <div className="absolute top-0 inset-x-0 h-[1px] bg-brand-accent/20"></div>
@@ -37,7 +41,11 @@ export default function ConversionCTA({
             <Translate en={descriptionEn} ar={descriptionAr} />
           </p>
           <div>
-            <Link href={primaryButtonHref} className="inline-block px-8 py-4 bg-transparent border border-brand-accent text-brand-accent font-enHeading text-sm uppercase tracking-[2px] hover:bg-brand-accent hover:text-brand-primary transition-all duration-300 hover:shadow-glow-accent relative overflow-hidden group rounded-md">
+            <Link 
+              href={primaryButtonHref} 
+              onClick={() => posthog?.capture('cta_clicked', { cta_name: primaryButtonTextEn })}
+              className="inline-block px-8 py-4 bg-transparent border border-brand-accent text-brand-accent font-enHeading text-sm uppercase tracking-[2px] hover:bg-brand-accent hover:text-brand-primary transition-all duration-300 hover:shadow-glow-accent relative overflow-hidden group rounded-md"
+            >
               <span className="relative z-10"><Translate en={primaryButtonTextEn} ar={primaryButtonTextAr} /></span>
               <div className="absolute inset-0 bg-brand-accent scale-x-0 group-hover:scale-x-100 transition-transform origin-left rtl:origin-right duration-300 z-0"></div>
             </Link>

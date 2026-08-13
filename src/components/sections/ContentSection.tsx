@@ -10,7 +10,6 @@ interface ContentSectionProps {
   contentAr: React.ReactNode;
   imageSrc?: string;
   imageAltEn?: string;
-  imageAltAr?: string;
   imagePosition?: 'left' | 'right';
   className?: string;
 }
@@ -22,7 +21,6 @@ export default function ContentSection({
   contentAr,
   imageSrc,
   imageAltEn = "",
-  imageAltAr = "",
   imagePosition = 'right',
   className = ''
 }: ContentSectionProps) {

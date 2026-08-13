@@ -2,9 +2,11 @@
 
 import React, { useState } from 'react';
 import Translate from '@/components/ui/Translate';
+import { usePostHog } from 'posthog-js/react';
 
 export default function PartnerForm() {
   const [submitted, setSubmitted] = useState(false);
+  const posthog = usePostHog();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -20,6 +22,7 @@ export default function PartnerForm() {
           ...data
         })
       });
+      posthog?.capture('form_submission', { form_id: 'partner_form', company: data.company });
       setSubmitted(true);
     } catch (error) {
       console.error("Failed to submit", error);

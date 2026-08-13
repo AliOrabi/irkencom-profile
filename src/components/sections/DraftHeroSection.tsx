@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 import Translate from '@/components/ui/Translate';
 import Reveal from '@/components/ui/Reveal';
 import { PrimaryButton, GhostButton } from '@/components/ui/Buttons';

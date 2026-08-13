@@ -13,9 +13,9 @@ export default function CookieConsent() {
     // Check if consent has already been answered
     const consent = localStorage.getItem('irken_cookie_consent');
     if (consent === null) {
-      setShowBanner(true);
+      setTimeout(() => setShowBanner(true), 0);
     } else if (consent === 'true') {
-      setConsentGiven(true);
+      setTimeout(() => setConsentGiven(true), 0);
     }
   }, []);
 

@@ -29,6 +29,7 @@ export default function Footer() {
 
           {/* Brand column */}
           <div className="lg:col-span-4">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/newiRkenLogo.png" alt="Irken Solutions" className="h-10 w-auto mb-6" />
             <p className="text-sm text-text-secondary leading-relaxed max-w-[300px] mb-6">
               <Translate

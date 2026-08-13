@@ -22,8 +22,8 @@ export default function LanguageProvider({ children }: { children: React.ReactNo
 
   useEffect(() => {
     const saved = localStorage.getItem('app-lang') as Language;
-    if (saved) setLanguage(saved);
-    setMounted(true);
+    if (saved) setTimeout(() => setLanguage(saved), 0);
+    setTimeout(() => setMounted(true), 0);
   }, []);
 
   useEffect(() => {

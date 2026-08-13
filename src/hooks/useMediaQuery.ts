@@ -12,12 +12,12 @@ export function useMediaQuery(query: string, defaultValue = false): boolean {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    setTimeout(() => setMounted(true), 0);
     const media = window.matchMedia(query);
     
     // Set the initial value
     if (media.matches !== matches) {
-      setMatches(media.matches);
+      setTimeout(() => setMatches(media.matches), 0);
     }
 
     // Listener function
