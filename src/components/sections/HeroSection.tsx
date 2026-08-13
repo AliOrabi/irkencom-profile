@@ -89,7 +89,7 @@ export default function HeroSection() {
               <PrimaryButton
                 en="Calculate Your Revenue"
                 ar="احسب أرباحك المحتملة"
-                href="#integration"
+                href="/calculator"
                 onClick={() => posthog?.capture('cta_clicked', { cta_name: 'Calculate Your Revenue', location: 'Hero' })}
                 aria-describedby="hero-headline"
               />

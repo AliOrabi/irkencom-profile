@@ -24,9 +24,15 @@ export const mainNav: NavItem[] = [
     order: 1,
   },
   {
+    id: 'nav-solutions',
+    label: { en: 'Solutions', ar: 'الحلول' },
+    href: '/solutions',
+    order: 2,
+  },
+  {
     id: 'nav-services',
     label: { en: 'Services ▾', ar: 'الخدمات ▾' },
-    order: 2,
+    order: 3,
     subItems: [
       { id: 'sub-parking', label: { en: 'Parking Management', ar: 'إدارة المواقف' }, href: '/services/parking-management', order: 1 },
       { id: 'sub-access', label: { en: 'Access Control Systems', ar: 'أنظمة التحكم بالوصول' }, href: '/services/access-control', order: 2 },
@@ -34,28 +40,30 @@ export const mainNav: NavItem[] = [
     ]
   },
   {
-    id: 'nav-providers',
-    label: { en: 'Service Providers ▾', ar: 'مزودي الخدمات ▾' },
-    order: 3,
-    subItems: [
-      { id: 'sub-reservation', label: { en: 'Online Parking Reservation', ar: 'نظام الحجز الإلكتروني' }, href: '/providers/reservation', order: 1 },
-      { id: 'sub-attendant', label: { en: 'Attendant Management System', ar: 'نظام إدارة موظفي المواقف' }, href: '/providers/attendant-mgmt', order: 2 },
-      { id: 'sub-epay', label: { en: 'ePayment', ar: 'الدفع الإلكتروني' }, href: '/providers/epayment', order: 3 },
-    ]
+    id: 'nav-calculator',
+    label: { en: 'Calculator', ar: 'حاسبة العائد' },
+    href: '/calculator',
+    order: 4,
+  },
+  {
+    id: 'nav-insights',
+    label: { en: 'Insights', ar: 'الرؤى' },
+    href: '/insights',
+    order: 5,
   },
   {
     id: 'nav-company',
     label: { en: 'Company ▾', ar: 'الشركة ▾' },
-    order: 4,
+    order: 6,
     subItems: [
-      { id: 'sub-about', label: { en: 'About Us', ar: 'من نحن' }, href: '/company/about', order: 1 },
+      { id: 'sub-about', label: { en: 'About Us', ar: 'من نحن' }, href: '/about', order: 1 },
     ]
   },
   {
     id: 'nav-contact',
     label: { en: 'Contact Us', ar: 'اتصل بنا' },
     href: '/contact',
-    order: 5,
+    order: 7,
   }
 ];
 

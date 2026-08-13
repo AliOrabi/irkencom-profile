@@ -8,6 +8,7 @@ import CaseStudies from '@/components/sections/CaseStudies';
 import HowItWorks from '@/components/sections/HowItWorks';
 import SolutionsSection from '@/components/sections/SolutionsSection';
 import CompetitiveDiff from '@/components/sections/CompetitiveDiff';
+import BlogPreview from '@/components/sections/BlogPreview';
 import IntegrationForm from '@/components/sections/IntegrationForm';
 
 export default function Home() {
@@ -23,6 +24,7 @@ export default function Home() {
       <HowItWorks />
       <SolutionsSection />
       <CompetitiveDiff />
+      <BlogPreview />
       <IntegrationForm />
     </>
   );

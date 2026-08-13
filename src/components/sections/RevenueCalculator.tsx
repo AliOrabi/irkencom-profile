@@ -133,8 +133,14 @@ export default function RevenueCalculator() {
                  <p className="text-sm font-enHeading tracking-[0.1em] text-text-secondary uppercase mb-2">
                    <Translate en="Potential Monthly Revenue Increase" ar="الزيادة الشهرية المحتملة في الإيرادات" />
                  </p>
-                 <div className="text-4xl md:text-5xl font-mono font-bold text-brand-accent">
+                 <div className="text-4xl md:text-5xl font-mono font-bold text-brand-accent mb-4">
                    +{Math.round(revenueIncrease).toLocaleString()} <span className="text-2xl text-text-secondary"><Translate en="EGP" ar="ج.م" /></span>
+                 </div>
+                 <div className="p-4 bg-brand-primary/50 border border-brand-accent/20 rounded-md text-text-primary text-sm">
+                    <Translate 
+                      en={`With Irken's dynamic pricing and +30% occupancy boost, a ${spots}-space lot generates an extra ${Math.round(revenueIncrease).toLocaleString()} EGP every month.`} 
+                      ar={`بفضل نظام التسعير الديناميكي من إركن وزيادة الإشغال بنسبة 30%، يحقق الموقف الذي يتسع لـ ${spots} سيارة أرباحاً إضافية تبلغ ${Math.round(revenueIncrease).toLocaleString()} جنيه شهرياً.`} 
+                    />
                  </div>
               </div>
               
