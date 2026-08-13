@@ -37,24 +37,19 @@ export const mainNav: NavItem[] = [
       { id: 'sub-parking', label: { en: 'Parking Management', ar: 'إدارة المواقف' }, href: '/services/parking-management', order: 1 },
       { id: 'sub-access', label: { en: 'Access Control Systems', ar: 'أنظمة التحكم بالوصول' }, href: '/services/access-control', order: 2 },
       { id: 'sub-lpr', label: { en: 'License Plate Recognition', ar: 'أنظمة التعرف على اللوحات' }, href: '/services/lpr', order: 3 },
+      { id: 'sub-calculator', label: { en: 'ROI Calculator', ar: 'حاسبة العائد' }, href: '/services/parking-management/calculate', order: 4 },
     ]
-  },
-  {
-    id: 'nav-calculator',
-    label: { en: 'Calculator', ar: 'حاسبة العائد' },
-    href: '/calculator',
-    order: 4,
   },
   {
     id: 'nav-insights',
     label: { en: 'Insights', ar: 'الرؤى' },
     href: '/insights',
-    order: 5,
+    order: 4,
   },
   {
     id: 'nav-company',
     label: { en: 'Company ▾', ar: 'الشركة ▾' },
-    order: 6,
+    order: 5,
     subItems: [
       { id: 'sub-about', label: { en: 'About Us', ar: 'من نحن' }, href: '/about', order: 1 },
     ]
@@ -63,7 +58,7 @@ export const mainNav: NavItem[] = [
     id: 'nav-contact',
     label: { en: 'Contact Us', ar: 'اتصل بنا' },
     href: '/contact',
-    order: 7,
+    order: 6,
   }
 ];
 

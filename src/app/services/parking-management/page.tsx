@@ -52,6 +52,9 @@ export default function ParkingManagementPage() {
         titleAr="تحكم في إيراداتك"
         descriptionEn="See the platform in action and calculate the revenue uplift for your facilities."
         descriptionAr="شاهد المنصة أثناء العمل واحسب الزيادة المحتملة في إيرادات منشآتك."
+        primaryButtonTextEn="Calculate Revenue Uplift"
+        primaryButtonTextAr="احسب زيادة الإيرادات"
+        primaryButtonHref="/services/parking-management/calculate"
       />
     </main>
   );
