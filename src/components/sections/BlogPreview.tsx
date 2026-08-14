@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { blogPosts } from '@/lib/blog-data';
 import Translate from '@/components/ui/Translate';
 import Reveal from '@/components/ui/Reveal';
@@ -18,20 +19,26 @@ export default function BlogPreview() {
         
         {/* Header */}
         <Reveal direction="up" delay={0.05}>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
             <div className="max-w-2xl">
-              <SectionBadge en="Latest Insights" ar="أحدث الرؤى" />
+              <SectionBadge en="Our Insights" ar="رؤيتنا" />
               <h2 className="text-3xl md:text-4xl font-bold font-enHeading text-text-primary mb-4">
-                <Translate en="News from the forefront of PropTech." ar="أخبار من طليعة تكنولوجيا العقارات." />
+                <Translate en="Latest from IRKEN" ar="آخر أخبار ورؤى إركن" />
               </h2>
+              <p className="text-text-secondary text-base">
+                <Translate 
+                  en="Perspectives on smart mobility, parking infrastructure, and IoT innovation." 
+                  ar="وجهات نظر حول التنقل الذكي، البنية التحتية للمواقف، والابتكار في إنترنت الأشياء." 
+                />
+              </p>
             </div>
             
             <Link 
               href="/insights"
-              className="inline-flex items-center gap-2 text-sm font-enHeading text-brand-accent hover:text-brand-accent-hover transition-colors whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent px-1 rounded-sm"
+              className="inline-flex items-center text-sm font-enHeading text-brand-accent hover:underline uppercase tracking-[0.1em] font-medium"
             >
-              <Translate en="View All Articles" ar="عرض كل المقالات" />
-              <ArrowRight className="w-4 h-4 rtl:-scale-x-100" />
+              <Translate en="View all insights" ar="عرض كل الرؤى" />
+              <ArrowRight className="w-4 h-4 ltr:ml-2 rtl:mr-2 rtl:rotate-180" />
             </Link>
           </div>
         </Reveal>
@@ -45,11 +52,13 @@ export default function BlogPreview() {
                 className="group flex flex-col h-full border border-brand-secondary bg-brand-primary/80 rounded-md overflow-hidden hover:border-brand-accent/50 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent"
               >
                 {/* Image */}
-                <div className="aspect-[16/9] w-full overflow-hidden bg-brand-secondary/50">
-                  <img 
+                <div className="aspect-[16/9] w-full overflow-hidden bg-brand-secondary/50 relative">
+                  <Image 
                     src={post.imageUrl} 
                     alt={post.title.en}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    unoptimized
                   />
                 </div>
                 

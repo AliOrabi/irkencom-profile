@@ -6,8 +6,11 @@ import Translate from '@/components/ui/Translate';
 import Reveal from '@/components/ui/Reveal';
 import { ArrowLeft, Calendar, Tag } from 'lucide-react';
 
-export default function InsightPostPage({ params }: { params: { slug: string } }) {
-  const post = blogPosts.find((p) => p.slug === params.slug);
+import Image from 'next/image';
+
+export default async function InsightPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = blogPosts.find((p) => p.slug === slug);
 
   if (!post) {
     notFound();
@@ -50,11 +53,13 @@ export default function InsightPostPage({ params }: { params: { slug: string } }
 
         {/* Featured Image */}
         <Reveal direction="up" delay={0.15}>
-          <div className="aspect-[16/9] w-full rounded-md overflow-hidden mb-12 shadow-lg border border-brand-secondary/50">
-            <img 
+          <div className="aspect-[16/9] w-full rounded-md overflow-hidden mb-12 shadow-lg border border-brand-secondary/50 relative">
+            <Image 
               src={post.imageUrl} 
               alt={post.title.en}
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
+              unoptimized
             />
           </div>
         </Reveal>

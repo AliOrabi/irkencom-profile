@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { blogPosts } from '@/lib/blog-data';
 import Translate from '@/components/ui/Translate';
 import Reveal from '@/components/ui/Reveal';
@@ -36,11 +37,13 @@ export default function InsightsPage() {
                 className="group flex flex-col h-full border border-brand-secondary bg-brand-primary/80 rounded-md overflow-hidden hover:border-brand-accent/50 transition-all duration-300 relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent"
               >
                 {/* Image */}
-                <div className="aspect-[16/9] w-full overflow-hidden bg-brand-secondary/50">
-                  <img 
+                <div className="aspect-[16/9] w-full overflow-hidden bg-brand-secondary/50 relative">
+                  <Image 
                     src={post.imageUrl} 
                     alt={post.title.en}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    unoptimized
                   />
                 </div>
                 
