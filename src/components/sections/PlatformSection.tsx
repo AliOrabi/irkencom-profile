@@ -80,7 +80,7 @@ export default function PlatformSection() {
             {steps.map((step, i) => (
               <li
                 key={step.id}
-                role="article"
+                role="listitem"
                 className="group relative border border-brand-secondary bg-brand-primary/80 p-8 flex flex-col hover:border-brand-accent/60 transition-all duration-300 cursor-default rounded-md"
               >
                 {/* Top-edge cyan bar — slides in on hover */}

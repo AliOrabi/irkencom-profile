@@ -126,7 +126,7 @@ export default function Footer() {
                 href="https://irken.eg"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block text-[11px] font-enHeading uppercase tracking-[0.15em] text-brand-accent hover:underline"
+                className="inline-block text-[11px] font-enHeading uppercase tracking-[0.15em] text-text-primary hover:text-brand-accent transition-colors hover:underline"
               >
                 Visit irken.eg ↗
               </a>

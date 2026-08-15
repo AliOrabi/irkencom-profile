@@ -87,7 +87,6 @@ export default function Header() {
                       className={navLinkClass}
                       aria-haspopup="true"
                       aria-expanded={activeDropdown === item.id}
-                      aria-label={`${item.label.en} submenu`}
                     >
                       <Translate en={item.label.en} ar={item.label.ar} />
                     </button>

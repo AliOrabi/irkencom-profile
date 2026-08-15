@@ -30,9 +30,9 @@ export default function DashboardShowcase() {
         {/* Header */}
         <div className="flex justify-between items-start border-b border-brand-secondary/50 pb-6 mb-6">
           <div>
-            <h3 className="font-enHeading text-xl text-white mb-1">
+            <h2 className="font-enHeading text-xl text-white mb-1">
               <Translate en="Systemic Yield Engine" ar="محرك العوائد المنهجي" />
-            </h3>
+            </h2>
             <div className="text-xs font-mono text-text-secondary">
               IRKEN.CORE_NODE_01
             </div>

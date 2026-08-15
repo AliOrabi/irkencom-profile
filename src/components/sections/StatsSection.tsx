@@ -84,6 +84,7 @@ export default function StatsSection() {
             {stats.map((stat) => (
               <div
                 key={stat.id}
+                role="listitem"
                 className="group bg-brand-primary p-8 lg:p-10 flex flex-col border border-brand-secondary hover:border-brand-accent/40 transition-all duration-300 relative"
               >
                 {/* Top accent bar */}
