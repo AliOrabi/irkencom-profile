@@ -30,9 +30,15 @@ export const mainNav: NavItem[] = [
     order: 2,
   },
   {
+    id: 'nav-pricing',
+    label: { en: 'Pricing', ar: 'الأسعار' },
+    href: '/pricing',
+    order: 3,
+  },
+  {
     id: 'nav-services',
     label: { en: 'Services ▾', ar: 'الخدمات ▾' },
-    order: 3,
+    order: 4,
     subItems: [
       { id: 'sub-parking', label: { en: 'Parking Management', ar: 'إدارة المواقف' }, href: '/services/parking-management', order: 1 },
       { id: 'sub-access', label: { en: 'Access Control Systems', ar: 'أنظمة التحكم بالوصول' }, href: '/services/access-control', order: 2 },
@@ -67,6 +73,7 @@ export const footerNav = {
     { id: 'f-plat-1', label: { en: 'Urban Mobility Ecosystem', ar: 'نظام التنقل الحضري' }, href: '#mobility', order: 1 },
     { id: 'f-plat-2', label: { en: 'Dynamic Capacity Engine', ar: 'محرك السعة الديناميكي' }, href: '#platform', order: 2 },
     { id: 'f-plat-3', label: { en: 'Operator Terminal', ar: 'لوحة المشغلين' }, href: '#platform', order: 3 },
+    { id: 'f-plat-4', label: { en: 'Pricing', ar: 'الأسعار' }, href: '/pricing', order: 4 },
   ] as NavItem[],
   corporate: [
     { id: 'f-corp-1', label: { en: 'Contact Us', ar: 'تواصل معنا' }, href: '/contact', order: 1 },

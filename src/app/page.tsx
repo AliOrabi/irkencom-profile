@@ -10,21 +10,27 @@ import SolutionsSection from '@/components/sections/SolutionsSection';
 import CompetitiveDiff from '@/components/sections/CompetitiveDiff';
 import BlogPreview from '@/components/sections/BlogPreview';
 import IntegrationForm from '@/components/sections/IntegrationForm';
+import ClientLogosPlaceholder from '@/components/sections/ClientLogosPlaceholder';
+import TestimonialsPlaceholder from '@/components/sections/TestimonialsPlaceholder';
+import CertificationsPlaceholder from '@/components/sections/CertificationsPlaceholder';
 
 export default function Home() {
   return (
     <>
       <HeroSection />
       <Ticker />
+      <ClientLogosPlaceholder />
       <PlatformSection />
       <MobilitySection />
       <DualProductShowcase />
       <StatsSection />
+      <TestimonialsPlaceholder />
       <CaseStudies />
       <HowItWorks />
       <SolutionsSection />
       <CompetitiveDiff />
       <BlogPreview />
+      <CertificationsPlaceholder />
       <IntegrationForm />
     </>
   );

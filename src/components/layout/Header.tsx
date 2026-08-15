@@ -129,6 +129,15 @@ export default function Header() {
 
           {/* ── Desktop actions ──────────────────────────────────────────── */}
           <div className="hidden lg:flex items-center gap-5">
+            {/* Socials */}
+            <div className="flex items-center gap-4 border-r border-brand-secondary/50 pr-5" aria-label="Social media links">
+              <a href="https://linkedin.com/company/irken-solutions" target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-brand-accent transition-colors" aria-label="LinkedIn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" aria-hidden="true"><rect x="2" y="2" width="20" height="20" /><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect x="2" y="9" width="4" height="12" /><circle cx="4" cy="4" r="2" /></svg>
+              </a>
+              <a href="https://x.com/irken_solutions" target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-brand-accent transition-colors" aria-label="X (Twitter)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" aria-hidden="true"><path d="M4 4l11.733 16h4.267l-11.733 -16z" /><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" /></svg>
+              </a>
+            </div>
             {/* Language toggle */}
             <button
               onClick={() => {
@@ -240,21 +249,31 @@ export default function Header() {
 
         {/* Bottom actions */}
         <div className="px-6 pb-10 pt-6 border-t border-brand-secondary flex flex-col gap-4 relative z-10">
-          <button
-            onClick={() => { 
-              const newLocale = language === 'en' ? 'ar' : 'en';
-              toggleLanguage(); 
-              posthog?.capture('language_changed', { new_locale: newLocale });
-              setMobileOpen(false); 
-            }}
-            className="flex items-center gap-2 text-sm font-enHeading text-text-secondary hover:text-brand-accent transition-colors uppercase tracking-widest min-h-[44px]"
-            aria-label={`Switch to ${language === 'en' ? 'Arabic' : 'English'}`}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <circle cx="12" cy="12" r="10" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /><path d="M2 12h20" />
-            </svg>
-            {language === 'en' ? 'عربي' : 'English'}
-          </button>
+          <div className="flex items-center justify-between">
+            <button
+              onClick={() => { 
+                const newLocale = language === 'en' ? 'ar' : 'en';
+                toggleLanguage(); 
+                posthog?.capture('language_changed', { new_locale: newLocale });
+                setMobileOpen(false); 
+              }}
+              className="flex items-center gap-2 text-sm font-enHeading text-text-secondary hover:text-brand-accent transition-colors uppercase tracking-widest min-h-[44px]"
+              aria-label={`Switch to ${language === 'en' ? 'Arabic' : 'English'}`}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /><path d="M2 12h20" />
+              </svg>
+              {language === 'en' ? 'عربي' : 'English'}
+            </button>
+            <div className="flex items-center gap-4 text-text-secondary" aria-label="Social media links">
+              <a href="https://linkedin.com/company/irken-solutions" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors" aria-label="LinkedIn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" aria-hidden="true"><rect x="2" y="2" width="20" height="20" /><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect x="2" y="9" width="4" height="12" /><circle cx="4" cy="4" r="2" /></svg>
+              </a>
+              <a href="https://x.com/irken_solutions" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors" aria-label="X (Twitter)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" aria-hidden="true"><path d="M4 4l11.733 16h4.267l-11.733 -16z" /><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" /></svg>
+              </a>
+            </div>
+          </div>
           <PrimaryButton en="Request Demo" ar="طلب عرض" href="#integration" className="w-full justify-center py-4" />
         </div>
       </div>

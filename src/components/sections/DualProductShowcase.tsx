@@ -1,10 +1,11 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Translate from '@/components/ui/Translate';
 import Reveal from '@/components/ui/Reveal';
 import SectionBadge from '@/components/ui/SectionBadge';
-import { Smartphone, LayoutDashboard, ArrowRight, Car, BarChart3, Zap, Users, CreditCard, Shield } from 'lucide-react';
+import ProductDemoModal from '@/components/ui/ProductDemoModal';
+import { Smartphone, LayoutDashboard, ArrowRight, Car, BarChart3, Zap, Users, CreditCard, Shield, Play } from 'lucide-react';
 
 const driverFeatures = [
   {
@@ -49,6 +50,14 @@ const operatorFeatures = [
 ];
 
 export default function DualProductShowcase() {
+  const [isDemoOpen, setIsDemoOpen] = useState(false);
+  const [demoType, setDemoType] = useState<'driver' | 'operator' | null>(null);
+
+  const openDemo = (type: 'driver' | 'operator') => {
+    setDemoType(type);
+    setIsDemoOpen(true);
+  };
+
   return (
     <section
       id="products"
@@ -131,17 +140,27 @@ export default function DualProductShowcase() {
                 })}
               </ul>
 
-              {/* CTA */}
-              <a
-                href="https://irken.eg"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary w-full text-center group/cta"
-                aria-label="Visit irken.eg parking reservation platform"
-              >
-                <Translate en="Reserve Parking Now" ar="احجز موقفك الآن" />
-                <ArrowRight className="w-4 h-4 ltr:ml-2 rtl:mr-2 group-hover/cta:translate-x-1 rtl:group-hover/cta:-translate-x-1 transition-transform" strokeWidth={2} />
-              </a>
+              {/* CTAs */}
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a
+                  href="https://irken.eg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary flex-1 text-center group/cta"
+                  aria-label="Visit irken.eg parking reservation platform"
+                >
+                  <Translate en="Reserve Parking Now" ar="احجز موقفك الآن" />
+                  <ArrowRight className="w-4 h-4 ltr:ml-2 rtl:mr-2 group-hover/cta:translate-x-1 rtl:group-hover/cta:-translate-x-1 transition-transform" strokeWidth={2} />
+                </a>
+                <button
+                  onClick={() => openDemo('driver')}
+                  className="px-4 py-3 rounded-md font-medium text-sm transition-all duration-300 border border-brand-secondary text-text-primary hover:border-brand-accent/50 hover:bg-brand-secondary/20 flex items-center justify-center gap-2"
+                  aria-label="Watch Driver App Demo"
+                >
+                  <Play className="w-4 h-4 text-brand-accent" />
+                  <Translate en="Watch Demo" ar="شاهد العرض" />
+                </button>
+              </div>
             </div>
           </Reveal>
 
@@ -200,22 +219,37 @@ export default function DualProductShowcase() {
                 <Translate en="Free Tier Available" ar="باقة مجانية متاحة" />
               </div>
 
-              {/* CTA */}
-              <a
-                href="https://app.irken.com.eg"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary w-full text-center group/cta"
-                aria-label="Try the Irken operator dashboard"
-              >
-                <Translate en="Start Free — Try Dashboard" ar="ابدأ مجاناً — جرّب لوحة التحكم" />
-                <ArrowRight className="w-4 h-4 ltr:ml-2 rtl:mr-2 group-hover/cta:translate-x-1 rtl:group-hover/cta:-translate-x-1 transition-transform" strokeWidth={2} />
-              </a>
+              {/* CTAs */}
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a
+                  href="https://app.irken.com.eg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary flex-1 text-center group/cta"
+                  aria-label="Try the Irken operator dashboard"
+                >
+                  <Translate en="Start Free" ar="ابدأ مجاناً" />
+                  <ArrowRight className="w-4 h-4 ltr:ml-2 rtl:mr-2 group-hover/cta:translate-x-1 rtl:group-hover/cta:-translate-x-1 transition-transform" strokeWidth={2} />
+                </a>
+                <button
+                  onClick={() => openDemo('operator')}
+                  className="px-4 py-3 rounded-md font-medium text-sm transition-all duration-300 border border-brand-secondary text-text-primary hover:border-brand-accent/50 hover:bg-brand-secondary/20 flex items-center justify-center gap-2"
+                  aria-label="Watch Operator Dashboard Demo"
+                >
+                  <Play className="w-4 h-4 text-brand-accent" />
+                  <Translate en="Watch Demo" ar="شاهد العرض" />
+                </button>
+              </div>
             </div>
           </Reveal>
 
         </div>
       </div>
+      <ProductDemoModal 
+        isOpen={isDemoOpen} 
+        onClose={() => setIsDemoOpen(false)} 
+        productType={demoType} 
+      />
     </section>
   );
 }
