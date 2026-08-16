@@ -2,6 +2,7 @@ import React from 'react';
 import Translate from '@/components/ui/Translate';
 import Reveal from '@/components/ui/Reveal';
 import { Quote } from 'lucide-react';
+import { Icon } from '@/components/ui/Icon';
 
 export default function TestimonialsPlaceholder() {
   return (
@@ -14,7 +15,7 @@ export default function TestimonialsPlaceholder() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[1, 2, 3].map((i) => (
               <div key={i} className="p-8 rounded-2xl bg-[#0a111a] border border-brand-secondary flex flex-col items-center text-center">
-                <Quote className="w-8 h-8 text-brand-accent/50 mb-6" />
+                <Icon icon={Quote} className="w-8 h-8 text-brand-accent/50 mb-6" />
                 <p className="text-text-secondary mb-8 flex-1 italic">
                   <Translate 
                     en="Placeholder for a great review about how Irken increased parking revenue and solved operational headaches." 

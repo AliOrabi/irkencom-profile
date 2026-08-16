@@ -87,8 +87,8 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
-      <CSPostHogProvider>
-        <body className="font-arabic">
+      <body className="font-arabic">
+        <CSPostHogProvider>
           <LanguageProvider>
             <Header />
             <main>{children}</main>
@@ -97,8 +97,8 @@ export default function RootLayout({
             <FloatingCTA />
           </LanguageProvider>
           <Analytics />
-        </body>
-      </CSPostHogProvider>
+        </CSPostHogProvider>
+      </body>
     </html>
   );
 }

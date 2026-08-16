@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Translate from '@/components/ui/Translate';
 import { MessageCircle, X } from 'lucide-react';
+import { Icon } from '@/components/ui/Icon';
 import { usePostHog } from 'posthog-js/react';
 
 export default function FloatingCTA() {
@@ -60,19 +61,19 @@ export default function FloatingCTA() {
           {/* Dismiss button */}
           <button
             onClick={handleDismiss}
-            className="w-8 h-8 flex items-center justify-center bg-brand-secondary/80 backdrop-blur-sm text-text-secondary hover:text-text-primary border border-brand-secondary rounded-full transition-colors duration-200 cursor-pointer"
+            className="w-8 h-8 flex items-center justify-center bg-brand-secondary/80 backdrop-blur-sm text-text-secondary hover:text-text-primary border border-brand-secondary rounded-md transition-colors duration-200 cursor-pointer"
             aria-label="Dismiss floating button"
           >
-            <X className="w-3.5 h-3.5" strokeWidth={2} />
+            <Icon icon={X} className="w-3.5 h-3.5" />
           </button>
 
           {/* Main CTA button */}
           <button
             onClick={handleClick}
-            className="group relative flex items-center justify-center w-14 h-14 bg-brand-accent text-brand-on-accent rounded-full shadow-glow-accent hover:bg-brand-accent-hover transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-primary"
+            className="group relative flex items-center justify-center w-14 h-14 bg-brand-accent text-brand-on-accent rounded-md hover:shadow-glow-accent hover:bg-brand-accent-hover transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-primary"
           >
-            <MessageCircle className="w-6 h-6 flex-shrink-0" strokeWidth={1.5} />
-            <span className="absolute top-1/2 -translate-y-1/2 ltr:right-[calc(100%+12px)] rtl:left-[calc(100%+12px)] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap bg-brand-primary text-text-primary px-3 py-1.5 rounded-md text-sm font-enHeading pointer-events-none shadow-lg border border-brand-secondary/50">
+            <Icon icon={MessageCircle} className="w-6 h-6 flex-shrink-0" />
+            <span className="absolute top-1/2 -translate-y-1/2 ltr:right-[calc(100%+12px)] rtl:left-[calc(100%+12px)] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap bg-brand-primary text-text-primary px-3 py-1.5 rounded-md text-sm font-enHeading pointer-events-none border border-brand-secondary/50">
               <Translate en="Book a Demo" ar="احجز عرضاً توضيحياً" />
             </span>
           </button>

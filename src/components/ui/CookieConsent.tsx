@@ -65,7 +65,7 @@ export default function CookieConsent() {
       )}
 
       {showBanner && (
-        <div className="fixed bottom-0 left-0 right-0 z-50 p-4 border-t border-brand-secondary bg-brand-primary/95 backdrop-blur-md shadow-lg transform transition-transform duration-300">
+        <div className="fixed bottom-0 left-0 right-0 z-50 p-4 border-t border-brand-secondary bg-brand-primary/95 backdrop-blur-md transform transition-transform duration-300">
           <div className="max-w-[1280px] mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="text-sm text-text-secondary flex-1">
               <Translate 

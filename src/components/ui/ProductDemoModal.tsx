@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { X } from 'lucide-react';
+import { Icon } from '@/components/ui/Icon';
 import Translate from '@/components/ui/Translate';
 import posthog from 'posthog-js';
 
@@ -52,7 +53,7 @@ export default function ProductDemoModal({ isOpen, onClose, productType }: Produ
   return createPortal(
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6" aria-modal="true" role="dialog">
       <div className="absolute inset-0 bg-brand-primary/90 backdrop-blur-sm" onClick={handleClose} aria-hidden="true" />
-      <div className="relative w-full max-w-5xl bg-brand-primary border border-brand-secondary rounded-xl overflow-hidden shadow-2xl flex flex-col animate-in fade-in zoom-in-95 duration-200">
+      <div className="relative w-full max-w-5xl bg-brand-primary border border-brand-secondary rounded-md overflow-hidden flex flex-col animate-in fade-in zoom-in-95 duration-200">
         <div className="flex items-center justify-between p-4 border-b border-brand-secondary">
           <h3 className="text-lg font-enHeading font-bold text-text-primary">
             {productType === 'driver' ? (
@@ -66,7 +67,7 @@ export default function ProductDemoModal({ isOpen, onClose, productType }: Produ
             className="p-2 text-text-secondary hover:text-text-primary hover:bg-brand-secondary/50 rounded-md transition-colors"
             aria-label="Close demo"
           >
-            <X className="w-5 h-5" />
+            <Icon icon={X} className="w-5 h-5" />
           </button>
         </div>
         <div className="relative aspect-video bg-[#0a111a] flex flex-col items-center justify-center overflow-hidden">

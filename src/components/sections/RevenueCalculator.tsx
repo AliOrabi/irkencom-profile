@@ -126,8 +126,8 @@ export default function RevenueCalculator() {
             </div>
             
             {/* Result & Lead Capture */}
-            <div className="w-full relative z-10 border border-brand-accent/40 bg-brand-secondary/50 p-8 shadow-glow-accent rounded-md">
-              <div className="absolute top-0 left-0 w-full h-[2px] bg-brand-accent shadow-glow-accent-sm rounded-t-md" aria-hidden="true" />
+            <div className="w-full relative z-10 border border-brand-accent/40 bg-brand-secondary/50 p-8 rounded-md">
+              <div className="absolute top-0 left-0 w-full h-[2px] bg-brand-accent rounded-t-md" aria-hidden="true" />
               
               <div className="text-center mb-8">
                  <p className="text-sm font-enHeading tracking-[0.1em] text-text-secondary uppercase mb-2">
@@ -165,7 +165,7 @@ export default function RevenueCalculator() {
                     className="w-full bg-brand-secondary border border-brand-secondary text-text-primary px-4 py-3 font-enBody text-sm md:text-base outline-none transition-all duration-200 focus:border-brand-accent hover:border-text-secondary/60 rounded-md" 
                   />
                   
-                  <button type="submit" className="mt-2 px-8 py-4 bg-brand-accent text-brand-on-accent font-enHeading text-xs uppercase tracking-[0.15em] hover:bg-brand-accent-hover transition-all duration-200 rounded-md shadow-glow-accent-sm">
+                  <button type="submit" className="mt-2 px-8 py-4 bg-brand-accent text-brand-on-accent font-enHeading text-xs uppercase tracking-[0.15em] hover:bg-brand-accent-hover transition-all duration-200 rounded-md hover:shadow-glow-accent-sm">
                     <Translate en="Get Full Report" ar="احصل على التقرير الكامل" />
                   </button>
                 </form>

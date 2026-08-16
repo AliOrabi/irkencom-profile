@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Check, X } from 'lucide-react';
+import { Icon } from '@/components/ui/Icon';
 import Translate from '@/components/ui/Translate';
 import Reveal from '@/components/ui/Reveal';
 
@@ -53,9 +54,9 @@ export default function PricingTable() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
         {tiers.map((tier, idx) => (
           <Reveal key={tier.id} delay={idx * 0.1}>
-            <div className={`relative flex flex-col h-full p-8 rounded-2xl border ${tier.highlighted ? 'border-brand-accent shadow-glow-accent bg-brand-primary/50' : 'border-brand-secondary bg-[#0a111a]'} transition-all duration-300`}>
+            <div className={`relative flex flex-col h-full p-8 rounded-md border ${tier.highlighted ? 'border-brand-accent bg-brand-primary/50' : 'border-brand-secondary bg-[#0a111a]'} transition-all duration-300`}>
               {tier.highlighted && (
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-brand-accent text-[#0a111a] text-xs font-bold font-enHeading uppercase tracking-widest rounded-full">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-brand-accent text-[#0a111a] text-xs font-bold font-enHeading uppercase tracking-widest rounded-md">
                   <Translate en="Most Popular" ar="الأكثر شيوعاً" />
                 </div>
               )}
@@ -77,9 +78,9 @@ export default function PricingTable() {
                 {tier.features.map((feature, fIdx) => (
                   <li key={fIdx} className="flex items-start gap-3">
                     {feature.included ? (
-                      <Check className="w-5 h-5 text-brand-accent shrink-0 mt-0.5" />
+                      <Icon icon={Check} className="w-5 h-5 text-brand-accent shrink-0 mt-0.5" />
                     ) : (
-                      <X className="w-5 h-5 text-text-secondary/50 shrink-0 mt-0.5" />
+                      <Icon icon={X} className="w-5 h-5 text-text-secondary/50 shrink-0 mt-0.5" />
                     )}
                     <span className={feature.included ? 'text-text-primary' : 'text-text-secondary/50'}>
                       <Translate en={feature.en} ar={feature.ar} />

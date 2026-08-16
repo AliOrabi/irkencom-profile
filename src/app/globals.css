@@ -92,7 +92,7 @@
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 font-enHeading text-sm font-medium uppercase tracking-[1.5px] cursor-pointer transition-all duration-300 no-underline bg-brand-accent text-brand-on-accent hover:bg-brand-accent-hover rounded-md shadow-sm;
+    @apply inline-flex items-center justify-center px-6 py-3 font-enHeading text-sm font-medium uppercase tracking-[1.5px] cursor-pointer transition-all duration-300 no-underline bg-brand-accent text-brand-on-accent hover:bg-brand-accent-hover rounded-md;
   }
   .btn-secondary {
     @apply inline-flex items-center justify-center px-6 py-3 font-enHeading text-sm font-medium uppercase tracking-[1.5px] cursor-pointer transition-all duration-300 no-underline bg-transparent text-text-primary border border-text-secondary hover:border-brand-accent hover:text-brand-accent rounded-md;

@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-16T13:45:00Z",
+  "title": "Design System: Irken Solutions",
+  "extensions": {
+    "colorMeta": {
+      "primary": { "role": "primary", "displayName": "Irken Teal", "canonical": "#569BAA", "tonalRamp": ["#11252A", "#1D3A42", "#294F5B", "#366474", "#457A8D", "#569BAA", "#74B2C0", "#A2CFD8"] },
+      "background-dark": { "role": "neutral", "displayName": "FAAC Navy", "canonical": "#1A2530", "tonalRamp": ["#080C10", "#0D141C", "#141D26", "#1A2530", "#243343", "#304358", "#425C75", "#6282A2"] }
+    },
+    "typographyMeta": {
+      "headline": { "displayName": "Headline", "purpose": "Primary section titles" },
+      "body": { "displayName": "Body", "purpose": "Operational text and reading copy" }
+    },
+    "shadows": [
+      { "name": "glow-accent", "value": "0 4px 14px 0 rgba(37, 99, 235, 0.3)", "purpose": "Subtle colored shadow for active states and CTAs." }
+    ],
+    "motion": [
+      { "name": "scanline", "value": "scanline 3s linear infinite", "purpose": "Infinite animation signaling active tech on badges." }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Used for main actions like booking or sign up.",
+      "html": "<button class=\"ds-btn-primary\">GET STARTED</button>",
+      "css": ".ds-btn-primary { background-color: #569BAA; color: #FFFFFF; padding: 12px 24px; font-family: Inter, sans-serif; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px; border: none; border-radius: 6px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05); } .ds-btn-primary:hover { background-color: #457A87; transform: translateY(-1px); box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.3); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Frictionless Flow",
+    "overview": "The Irken Solutions visual system embodies digital transformation within the Mobility and smart parking sector. It reflects an asset-light, seamless, and intelligent ecosystem. The aesthetic balances a deep, technical interface designed for operational prolonged use (Ergonomic Soft Dark) with precision-driven typography and vibrant, authoritative accents that command trust and clarity.",
+    "keyCharacteristics": [
+      "Consultative and authoritative tone.",
+      "Flat and restrained surfaces to emphasize operational data.",
+      "Crisp, geometric typography matching the exactness of the tech.",
+      "Strict consistency (e.g., 6px radius) to convey reliability."
+    ],
+    "rules": [
+      { "name": "The Strict Semantics Rule", "body": "Warm colors (reds, oranges, yellows) are strictly prohibited outside of explicit semantic feedback (errors, warnings) to maintain the cool, operational authority.", "section": "colors" },
+      { "name": "The Bilingual Symmetry Rule", "body": "Arabic content is treated with the same geometric precision as English, adjusting base sizes slightly to ensure equal visual weight and legibility in RTL layouts.", "section": "typography" },
+      { "name": "The Flat-By-Default Rule", "body": "Surfaces are flat at rest. Depth is primarily conveyed through tonal layering (color). Shadows appear only as a response to state (hover, focus, or active).", "section": "elevation" }
+    ],
+    "dos": [
+      "Do maintain a strict 6px border radius on all interactive elements.",
+      "Do use FAAC Navy as the default canvas for a deep-tech, operational feel.",
+      "Do ensure WCAG AA compliant contrast (4.5:1) for all text."
+    ],
+    "donts": [
+      "Don't use warm colors for decoration; reserve them for warnings and errors.",
+      "Don't apply shadows to static cards or structural containers.",
+      "Don't use sharp 0px corners."
+    ]
+  }
+}

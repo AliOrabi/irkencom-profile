@@ -8,7 +8,7 @@ export default function TransformationSection() {
     <section id="transformation" className="py-24 relative border-t border-brand-secondary overflow-hidden">
       <div className="max-w-[1280px] mx-auto px-8 w-full relative z-10">
         <div className="mb-16 max-w-3xl">
-          <span className="inline-block px-3 py-1 border border-brand-secondary text-brand-accent text-xs font-enHeading uppercase tracking-[2px] mb-6 bg-brand-secondary/30 rounded-full">
+          <span className="inline-block px-3 py-1 border border-brand-secondary text-brand-accent text-xs font-enHeading uppercase tracking-[2px] mb-6 bg-brand-secondary/30 rounded-md">
             <Translate en="Our Process" ar="كيف نعمل" />
           </span>
           <h2 className="text-3xl md:text-4xl font-bold font-enHeading text-text-primary mb-6">

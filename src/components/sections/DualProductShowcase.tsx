@@ -3,9 +3,9 @@
 import React, { useState } from 'react';
 import Translate from '@/components/ui/Translate';
 import Reveal from '@/components/ui/Reveal';
-import SectionBadge from '@/components/ui/SectionBadge';
 import ProductDemoModal from '@/components/ui/ProductDemoModal';
 import { Smartphone, LayoutDashboard, ArrowRight, Car, BarChart3, Zap, Users, CreditCard, Shield, Play } from 'lucide-react';
+import { Icon } from '@/components/ui/Icon';
 
 const driverFeatures = [
   {
@@ -69,7 +69,6 @@ export default function DualProductShowcase() {
         {/* ── Header ─────────────────────────────────────────────────────── */}
         <Reveal direction="up" delay={0.05}>
           <div className="mb-16 text-center max-w-3xl mx-auto">
-            <SectionBadge en="Our Products" ar="منتجاتنا" variant="active" />
             <h2
               id="products-heading"
               className="text-3xl md:text-4xl font-bold font-enHeading text-text-primary mb-6"
@@ -103,7 +102,7 @@ export default function DualProductShowcase() {
               {/* Product icon + label */}
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-14 h-14 flex items-center justify-center bg-brand-accent/10 text-brand-accent rounded-full group-hover:bg-brand-accent/20 transition-colors">
-                  <Smartphone className="w-7 h-7" strokeWidth={1.5} />
+                  <Icon icon={Smartphone} className="w-7 h-7" />
                 </div>
                 <div>
                   <p className="text-[10px] font-enHeading uppercase tracking-[0.2em] text-text-secondary mb-1">
@@ -126,11 +125,11 @@ export default function DualProductShowcase() {
               {/* Features list */}
               <ul className="flex flex-col gap-4 mb-8 flex-grow" role="list">
                 {driverFeatures.map((feat) => {
-                  const Icon = feat.icon;
+                  const LucideIcon = feat.icon;
                   return (
                     <li key={feat.id} className="flex items-start gap-3 text-sm text-text-primary">
                       <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center bg-brand-accent/10 rounded-md">
-                        <Icon className="w-4 h-4 text-brand-accent" strokeWidth={1.5} />
+                        <Icon icon={LucideIcon} className="w-4 h-4 text-brand-accent" />
                       </div>
                       <span className="pt-1">
                         <Translate en={feat.en} ar={feat.ar} />
@@ -150,7 +149,7 @@ export default function DualProductShowcase() {
                   aria-label="Visit irken.eg booking engine"
                 >
                   <Translate en="Visit Platform" ar="زيارة المنصة" />
-                  <ArrowRight className="w-4 h-4 ltr:ml-2 rtl:mr-2 group-hover/cta:translate-x-1 rtl:group-hover/cta:-translate-x-1 transition-transform" strokeWidth={2} />
+                  <Icon icon={ArrowRight} className="w-4 h-4 ltr:ml-2 rtl:mr-2 group-hover/cta:translate-x-1 rtl:group-hover/cta:-translate-x-1 transition-transform" />
                 </a>
                 <button
                   onClick={() => openDemo('driver')}
@@ -159,7 +158,7 @@ export default function DualProductShowcase() {
                   aria-haspopup="dialog"
                   aria-expanded={isDemoOpen && demoType === 'driver'}
                 >
-                  <Play className="w-4 h-4 text-brand-accent" />
+                  <Icon icon={Play} className="w-4 h-4 text-brand-accent" />
                   <Translate en="Watch Demo" ar="شاهد العرض" />
                 </button>
               </div>
@@ -168,17 +167,17 @@ export default function DualProductShowcase() {
 
           {/* ── Operator Product Card ───────────────────────────────────── */}
           <Reveal direction="up" delay={0.2}>
-            <div className="relative border border-brand-accent bg-brand-secondary/30 p-8 lg:p-10 group shadow-glow-accent rounded-md h-full flex flex-col cursor-pointer">
+            <div className="relative border border-brand-accent bg-brand-secondary/30 p-8 lg:p-10 group hover:shadow-glow-accent rounded-md h-full flex flex-col cursor-pointer">
               {/* Cyan top bar */}
               <div
-                className="absolute top-0 inset-x-0 h-[2px] bg-brand-accent shadow-glow-accent-sm rounded-t-md"
+                className="absolute top-0 inset-x-0 h-[2px] bg-brand-accent rounded-t-md"
                 aria-hidden="true"
               />
 
               {/* Product icon + label */}
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-14 h-14 flex items-center justify-center bg-brand-accent/15 text-brand-accent rounded-full group-hover:bg-brand-accent/25 transition-colors">
-                  <LayoutDashboard className="w-7 h-7" strokeWidth={1.5} />
+                  <Icon icon={LayoutDashboard} className="w-7 h-7" />
                 </div>
                 <div>
                   <p className="text-[10px] font-enHeading uppercase tracking-[0.2em] text-brand-accent mb-1">
@@ -201,11 +200,11 @@ export default function DualProductShowcase() {
               {/* Features list */}
               <ul className="flex flex-col gap-4 mb-8 flex-grow" role="list">
                 {operatorFeatures.map((feat) => {
-                  const Icon = feat.icon;
+                  const LucideIcon = feat.icon;
                   return (
-                    <li key={feat.id} className="flex items-start gap-3 text-sm text-brand-accent">
+                    <li key={feat.id} className="flex items-start gap-3 text-brand-accent">
                       <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center bg-brand-accent/10 rounded-md">
-                        <Icon className="w-4 h-4 text-brand-accent" strokeWidth={1.5} />
+                        <Icon icon={LucideIcon} className="w-4 h-4 text-brand-accent" />
                       </div>
                       <span className="pt-1 text-text-primary">
                         <Translate en={feat.en} ar={feat.ar} />
@@ -231,7 +230,7 @@ export default function DualProductShowcase() {
                   aria-label="Try the Irken operator dashboard"
                 >
                   <Translate en="Start Free" ar="ابدأ مجاناً" />
-                  <ArrowRight className="w-4 h-4 ltr:ml-2 rtl:mr-2 group-hover/cta:translate-x-1 rtl:group-hover/cta:-translate-x-1 transition-transform" strokeWidth={2} />
+                  <Icon icon={ArrowRight} className="w-4 h-4 ltr:ml-2 rtl:mr-2 group-hover/cta:translate-x-1 rtl:group-hover/cta:-translate-x-1 transition-transform" />
                 </a>
                 <button
                   onClick={() => openDemo('operator')}
@@ -240,7 +239,7 @@ export default function DualProductShowcase() {
                   aria-haspopup="dialog"
                   aria-expanded={isDemoOpen && demoType === 'operator'}
                 >
-                  <Play className="w-4 h-4 text-brand-accent" />
+                  <Icon icon={Play} className="w-4 h-4 text-brand-accent" />
                   <Translate en="Watch Demo" ar="شاهد العرض" />
                 </button>
               </div>

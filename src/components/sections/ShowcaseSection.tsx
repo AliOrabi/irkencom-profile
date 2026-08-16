@@ -19,7 +19,7 @@ export default function ShowcaseSection() {
             <div
               className="absolute -inset-6 pointer-events-none"
               aria-hidden="true"
-              style={{ background: 'radial-gradient(ellipse at center, rgba(100,255,218,0.08) 0%, transparent 70%)' }}
+              style={{ background: 'radial-gradient(ellipse at center, theme(colors.brand.accent) 0%, transparent 70%)', opacity: 0.08 }}
             />
             <div className="w-full max-w-5xl">
               <DashboardShowcase />

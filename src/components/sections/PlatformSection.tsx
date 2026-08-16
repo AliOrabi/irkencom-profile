@@ -3,7 +3,6 @@
 import React from 'react';
 import Translate from '@/components/ui/Translate';
 import Reveal from '@/components/ui/Reveal';
-import SectionBadge from '@/components/ui/SectionBadge';
 
 const steps = [
   {
@@ -61,7 +60,6 @@ export default function PlatformSection() {
         {/* ── Header ─────────────────────────────────────────────────── */}
         <Reveal direction="up" delay={0.05}>
           <div className="mb-16 max-w-3xl">
-            <SectionBadge en="How It Works" ar="كيف يعمل النظام" />
             <h2 id="platform-heading" className="text-3xl md:text-4xl font-bold font-enHeading text-text-primary mb-6">
               <Translate en="Zero CapEx. Zero friction. Just revenue." ar="بدون معدات. بدون تعقيد. فقط إيرادات." />
             </h2>

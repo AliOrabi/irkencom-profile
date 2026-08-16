@@ -3,7 +3,6 @@
 import React from 'react';
 import Translate from '@/components/ui/Translate';
 import Reveal from '@/components/ui/Reveal';
-import SectionBadge from '@/components/ui/SectionBadge';
 
 const kpis = [
   { id: 'kpi-1', value: '−23%', label: { en: 'Traffic Congestion', ar: 'تقليل الازدحام' } },
@@ -19,7 +18,6 @@ export default function MobilitySection() {
         {/* ── Header ─────────────────────────────────────────────────── */}
         <Reveal direction="up" delay={0.05}>
           <div className="mb-16 max-w-3xl">
-            <SectionBadge en="Urban Impact" ar="الأثر الحضري" />
             <h2 id="mobility-heading" className="text-3xl md:text-4xl font-bold font-enHeading text-text-primary mb-6">
               <Translate en="One driver parked = one less car circling the block." ar="سيارة واحدة تم إيقافها = سيارة أقل تجوب الشوارع بحثاً عن موقف." />
             </h2>
@@ -68,8 +66,8 @@ export default function MobilitySection() {
             </div>
 
             {/* Node 2 — Irken Hub (highlighted) */}
-            <div className="flex flex-col items-center text-center p-8 border border-brand-accent bg-brand-primary w-full lg:flex-[1.5] shadow-glow-accent z-10 relative rounded-md">
-              <div className="absolute top-0 inset-x-0 h-[2px] bg-brand-accent shadow-glow-accent-sm rounded-t-md" aria-hidden="true" />
+            <div className="flex flex-col items-center text-center p-8 border border-brand-accent bg-brand-primary w-full lg:flex-[1.5] z-10 relative rounded-md">
+              <div className="absolute top-0 inset-x-0 h-[2px] bg-brand-accent rounded-t-md" aria-hidden="true" />
               <div className="w-16 h-16 flex items-center justify-center mb-4 text-brand-accent bg-brand-accent/20 rounded-full">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5" />

@@ -3,7 +3,6 @@
 import React, { useState, useId } from 'react';
 import Translate from '@/components/ui/Translate';
 import Reveal from '@/components/ui/Reveal';
-import SectionBadge from '@/components/ui/SectionBadge';
 import { PrimaryButton } from '@/components/ui/Buttons';
 import { usePostHog } from 'posthog-js/react';
 
@@ -113,7 +112,6 @@ export default function IntegrationForm() {
           {/* ── Left — value proposition ─────────────────────────────── */}
           <Reveal direction="up" delay={0.05}>
             <div>
-              <SectionBadge en="Get Started" ar="ابدأ الآن" variant="active" />
               <h2 id="form-heading" className="text-3xl md:text-4xl font-bold font-enHeading text-text-primary mb-6">
                 <Translate
                   en="Ready to unlock your parking revenue?"
@@ -149,7 +147,7 @@ export default function IntegrationForm() {
 
           {/* ── Right — form ─────────────────────────────────────────── */}
           <Reveal direction="up" delay={0.12}>
-            <div className="border border-brand-accent/40 bg-brand-secondary/50 p-8 relative rounded-md shadow-glow-accent">
+            <div className="border border-brand-accent/40 bg-brand-secondary/50 p-8 relative rounded-md">
               {/* Cyan top bar */}
               <div className="absolute top-0 inset-x-0 h-[2px] bg-brand-accent rounded-t-md" aria-hidden="true" />
 

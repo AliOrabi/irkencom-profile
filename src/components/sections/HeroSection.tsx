@@ -49,17 +49,6 @@ export default function HeroSection() {
         {/* ── Left column — copy ───────────────────────────────────────── */}
         <div className="flex flex-col items-start">
 
-          {/* Badge */}
-          <Reveal delay={0.05}>
-            <span className="inline-flex items-center gap-2 px-3 py-1 bg-brand-accent/10 text-brand-accent text-[11px] font-enHeading uppercase tracking-[0.15em] mb-8 rounded-full">
-              <span className="relative flex h-2 w-2" aria-hidden="true">
-                <span className="animate-ping absolute inline-flex h-full w-full bg-brand-accent rounded-full opacity-60" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-accent" />
-              </span>
-              <Translate en="Egypt's Leading B2B Digital Transformation Partner" ar="الشريك الرائد للتحول الرقمي للشركات في مصر" />
-            </span>
-          </Reveal>
-
           {/* H1 */}
           <Reveal delay={0.1}>
             <h1
@@ -128,7 +117,7 @@ export default function HeroSection() {
             <div
               className="absolute -inset-6 pointer-events-none"
               aria-hidden="true"
-              style={{ background: 'radial-gradient(ellipse at center, rgba(100,255,218,0.08) 0%, transparent 70%)' }}
+              style={{ background: 'radial-gradient(ellipse at center, theme(colors.brand.accent) 0%, transparent 70%)', opacity: 0.08 }}
             />
             <DashboardShowcase />
           </Reveal>
@@ -138,12 +127,12 @@ export default function HeroSection() {
       {/* ── Scroll cue ────────────────────────────────────────────────── */}
       <button
         onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
-        className="mx-auto w-fit z-10 flex flex-col items-center gap-2 text-text-secondary hover:text-brand-accent transition-colors duration-300 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent rounded-md p-2 mt-8"
+        className="mx-auto w-fit z-10 flex flex-col items-center gap-2 text-text-secondary hover:text-brand-accent transition-colors duration-300 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent rounded-md p-2 mt-8 group"
         aria-label="Scroll down"
       >
         <span className="text-[10px] font-enHeading uppercase tracking-[0.2em]">Scroll</span>
         <div className="w-5 h-8 border-2 border-current rounded-full flex justify-center p-1">
-          <div className="w-1 h-2 bg-current rounded-full animate-bounce" />
+          <div className="w-1 h-2 bg-current rounded-full transition-transform duration-500 ease-out group-hover:translate-y-3" />
         </div>
       </button>
     </section>

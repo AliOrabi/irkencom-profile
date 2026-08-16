@@ -23,7 +23,7 @@ export default function SectionBadge({ en, ar, variant = 'default', className = 
         "px-3 py-1 font-enHeading uppercase tracking-[0.15em] mb-6 select-none",
         isDefault 
           ? "border-text-secondary text-brand-accent bg-brand-secondary/30" 
-          : "border-brand-accent text-brand-accent bg-brand-accent/10 shadow-glow-accent-sm",
+          : "border-brand-accent text-brand-accent bg-brand-accent/10",
         className
       )}
     >

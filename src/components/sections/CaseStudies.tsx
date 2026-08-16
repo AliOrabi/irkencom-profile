@@ -118,7 +118,7 @@ export default function CaseStudies() {
           opacity: 0.5;
         }
         .swiper-pagination-bullet-active {
-          background-color: var(--brand-accent, #2563EB);
+          background-color: theme(colors.brand.accent);
           opacity: 1;
         }
       `}} />

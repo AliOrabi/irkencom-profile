@@ -2,7 +2,8 @@ import React from 'react';
 import PageHero from '@/components/sections/PageHero';
 import ContactForm from '@/components/sections/ContactForm';
 import Translate from '@/components/ui/Translate';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin, LucideIcon as LucideIconType } from 'lucide-react';
+import { Icon } from '@/components/ui/Icon';
 import { contactChannels } from '@/config/contact';
 
 const Icons = {
@@ -40,11 +41,11 @@ export default function ContactPage() {
 
               <div className="flex flex-col gap-6">
                 {contactChannels.map(channel => {
-                  const Icon = Icons[channel.icon as keyof typeof Icons];
+                  const LucideIcon = Icons[channel.icon as keyof typeof Icons];
                   return (
                     <div key={channel.id} className="border border-brand-secondary bg-brand-primary/50 p-6 flex gap-6 items-start hover:border-brand-accent transition-colors group">
                       <div className="text-brand-accent group-hover:scale-110 transition-transform">
-                        {Icon && <Icon size={24} />}
+                        {LucideIcon && <Icon icon={LucideIcon as LucideIconType} size={24} />}
                       </div>
                       <div>
                         <div className="font-enHeading text-text-primary font-medium mb-1 tracking-wider uppercase text-sm">
@@ -70,8 +71,8 @@ export default function ContactPage() {
             </div>
 
             {/* Form */}
-            <div className="w-full relative z-10 border border-brand-accent/40 bg-brand-secondary/50 p-8 md:p-12 shadow-glow-accent">
-              <div className="absolute top-0 left-0 w-full h-[2px] bg-brand-accent shadow-glow-accent-sm" aria-hidden="true" />
+            <div className="w-full relative z-10 border border-brand-accent/40 bg-brand-secondary/50 p-8 md:p-12 rounded-md">
+              <div className="absolute top-0 left-0 w-full h-[2px] bg-brand-accent rounded-t-md" aria-hidden="true" />
               <h2 className="text-2xl font-enHeading text-text-primary mb-8">
                 <Translate en="Send us a Message" ar="أرسل لنا رسالة" />
               </h2>

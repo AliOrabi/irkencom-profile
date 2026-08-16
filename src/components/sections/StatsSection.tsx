@@ -63,9 +63,6 @@ export default function StatsSection() {
         {/* ── Heading ────────────────────────────────────────────────── */}
         <Reveal direction="up" delay={0.05}>
           <div className="text-center mb-16">
-            <span className="inline-block px-3 py-1 border border-brand-accent/40 text-brand-accent text-[11px] font-enHeading uppercase tracking-[0.15em] mb-6 bg-brand-accent/8 rounded-full">
-              <Translate en="By the Numbers" ar="بالأرقام" />
-            </span>
             <h2 id="stats-heading" className="text-3xl md:text-4xl font-bold font-enHeading text-text-primary mb-4">
               <Translate en="Results you can measure." ar="نتائج يمكن قياسها." />
             </h2>
@@ -120,7 +117,7 @@ export default function StatsSection() {
                 <span
                   key={badge.id}
                   role="listitem"
-                  className="px-4 py-2 border border-brand-secondary bg-brand-primary/60 text-[11px] font-enHeading uppercase tracking-[0.12em] text-text-secondary hover:border-brand-accent/50 hover:text-text-primary transition-all duration-200 rounded-full"
+                  className="px-4 py-2 border border-brand-secondary bg-brand-primary/60 text-[11px] font-enHeading uppercase tracking-[0.12em] text-text-secondary hover:border-brand-accent/50 hover:text-text-primary transition-all duration-200 rounded-md"
                 >
                   <Translate en={badge.en} ar={badge.ar} />
                 </span>

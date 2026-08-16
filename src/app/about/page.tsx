@@ -2,9 +2,9 @@ import React from 'react';
 import Image from 'next/image';
 import Translate from '@/components/ui/Translate';
 import Reveal from '@/components/ui/Reveal';
-import SectionBadge from '@/components/ui/SectionBadge';
 import MissionVisionSection from '@/components/sections/MissionVisionSection';
 import { Briefcase, Code } from 'lucide-react';
+import { Icon } from '@/components/ui/Icon';
 
 export default function AboutPage() {
   return (
@@ -14,7 +14,6 @@ export default function AboutPage() {
       <div className="max-w-[1280px] mx-auto px-6 lg:px-8 w-full relative z-10 mb-24">
         <Reveal direction="up" delay={0.05}>
           <div className="mb-8 max-w-3xl">
-            <SectionBadge en="About Irken" ar="عن إركن" />
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-enHeading text-text-highlight mb-6">
               <Translate 
                 en="Transforming urban mobility, one parking spot at a time." 
@@ -38,7 +37,6 @@ export default function AboutPage() {
       <div className="max-w-[1280px] mx-auto px-6 lg:px-8 w-full relative z-10 mt-32">
         <Reveal direction="up" delay={0.1}>
           <div className="mb-16">
-            <SectionBadge en="Our Team" ar="فريقنا" />
             <h2 className="text-3xl md:text-4xl font-bold font-enHeading text-text-primary mb-4">
               <Translate en="The minds behind Irken." ar="العقول وراء إركن." />
             </h2>
@@ -61,7 +59,7 @@ export default function AboutPage() {
                 />
               </p>
               <div className="flex items-center gap-4 text-text-secondary">
-                <a href="#" className="hover:text-brand-accent transition-colors"><Briefcase className="w-5 h-5" /></a>
+                <a href="#" className="hover:text-brand-accent transition-colors"><Icon icon={Briefcase} className="w-5 h-5" /></a>
               </div>
             </div>
           </Reveal>
@@ -81,8 +79,8 @@ export default function AboutPage() {
                 />
               </p>
               <div className="flex items-center gap-4 text-text-secondary">
-                <a href="#" className="hover:text-brand-accent transition-colors"><Briefcase className="w-5 h-5" /></a>
-                <a href="#" className="hover:text-brand-accent transition-colors"><Code className="w-5 h-5" /></a>
+                <a href="#" className="hover:text-brand-accent transition-colors"><Icon icon={Briefcase} className="w-5 h-5" /></a>
+                <a href="#" className="hover:text-brand-accent transition-colors"><Icon icon={Code} className="w-5 h-5" /></a>
               </div>
             </div>
           </Reveal>

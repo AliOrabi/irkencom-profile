@@ -3,8 +3,8 @@
 import React from 'react';
 import Translate from '@/components/ui/Translate';
 import Reveal from '@/components/ui/Reveal';
-import SectionBadge from '@/components/ui/SectionBadge';
 import { X, Check } from 'lucide-react';
+import { Icon } from '@/components/ui/Icon';
 
 const oldWayPoints = [
   { id: 'ow-1', en: 'Heavy capital expenditure on hardware', ar: 'نفقات رأسمالية باهظة على المعدات' },
@@ -27,7 +27,6 @@ export default function CompetitiveDiff() {
         {/* ── Header ─────────────────────────────────────────────────── */}
         <Reveal direction="up" delay={0.05}>
           <div className="mb-16 text-center max-w-3xl mx-auto">
-            <SectionBadge en="Why Irken" ar="لماذا إركن" />
             <h2 id="comp-heading" className="text-3xl md:text-4xl font-bold font-enHeading text-text-primary mb-6">
               <Translate en="There's a smarter way to do this." ar="هناك دائماً طريقة أذكى." />
             </h2>
@@ -61,7 +60,7 @@ export default function CompetitiveDiff() {
               <ul className="flex flex-col gap-3" role="list">
                 {oldWayPoints.map((pt) => (
                   <li key={pt.id} className="text-sm text-text-secondary font-enBody flex items-start gap-2">
-                    <X className="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" strokeWidth={2} aria-hidden="true" />
+                    <Icon icon={X} className="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" aria-hidden="true" />
                     <Translate en={pt.en} ar={pt.ar} />
                   </li>
                 ))}
@@ -69,9 +68,9 @@ export default function CompetitiveDiff() {
             </div>
 
             {/* Irken Way */}
-            <div className="border border-brand-accent bg-brand-primary/90 p-10 relative shadow-glow-accent rounded-md cursor-pointer">
+            <div className="border border-brand-accent bg-brand-primary/90 p-10 relative rounded-md cursor-pointer">
               {/* Cyan top bar */}
-              <div className="absolute top-0 inset-x-0 h-[2px] bg-brand-accent shadow-glow-accent-sm rounded-t-md" aria-hidden="true" />
+              <div className="absolute top-0 inset-x-0 h-[2px] bg-brand-accent rounded-t-md" aria-hidden="true" />
 
               <div className="text-[10px] font-enHeading tracking-[0.2em] uppercase text-brand-accent mb-6 border border-brand-accent inline-block px-3 py-1 bg-brand-accent/10 rounded-md">
                 <Translate en="The Irken Way" ar="طريقة إركن" />
@@ -88,7 +87,7 @@ export default function CompetitiveDiff() {
               <ul className="flex flex-col gap-3" role="list">
                 {irkenWayPoints.map((pt) => (
                   <li key={pt.id} className="text-sm text-brand-accent font-enBody flex items-start gap-2">
-                    <Check className="w-4 h-4 text-brand-accent flex-shrink-0 mt-0.5" strokeWidth={2} aria-hidden="true" />
+                    <Icon icon={Check} className="w-4 h-4 text-brand-accent flex-shrink-0 mt-0.5" aria-hidden="true" />
                     <Translate en={pt.en} ar={pt.ar} />
                   </li>
                 ))}

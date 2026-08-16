@@ -4,8 +4,8 @@ import Image from 'next/image';
 import { blogPosts } from '@/lib/blog-data';
 import Translate from '@/components/ui/Translate';
 import Reveal from '@/components/ui/Reveal';
-import SectionBadge from '@/components/ui/SectionBadge';
 import { ArrowRight, Calendar } from 'lucide-react';
+import { Icon } from '@/components/ui/Icon';
 
 export default function InsightsPage() {
   return (
@@ -15,7 +15,6 @@ export default function InsightsPage() {
         {/* Header */}
         <Reveal direction="up" delay={0.05}>
           <div className="mb-16 max-w-3xl">
-            <SectionBadge en="Our Insights" ar="رؤيتنا" />
             <h1 className="text-4xl md:text-5xl font-bold font-enHeading text-text-primary mb-6">
               <Translate en="Insights & News" ar="أخبار ورؤى" />
             </h1>
@@ -54,7 +53,7 @@ export default function InsightsPage() {
                       <Translate en={post.category.en} ar={post.category.ar} />
                     </span>
                     <span className="flex items-center gap-1.5 opacity-70">
-                      <Calendar className="w-3.5 h-3.5" />
+                      <Icon icon={Calendar} className="w-3.5 h-3.5" />
                       {post.date}
                     </span>
                   </div>
@@ -69,7 +68,7 @@ export default function InsightsPage() {
                   
                   <div className="mt-auto flex items-center text-sm font-enHeading text-brand-accent font-medium uppercase tracking-[0.1em]">
                     <Translate en="Read More" ar="اقرأ المزيد" />
-                    <ArrowRight className="w-4 h-4 ltr:ml-2 rtl:mr-2 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
+                    <Icon icon={ArrowRight} className="w-4 h-4 ltr:ml-2 rtl:mr-2 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
                   </div>
                 </div>
               </Link>

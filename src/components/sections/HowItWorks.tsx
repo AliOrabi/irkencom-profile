@@ -3,8 +3,8 @@
 import React from 'react';
 import Translate from '@/components/ui/Translate';
 import Reveal from '@/components/ui/Reveal';
-import SectionBadge from '@/components/ui/SectionBadge';
 import { Network, Settings, Coins } from 'lucide-react';
+import { Icon } from '@/components/ui/Icon';
 
 const steps = [
   {
@@ -44,7 +44,6 @@ export default function HowItWorks() {
         {/* Header */}
         <Reveal direction="up" delay={0.05}>
           <div className="mb-16 max-w-3xl text-center md:text-start">
-            <SectionBadge en="How It Works" ar="كيف نعمل" />
             <h2 className="text-3xl md:text-4xl font-bold font-enHeading text-text-primary mb-6">
               <Translate en="Three steps to automated revenue." ar="ثلاث خطوات لأتمتة إيراداتك." />
             </h2>
@@ -60,7 +59,7 @@ export default function HowItWorks() {
         {/* Steps Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {steps.map((step, index) => {
-            const Icon = step.icon;
+            const LucideIcon = step.icon;
             return (
               <Reveal key={step.id} delay={0.1 + (index * 0.1)} direction="up">
                 <div className="border border-brand-secondary bg-brand-primary/80 p-8 hover:border-brand-accent/50 transition-colors duration-300 group relative rounded-md h-full cursor-pointer">
@@ -69,7 +68,7 @@ export default function HowItWorks() {
                   
                   {/* Icon */}
                   <div className="w-12 h-12 flex items-center justify-center mb-6 bg-brand-accent/10 text-brand-accent rounded-full group-hover:bg-brand-accent/20 transition-colors">
-                    <Icon className="w-6 h-6" strokeWidth={1.5} />
+                    <Icon icon={LucideIcon} className="w-6 h-6" />
                   </div>
                   
                   {/* Title & Desc */}

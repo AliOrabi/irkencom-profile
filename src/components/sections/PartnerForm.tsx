@@ -31,8 +31,8 @@ export default function PartnerForm() {
 
   return (
     <section className="py-24 relative border-t border-brand-secondary">
-      <div className="max-w-[640px] mx-auto w-full relative z-10 border border-brand-accent/40 bg-brand-secondary/50 p-8 md:p-12 shadow-glow-accent rounded-md">
-        <div className="absolute top-0 left-0 w-full h-[2px] bg-brand-accent shadow-glow-accent-sm rounded-t-md" aria-hidden="true" />
+      <div className="max-w-[640px] mx-auto w-full relative z-10 border border-brand-accent/40 bg-brand-secondary/50 p-8 md:p-12 rounded-md">
+        <div className="absolute top-0 left-0 w-full h-[2px] bg-brand-accent rounded-t-md" aria-hidden="true" />
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold font-enHeading text-text-primary mb-4">
             <Translate en="Become a Partner" ar="كن شريكاً" />

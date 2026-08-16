@@ -25,7 +25,7 @@ export default function DashboardShowcase() {
       <div className="absolute inset-0 bg-brand-secondary border border-brand-accent/50 ltr:translate-x-4 rtl:-translate-x-4 translate-y-4 -z-10 hidden sm:block rounded-md"></div>
       
       {/* Main Card */}
-      <div className="relative border border-brand-accent bg-white shadow-glow-accent-sm overflow-hidden p-8 border-l-4 border-l-brand-accent rounded-md">
+      <div className="relative border border-brand-accent bg-white overflow-hidden p-8 rounded-md">
         <Image src="/newiRkenLogo.png" alt="" width={150} height={150} className="absolute -bottom-[10%] -right-[5%] w-[150px] opacity-[0.05] pointer-events-none" />
         
         {/* Header */}
@@ -39,7 +39,7 @@ export default function DashboardShowcase() {
             </div>
           </div>
           <div className="text-xs font-enHeading text-brand-accent flex items-center gap-2 uppercase tracking-wider">
-            <span className="w-2 h-2 rounded-full bg-brand-accent shadow-glow-accent-sm"></span> 
+            <span className="w-2 h-2 rounded-full bg-brand-accent"></span> 
             <Translate en="SYSTEM LIVE" ar="النظام نشط" />
           </div>
         </div>

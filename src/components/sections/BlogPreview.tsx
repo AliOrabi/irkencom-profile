@@ -6,8 +6,8 @@ import Image from 'next/image';
 import { blogPosts } from '@/lib/blog-data';
 import Translate from '@/components/ui/Translate';
 import Reveal from '@/components/ui/Reveal';
-import SectionBadge from '@/components/ui/SectionBadge';
 import { ArrowRight, Calendar } from 'lucide-react';
+import { Icon } from '@/components/ui/Icon';
 
 export default function BlogPreview() {
   // Get the latest 3 posts
@@ -21,7 +21,6 @@ export default function BlogPreview() {
         <Reveal direction="up" delay={0.05}>
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
             <div className="max-w-2xl">
-              <SectionBadge en="Our Insights" ar="رؤيتنا" />
               <h2 className="text-3xl md:text-4xl font-bold font-enHeading text-text-primary mb-4">
                 <Translate en="Latest from IRKEN" ar="آخر أخبار ورؤى إركن" />
               </h2>
@@ -38,7 +37,7 @@ export default function BlogPreview() {
               className="inline-flex items-center text-sm font-enHeading text-brand-accent hover:underline uppercase tracking-[0.1em] font-medium"
             >
               <Translate en="View all insights" ar="عرض كل الرؤى" />
-              <ArrowRight className="w-4 h-4 ltr:ml-2 rtl:mr-2 rtl:rotate-180" />
+              <Icon icon={ArrowRight} className="w-4 h-4 ltr:ml-2 rtl:mr-2 rtl:rotate-180" />
             </Link>
           </div>
         </Reveal>
@@ -70,7 +69,7 @@ export default function BlogPreview() {
                     </span>
                     <span className="w-1 h-1 bg-brand-secondary rounded-full" aria-hidden="true" />
                     <span className="flex items-center gap-1.5 opacity-70">
-                      <Calendar className="w-3.5 h-3.5" />
+                      <Icon icon={Calendar} className="w-3.5 h-3.5" />
                       {post.date}
                     </span>
                   </div>
@@ -85,7 +84,7 @@ export default function BlogPreview() {
                   
                   <div className="mt-auto flex items-center text-xs font-enHeading text-brand-accent font-medium uppercase tracking-[0.1em]">
                     <Translate en="Read Article" ar="اقرأ المقال" />
-                    <ArrowRight className="w-3.5 h-3.5 ltr:ml-2 rtl:mr-2 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
+                    <Icon icon={ArrowRight} className="w-3.5 h-3.5 ltr:ml-2 rtl:mr-2 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
                   </div>
                 </div>
               </Link>

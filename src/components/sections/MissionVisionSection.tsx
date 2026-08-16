@@ -4,6 +4,7 @@ import React from 'react';
 import Translate from '@/components/ui/Translate';
 import Reveal from '@/components/ui/Reveal';
 import { Target, Lightbulb } from 'lucide-react'; 
+import { Icon } from '@/components/ui/Icon';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 
 export default function MissionVisionSection() {
@@ -38,7 +39,7 @@ export default function MissionVisionSection() {
               
               <CardHeader className="flex flex-row items-center gap-4 p-8 lg:p-12 pb-6 space-y-0">
                 <div className="p-3 bg-brand-accent/10 text-brand-accent rounded-md">
-                  <Lightbulb size={24} className="group-hover:animate-pulse" />
+                  <Icon icon={Lightbulb} size={24} className="group-hover:animate-pulse" />
                 </div>
                 <CardTitle className="text-2xl font-enHeading text-text-highlight uppercase tracking-[0.1em] m-0">
                   <Translate en="Our Vision" ar="رؤيتنا" />
@@ -66,7 +67,7 @@ export default function MissionVisionSection() {
               
               <CardHeader className="flex flex-row items-center gap-4 p-8 lg:p-12 pb-6 space-y-0">
                 <div className="p-3 bg-brand-accent/10 text-brand-accent rounded-md">
-                  <Target size={24} className="group-hover:animate-pulse" />
+                  <Icon icon={Target} size={24} className="group-hover:animate-pulse" />
                 </div>
                 <CardTitle className="text-2xl font-enHeading text-text-highlight uppercase tracking-[0.1em] m-0">
                   <Translate en="Our Mission" ar="مهمتنا" />
