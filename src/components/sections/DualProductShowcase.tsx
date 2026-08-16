@@ -107,9 +107,9 @@ export default function DualProductShowcase() {
                 </div>
                 <div>
                   <p className="text-[10px] font-enHeading uppercase tracking-[0.2em] text-text-secondary mb-1">
-                    <Translate en="For Drivers" ar="للسائقين" />
+                    <Translate en="B2C Booking Engine" ar="محرك الحجز للمستهلكين" />
                   </p>
-                  <h3 className="text-2xl font-enHeading font-bold text-text-highlight">
+                  <h3 className="text-2xl font-enHeading font-bold text-text-primary">
                     irken.eg
                   </h3>
                 </div>
@@ -118,8 +118,8 @@ export default function DualProductShowcase() {
               {/* Description */}
               <p className="text-sm text-text-secondary leading-relaxed mb-8">
                 <Translate
-                  en="Your city's parking, in your pocket. Find available spots, reserve ahead, pay digitally, and enter with zero friction."
-                  ar="مواقف مدينتك في جيبك. ابحث عن الأماكن المتاحة، احجز مسبقاً، ادفع إلكترونياً، وادخل بدون أي تعقيدات."
+                  en="Our flagship consumer-facing platform. Seamlessly integrates with our enterprise solutions to provide drivers with digital reservations, payments, and ticketless entry."
+                  ar="منصتنا الرائدة الموجهة للمستهلكين. تتكامل بسلاسة مع حلولنا للشركات لتزويد السائقين بالحجوزات الرقمية، والمدفوعات، والدخول بدون تذاكر."
                 />
               </p>
 
@@ -147,15 +147,17 @@ export default function DualProductShowcase() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-primary flex-1 text-center group/cta"
-                  aria-label="Visit irken.eg parking reservation platform"
+                  aria-label="Visit irken.eg booking engine"
                 >
-                  <Translate en="Reserve Parking Now" ar="احجز موقفك الآن" />
+                  <Translate en="Visit Platform" ar="زيارة المنصة" />
                   <ArrowRight className="w-4 h-4 ltr:ml-2 rtl:mr-2 group-hover/cta:translate-x-1 rtl:group-hover/cta:-translate-x-1 transition-transform" strokeWidth={2} />
                 </a>
                 <button
                   onClick={() => openDemo('driver')}
                   className="px-4 py-3 rounded-md font-medium text-sm transition-all duration-300 border border-brand-secondary text-text-primary hover:border-brand-accent/50 hover:bg-brand-secondary/20 flex items-center justify-center gap-2"
-                  aria-label="Watch Driver App Demo"
+                  aria-label="Watch B2C App Demo"
+                  aria-haspopup="dialog"
+                  aria-expanded={isDemoOpen && demoType === 'driver'}
                 >
                   <Play className="w-4 h-4 text-brand-accent" />
                   <Translate en="Watch Demo" ar="شاهد العرض" />
@@ -166,7 +168,7 @@ export default function DualProductShowcase() {
 
           {/* ── Operator Product Card ───────────────────────────────────── */}
           <Reveal direction="up" delay={0.2}>
-            <div className="relative border border-brand-accent bg-brand-primary/90 p-8 lg:p-10 group shadow-glow-accent rounded-md h-full flex flex-col cursor-pointer">
+            <div className="relative border border-brand-accent bg-brand-secondary/30 p-8 lg:p-10 group shadow-glow-accent rounded-md h-full flex flex-col cursor-pointer">
               {/* Cyan top bar */}
               <div
                 className="absolute top-0 inset-x-0 h-[2px] bg-brand-accent shadow-glow-accent-sm rounded-t-md"
@@ -180,19 +182,19 @@ export default function DualProductShowcase() {
                 </div>
                 <div>
                   <p className="text-[10px] font-enHeading uppercase tracking-[0.2em] text-brand-accent mb-1">
-                    <Translate en="For Operators" ar="للمشغّلين" />
+                    <Translate en="B2B Operator Dashboard" ar="لوحة تحكم المشغلين (B2B)" />
                   </p>
-                  <h3 className="text-2xl font-enHeading font-bold text-text-highlight">
+                  <h3 className="text-2xl font-enHeading font-bold text-text-primary">
                     app.irken.com.eg
                   </h3>
                 </div>
               </div>
 
               {/* Description */}
-              <p className="text-sm text-text-primary leading-relaxed mb-8">
+              <p className="text-sm text-text-secondary leading-relaxed mb-8">
                 <Translate
-                  en="Your entire parking operation on one screen. Track revenue, manage access, and optimize pricing — start free, upgrade as you grow."
-                  ar="عملياتك التشغيلية بالكامل على شاشة واحدة. تتبع الإيرادات، أدر الوصول، وحسّن التسعير — ابدأ مجاناً، وطوّر عند النمو."
+                  en="The command center for your mobility infrastructure. Track revenue in real-time, manage access policies, and optimize pricing dynamically to maximize yield."
+                  ar="مركز القيادة للبنية التحتية الخاصة بك. تتبع الإيرادات لحظياً، أدر سياسات الوصول، وحسّن التسعير ديناميكياً لتعظيم العوائد."
                 />
               </p>
 
@@ -235,6 +237,8 @@ export default function DualProductShowcase() {
                   onClick={() => openDemo('operator')}
                   className="px-4 py-3 rounded-md font-medium text-sm transition-all duration-300 border border-brand-secondary text-text-primary hover:border-brand-accent/50 hover:bg-brand-secondary/20 flex items-center justify-center gap-2"
                   aria-label="Watch Operator Dashboard Demo"
+                  aria-haspopup="dialog"
+                  aria-expanded={isDemoOpen && demoType === 'operator'}
                 >
                   <Play className="w-4 h-4 text-brand-accent" />
                   <Translate en="Watch Demo" ar="شاهد العرض" />

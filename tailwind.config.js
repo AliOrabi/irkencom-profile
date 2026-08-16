@@ -44,16 +44,16 @@ module.exports = {
         },
         // ── Irken Solutions Brand Tokens (UI/UX Pro Max) ─────────────
         brand: {
-          primary:    '#0F172A',   // Slate 900 — Deep corporate canvas
-          secondary:  '#1E293B',   // Slate 800 — Elevated cards
-          accent:     '#2563EB',   // Electric Blue — Trust, CTAs, highlight
-          'accent-hover': '#1D4ED8',
-          'on-accent': '#FFFFFF',  // Text/icon color on accent backgrounds
+          primary:    '#ffffff',   // Clean corporate canvas
+          secondary:  '#f8fafc',   // Slate 50 — Light cards
+          accent:     '#569BAA',   // Irken Teal
+          'accent-hover': '#457a87',
+          'on-accent': '#FFFFFF',
         },
         text: {
-          primary:    '#F8FAFC',   // Slate 50 — headings
-          secondary:  '#94A3B8',   // Slate 400 — body, labels
-          highlight:  '#FFFFFF',   // Max contrast
+          primary:    '#0F172A',   // Slate 900 — headings
+          secondary:  '#475569',   // Slate 600 — body, labels
+          highlight:  '#569BAA',   // Teal
         },
       },
 

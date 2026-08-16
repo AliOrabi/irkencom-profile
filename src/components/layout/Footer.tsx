@@ -28,6 +28,7 @@ const socials = [
     ),
   }
 ];
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -39,8 +40,7 @@ export default function Footer() {
 
           {/* Brand column */}
           <div className="lg:col-span-4">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/newiRkenLogo.png" alt="Irken Solutions" className="h-10 w-auto mb-6" />
+            <Image src="/newiRkenLogo.png" alt="Irken Solutions" width={120} height={40} className="h-10 w-auto mb-6" />
             <p className="text-sm text-text-secondary leading-relaxed max-w-[300px] mb-6">
               <Translate
                 en="A venture-building technology firm dedicated to digitizing the mobility and parking sector through asset-light infrastructure."
@@ -136,7 +136,7 @@ export default function Footer() {
                 href="https://irken.eg"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block text-[11px] font-enHeading uppercase tracking-[0.15em] text-text-primary hover:text-brand-accent transition-colors hover:underline"
+                className="inline-block text-[11px] font-enHeading uppercase tracking-[0.15em] text-brand-accent font-bold hover:text-text-primary transition-colors hover:underline"
               >
                 Visit irken.eg ↗
               </a>

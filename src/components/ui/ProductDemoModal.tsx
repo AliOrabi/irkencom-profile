@@ -2,8 +2,9 @@
 
 import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { X, Play } from 'lucide-react';
+import { X } from 'lucide-react';
 import Translate from '@/components/ui/Translate';
+import posthog from 'posthog-js';
 
 interface ProductDemoModalProps {
   isOpen: boolean;
@@ -21,19 +22,36 @@ export default function ProductDemoModal({ isOpen, onClose, productType }: Produ
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
+      posthog.capture('demo_modal_opened', { product_type: productType });
     } else {
       document.body.style.overflow = '';
     }
     return () => {
       document.body.style.overflow = '';
     };
-  }, [isOpen]);
+  }, [isOpen, productType]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        posthog.capture('demo_modal_closed', { product_type: productType, method: 'escape_key' });
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose, productType]);
+
+  const handleClose = () => {
+    posthog.capture('demo_modal_closed', { product_type: productType, method: 'close_button' });
+    onClose();
+  };
 
   if (!isOpen || !mounted || !productType) return null;
 
   return createPortal(
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6" aria-modal="true" role="dialog">
-      <div className="absolute inset-0 bg-brand-primary/90 backdrop-blur-sm" onClick={onClose} aria-hidden="true" />
+      <div className="absolute inset-0 bg-brand-primary/90 backdrop-blur-sm" onClick={handleClose} aria-hidden="true" />
       <div className="relative w-full max-w-5xl bg-brand-primary border border-brand-secondary rounded-xl overflow-hidden shadow-2xl flex flex-col animate-in fade-in zoom-in-95 duration-200">
         <div className="flex items-center justify-between p-4 border-b border-brand-secondary">
           <h3 className="text-lg font-enHeading font-bold text-text-primary">
@@ -44,25 +62,21 @@ export default function ProductDemoModal({ isOpen, onClose, productType }: Produ
             )}
           </h3>
           <button 
-            onClick={onClose}
+            onClick={handleClose}
             className="p-2 text-text-secondary hover:text-text-primary hover:bg-brand-secondary/50 rounded-md transition-colors"
             aria-label="Close demo"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
-        <div className="relative aspect-video bg-[#0a111a] flex flex-col items-center justify-center">
-          {/* Placeholder for actual video player */}
-          <div className="w-20 h-20 bg-brand-accent/20 rounded-full flex items-center justify-center mb-4 border border-brand-accent/30 shadow-glow-accent transition-transform hover:scale-110 cursor-pointer">
-            <Play className="w-8 h-8 text-brand-accent translate-x-1" />
-          </div>
-          <p className="text-text-secondary text-sm font-enHeading tracking-wide">
-            {productType === 'driver' ? (
-              <Translate en="DRIVER APP DEMO VIDEO COMING SOON" ar="فيديو العرض التطبيقي قريباً" />
-            ) : (
-              <Translate en="OPERATOR DASHBOARD DEMO VIDEO COMING SOON" ar="فيديو عرض لوحة التحكم قريباً" />
-            )}
-          </p>
+        <div className="relative aspect-video bg-[#0a111a] flex flex-col items-center justify-center overflow-hidden">
+          <iframe
+            src={productType === 'driver' ? 'https://www.youtube.com/embed/dQw4w9WgXcQ' : 'https://www.youtube.com/embed/dQw4w9WgXcQ'}
+            title="Product Demo Video"
+            className="absolute inset-0 w-full h-full border-0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
         </div>
       </div>
     </div>,

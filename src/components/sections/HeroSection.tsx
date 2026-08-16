@@ -56,7 +56,7 @@ export default function HeroSection() {
                 <span className="animate-ping absolute inline-flex h-full w-full bg-brand-accent rounded-full opacity-60" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-accent" />
               </span>
-              <Translate en="Egypt &amp; MENA · Urban Parking Intelligence" ar="مصر ومنطقة الشرق الأوسط وشمال إفريقيا · ذكاء المواقف الحضرية" />
+              <Translate en="Egypt's Leading B2B Digital Transformation Partner" ar="الشريك الرائد للتحول الرقمي للشركات في مصر" />
             </span>
           </Reveal>
 
@@ -64,11 +64,11 @@ export default function HeroSection() {
           <Reveal delay={0.1}>
             <h1
               id="hero-headline"
-              className="text-5xl md:text-6xl lg:text-7xl font-bold font-enHeading text-text-highlight leading-[1.05] mb-6 tracking-tight"
+              className="text-5xl md:text-6xl lg:text-7xl font-bold font-enHeading text-text-primary leading-[1.05] mb-6 tracking-tight"
             >
               <Translate
-                en="Zero Hardware. 100% Automated Revenue."
-                ar="بدون أجهزة معقدة. أرباح مؤتمتة بالكامل."
+                en="Digital Transformation for the Mobility Sector."
+                ar="التحول الرقمي لقطاع التنقل."
               />
             </h1>
           </Reveal>
@@ -77,8 +77,8 @@ export default function HeroSection() {
           <Reveal delay={0.18}>
             <p className="text-base md:text-lg text-text-secondary mb-10 max-w-[520px] leading-relaxed">
               <Translate
-                en="Stop bleeding cash on obsolete barriers. Our asset-light software transforms your idle parking real estate into high-yield mobility hubs in days, not months."
-                ar="توقف عن إهدار أموالك على الحواجز التقليدية. نظامنا البرمجي المرن يحوّل مساحاتك الشاغرة إلى مراكز ربحية ذكية خلال أيام، وليس شهور."
+                en="Empowering enterprises with cutting-edge software solutions to modernize mobility and parking operations across Egypt and the MENA region."
+                ar="تمكين الشركات بحلول برمجية متطورة لتحديث عمليات التنقل والمواقف في مصر ومنطقة الشرق الأوسط وشمال إفريقيا."
               />
             </p>
           </Reveal>

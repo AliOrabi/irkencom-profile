@@ -1,13 +1,13 @@
 # Irken Solutions - Next.js Corporate Site Tasklist
 
 ## Phase 2: Technical Architecture
-### [ ] Task 1: Initialize shadcn/ui and Tailwind CSS v3
+### [x] Task 1: Initialize shadcn/ui and Tailwind CSS v3
 - Install shadcn/ui components base.
 - Configure `components.json`.
 - Modify `tailwind.config.ts` to include Deep Tech color variables and spacing.
 - Update `globals.css` with the CSS variables mapped in the design system.
 
-### [ ] Task 2: Setup Core Layout and i18n support
+### [x] Task 2: Setup Core Layout and i18n support
 - Configure `app/layout.tsx` to handle `dir` (LTR/RTL).
 - Setup primary fonts: Tajawal (Arabic), Space Grotesk (Headings), Inter (Body) using `next/font/google`.
 - Create a localized content architecture for text (e.g. data dictionary).

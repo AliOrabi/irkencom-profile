@@ -52,7 +52,7 @@ export default function Header() {
         className={[
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
           scrolled
-            ? 'bg-brand-primary/90 backdrop-blur-[12px] border-b border-brand-secondary shadow-[0_4px_30px_rgba(0,0,0,0.4)]'
+            ? 'bg-brand-primary/90 backdrop-blur-[12px] border-b border-brand-secondary shadow-[0_4px_30px_rgba(0,0,0,0.05)]'
             : 'bg-transparent border-b border-transparent',
         ].join(' ')}
         role="banner"
@@ -96,7 +96,7 @@ export default function Header() {
                         'absolute top-full left-0 w-64',
                         'bg-brand-primary border border-brand-secondary',
                         'p-5 flex flex-col gap-4',
-                        'shadow-[0_16px_40px_rgba(0,0,0,0.6)]',
+                        'shadow-[0_16px_40px_rgba(0,0,0,0.1)]',
                         'transition-all duration-200',
                         activeDropdown === item.id
                           ? 'opacity-100 pointer-events-auto translate-y-0'
@@ -156,7 +156,7 @@ export default function Header() {
               <span>{language === 'en' ? 'عربي' : 'EN'}</span>
             </button>
             {/* CTA */}
-            <PrimaryButton en="Request Demo" ar="طلب عرض" href="#integration" className="py-3 text-[11px]" />
+            <PrimaryButton en="Request Integration" ar="طلب تكامل" href="#integration" className="py-3 text-[11px]" />
           </div>
 
           {/* ── Mobile hamburger ─────────────────────────────────────────── */}
@@ -274,7 +274,7 @@ export default function Header() {
               </a>
             </div>
           </div>
-          <PrimaryButton en="Request Demo" ar="طلب عرض" href="#integration" className="w-full justify-center py-4" />
+          <PrimaryButton en="Request Integration" ar="طلب تكامل" href="#integration" className="w-full justify-center py-4" />
         </div>
       </div>
     </>

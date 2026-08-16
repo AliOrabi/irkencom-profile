@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import Translate from '@/components/ui/Translate';
 
+import Image from 'next/image';
+
 export default function DashboardShowcase() {
   const [activeBookings, setActiveBookings] = useState(843);
   useEffect(() => {
@@ -20,19 +22,18 @@ export default function DashboardShowcase() {
   return (
     <div className="relative z-10 w-full max-w-lg mx-auto">
       {/* Offset decorative frame */}
-      <div className="absolute inset-0 bg-[#071318] border border-brand-accent/50 ltr:translate-x-4 rtl:-translate-x-4 translate-y-4 -z-10 hidden sm:block rounded-md"></div>
+      <div className="absolute inset-0 bg-brand-secondary border border-brand-accent/50 ltr:translate-x-4 rtl:-translate-x-4 translate-y-4 -z-10 hidden sm:block rounded-md"></div>
       
       {/* Main Card */}
-      <div className="relative border border-brand-accent bg-[#0a1120] shadow-glow-accent-sm overflow-hidden p-8 border-l-4 border-l-brand-accent rounded-md">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/newiRkenLogo.png" alt="" className="absolute -bottom-[10%] -right-[5%] w-[150px] opacity-[0.03] pointer-events-none" />
+      <div className="relative border border-brand-accent bg-white shadow-glow-accent-sm overflow-hidden p-8 border-l-4 border-l-brand-accent rounded-md">
+        <Image src="/newiRkenLogo.png" alt="" width={150} height={150} className="absolute -bottom-[10%] -right-[5%] w-[150px] opacity-[0.05] pointer-events-none" />
         
         {/* Header */}
         <div className="flex justify-between items-start border-b border-brand-secondary/50 pb-6 mb-6">
           <div>
-            <h2 className="font-enHeading text-xl text-white mb-1">
+            <h3 className="font-enHeading text-xl text-text-primary mb-1">
               <Translate en="Systemic Yield Engine" ar="محرك العوائد المنهجي" />
-            </h2>
+            </h3>
             <div className="text-xs font-mono text-text-secondary">
               IRKEN.CORE_NODE_01
             </div>
@@ -49,7 +50,7 @@ export default function DashboardShowcase() {
             <div className="text-xs font-enHeading text-text-secondary uppercase tracking-widest mb-3">
               <Translate en="Total Static Capacity" ar="السعة الثابتة الإجمالية" />
             </div>
-            <div className="text-3xl font-enHeading text-white mb-1">1,250</div>
+            <div className="text-3xl font-enHeading text-text-primary mb-1">1,250</div>
             <div className="text-xs text-text-secondary">
               <Translate en="Spaces Provisioned" ar="المساحات المتوفرة" />
             </div>
@@ -66,7 +67,7 @@ export default function DashboardShowcase() {
         </div>
 
         {/* Terminal Output */}
-        <div className="border border-brand-secondary bg-[#040810] p-4 text-xs font-mono text-text-secondary leading-relaxed rounded-md">
+        <div className="border border-brand-secondary bg-brand-secondary/30 p-4 text-xs font-mono text-text-secondary leading-relaxed rounded-md">
           {'>'} INITIATING CAPACITY ALGORITHM...<br/>
           {'>'} STATUS: <span className="text-brand-accent font-bold">YIELD_OPTIMIZED</span><br/>
           {'>'} ACTIVE_LOAD: <span className="text-brand-accent font-bold">{load}%</span><br/>
