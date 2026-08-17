@@ -24,26 +24,6 @@ When instructed to unify, setup, or roll out a design system using shadcn, ALWAY
 
 ---
 
-## 2. 📂 Key Files Modified & Created
-
-1. `vercel.json` *(New)*: Explicitly defines the Next.js framework preset for Vercel builds.
-2. `eslint.config.mjs` *(Updated)*: Configured with `FlatCompat` to support Next 15 rules with ESLint 9.
-3. `package.json` & `package-lock.json` *(Updated)*: Added `@eslint/eslintrc: ^3`, synced locks, and bumped version to `v0.0.1`.
-4. `src/app/insights/[slug]/page.tsx` *(Updated)*: Next 15 `async params` resolution and Next Image migration.
-5. `src/app/insights/page.tsx` *(Updated)*: Migrated to Next Image with responsive layout.
-6. `src/components/sections/BlogPreview.tsx` *(Updated)*: Replaced raw image tag with Next Image.
-7. `src/app/about/page.tsx` *(Updated)*: Replaced founder avatar `<img>` tags with Next Image.
-
----
-
-## 3. 🧪 Verification & Build Status
-
-- **Build Test:** `npm run build` executed successfully.
-- **Type Checking:** All 26 static and dynamic routes compiled with **0 errors and 0 type violations**.
-- **Git State:** All fixes committed and pushed to `origin main` (Commits: `3466171`, `742eb54`, `ae679af`, `4698e79`, `b174cb6`).
-
----
-
 # 📄 Comprehensive Executive Report: UI/UX Redesign & Architecture Pivot (v0.0.2)
 
 **Project:** `irken.com.eg` (`irkencom-profile`)  
@@ -59,18 +39,33 @@ When instructed to unify, setup, or roll out a design system using shadcn, ALWAY
 | **Offset Layer Pattern** | Introduced offset geometric patterns (white cards resting on cyan/purple/blue blocks) to create depth without relying on heavy or murky drop shadows. |
 | **Header Refactor** | Updated `Header.tsx` to align with the light theme—utilizing a white blurred background on scroll, swapping to the dark-colored logo (`irken-logo-ligth.png`), and using `slate-500` for crisp navigation links. |
 
-## 2. 📂 Key Files Modified & Created
+---
 
-1. `DESIGN.md` *(Updated)*: Completely rewritten to codify the new Airy Fintech design rules, color assignments, and component aesthetics.
-2. `src/app/globals.css` *(Updated)*: Adjusted root CSS variables (radii, utilities).
-3. `src/app/[locale]/page.tsx` *(Updated)*: Simplified the layout tree to only render Hero, Logos, CoreFeatures, Benefits, CaseStudies, and the IntegrationForm CTA.
-4. `src/components/sections/CoreFeaturesSection.tsx` *(New)*: Implements the offset background pattern.
-5. `src/components/sections/BenefitsSection.tsx` *(New)*: Implements a clean 3-column benefit grid with centralized icons.
-6. `src/components/layout/Header.tsx` *(Updated)*: Restyled for the light theme with updated logo logic.
-7. `src/components/ui/Buttons.tsx` *(Updated)*: `PrimaryButton` and `GhostButton` updated to pill-shapes (`rounded-full`).
+# 📄 Comprehensive Executive Report: Approved Design System & Polish (v0.0.3)
 
-## 3. 🧪 Developer Notes for Future Agents
-- **Do not hardcode colors in `tailwind.config.js`:** Always rely on HSL CSS variables mapping in `globals.css` to prevent dark mode desync.
-- **Maintain whitespace:** Do not cram components. Give sections `py-24` or `py-32` padding to maintain the airy feel.
-- **Logo Usage:** `newiRkenLogo.png` is the all-white logo for dark backgrounds. `irken-logo-ligth.png` is the dark-colored logo for light backgrounds.
+**Project:** `irken.com.eg` (`irkencom-profile`)  
+**Creative North Star:** `"Airy Fintech & Frictionless Flow"`  
+**Status:** **Approved Design System Committed**
+
+## 1. 🎯 Core System Invariants & Rules
+
+1. **Strict Pill Geometry (`The Strict Pill Rule`):**
+   - All interactive buttons (`PrimaryButton`, `GhostButton`, `SecondaryButton` in `src/components/ui/Buttons.tsx`), badges, and tags MUST use `rounded-full` (9999px).
+   - Never use MUI Emotion wrappers or squarish corners (`rounded-md` / 6px) for action elements.
+2. **Generous Container Radii (`The Generous Curve Rule`):**
+   - Standard structural cards and content containers use `24px` (`rounded-3xl`) or `32px` (`rounded-[2rem]`).
+   - Floating form card uses `rounded-[2.5rem]`.
+3. **Contrast & Light Canvas (`The Light Canvas Rule`):**
+   - General marketing canvases default to clean white (`#FFFFFF`) or Slate 50 (`#F8FAFC`).
+   - Video overlays in Hero use deep dark contrast (`from-[#0A1118]/95 via-[#0A1118]/85 to-[#0A1118]/65`) to ensure >4.5:1 text contrast for white display typography.
+   - Footers are grounded with FAAC Navy (`#0F172A` / `#1A2530`).
+4. **PropTech Domain Vocabulary:**
+   - Always represent Irken's true domain: Zero CapEx deployment, ticketless LPR ingress/egress, capacity yield intelligence, and commercial real estate/hospitality parking.
+5. **No Dead Links:**
+   - Navigation links must target active routes or anchors (`#solutions`, `#integration`, `/services/...`).
+
+## 2. 📂 Key Files & Artifacts
+- [`DESIGN.md`](file:///d:/Company-website/irkencom-profile/DESIGN.md): Authoritative design tokens and system principles.
+- [`.impeccable/design.json`](file:///d:/Company-website/irkencom-profile/.impeccable/design.json): Machine-readable sidecar with drop-in component snippets, tonal ramps, shadows, and motion tokens.
+- [`src/components/ui/Buttons.tsx`](file:///d:/Company-website/irkencom-profile/src/components/ui/Buttons.tsx): Canonical pill button primitives.
 <!-- END:agents-long-memory -->

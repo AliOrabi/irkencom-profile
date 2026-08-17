@@ -1,78 +1,94 @@
 .legalContainer {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: var(--space-xl) var(--space-md);
-  padding-top: 120px;
+  padding: 140px 24px 80px;
+}
+
+.legalCard {
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 2rem;
+  padding: 48px;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.03);
+}
+
+@media (max-width: 640px) {
+  .legalCard {
+    padding: 28px;
+    border-radius: 1.5rem;
+  }
 }
 
 .title {
-  font-family: var(--font-en-heading);
+  font-family: var(--font-en-heading), 'Space Grotesk', sans-serif;
   font-size: 2.5rem;
   font-weight: 700;
-  margin-bottom: var(--space-lg);
-  color: var(--brand-text-primary);
+  margin-bottom: 8px;
+  color: #0F172A;
   line-height: 1.2;
 }
 
 .lastUpdated {
   font-size: 0.875rem;
-  color: var(--brand-text-secondary);
-  margin-bottom: var(--space-xl);
+  color: #64748B;
+  margin-bottom: 32px;
   display: block;
+  font-weight: 500;
 }
 
 .content {
-  font-size: 1.125rem;
-  line-height: 1.7;
-  color: var(--brand-text-primary);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: #334155;
+  font-family: var(--font-en-body), 'Inter', sans-serif;
 }
 
 .content h2 {
-  font-family: var(--font-en-heading);
-  font-size: 1.75rem;
-  font-weight: 600;
-  margin-top: var(--space-xl);
-  margin-bottom: var(--space-md);
-  color: var(--brand-text-primary);
+  font-family: var(--font-en-heading), 'Space Grotesk', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 36px;
+  margin-bottom: 16px;
+  color: #0F172A;
 }
 
 .content h3 {
-  font-family: var(--font-en-heading);
-  font-size: 1.25rem;
-  font-weight: 500;
-  margin-top: var(--space-lg);
-  margin-bottom: var(--space-sm);
+  font-family: var(--font-en-heading), 'Space Grotesk', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 24px;
+  margin-bottom: 12px;
+  color: #0F172A;
 }
 
 .content p {
-  margin-bottom: var(--space-md);
+  margin-bottom: 18px;
 }
 
 .content ul,
 .content ol {
-  margin-bottom: var(--space-md);
-  padding-inline-start: var(--space-lg);
+  margin-bottom: 20px;
+  padding-inline-start: 24px;
 }
 
 .content li {
-  margin-bottom: var(--space-xs);
+  margin-bottom: 8px;
 }
 
 .content a {
-  color: var(--brand-text-highlight);
+  color: #569BAA;
   text-decoration: underline;
-  text-decoration-color: rgba(255, 255, 255, 0.3);
   text-underline-offset: 4px;
-  transition: text-decoration-color 0.2s ease;
+  transition: color 0.2s ease;
 }
 
 .content a:hover {
-  text-decoration-color: var(--brand-text-highlight);
+  color: #457A87;
 }
 
-/* RTL Support via general selector */
+/* RTL Support */
 :global([dir="rtl"]) .title,
 :global([dir="rtl"]) .content h2,
 :global([dir="rtl"]) .content h3 {
-  font-family: var(--font-ar);
+  font-family: var(--font-ar), 'Tajawal', sans-serif;
 }

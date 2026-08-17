@@ -72,7 +72,7 @@ export const blogPosts: BlogPost[] = [
       en: 'LPR technology uses advanced cameras and AI to read license plates... (Full article coming soon)',
       ar: 'تستخدم هذه التقنية كاميرات متقدمة وذكاء اصطناعي لقراءة اللوحات... (المقال الكامل قريباً)',
     },
-    imageUrl: 'https://images.unsplash.com/photo-1542361345-89ce58a8a810?q=80&w=2070&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1590674899484-d5640e854abe?q=80&w=2070&auto=format&fit=crop',
     category: { en: 'Technology', ar: 'التكنولوجيا' },
   }
 ];

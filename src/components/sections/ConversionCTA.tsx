@@ -3,7 +3,8 @@
 import React from 'react';
 import Translate from '@/components/ui/Translate';
 import Reveal from '@/components/ui/Reveal';
-import Link from 'next/link';
+import { PrimaryButton, GhostButton } from '@/components/ui/Buttons';
+import { ArrowRight, Sparkles } from 'lucide-react';
 import { usePostHog } from 'posthog-js/react';
 
 interface ConversionCTAProps {
@@ -14,6 +15,9 @@ interface ConversionCTAProps {
   primaryButtonTextEn?: string;
   primaryButtonTextAr?: string;
   primaryButtonHref?: string;
+  secondaryButtonTextEn?: string;
+  secondaryButtonTextAr?: string;
+  secondaryButtonHref?: string;
 }
 
 export default function ConversionCTA({ 
@@ -21,37 +25,65 @@ export default function ConversionCTA({
   titleAr, 
   descriptionEn, 
   descriptionAr,
-  primaryButtonTextEn = "Architect Your Solution",
-  primaryButtonTextAr = "صمم حلك",
-  primaryButtonHref = "/contact"
+  primaryButtonTextEn = "Request Integration Assessment",
+  primaryButtonTextAr = "طلب تقييم الربط والتكامل",
+  primaryButtonHref = "/contact",
+  secondaryButtonTextEn = "Calculate ROI",
+  secondaryButtonTextAr = "احسب العائد على الاستثمار",
+  secondaryButtonHref = "/services/parking-management/calculate"
 }: ConversionCTAProps) {
   const posthog = usePostHog();
+
   return (
-    <section className="py-24 bg-brand-primary border-y border-brand-secondary relative overflow-hidden">
-      <div className="absolute top-0 inset-x-0 h-[1px] bg-brand-accent/20"></div>
-      <div className="absolute bottom-0 inset-x-0 h-[1px] bg-brand-accent/20"></div>
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_center,theme(colors.brand.accent)_0%,transparent_60%)] opacity-10 pointer-events-none"></div>
-      
-      <Reveal direction="up" delay={0.2}>
-        <div className="max-w-3xl mx-auto px-8 text-center relative z-10">
-          <h2 className="text-3xl md:text-4xl font-enHeading text-text-primary mb-6">
-            <Translate en={titleEn} ar={titleAr} />
-          </h2>
-          <p className="text-lg text-text-secondary leading-relaxed mb-10 max-w-2xl mx-auto">
-            <Translate en={descriptionEn} ar={descriptionAr} />
-          </p>
-          <div>
-            <Link 
-              href={primaryButtonHref} 
-              onClick={() => posthog?.capture('cta_clicked', { cta_name: primaryButtonTextEn })}
-              className="inline-block px-8 py-4 bg-transparent border border-brand-accent text-brand-accent font-enHeading text-sm uppercase tracking-[2px] hover:bg-brand-accent hover:text-brand-primary transition-all duration-300 hover:shadow-glow-accent relative overflow-hidden group rounded-md"
-            >
-              <span className="relative z-10"><Translate en={primaryButtonTextEn} ar={primaryButtonTextAr} /></span>
-              <div className="absolute inset-0 bg-brand-accent scale-x-0 group-hover:scale-x-100 transition-transform origin-left rtl:origin-right duration-300 z-0"></div>
-            </Link>
+    <section className="py-20 lg:py-24 bg-white relative overflow-hidden">
+      <div className="max-w-[1280px] mx-auto px-6 lg:px-8 w-full">
+        <Reveal direction="up" delay={0.1}>
+          {/* Main rounded container */}
+          <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#0F172A] via-[#162234] to-[#0A1118] p-10 sm:p-14 lg:p-20 text-center text-white shadow-2xl border border-slate-800">
+            {/* Ambient background blur */}
+            <div 
+              className="absolute top-0 right-1/4 w-[400px] h-[300px] bg-brand-accent/15 rounded-full blur-[90px] pointer-events-none" 
+              aria-hidden="true" 
+            />
+
+            <div className="relative z-10 max-w-3xl mx-auto">
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-brand-accent text-xs font-semibold font-enHeading uppercase tracking-[0.14em] mb-6 backdrop-blur-md">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span><Translate en="ZERO CAPEX DEPLOYMENT" ar="تكامل بدون نفقات رأسمالية" /></span>
+              </div>
+
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-enHeading text-white mb-6 leading-tight">
+                <Translate en={titleEn} ar={titleAr} />
+              </h2>
+
+              <p className="text-base sm:text-lg text-slate-300 leading-relaxed mb-10 max-w-2xl mx-auto">
+                <Translate en={descriptionEn} ar={descriptionAr} />
+              </p>
+
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <PrimaryButton
+                  href={primaryButtonHref}
+                  onClick={() => posthog?.capture('cta_clicked', { cta_name: primaryButtonTextEn })}
+                  icon={<ArrowRight className="w-4 h-4 rtl:rotate-180" />}
+                >
+                  <Translate en={primaryButtonTextEn} ar={primaryButtonTextAr} />
+                </PrimaryButton>
+
+                {secondaryButtonHref && (
+                  <GhostButton
+                    href={secondaryButtonHref}
+                    onClick={() => posthog?.capture('cta_secondary_clicked', { cta_name: secondaryButtonTextEn })}
+                  >
+                    <Translate en={secondaryButtonTextEn} ar={secondaryButtonTextAr} />
+                  </GhostButton>
+                )}
+              </div>
+            </div>
           </div>
-        </div>
-      </Reveal>
+        </Reveal>
+      </div>
     </section>
   );
 }

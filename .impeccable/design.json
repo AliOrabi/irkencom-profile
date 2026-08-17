@@ -1,21 +1,66 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-16T13:45:00Z",
+  "generatedAt": "2026-08-17T16:33:00Z",
   "title": "Design System: Irken Solutions",
   "extensions": {
     "colorMeta": {
-      "primary": { "role": "primary", "displayName": "Irken Teal", "canonical": "#569BAA", "tonalRamp": ["#11252A", "#1D3A42", "#294F5B", "#366474", "#457A8D", "#569BAA", "#74B2C0", "#A2CFD8"] },
-      "background-dark": { "role": "neutral", "displayName": "FAAC Navy", "canonical": "#1A2530", "tonalRamp": ["#080C10", "#0D141C", "#141D26", "#1A2530", "#243343", "#304358", "#425C75", "#6282A2"] }
+      "primary": {
+        "role": "primary",
+        "displayName": "Irken Teal",
+        "canonical": "#569BAA",
+        "tonalRamp": ["#11252A", "#1D3A42", "#294F5B", "#366474", "#457A8D", "#569BAA", "#74B2C0", "#A2CFD8"]
+      },
+      "canvas-dark": {
+        "role": "neutral",
+        "displayName": "FAAC Navy / Dark Ground",
+        "canonical": "#0F172A",
+        "tonalRamp": ["#05080E", "#0A101D", "#0F172A", "#1E293B", "#334155", "#475569", "#64748B", "#94A3B8"]
+      },
+      "canvas-light": {
+        "role": "neutral",
+        "displayName": "Slate White Canvas",
+        "canonical": "#FFFFFF",
+        "tonalRamp": ["#CBD5E1", "#E2E8F0", "#F1F5F9", "#F8FAFC", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF"]
+      }
     },
     "typographyMeta": {
-      "headline": { "displayName": "Headline", "purpose": "Primary section titles" },
-      "body": { "displayName": "Body", "purpose": "Operational text and reading copy" }
+      "display": {
+        "displayName": "Display & Headline",
+        "purpose": "Hero display headers and high-impact section headlines (Space Grotesk)."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Operational explanations and reading copy (Inter)."
+      },
+      "arabic": {
+        "displayName": "Arabic Display & Body",
+        "purpose": "High-legibility geometric Arabic Naskh (Tajawal)."
+      }
     },
     "shadows": [
-      { "name": "glow-accent", "value": "0 4px 14px 0 rgba(37, 99, 235, 0.3)", "purpose": "Subtle colored shadow for active states and CTAs." }
+      {
+        "name": "floating-surface",
+        "value": "0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01)",
+        "purpose": "Subtle floating lift for white cards resting on light slate backgrounds."
+      },
+      {
+        "name": "button-lift",
+        "value": "0 4px 12px 0 rgba(86, 155, 170, 0.25)",
+        "purpose": "Soft brand glow when hovering primary pill buttons."
+      }
     ],
     "motion": [
-      { "name": "scanline", "value": "scanline 3s linear infinite", "purpose": "Infinite animation signaling active tech on badges." }
+      {
+        "name": "spring-hover",
+        "value": "all 200ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Tactile micro-lift for pill buttons and interactive cards."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
     ]
   },
   "components": [
@@ -23,34 +68,92 @@
       "name": "Primary Button",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "Used for main actions like booking or sign up.",
-      "html": "<button class=\"ds-btn-primary\">GET STARTED</button>",
-      "css": ".ds-btn-primary { background-color: #569BAA; color: #FFFFFF; padding: 12px 24px; font-family: Inter, sans-serif; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px; border: none; border-radius: 6px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05); } .ds-btn-primary:hover { background-color: #457A87; transform: translateY(-1px); box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.3); }"
+      "description": "The canonical call-to-action pill button.",
+      "html": "<button class=\"ds-btn-primary\">REQUEST INTEGRATION</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background-color: #569BAA; color: #FFFFFF; padding: 14px 28px; font-family: 'Space Grotesk', Inter, sans-serif; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; border: 1px solid #569BAA; border-radius: 9999px; cursor: pointer; transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 1px 2px rgba(0,0,0,0.05); } .ds-btn-primary:hover { background-color: #457A87; border-color: #457A87; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(86, 155, 170, 0.3); } .ds-btn-primary:active { transform: translateY(0); scale: 0.98; }"
+    },
+    {
+      "name": "Ghost Pill Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary or inverted CTA on dark hero overlays.",
+      "html": "<button class=\"ds-btn-ghost\">EXPLORE PLATFORM</button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background-color: transparent; color: #FFFFFF; padding: 14px 28px; font-family: 'Space Grotesk', Inter, sans-serif; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 9999px; cursor: pointer; transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn-ghost:hover { background-color: rgba(255, 255, 255, 0.1); border-color: #FFFFFF; transform: translateY(-2px); }"
+    },
+    {
+      "name": "Floating Card",
+      "kind": "card",
+      "refersTo": "card-standard",
+      "description": "White container with generous 24px radius resting on subtle slate backgrounds.",
+      "html": "<div class=\"ds-card\"><h4 class=\"ds-card-title\">Zero CapEx Deployment</h4><p class=\"ds-card-desc\">Integrate with existing boom barriers and cameras in under 48 hours without costly hardware replacements.</p></div>",
+      "css": ".ds-card { background-color: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 24px; padding: 32px; box-shadow: 0 10px 30px -5px rgba(0,0,0,0.04); transition: transform 0.2s ease, box-shadow 0.2s ease; } .ds-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.08); } .ds-card-title { font-family: 'Space Grotesk', Inter, sans-serif; font-size: 20px; font-weight: 700; color: #0F172A; margin: 0 0 12px 0; } .ds-card-desc { font-family: Inter, sans-serif; font-size: 15px; line-height: 1.6; color: #64748B; margin: 0; }"
+    },
+    {
+      "name": "Pill Badge",
+      "kind": "chip",
+      "refersTo": "badge-pill",
+      "description": "Subtle indicator badge for system status and platform modules.",
+      "html": "<span class=\"ds-badge\">ASSET-LIGHT MOBILITY OS</span>",
+      "css": ".ds-badge { display: inline-flex; align-items: center; gap: 6px; background-color: rgba(86, 155, 170, 0.1); color: #569BAA; border: 1px solid rgba(86, 155, 170, 0.25); border-radius: 9999px; padding: 6px 14px; font-family: 'Space Grotesk', Inter, sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; }"
+    },
+    {
+      "name": "Input Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Light, accessible form input with smooth focus ring.",
+      "html": "<input class=\"ds-input\" type=\"text\" placeholder=\"e.g. SODIC Developments\" />",
+      "css": ".ds-input { width: 100%; box-sizing: border-box; background-color: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 16px; padding: 14px 18px; font-family: Inter, sans-serif; font-size: 14px; color: #0F172A; outline: none; transition: all 0.2s ease; } .ds-input:focus { background-color: #FFFFFF; border-color: #569BAA; box-shadow: 0 0 0 3px rgba(86, 155, 170, 0.2); } .ds-input::placeholder { color: #94A3B8; }"
     }
   ],
   "narrative": {
-    "northStar": "The Frictionless Flow",
-    "overview": "The Irken Solutions visual system embodies digital transformation within the Mobility and smart parking sector. It reflects an asset-light, seamless, and intelligent ecosystem. The aesthetic balances a deep, technical interface designed for operational prolonged use (Ergonomic Soft Dark) with precision-driven typography and vibrant, authoritative accents that command trust and clarity.",
+    "northStar": "Airy Fintech & Frictionless Flow",
+    "overview": "The Irken Solutions visual system embodies digital transformation within the Mobility and smart parking sector. The design merges clean, approachable whitespace with high-trust precision (inspired by modern consumer fintech platforms like Paymob). It emphasizes extreme legibility, generous organic curves, tactile pill buttons, and soft floating depth.",
     "keyCharacteristics": [
-      "Consultative and authoritative tone.",
-      "Flat and restrained surfaces to emphasize operational data.",
-      "Crisp, geometric typography matching the exactness of the tech.",
-      "Strict consistency (e.g., 6px radius) to convey reliability."
+      "Bright & Approachable Canvas with white (#FFFFFF) and slate-50 (#F8FAFC) foundations.",
+      "Generous Radii (24px to 32px) and strict pill-shaped (rounded-full) buttons.",
+      "Offset geometric color layering creating structured visual depth.",
+      "High-contrast dark overlays (#0A1118) for cinematic hero video and grounded footers.",
+      "Bilingual typographic harmony across English (Space Grotesk/Inter) and Arabic (Tajawal)."
     ],
     "rules": [
-      { "name": "The Strict Semantics Rule", "body": "Warm colors (reds, oranges, yellows) are strictly prohibited outside of explicit semantic feedback (errors, warnings) to maintain the cool, operational authority.", "section": "colors" },
-      { "name": "The Bilingual Symmetry Rule", "body": "Arabic content is treated with the same geometric precision as English, adjusting base sizes slightly to ensure equal visual weight and legibility in RTL layouts.", "section": "typography" },
-      { "name": "The Flat-By-Default Rule", "body": "Surfaces are flat at rest. Depth is primarily conveyed through tonal layering (color). Shadows appear only as a response to state (hover, focus, or active).", "section": "elevation" }
+      {
+        "name": "The Light Canvas Rule",
+        "body": "Primary marketing sections default to clean white (#FFFFFF) or Slate 50 (#F8FAFC). Avoid dense dark backgrounds on general marketing content.",
+        "section": "colors"
+      },
+      {
+        "name": "The Offset Layering Rule",
+        "body": "White feature cards rest on offset colored blocks (cyan, purple, blue) to create depth and visual structure without heavy drop shadows.",
+        "section": "colors"
+      },
+      {
+        "name": "The Generous Curve Rule",
+        "body": "All structural cards and containers must use 24px (rounded-3xl) or 32px (rounded-[2rem]) corner radii. Sharp corners (0px–8px) are prohibited on cards.",
+        "section": "shapes"
+      },
+      {
+        "name": "The Strict Pill Rule",
+        "body": "All interactive buttons, status tags, and sector badges must use full pill geometry (rounded-full / 9999px).",
+        "section": "shapes"
+      },
+      {
+        "name": "The Bilingual Symmetry Rule",
+        "body": "Arabic typography (Tajawal) is rendered with identical visual weight and baseline alignment as English headlines, with layout mirroring automatically handled in RTL.",
+        "section": "typography"
+      }
     ],
     "dos": [
-      "Do maintain a strict 6px border radius on all interactive elements.",
-      "Do use FAAC Navy as the default canvas for a deep-tech, operational feel.",
-      "Do ensure WCAG AA compliant contrast (4.5:1) for all text."
+      "Do use rounded-full for all buttons, badges, and status pills.",
+      "Do use 24px+ radii (rounded-3xl, rounded-[2rem]) for cards and containers.",
+      "Do maintain generous vertical whitespace (py-20 to py-28) across marketing sections.",
+      "Do preserve authentic PropTech and smart mobility domain language (Zero CapEx, LPR Flow, Yield Intelligence).",
+      "Do use inline SVG or uniform Lucide icons with 1.75–2px stroke weights."
     ],
     "donts": [
-      "Don't use warm colors for decoration; reserve them for warnings and errors.",
-      "Don't apply shadows to static cards or structural containers.",
-      "Don't use sharp 0px corners."
+      "Don't use rectangular or squarish (4px–8px) buttons.",
+      "Don't use dense, text-heavy developer UI blocks on public marketing surfaces.",
+      "Don't hardcode ad-hoc hex colors in components; use semantic theme tokens and CSS variables.",
+      "Don't create dead anchor links; always route to active anchors (#solutions, #integration) or live routes."
     ]
   }
 }

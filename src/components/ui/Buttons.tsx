@@ -5,18 +5,23 @@ import Translate from '@/components/ui/Translate';
 import LocalizedLink from '@/components/ui/LocalizedLink';
 import { cn } from '@/lib/utils';
 
-// ── PrimaryButton ────────────────────────────────────────────────────────────
-export interface PrimaryButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  en: string;
-  ar: string;
+// ── Common Button Props ──────────────────────────────────────────────────────
+export interface BaseButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  en?: string;
+  ar?: string;
+  children?: React.ReactNode;
   href?: string;
   className?: string;
   icon?: React.ReactNode;
+  target?: string;
+  rel?: string;
 }
 
+// ── PrimaryButton ────────────────────────────────────────────────────────────
 export function PrimaryButton({
   en,
   ar,
+  children,
   href,
   onClick,
   type = 'button',
@@ -24,7 +29,7 @@ export function PrimaryButton({
   className = '',
   icon,
   ...rest
-}: PrimaryButtonProps) {
+}: BaseButtonProps) {
   const baseClasses = cn(
     'inline-flex items-center justify-center gap-2.5',
     'px-7 py-3.5',
@@ -41,35 +46,30 @@ export function PrimaryButton({
     className
   );
 
+  const content = children || (en && ar ? <Translate en={en} ar={ar} /> : null);
+
   if (href) {
     return (
       <LocalizedLink href={href} onClick={onClick} className={baseClasses} {...(rest as any)}>
+        {content}
         {icon && <span className="shrink-0">{icon}</span>}
-        <Translate en={en} ar={ar} />
       </LocalizedLink>
     );
   }
 
   return (
     <button type={type} onClick={onClick} disabled={disabled} className={baseClasses} {...rest}>
+      {content}
       {icon && <span className="shrink-0">{icon}</span>}
-      <Translate en={en} ar={ar} />
     </button>
   );
 }
 
 // ── GhostButton ──────────────────────────────────────────────────────────────
-export interface GhostButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  en: string;
-  ar: string;
-  href?: string;
-  className?: string;
-  icon?: React.ReactNode;
-}
-
 export function GhostButton({
   en,
   ar,
+  children,
   href,
   onClick,
   type = 'button',
@@ -77,7 +77,7 @@ export function GhostButton({
   className = '',
   icon,
   ...rest
-}: GhostButtonProps) {
+}: BaseButtonProps) {
   const baseClasses = cn(
     'inline-flex items-center justify-center gap-2.5',
     'px-7 py-3.5',
@@ -95,19 +95,21 @@ export function GhostButton({
     className
   );
 
+  const content = children || (en && ar ? <Translate en={en} ar={ar} /> : null);
+
   if (href) {
     return (
       <LocalizedLink href={href} onClick={onClick} className={baseClasses} {...(rest as any)}>
+        {content}
         {icon && <span className="shrink-0">{icon}</span>}
-        <Translate en={en} ar={ar} />
       </LocalizedLink>
     );
   }
 
   return (
     <button type={type} onClick={onClick} disabled={disabled} className={baseClasses} {...rest}>
+      {content}
       {icon && <span className="shrink-0">{icon}</span>}
-      <Translate en={en} ar={ar} />
     </button>
   );
 }
@@ -116,6 +118,7 @@ export function GhostButton({
 export function SecondaryButton({
   en,
   ar,
+  children,
   href,
   onClick,
   type = 'button',
@@ -123,7 +126,7 @@ export function SecondaryButton({
   className = '',
   icon,
   ...rest
-}: PrimaryButtonProps) {
+}: BaseButtonProps) {
   const baseClasses = cn(
     'inline-flex items-center justify-center gap-2.5',
     'px-7 py-3.5',
@@ -140,19 +143,21 @@ export function SecondaryButton({
     className
   );
 
+  const content = children || (en && ar ? <Translate en={en} ar={ar} /> : null);
+
   if (href) {
     return (
       <LocalizedLink href={href} onClick={onClick} className={baseClasses} {...(rest as any)}>
+        {content}
         {icon && <span className="shrink-0">{icon}</span>}
-        <Translate en={en} ar={ar} />
       </LocalizedLink>
     );
   }
 
   return (
     <button type={type} onClick={onClick} disabled={disabled} className={baseClasses} {...rest}>
+      {content}
       {icon && <span className="shrink-0">{icon}</span>}
-      <Translate en={en} ar={ar} />
     </button>
   );
 }

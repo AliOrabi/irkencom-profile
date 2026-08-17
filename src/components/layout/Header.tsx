@@ -40,9 +40,12 @@ export default function Header() {
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
 
+  const isHome = pathname === '/' || pathname === '/en' || pathname === '/ar';
+  const isLightHeader = scrolled || !isHome;
+
   const navLinkClass = cn(
     'text-xs font-medium font-enHeading tracking-[0.14em] uppercase transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-accent py-2',
-    scrolled ? 'text-slate-600 hover:text-brand-accent' : 'text-slate-200 hover:text-white'
+    isLightHeader ? 'text-slate-700 hover:text-brand-accent' : 'text-slate-200 hover:text-white'
   );
 
   return (
@@ -58,7 +61,7 @@ export default function Header() {
       <header
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-          scrolled
+          isLightHeader
             ? 'bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm py-3.5'
             : 'bg-transparent border-b border-transparent py-5'
         )}
@@ -68,7 +71,7 @@ export default function Header() {
 
           {/* ── Logo ────────────────────────────────────────────────────── */}
           <LocalizedLink href="/" aria-label="Irken Solutions — Home" className="flex items-center shrink-0">
-            {scrolled ? (
+            {isLightHeader ? (
               <Image
                 src="/irken-logo-ligth.png"
                 alt="Irken Solutions"
@@ -157,7 +160,7 @@ export default function Header() {
               }}
               className={cn(
                 'flex items-center gap-2 text-xs font-semibold font-enHeading tracking-[0.14em] uppercase px-3 py-2 rounded-full border transition-all cursor-pointer',
-                scrolled
+                isLightHeader
                   ? 'text-slate-700 border-slate-200 hover:border-brand-accent hover:text-brand-accent'
                   : 'text-slate-200 border-white/20 hover:border-white hover:text-white bg-white/5'
               )}
@@ -171,7 +174,7 @@ export default function Header() {
             <PrimaryButton 
               en="Request Integration" 
               ar="طلب تكامل" 
-              href="#integration" 
+              href="/contact" 
               className="py-2.5 px-6 text-xs shadow-none" 
             />
           </div>
@@ -180,7 +183,7 @@ export default function Header() {
           <button
             className={cn(
               'lg:hidden flex items-center justify-center w-11 h-11 rounded-full border transition-colors cursor-pointer',
-              scrolled
+              isLightHeader
                 ? 'text-slate-900 border-slate-200 hover:border-brand-accent'
                 : 'text-white border-white/20 bg-white/10 hover:border-white'
             )}
