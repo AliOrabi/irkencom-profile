@@ -6,7 +6,7 @@ import { blogPosts } from '@/lib/blog-data';
 import Translate from '@/components/ui/Translate';
 import Reveal from '@/components/ui/Reveal';
 import ConversionCTA from '@/components/sections/ConversionCTA';
-import { ArrowLeft, Calendar, Tag, Clock, Share2 } from 'lucide-react';
+import { ArrowLeft, Calendar, Tag } from 'lucide-react';
 
 export default async function InsightPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;

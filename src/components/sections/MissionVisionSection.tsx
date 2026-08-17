@@ -3,7 +3,7 @@
 import React from 'react';
 import Translate from '@/components/ui/Translate';
 import Reveal from '@/components/ui/Reveal';
-import { Target, Lightbulb, Compass, Award } from 'lucide-react';
+import { Target, Lightbulb } from 'lucide-react';
 
 export default function MissionVisionSection() {
   return (

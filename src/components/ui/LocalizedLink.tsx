@@ -22,7 +22,7 @@ export default function LocalizedLink({ href, ...props }: LocalizedLinkProps) {
 
   // Handle pure anchor links natively to avoid Next.js routing issues if needed
   if (typeof localizedHref === 'string' && localizedHref.startsWith('#')) {
-    return <a href={localizedHref} {...props as any} />;
+    return <a href={localizedHref} {...(props as unknown as React.AnchorHTMLAttributes<HTMLAnchorElement>)} />;
   }
 
   return <NextLink href={localizedHref} {...props} />;

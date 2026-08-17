@@ -28,6 +28,10 @@ export function PrimaryButton({
   disabled = false,
   className = '',
   icon,
+  target,
+  rel,
+  id,
+  'aria-label': ariaLabel,
   ...rest
 }: BaseButtonProps) {
   const baseClasses = cn(
@@ -50,7 +54,15 @@ export function PrimaryButton({
 
   if (href) {
     return (
-      <LocalizedLink href={href} onClick={onClick} className={baseClasses} {...(rest as any)}>
+      <LocalizedLink 
+        href={href} 
+        onClick={onClick as unknown as React.MouseEventHandler<HTMLAnchorElement>} 
+        className={baseClasses} 
+        target={target}
+        rel={rel}
+        id={id}
+        aria-label={ariaLabel}
+      >
         {content}
         {icon && <span className="shrink-0">{icon}</span>}
       </LocalizedLink>
@@ -58,7 +70,15 @@ export function PrimaryButton({
   }
 
   return (
-    <button type={type} onClick={onClick} disabled={disabled} className={baseClasses} {...rest}>
+    <button 
+      type={type} 
+      onClick={onClick} 
+      disabled={disabled} 
+      className={baseClasses}
+      id={id}
+      aria-label={ariaLabel}
+      {...rest}
+    >
       {content}
       {icon && <span className="shrink-0">{icon}</span>}
     </button>
@@ -76,6 +96,10 @@ export function GhostButton({
   disabled = false,
   className = '',
   icon,
+  target,
+  rel,
+  id,
+  'aria-label': ariaLabel,
   ...rest
 }: BaseButtonProps) {
   const baseClasses = cn(
@@ -99,7 +123,15 @@ export function GhostButton({
 
   if (href) {
     return (
-      <LocalizedLink href={href} onClick={onClick} className={baseClasses} {...(rest as any)}>
+      <LocalizedLink 
+        href={href} 
+        onClick={onClick as unknown as React.MouseEventHandler<HTMLAnchorElement>} 
+        className={baseClasses} 
+        target={target}
+        rel={rel}
+        id={id}
+        aria-label={ariaLabel}
+      >
         {content}
         {icon && <span className="shrink-0">{icon}</span>}
       </LocalizedLink>
@@ -107,7 +139,15 @@ export function GhostButton({
   }
 
   return (
-    <button type={type} onClick={onClick} disabled={disabled} className={baseClasses} {...rest}>
+    <button 
+      type={type} 
+      onClick={onClick} 
+      disabled={disabled} 
+      className={baseClasses}
+      id={id}
+      aria-label={ariaLabel}
+      {...rest}
+    >
       {content}
       {icon && <span className="shrink-0">{icon}</span>}
     </button>
@@ -125,6 +165,10 @@ export function SecondaryButton({
   disabled = false,
   className = '',
   icon,
+  target,
+  rel,
+  id,
+  'aria-label': ariaLabel,
   ...rest
 }: BaseButtonProps) {
   const baseClasses = cn(
@@ -147,7 +191,15 @@ export function SecondaryButton({
 
   if (href) {
     return (
-      <LocalizedLink href={href} onClick={onClick} className={baseClasses} {...(rest as any)}>
+      <LocalizedLink 
+        href={href} 
+        onClick={onClick as unknown as React.MouseEventHandler<HTMLAnchorElement>} 
+        className={baseClasses} 
+        target={target}
+        rel={rel}
+        id={id}
+        aria-label={ariaLabel}
+      >
         {content}
         {icon && <span className="shrink-0">{icon}</span>}
       </LocalizedLink>
@@ -155,7 +207,15 @@ export function SecondaryButton({
   }
 
   return (
-    <button type={type} onClick={onClick} disabled={disabled} className={baseClasses} {...rest}>
+    <button 
+      type={type} 
+      onClick={onClick} 
+      disabled={disabled} 
+      className={baseClasses}
+      id={id}
+      aria-label={ariaLabel}
+      {...rest}
+    >
       {content}
       {icon && <span className="shrink-0">{icon}</span>}
     </button>

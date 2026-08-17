@@ -5,7 +5,7 @@ import Reveal from '@/components/ui/Reveal';
 import PageHero from '@/components/sections/PageHero';
 import MissionVisionSection from '@/components/sections/MissionVisionSection';
 import ConversionCTA from '@/components/sections/ConversionCTA';
-import { Briefcase, Code, Sparkles } from 'lucide-react';
+import { Briefcase, Code } from 'lucide-react';
 
 export default function AboutPage() {
   return (

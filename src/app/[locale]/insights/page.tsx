@@ -6,7 +6,7 @@ import Translate from '@/components/ui/Translate';
 import Reveal from '@/components/ui/Reveal';
 import PageHero from '@/components/sections/PageHero';
 import ConversionCTA from '@/components/sections/ConversionCTA';
-import { ArrowRight, Calendar, Tag } from 'lucide-react';
+import { ArrowRight, Calendar } from 'lucide-react';
 
 export default function InsightsPage() {
   return (

@@ -4,8 +4,7 @@ import React, { useState } from 'react';
 import Translate from '@/components/ui/Translate';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 import { usePostHog } from 'posthog-js/react';
-import { PrimaryButton } from '@/components/ui/Buttons';
-import { Check, Sparkles, TrendingUp, DollarSign, Calculator } from 'lucide-react';
+import { Check, TrendingUp, Calculator } from 'lucide-react';
 import Reveal from '@/components/ui/Reveal';
 
 export default function RevenueCalculator() {

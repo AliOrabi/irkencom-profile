@@ -20,19 +20,8 @@ import { cn } from '@/lib/utils';
 
 export default function FloatingCTA() {
   const [isOpen, setIsOpen] = useState(false);
-  const [hasScrolled, setHasScrolled] = useState(false);
   const hubRef = useRef<HTMLDivElement>(null);
   const posthog = usePostHog();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      // Show immediately or after minimal scroll
-      setHasScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   // Close on outside click
   useEffect(() => {

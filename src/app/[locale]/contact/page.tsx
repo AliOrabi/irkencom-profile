@@ -2,8 +2,7 @@ import React from 'react';
 import PageHero from '@/components/sections/PageHero';
 import ContactForm from '@/components/sections/ContactForm';
 import Translate from '@/components/ui/Translate';
-import { Mail, Phone, MapPin, Clock, LucideIcon as LucideIconType } from 'lucide-react';
-import { Icon } from '@/components/ui/Icon';
+import { Mail, Phone, MapPin, Clock } from 'lucide-react';
 import { contactChannels } from '@/config/contact';
 import Reveal from '@/components/ui/Reveal';
 

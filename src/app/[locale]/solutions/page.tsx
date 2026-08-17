@@ -12,8 +12,6 @@ import {
   Coins, 
   ArrowRight,
   ShieldCheck,
-  Zap,
-  TrendingUp,
   Cpu
 } from 'lucide-react';
 
