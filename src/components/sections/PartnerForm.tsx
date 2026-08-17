@@ -47,7 +47,7 @@ export default function PartnerForm() {
 
         {submitted ? (
           <div className="p-8 text-center border-2 border-brand-accent bg-brand-primary flex flex-col items-center gap-4 rounded-md">
-            <div className="w-12 h-12 bg-brand-accent/10 rounded-full flex items-center justify-center text-brand-accent">
+            <div className="w-12 h-12 bg-brand-accent/10 rounded-md flex items-center justify-center text-brand-accent">
               <svg width="24" height="18" viewBox="0 0 24 18" fill="none">
                 <polyline points="2 9 8 15 22 2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>

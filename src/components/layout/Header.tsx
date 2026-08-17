@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
+import LocalizedLink from '@/components/ui/LocalizedLink';
+import { usePathname } from 'next/navigation';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 import Translate from '@/components/ui/Translate';
 import { mainNav } from '@/config/navigation';
@@ -11,7 +12,8 @@ import { usePostHog } from 'posthog-js/react';
 export default function Header() {
   const { language, toggleLanguage } = useLanguage();
   const posthog = usePostHog();
-  const [scrolled, setScrolled]     = useState(false);
+  const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
@@ -36,7 +38,7 @@ export default function Header() {
   }, [mobileOpen]);
 
   const navLinkClass =
-    'text-[11px] font-enHeading tracking-[0.15em] text-text-secondary hover:text-brand-accent uppercase transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-accent';
+    'text-[11px] font-enHeading tracking-[0.15em] text-slate-500 hover:text-brand-accent uppercase transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-accent';
 
   return (
     <>
@@ -52,7 +54,7 @@ export default function Header() {
         className={[
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
           scrolled
-            ? 'bg-brand-primary/90 backdrop-blur-[12px] border-b border-brand-secondary shadow-[0_4px_30px_rgba(0,0,0,0.05)]'
+            ? 'bg-white/95 backdrop-blur-[12px] border-b border-slate-100 shadow-sm'
             : 'bg-transparent border-b border-transparent',
         ].join(' ')}
         role="banner"
@@ -60,14 +62,14 @@ export default function Header() {
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 w-full flex items-center justify-between h-18 md:h-20">
 
           {/* ── Logo ────────────────────────────────────────────────────── */}
-          <Link href="/" aria-label="Irken Solutions — Home" className="flex items-center shrink-0">
+          <LocalizedLink href="/" aria-label="Irken Solutions — Home" className="flex items-center shrink-0">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/newiRkenLogo.png"
+              src="/irken-logo-ligth.png"
               alt="Irken Solutions"
-              className="h-7 md:h-9 w-auto"
+              className="h-7 md:h-9 w-auto block"
             />
-          </Link>
+          </LocalizedLink>
 
           {/* ── Desktop nav ─────────────────────────────────────────────── */}
           <nav
@@ -94,9 +96,8 @@ export default function Header() {
                     <div
                       className={[
                         'absolute top-full left-0 w-64',
-                        'bg-brand-primary border border-brand-secondary',
-                        'p-5 flex flex-col gap-4',
-                        'shadow-[0_16px_40px_rgba(0,0,0,0.1)]',
+                        'bg-white border border-slate-100 shadow-lg',
+                        'p-5 flex flex-col gap-4 rounded-2xl',
                         'transition-all duration-200',
                         activeDropdown === item.id
                           ? 'opacity-100 pointer-events-auto translate-y-0'
@@ -107,21 +108,21 @@ export default function Header() {
                       {/* Cyan top bar */}
                       <div className="absolute top-0 left-0 w-full h-[2px] bg-brand-accent" />
                       {item.subItems.map((sub) => (
-                        <Link
+                        <LocalizedLink
                           key={sub.id}
                           href={sub.href || '#'}
                           role="menuitem"
-                          className="text-[11px] font-enHeading text-text-secondary hover:text-brand-accent uppercase tracking-[0.12em] transition-colors"
+                          className="text-[11px] font-enHeading text-slate-500 hover:text-brand-accent uppercase tracking-[0.15em] transition-colors"
                         >
                           <Translate en={sub.label.en} ar={sub.label.ar} />
-                        </Link>
+                        </LocalizedLink>
                       ))}
                     </div>
                   </>
                 ) : (
-                  <Link href={item.href || '#'} className={navLinkClass}>
+                  <LocalizedLink href={item.href || '#'} className={navLinkClass}>
                     <Translate en={item.label.en} ar={item.label.ar} />
-                  </Link>
+                  </LocalizedLink>
                 )}
               </div>
             ))}
@@ -130,11 +131,11 @@ export default function Header() {
           {/* ── Desktop actions ──────────────────────────────────────────── */}
           <div className="hidden lg:flex items-center gap-5">
             {/* Socials */}
-            <div className="flex items-center gap-4 border-r border-brand-secondary/50 pr-5" aria-label="Social media links">
-              <a href="https://linkedin.com/company/irken-solutions" target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-brand-accent transition-colors" aria-label="LinkedIn">
+            <div className="flex items-center gap-4 border-r border-slate-200 pr-5" aria-label="Social media links">
+              <a href="https://linkedin.com/company/irken-solutions" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-brand-accent transition-colors" aria-label="LinkedIn">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" aria-hidden="true"><rect x="2" y="2" width="20" height="20" /><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect x="2" y="9" width="4" height="12" /><circle cx="4" cy="4" r="2" /></svg>
               </a>
-              <a href="https://x.com/irken_solutions" target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-brand-accent transition-colors" aria-label="X (Twitter)">
+              <a href="https://x.com/irken_solutions" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-brand-accent transition-colors" aria-label="X (Twitter)">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" aria-hidden="true"><path d="M4 4l11.733 16h4.267l-11.733 -16z" /><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" /></svg>
               </a>
             </div>
@@ -145,7 +146,7 @@ export default function Header() {
                 toggleLanguage();
                 posthog?.capture('language_changed', { new_locale: newLocale });
               }}
-              className="text-text-secondary hover:text-brand-accent transition-colors flex items-center gap-1.5 text-[11px] font-enHeading tracking-widest uppercase min-h-[44px] min-w-[44px] justify-center"
+              className="text-slate-500 hover:text-brand-accent transition-colors flex items-center gap-1.5 text-[11px] font-enHeading tracking-[0.15em] uppercase min-h-[44px] min-w-[44px] justify-center"
               aria-label={`Switch to ${language === 'en' ? 'Arabic' : 'English'}`}
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -153,7 +154,7 @@ export default function Header() {
                 <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
                 <path d="M2 12h20" />
               </svg>
-              <span>{language === 'en' ? 'عربي' : 'EN'}</span>
+              <span>{language === 'en' ? 'ع' : 'EN'}</span>
             </button>
             {/* CTA */}
             <PrimaryButton en="Request Integration" ar="طلب تكامل" href="#integration" className="py-3 text-[11px]" />
@@ -161,7 +162,7 @@ export default function Header() {
 
           {/* ── Mobile hamburger ─────────────────────────────────────────── */}
           <button
-            className="lg:hidden flex flex-col justify-center items-center gap-[5px] w-11 h-11 text-text-primary hover:text-brand-accent transition-colors"
+            className="lg:hidden flex flex-col justify-center items-center gap-[5px] w-11 h-11 text-slate-900 hover:text-brand-accent transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={mobileOpen}
@@ -182,7 +183,7 @@ export default function Header() {
         aria-label="Navigation menu"
         className={[
           'fixed inset-0 z-40 lg:hidden',
-          'bg-brand-primary flex flex-col',
+          'bg-white flex flex-col',
           'transition-all duration-300',
           mobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none',
         ].join(' ')}
@@ -197,14 +198,14 @@ export default function Header() {
         />
 
         {/* Top bar (matches header height) */}
-        <div className="flex items-center justify-between px-6 h-18 md:h-20 shrink-0 border-b border-brand-secondary relative z-10">
-          <Link href="/" onClick={() => setMobileOpen(false)} aria-label="Irken Solutions — Home">
+        <div className="flex items-center justify-between px-6 h-18 md:h-20 shrink-0 border-b border-slate-100 relative z-10">
+          <LocalizedLink href="/" onClick={() => setMobileOpen(false)} aria-label="Irken Solutions — Home">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/newiRkenLogo.png" alt="Irken Solutions" className="h-7 md:h-9 w-auto" />
-          </Link>
+            <img src="/irken-logo-ligth.png" alt="Irken Solutions" className="block h-7 md:h-9 w-auto" />
+          </LocalizedLink>
           <button
             onClick={() => setMobileOpen(false)}
-            className="w-11 h-11 flex items-center justify-center text-text-secondary hover:text-brand-accent transition-colors"
+            className="w-11 h-11 flex items-center justify-center text-slate-500 hover:text-brand-accent transition-colors"
             aria-label="Close menu"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -219,45 +220,45 @@ export default function Header() {
             <div key={item.id}>
               {item.subItems ? (
                 <div className="flex flex-col gap-4">
-                  <span className="text-xs font-enHeading tracking-[0.15em] text-text-secondary uppercase border-b border-brand-secondary pb-3">
+                  <span className="text-xs font-enHeading tracking-[0.15em] text-slate-400 uppercase border-b border-slate-100 pb-3">
                     <Translate en={item.label.en} ar={item.label.ar} />
                   </span>
                   {item.subItems.map((sub) => (
-                    <Link
+                    <LocalizedLink
                       key={sub.id}
                       href={sub.href || '#'}
                       onClick={() => setMobileOpen(false)}
-                      className="text-base font-enHeading text-text-primary hover:text-brand-accent transition-colors pl-4 border-l-2 border-transparent hover:border-brand-accent"
+                      className="text-base font-enHeading text-slate-900 hover:text-brand-accent transition-colors pl-4 border-l-2 border-transparent hover:border-brand-accent"
                     >
                       <Translate en={sub.label.en} ar={sub.label.ar} />
-                    </Link>
+                    </LocalizedLink>
                   ))}
                 </div>
               ) : (
-                <Link
+                <LocalizedLink
                   href={item.href || '#'}
                   onClick={() => setMobileOpen(false)}
-                  className="text-xl font-enHeading text-text-primary hover:text-brand-accent transition-colors block"
+                  className="text-xl font-enHeading text-slate-900 hover:text-brand-accent transition-colors block"
                   style={{ transitionDelay: `${i * 30}ms` }}
                 >
                   <Translate en={item.label.en} ar={item.label.ar} />
-                </Link>
+                </LocalizedLink>
               )}
             </div>
           ))}
         </nav>
 
         {/* Bottom actions */}
-        <div className="px-6 pb-10 pt-6 border-t border-brand-secondary flex flex-col gap-4 relative z-10">
+        <div className="px-6 pb-10 pt-6 border-t border-slate-100 flex flex-col gap-4 relative z-10">
           <div className="flex items-center justify-between">
             <button
-              onClick={() => { 
+              onClick={() => {
                 const newLocale = language === 'en' ? 'ar' : 'en';
-                toggleLanguage(); 
+                toggleLanguage();
                 posthog?.capture('language_changed', { new_locale: newLocale });
-                setMobileOpen(false); 
+                setMobileOpen(false);
               }}
-              className="flex items-center gap-2 text-sm font-enHeading text-text-secondary hover:text-brand-accent transition-colors uppercase tracking-widest min-h-[44px]"
+              className="flex items-center gap-2 text-sm font-enHeading text-slate-500 hover:text-brand-accent transition-colors uppercase tracking-widest min-h-[44px]"
               aria-label={`Switch to ${language === 'en' ? 'Arabic' : 'English'}`}
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -265,7 +266,7 @@ export default function Header() {
               </svg>
               {language === 'en' ? 'عربي' : 'English'}
             </button>
-            <div className="flex items-center gap-4 text-text-secondary" aria-label="Social media links">
+            <div className="flex items-center gap-4 text-slate-400" aria-label="Social media links">
               <a href="https://linkedin.com/company/irken-solutions" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors" aria-label="LinkedIn">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" aria-hidden="true"><rect x="2" y="2" width="20" height="20" /><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect x="2" y="9" width="4" height="12" /><circle cx="4" cy="4" r="2" /></svg>
               </a>

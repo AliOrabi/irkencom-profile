@@ -133,7 +133,7 @@ export default function IntegrationForm() {
                   { en: 'No hardware commitment', ar: 'لا التزام بمعدات' },
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-3 text-sm text-text-secondary">
-                    <div className="w-5 h-5 bg-brand-accent/10 rounded-full flex items-center justify-center shrink-0 text-brand-accent" aria-hidden="true">
+                    <div className="w-5 h-5 bg-brand-accent/10 rounded-md flex items-center justify-center shrink-0 text-brand-accent" aria-hidden="true">
                       <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
                         <polyline points="1 4 4 7 9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
@@ -154,7 +154,7 @@ export default function IntegrationForm() {
               {state === 'success' ? (
                 /* Success state */
                 <div className="min-h-[400px] flex flex-col items-center justify-center text-center gap-6 py-12">
-                  <div className="w-16 h-16 bg-brand-accent/10 rounded-full flex items-center justify-center text-brand-accent" aria-hidden="true">
+                  <div className="w-16 h-16 bg-brand-accent/10 rounded-md flex items-center justify-center text-brand-accent" aria-hidden="true">
                     <svg width="28" height="22" viewBox="0 0 28 22" fill="none">
                       <polyline points="2 11 10 19 26 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>

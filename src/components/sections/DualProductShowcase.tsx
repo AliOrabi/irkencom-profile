@@ -101,7 +101,7 @@ export default function DualProductShowcase() {
 
               {/* Product icon + label */}
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-14 h-14 flex items-center justify-center bg-brand-accent/10 text-brand-accent rounded-full group-hover:bg-brand-accent/20 transition-colors">
+                <div className="w-14 h-14 flex items-center justify-center bg-brand-accent/10 text-brand-accent rounded-md group-hover:bg-brand-accent/20 transition-colors">
                   <Icon icon={Smartphone} className="w-7 h-7" />
                 </div>
                 <div>
@@ -176,7 +176,7 @@ export default function DualProductShowcase() {
 
               {/* Product icon + label */}
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-14 h-14 flex items-center justify-center bg-brand-accent/15 text-brand-accent rounded-full group-hover:bg-brand-accent/25 transition-colors">
+                <div className="w-14 h-14 flex items-center justify-center bg-brand-accent/15 text-brand-accent rounded-md group-hover:bg-brand-accent/25 transition-colors">
                   <Icon icon={LayoutDashboard} className="w-7 h-7" />
                 </div>
                 <div>

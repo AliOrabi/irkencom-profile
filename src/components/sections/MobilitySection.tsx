@@ -42,7 +42,7 @@ export default function MobilitySection() {
 
             {/* Node 1 — Idle Space */}
             <div className="flex flex-col items-center text-center p-6 border border-brand-secondary bg-brand-primary/90 w-full lg:flex-1 z-10 opacity-75 rounded-md">
-              <div className="w-12 h-12 flex items-center justify-center mb-4 text-brand-accent bg-brand-accent/10 rounded-full">
+              <div className="w-12 h-12 flex items-center justify-center mb-4 text-brand-accent bg-brand-accent/10 rounded-md">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <rect x="3" y="3" width="18" height="18" rx="2" /><line x1="3" y1="9" x2="21" y2="9" />
                 </svg>
@@ -68,7 +68,7 @@ export default function MobilitySection() {
             {/* Node 2 — Irken Hub (highlighted) */}
             <div className="flex flex-col items-center text-center p-8 border border-brand-accent bg-brand-primary w-full lg:flex-[1.5] z-10 relative rounded-md">
               <div className="absolute top-0 inset-x-0 h-[2px] bg-brand-accent rounded-t-md" aria-hidden="true" />
-              <div className="w-16 h-16 flex items-center justify-center mb-4 text-brand-accent bg-brand-accent/20 rounded-full">
+              <div className="w-16 h-16 flex items-center justify-center mb-4 text-brand-accent bg-brand-accent/20 rounded-md">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5" />
                   <polyline points="2 8.5 12 15.5 22 8.5" />
@@ -95,7 +95,7 @@ export default function MobilitySection() {
 
             {/* Node 3 — Driver */}
             <div className="flex flex-col items-center text-center p-6 border border-brand-secondary bg-brand-primary/90 w-full lg:flex-1 z-10 opacity-75 rounded-md">
-              <div className="w-12 h-12 flex items-center justify-center mb-4 text-brand-accent bg-brand-accent/10 rounded-full">
+              <div className="w-12 h-12 flex items-center justify-center mb-4 text-brand-accent bg-brand-accent/10 rounded-md">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <circle cx="12" cy="12" r="10" strokeDasharray="4 4" /><path d="M12 6v6l4 2" />
                 </svg>

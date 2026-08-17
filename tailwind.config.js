@@ -44,16 +44,16 @@ module.exports = {
         },
         // ── Irken Solutions Brand Tokens (UI/UX Pro Max) ─────────────
         brand: {
-          primary:    '#ffffff',   // Clean corporate canvas
-          secondary:  '#f8fafc',   // Slate 50 — Light cards
-          accent:     '#569BAA',   // Irken Teal
-          'accent-hover': '#457a87',
+          primary:    'hsl(var(--background))',   // Maps to #FFFFFF (light) / #1A2530 (dark)
+          secondary:  'hsl(var(--card))',         // Maps to #F8FAFC (light) / #2C4A5B (dark)
+          accent:     'hsl(var(--primary))',      // Maps to #569BAA (Irken Teal)
+          'accent-hover': '#457A87',              // Primary hover
           'on-accent': '#FFFFFF',
         },
         text: {
-          primary:    '#0F172A',   // Slate 900 — headings
-          secondary:  '#475569',   // Slate 600 — body, labels
-          highlight:  '#569BAA',   // Teal
+          primary:    'hsl(var(--foreground))',   // Maps to #0F172A (light)
+          secondary:  'hsl(var(--muted-foreground))', // Maps to #94A3B8
+          highlight:  'hsl(var(--primary))',      // Maps to #569BAA
         },
       },
 

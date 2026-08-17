@@ -171,7 +171,7 @@ export default function RevenueCalculator() {
                 </form>
               ) : (
                 <div className="text-center py-8">
-                  <div className="w-12 h-12 mx-auto bg-brand-accent/10 rounded-full flex items-center justify-center text-brand-accent mb-4">
+                  <div className="w-12 h-12 mx-auto bg-brand-accent/10 rounded-md flex items-center justify-center text-brand-accent mb-4">
                     <svg width="24" height="18" viewBox="0 0 24 18" fill="none">
                       <polyline points="2 9 8 15 22 2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>

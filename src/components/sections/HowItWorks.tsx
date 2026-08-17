@@ -67,7 +67,7 @@ export default function HowItWorks() {
                   <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-brand-accent/0 to-transparent group-hover:via-brand-accent/50 transition-all duration-500 rounded-t-md"></div>
                   
                   {/* Icon */}
-                  <div className="w-12 h-12 flex items-center justify-center mb-6 bg-brand-accent/10 text-brand-accent rounded-full group-hover:bg-brand-accent/20 transition-colors">
+                  <div className="w-12 h-12 flex items-center justify-center mb-6 bg-brand-accent/10 text-brand-accent rounded-md group-hover:bg-brand-accent/20 transition-colors">
                     <Icon icon={LucideIcon} className="w-6 h-6" />
                   </div>
                   

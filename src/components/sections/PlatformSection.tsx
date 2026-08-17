@@ -90,7 +90,7 @@ export default function PlatformSection() {
                 </span>
 
                 {/* Icon */}
-                <div className="w-12 h-12 flex items-center justify-center mb-6 bg-brand-accent/10 text-brand-accent rounded-full group-hover:bg-brand-accent/20 transition-colors">
+                <div className="w-12 h-12 flex items-center justify-center mb-6 bg-brand-accent/10 text-brand-accent rounded-md group-hover:bg-brand-accent/20 transition-colors">
                   {step.icon}
                 </div>
 

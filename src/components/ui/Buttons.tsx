@@ -2,6 +2,8 @@
 
 import React from 'react';
 import Translate from '@/components/ui/Translate';
+import LocalizedLink from '@/components/ui/LocalizedLink';
+import { Button } from '@mui/material';
 
 // ── PrimaryButton ────────────────────────────────────────────────────────────
 interface PrimaryButtonProps {
@@ -30,22 +32,39 @@ export function PrimaryButton({
     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-primary',
     'disabled:opacity-40 disabled:pointer-events-none',
     'min-h-[44px]',
-    'rounded-md',
+    'rounded-full',
     className,
   ].join(' ');
 
   if (href) {
     return (
-      <a href={href} className={classes} {...rest}>
+      <Button 
+        variant="contained" 
+        color="primary" 
+        component={LocalizedLink} 
+        href={href} 
+        className={classes} 
+        disableFocusRipple
+        {...rest as any}
+      >
         <Translate en={en} ar={ar} />
-      </a>
+      </Button>
     );
   }
 
   return (
-    <button type={type} onClick={onClick} disabled={disabled} className={classes} {...rest}>
+    <Button 
+      variant="contained" 
+      color="primary" 
+      type={type} 
+      onClick={onClick} 
+      disabled={disabled} 
+      className={classes} 
+      disableFocusRipple
+      {...rest as any}
+    >
       <Translate en={en} ar={ar} />
-    </button>
+    </Button>
   );
 }
 
@@ -74,21 +93,34 @@ export function GhostButton({
     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-text-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-primary',
     'disabled:opacity-40 disabled:pointer-events-none',
     'min-h-[44px]',
-    'rounded-md',
+    'rounded-full',
     className,
   ].join(' ');
 
   if (href) {
     return (
-      <a href={href} className={classes}>
+      <Button 
+        variant="outlined" 
+        component={LocalizedLink} 
+        href={href} 
+        className={classes}
+        disableFocusRipple
+      >
         <Translate en={en} ar={ar} />
-      </a>
+      </Button>
     );
   }
 
   return (
-    <button type={type} onClick={onClick} disabled={disabled} className={classes}>
+    <Button 
+      variant="outlined" 
+      type={type} 
+      onClick={onClick} 
+      disabled={disabled} 
+      className={classes}
+      disableFocusRipple
+    >
       <Translate en={en} ar={ar} />
-    </button>
+    </Button>
   );
 }

@@ -23,7 +23,7 @@ export default function TestimonialsPlaceholder() {
                   />
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-brand-secondary/30 rounded-full" />
+                  <div className="w-12 h-12 bg-brand-secondary/30 rounded-md" />
                   <div className="text-left rtl:text-right">
                     <p className="font-bold text-text-primary">Partner {i}</p>
                     <p className="text-sm text-text-secondary">Facility Manager</p>

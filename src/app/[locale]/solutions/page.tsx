@@ -48,7 +48,7 @@ export default function SolutionsPage() {
                 <Reveal direction={isEven ? "left" : "right"} delay={0.2} className="w-full lg:w-1/2">
                   <div className="flex flex-col">
                     {LucideIcon && (
-                      <div className="bg-brand-accent/10 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                      <div className="bg-brand-accent/10 w-16 h-16 rounded-md flex items-center justify-center mb-6">
                         <Icon icon={LucideIcon as LucideIconType} className="text-brand-accent w-8 h-8" />
                       </div>
                     )}

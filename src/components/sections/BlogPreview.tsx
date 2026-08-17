@@ -67,7 +67,7 @@ export default function BlogPreview() {
                     <span className="text-brand-accent">
                       <Translate en={post.category.en} ar={post.category.ar} />
                     </span>
-                    <span className="w-1 h-1 bg-brand-secondary rounded-full" aria-hidden="true" />
+                    <span className="w-1 h-1 bg-brand-secondary rounded-md" aria-hidden="true" />
                     <span className="flex items-center gap-1.5 opacity-70">
                       <Icon icon={Calendar} className="w-3.5 h-3.5" />
                       {post.date}

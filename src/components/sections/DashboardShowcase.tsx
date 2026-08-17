@@ -26,7 +26,7 @@ export default function DashboardShowcase() {
       
       {/* Main Card */}
       <div className="relative border border-brand-accent bg-white overflow-hidden p-8 rounded-md">
-        <Image src="/newiRkenLogo.png" alt="" width={150} height={150} className="absolute -bottom-[10%] -right-[5%] w-[150px] opacity-[0.05] pointer-events-none" />
+        <Image src="/irken-logo-ligth.png" alt="" width={150} height={150} className="absolute -bottom-[10%] -right-[5%] w-[150px] opacity-[0.05] pointer-events-none" />
         
         {/* Header */}
         <div className="flex justify-between items-start border-b border-brand-secondary/50 pb-6 mb-6">
@@ -39,7 +39,7 @@ export default function DashboardShowcase() {
             </div>
           </div>
           <div className="text-xs font-enHeading text-brand-accent flex items-center gap-2 uppercase tracking-wider">
-            <span className="w-2 h-2 rounded-full bg-brand-accent"></span> 
+            <span className="w-2 h-2 rounded-md bg-brand-accent"></span> 
             <Translate en="SYSTEM LIVE" ar="النظام نشط" />
           </div>
         </div>

@@ -56,7 +56,7 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 191 33% 50%;
 
-    --radius: 0.375rem; /* 6px strictly enforced */
+    --radius: 1.5rem; /* 24px */
   }
 
   .dark {
@@ -92,13 +92,13 @@
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 font-enHeading text-sm font-medium uppercase tracking-[1.5px] cursor-pointer transition-all duration-300 no-underline bg-brand-accent text-brand-on-accent hover:bg-brand-accent-hover rounded-md;
+    @apply inline-flex items-center justify-center px-8 py-4 font-enHeading text-sm font-medium uppercase tracking-wide cursor-pointer transition-all duration-300 no-underline bg-brand-accent text-brand-on-accent hover:bg-brand-accent-hover hover:-translate-y-1 hover:shadow-[0_10px_30px_-10px_rgba(86,155,170,0.8)] rounded-full;
   }
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-6 py-3 font-enHeading text-sm font-medium uppercase tracking-[1.5px] cursor-pointer transition-all duration-300 no-underline bg-transparent text-text-primary border border-text-secondary hover:border-brand-accent hover:text-brand-accent rounded-md;
+    @apply inline-flex items-center justify-center px-8 py-4 font-enHeading text-sm font-medium uppercase tracking-wide cursor-pointer transition-all duration-300 no-underline bg-transparent text-text-primary border border-slate-200 hover:border-brand-accent hover:text-brand-accent hover:bg-slate-50 rounded-full;
   }
   .tech-badge {
-    @apply inline-flex items-center gap-2 border border-brand-secondary bg-brand-secondary/50 px-4 py-1.5 font-enHeading text-xs text-brand-accent uppercase tracking-[2px] mb-8 backdrop-blur-sm relative overflow-hidden rounded-md;
+    @apply inline-flex items-center gap-2 border border-brand-secondary bg-brand-secondary/50 px-4 py-1.5 font-enHeading text-xs text-brand-accent uppercase tracking-widest mb-8 backdrop-blur-sm relative overflow-hidden rounded-full;
   }
   .tech-badge::after {
     content: '';
@@ -114,7 +114,7 @@
 
 /* Typography Context based on Language */
 body.font-english {
-  font-family: theme('fontFamily.enBody');
+  font-family: var(--font-en-body), Inter, sans-serif;
 }
 
 body.font-english h1, 
@@ -123,12 +123,12 @@ body.font-english h3,
 body.font-english h4, 
 body.font-english h5, 
 body.font-english h6 {
-  font-family: theme('fontFamily.enHeading');
+  font-family: var(--font-en-heading), Inter, sans-serif;
 }
 
 body.font-arabic,
 body.font-arabic * {
-  font-family: theme('fontFamily.ar') !important;
+  font-family: var(--font-ar), system-ui, sans-serif !important;
 }
 
 body.font-arabic {

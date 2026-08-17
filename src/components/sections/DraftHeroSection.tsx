@@ -47,8 +47,8 @@ export default function DraftHeroSection() {
         <Reveal delay={0.05}>
           <span className="inline-flex items-center gap-2 px-3 py-1 bg-brand-accent/10 text-brand-accent text-[11px] font-enHeading uppercase tracking-[0.15em] mb-8 rounded-md">
             <span className="relative flex h-2 w-2" aria-hidden="true">
-              <span className="animate-ping absolute inline-flex h-full w-full bg-brand-accent rounded-full opacity-60" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-accent" />
+              <span className="animate-ping absolute inline-flex h-full w-full bg-brand-accent rounded-md opacity-60" />
+              <span className="relative inline-flex h-2 w-2 rounded-md bg-brand-accent" />
             </span>
             <Translate en="Egypt &amp; MENA · Urban Parking Intelligence" ar="مصر ومنطقة الشرق الأوسط وشمال إفريقيا · ذكاء المواقف الحضرية" />
           </span>
@@ -120,8 +120,8 @@ export default function DraftHeroSection() {
         aria-label="Scroll down"
       >
         <span className="text-[10px] font-enHeading uppercase tracking-[0.2em]">Scroll</span>
-        <div className="w-5 h-8 border-2 border-current rounded-full flex justify-center p-1">
-          <div className="w-1 h-2 bg-current rounded-full transition-transform duration-500 ease-out group-hover:translate-y-3" />
+        <div className="w-5 h-8 border-2 border-current rounded-md flex justify-center p-1">
+          <div className="w-1 h-2 bg-current rounded-md transition-transform duration-500 ease-out group-hover:translate-y-3" />
         </div>
       </button>
     </section>

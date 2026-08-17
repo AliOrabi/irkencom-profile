@@ -104,7 +104,7 @@ export default function ContactForm() {
       >
         {/* Checkmark in circle — DESIGN.md geometric language, borderless */}
         <div
-          className="w-16 h-16 bg-brand-accent/10 rounded-full flex items-center justify-center text-brand-accent"
+          className="w-16 h-16 bg-brand-accent/10 rounded-md flex items-center justify-center text-brand-accent"
           aria-hidden="true"
         >
           <svg width="28" height="22" viewBox="0 0 28 22" fill="none">

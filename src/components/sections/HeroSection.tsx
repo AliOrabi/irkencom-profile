@@ -131,8 +131,8 @@ export default function HeroSection() {
         aria-label="Scroll down"
       >
         <span className="text-[10px] font-enHeading uppercase tracking-[0.2em]">Scroll</span>
-        <div className="w-5 h-8 border-2 border-current rounded-full flex justify-center p-1">
-          <div className="w-1 h-2 bg-current rounded-full transition-transform duration-500 ease-out group-hover:translate-y-3" />
+        <div className="w-5 h-8 border-2 border-current rounded-md flex justify-center p-1">
+          <div className="w-1 h-2 bg-current rounded-md transition-transform duration-500 ease-out group-hover:translate-y-3" />
         </div>
       </button>
     </section>

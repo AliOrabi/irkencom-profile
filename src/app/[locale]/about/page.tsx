@@ -47,7 +47,7 @@ export default function AboutPage() {
           {/* Founder 1 */}
           <Reveal direction="up" delay={0.2}>
             <div className="border border-brand-secondary bg-brand-primary/50 rounded-md p-6 group hover:border-brand-accent/50 transition-colors">
-              <div className="w-24 h-24 rounded-full bg-brand-secondary/50 mb-6 overflow-hidden relative">
+              <div className="w-24 h-24 rounded-md bg-brand-secondary/50 mb-6 overflow-hidden relative">
                  <Image src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop" alt="Founder 1" fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500" unoptimized />
               </div>
               <h3 className="text-xl font-bold font-enHeading text-text-primary mb-1">Ahmed Hassan</h3>
@@ -67,7 +67,7 @@ export default function AboutPage() {
           {/* Founder 2 */}
           <Reveal direction="up" delay={0.3}>
             <div className="border border-brand-secondary bg-brand-primary/50 rounded-md p-6 group hover:border-brand-accent/50 transition-colors">
-              <div className="w-24 h-24 rounded-full bg-brand-secondary/50 mb-6 overflow-hidden relative">
+              <div className="w-24 h-24 rounded-md bg-brand-secondary/50 mb-6 overflow-hidden relative">
                  <Image src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop" alt="Founder 2" fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500" unoptimized />
               </div>
               <h3 className="text-xl font-bold font-enHeading text-text-primary mb-1">Nour Al-Sayed</h3>

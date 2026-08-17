@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
+import LocalizedLink from '@/components/ui/LocalizedLink';
 import Translate from '@/components/ui/Translate';
 import { footerNav } from '@/config/navigation';
 
@@ -40,7 +40,8 @@ export default function Footer() {
 
           {/* Brand column */}
           <div className="lg:col-span-4">
-            <Image src="/newiRkenLogo.png" alt="Irken Solutions" width={120} height={40} className="h-10 w-auto mb-6" />
+            <Image src="/newiRkenLogo.png" alt="Irken Solutions" width={120} height={40} className="hidden dark:block h-10 w-auto mb-6" />
+            <Image src="/irken-logo-ligth.png" alt="Irken Solutions" width={120} height={40} className="dark:hidden block h-10 w-auto mb-6" />
             <p className="text-sm text-text-secondary leading-relaxed max-w-[300px] mb-6">
               <Translate
                 en="A venture-building technology firm dedicated to digitizing the mobility and parking sector through asset-light infrastructure."
@@ -56,7 +57,7 @@ export default function Footer() {
                   aria-label={`Irken Solutions on ${s.label}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 border border-brand-secondary flex items-center justify-center text-text-secondary hover:border-brand-accent hover:text-brand-accent transition-all duration-200 rounded-md"
+                  className="w-9 h-9 border border-brand-secondary flex items-center justify-center text-text-secondary hover:border-brand-accent hover:text-brand-accent hover:-translate-y-0.5 transition-all duration-200 rounded-md"
                 >
                   {s.icon}
                 </a>
@@ -66,15 +67,15 @@ export default function Footer() {
 
           {/* Platform nav */}
           <div className="lg:col-span-2">
-            <h3 className="text-[11px] font-enHeading text-text-primary tracking-[0.2em] uppercase mb-6">
+            <h3 className="text-[11px] font-enHeading text-text-primary tracking-[0.15em] uppercase mb-6">
               <Translate en="Platform" ar="المنصة" />
             </h3>
             <ul className="flex flex-col gap-3 text-sm text-text-secondary" role="list">
               {footerNav.platform.map((item) => (
                 <li key={item.id}>
-                  <Link href={item.href || '#'} className="hover:text-brand-accent transition-colors">
+                  <LocalizedLink href={item.href || '#'} className="hover:text-brand-accent transition-colors">
                     <Translate en={item.label.en} ar={item.label.ar} />
-                  </Link>
+                  </LocalizedLink>
                 </li>
               ))}
             </ul>
@@ -82,15 +83,15 @@ export default function Footer() {
 
           {/* Corporate nav */}
           <div className="lg:col-span-2">
-            <h3 className="text-[11px] font-enHeading text-text-primary tracking-[0.2em] uppercase mb-6">
+            <h3 className="text-[11px] font-enHeading text-text-primary tracking-[0.15em] uppercase mb-6">
               <Translate en="Corporate" ar="الشركة" />
             </h3>
             <ul className="flex flex-col gap-3 text-sm text-text-secondary" role="list">
               {footerNav.corporate.map((item) => (
                 <li key={item.id}>
-                  <Link href={item.href || '#'} className="hover:text-brand-accent transition-colors">
+                  <LocalizedLink href={item.href || '#'} className="hover:text-brand-accent transition-colors">
                     <Translate en={item.label.en} ar={item.label.ar} />
-                  </Link>
+                  </LocalizedLink>
                 </li>
               ))}
             </ul>
@@ -98,7 +99,7 @@ export default function Footer() {
 
           {/* For Drivers + Newsletter */}
           <div className="lg:col-span-4">
-            <h3 className="text-[11px] font-enHeading text-text-primary tracking-[0.2em] uppercase mb-6">
+            <h3 className="text-[11px] font-enHeading text-text-primary tracking-[0.15em] uppercase mb-6">
               <Translate en="Newsletter" ar="النشرة البريدية" />
             </h3>
             <p className="text-sm text-text-secondary mb-4">
@@ -156,9 +157,9 @@ export default function Footer() {
           </div>
           <nav aria-label="Legal navigation" className="flex flex-wrap gap-x-5 gap-y-2">
             {footerNav.legal.map((item) => (
-              <Link key={item.id} href={item.href || '#'} className="text-[11px] text-text-secondary hover:text-brand-accent transition-colors font-enHeading uppercase tracking-widest underline-offset-2 hover:underline">
+              <LocalizedLink key={item.id} href={item.href || '#'} className="text-[11px] text-text-secondary hover:text-brand-accent transition-colors font-enHeading uppercase tracking-widest underline-offset-2 hover:underline">
                 <Translate en={item.label.en} ar={item.label.ar} />
-              </Link>
+              </LocalizedLink>
             ))}
           </nav>
         </div>

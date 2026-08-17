@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter, Tajawal, Geist } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import LanguageProvider from "@/components/providers/LanguageProvider";
@@ -9,6 +9,8 @@ import FloatingCTA from "@/components/ui/FloatingCTA";
 import { CSPostHogProvider } from "@/components/providers/PostHogProvider";
 import { Analytics } from "@vercel/analytics/react";
 import { cn } from "@/lib/utils";
+import EmotionRegistry from "@/components/providers/EmotionRegistry";
+import MuiProvider from "@/components/providers/MuiProvider";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -74,30 +76,37 @@ const structuredData = {
   ],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }>) {
+  const { locale } = await params;
   return (
-    <html lang="ar" dir="rtl" className={cn(spaceGrotesk.variable, inter.variable, tajawal.variable, "font-sans", geist.variable)} suppressHydrationWarning>
+    <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'} className={cn(spaceGrotesk.variable, inter.variable, tajawal.variable, "font-sans", geist.variable)} suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
-      <body className="font-arabic">
-        <CSPostHogProvider>
-          <LanguageProvider>
-            <Header />
-            <main>{children}</main>
-            <Footer />
-            <CookieConsent />
-            <FloatingCTA />
-          </LanguageProvider>
-          <Analytics />
-        </CSPostHogProvider>
+      <body className={locale === 'ar' ? 'font-arabic' : 'font-english'}>
+        <EmotionRegistry options={{ key: 'mui' }}>
+          <MuiProvider>
+            <CSPostHogProvider>
+              <LanguageProvider initialLanguage={locale as 'ar' | 'en'}>
+                <Header />
+                <main>{children}</main>
+                <Footer />
+                <CookieConsent />
+                <FloatingCTA />
+              </LanguageProvider>
+              <Analytics />
+            </CSPostHogProvider>
+          </MuiProvider>
+        </EmotionRegistry>
       </body>
     </html>
   );

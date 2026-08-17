@@ -133,7 +133,7 @@ export default function FeatureGrid({ features, columns = 3 }: FeatureGridProps)
               <div className="border border-brand-secondary p-8 bg-brand-secondary/50 group hover:border-brand-accent transition-all duration-300 hover:shadow-glow-accent h-full relative rounded-md">
                 <div className="absolute top-0 inset-x-0 h-[2px] bg-brand-accent scale-x-0 group-hover:scale-x-100 transition-transform origin-left rtl:origin-right duration-300 rounded-t-md" aria-hidden="true" />
                 
-                <div className="text-brand-accent mb-6 group-hover:scale-110 transition-transform origin-left rtl:origin-right flex items-center justify-start bg-brand-accent/10 w-12 h-12 rounded-full justify-center">
+                <div className="text-brand-accent mb-6 group-hover:scale-110 transition-transform origin-left rtl:origin-right flex items-center justify-start bg-brand-accent/10 w-12 h-12 rounded-md justify-center">
                   <TechIcon name={feature.icon as string} />
                 </div>
                 
