@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Translate from '@/components/ui/Translate';
+import Reveal from '@/components/ui/Reveal';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
 
@@ -54,24 +55,29 @@ export default function CaseStudies() {
   ];
 
   return (
-    <section className="py-32 bg-slate-50 overflow-hidden">
-      <div className="max-w-[1280px] mx-auto px-8 w-full">
-        <div className="text-center mb-16 max-w-2xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold font-enHeading text-slate-900 mb-6">
-            <Translate en="Proven Results" ar="نتائج مثبتة" />
-          </h2>
-          <p className="text-slate-500 text-lg leading-relaxed">
-            <Translate 
-              en="See how leading developers and operators in Egypt are transforming their facilities into high-yield assets with Irken." 
-              ar="اكتشف كيف يقوم المطورون والمشغلون الرائدون في مصر بتحويل منشآتهم إلى أصول عالية العائد مع إركن." 
-            />
-          </p>
-        </div>
+    <section className="py-28 bg-slate-50/70 border-t border-slate-100 overflow-hidden">
+      <div className="max-w-[1280px] mx-auto px-6 lg:px-8 w-full">
+        <Reveal>
+          <div className="text-center mb-16 max-w-2xl mx-auto">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-brand-accent/10 text-brand-accent text-xs font-bold mb-4 uppercase tracking-widest font-enHeading">
+              <Translate en="Proven Results" ar="نتائج مثبتة" />
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-enHeading text-slate-900 tracking-tight mb-4">
+              <Translate en="Measurable impact across enterprise facilities" ar="تأثير حقيقي وقابل للقياس لمنشآت الشركات" />
+            </h2>
+            <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
+              <Translate 
+                en="See how leading developers and operators in Egypt are transforming their facilities into high-yield assets with Irken." 
+                ar="اكتشف كيف يقوم المطورون والمشغلون الرائدون في مصر بتحويل منشآتهم إلى أصول عالية العائد مع إركن." 
+              />
+            </p>
+          </div>
+        </Reveal>
 
         <div className="relative -mx-4 px-4 sm:mx-0 sm:px-0">
           <Swiper
             modules={[Pagination, Autoplay]}
-            spaceBetween={32}
+            spaceBetween={28}
             slidesPerView={1}
             pagination={{ clickable: true, dynamicBullets: true }}
             autoplay={{ delay: 5000, disableOnInteraction: true }}
@@ -87,20 +93,20 @@ export default function CaseStudies() {
           >
             {caseStudies.map(study => (
               <SwiperSlide key={study.id} className="h-auto">
-                <div className="bg-white p-8 flex flex-col gap-6 rounded-[2rem] shadow-sm hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.05)] transition-all group h-full cursor-grab active:cursor-grabbing border border-slate-100">
-                  <div className="border-b border-slate-100 pb-6">
-                    <div className="text-4xl md:text-5xl font-mono font-bold text-brand-accent mb-2">
+                <div className="bg-white p-8 flex flex-col gap-6 rounded-[2rem] shadow-sm hover:shadow-xl transition-all group h-full cursor-grab active:cursor-grabbing border border-slate-200/80">
+                  <div className="border-b border-slate-100 pb-5">
+                    <div className="text-4xl md:text-5xl font-mono font-bold text-brand-accent mb-2 tracking-tight">
                       {study.metric}
                     </div>
-                    <div className="text-sm font-enHeading tracking-[0.1em] text-slate-400 uppercase">
+                    <div className="text-xs font-enHeading tracking-[0.12em] text-slate-400 uppercase font-bold">
                       <Translate en={study.metricLabel.en} ar={study.metricLabel.ar} />
                     </div>
                   </div>
                   <div className="flex-grow">
-                    <h3 className="text-xl font-bold font-enHeading text-slate-900 mb-3">
+                    <h3 className="text-lg sm:text-xl font-bold font-enHeading text-slate-900 mb-2.5 tracking-tight">
                       <Translate en={study.title.en} ar={study.title.ar} />
                     </h3>
-                    <p className="text-slate-500 leading-relaxed">
+                    <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
                       <Translate en={study.description.en} ar={study.description.ar} />
                     </p>
                   </div>
@@ -111,15 +117,19 @@ export default function CaseStudies() {
         </div>
       </div>
       
-      {/* Global override for swiper pagination dots to match brand colors */}
+      {/* Global override for swiper pagination dots */}
       <style dangerouslySetInnerHTML={{__html: `
         .swiper-pagination-bullet {
-          background-color: var(--text-secondary, #94A3B8);
-          opacity: 0.5;
+          background-color: var(--muted-foreground, #64748B);
+          opacity: 0.4;
+          width: 8px;
+          height: 8px;
         }
         .swiper-pagination-bullet-active {
           background-color: theme(colors.brand.accent);
           opacity: 1;
+          width: 24px;
+          border-radius: var(--radius);
         }
       `}} />
     </section>

@@ -26,7 +26,7 @@ export const mainNav: NavItem[] = [
   {
     id: 'nav-solutions',
     label: { en: 'Solutions', ar: 'الحلول' },
-    href: '/solutions',
+    href: '/#solutions',
     order: 2,
   },
   {
@@ -37,7 +37,7 @@ export const mainNav: NavItem[] = [
   },
   {
     id: 'nav-services',
-    label: { en: 'Services ▾', ar: 'الخدمات ▾' },
+    label: { en: 'Services', ar: 'الخدمات' },
     order: 4,
     subItems: [
       { id: 'sub-parking', label: { en: 'Parking Management', ar: 'إدارة المواقف' }, href: '/services/parking-management', order: 1 },
@@ -50,35 +50,30 @@ export const mainNav: NavItem[] = [
     id: 'nav-insights',
     label: { en: 'Insights', ar: 'الرؤى' },
     href: '/insights',
-    order: 4,
+    order: 5,
   },
   {
     id: 'nav-company',
-    label: { en: 'Company ▾', ar: 'الشركة ▾' },
-    order: 5,
+    label: { en: 'Company', ar: 'الشركة' },
+    order: 6,
     subItems: [
       { id: 'sub-about', label: { en: 'About Us', ar: 'من نحن' }, href: '/about', order: 1 },
+      { id: 'sub-contact', label: { en: 'Contact Us', ar: 'تواصل معنا' }, href: '/contact', order: 2 },
     ]
   },
-  {
-    id: 'nav-contact',
-    label: { en: 'Contact Us', ar: 'اتصل بنا' },
-    href: '/contact',
-    order: 6,
-  }
 ];
 
 export const footerNav = {
   platform: [
-    { id: 'f-plat-1', label: { en: 'Urban Mobility Ecosystem', ar: 'نظام التنقل الحضري' }, href: '#mobility', order: 1 },
-    { id: 'f-plat-2', label: { en: 'Dynamic Capacity Engine', ar: 'محرك السعة الديناميكي' }, href: '#platform', order: 2 },
-    { id: 'f-plat-3', label: { en: 'Operator Terminal', ar: 'لوحة المشغلين' }, href: '#platform', order: 3 },
-    { id: 'f-plat-4', label: { en: 'Pricing', ar: 'الأسعار' }, href: '/pricing', order: 4 },
+    { id: 'f-plat-1', label: { en: 'Parking Management', ar: 'إدارة المواقف' }, href: '/services/parking-management', order: 1 },
+    { id: 'f-plat-2', label: { en: 'Access Control', ar: 'أنظمة التحكم بالوصول' }, href: '/services/access-control', order: 2 },
+    { id: 'f-plat-3', label: { en: 'LPR Systems', ar: 'أنظمة التعرف على اللوحات' }, href: '/services/lpr', order: 3 },
+    { id: 'f-plat-4', label: { en: 'Revenue Calculator', ar: 'حاسبة العائد' }, href: '/services/parking-management/calculate', order: 4 },
   ] as NavItem[],
   corporate: [
-    { id: 'f-corp-1', label: { en: 'Contact Us', ar: 'تواصل معنا' }, href: '/contact', order: 1 },
-    { id: 'f-corp-2', label: { en: 'Press & Media', ar: 'الصحافة والإعلام' }, href: '#', order: 2 },
-    { id: 'f-corp-3', label: { en: 'Careers', ar: 'الوظائف' }, href: '#', order: 3 },
+    { id: 'f-corp-1', label: { en: 'About Irken', ar: 'عن إركن' }, href: '/about', order: 1 },
+    { id: 'f-corp-2', label: { en: 'Insights & Blog', ar: 'الرؤى والمدونة' }, href: '/insights', order: 2 },
+    { id: 'f-corp-3', label: { en: 'Contact & Support', ar: 'التواصل والدعم' }, href: '/contact', order: 3 },
   ] as NavItem[],
   legal: [
     { id: 'f-leg-1', label: { en: 'Privacy Policy', ar: 'سياسة الخصوصية' }, href: '/privacy', order: 1 },

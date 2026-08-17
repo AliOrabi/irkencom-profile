@@ -8,6 +8,9 @@ import Translate from '@/components/ui/Translate';
 import { mainNav } from '@/config/navigation';
 import { PrimaryButton } from '@/components/ui/Buttons';
 import { usePostHog } from 'posthog-js/react';
+import Image from 'next/image';
+import { Globe, Menu, X, ChevronDown } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 export default function Header() {
   const { language, toggleLanguage } = useLanguage();
@@ -37,82 +40,97 @@ export default function Header() {
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
 
-  const navLinkClass =
-    'text-[11px] font-enHeading tracking-[0.15em] text-slate-500 hover:text-brand-accent uppercase transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-accent';
+  const navLinkClass = cn(
+    'text-xs font-medium font-enHeading tracking-[0.14em] uppercase transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-accent py-2',
+    scrolled ? 'text-slate-600 hover:text-brand-accent' : 'text-slate-200 hover:text-white'
+  );
 
   return (
     <>
       {/* ── Skip to content ───────────────────────────────────────────── */}
       <a
         href="#hero-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[999] focus:px-4 focus:py-2 focus:bg-brand-accent focus:text-brand-primary focus:font-enHeading focus:text-xs focus:uppercase focus:tracking-widest"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[999] focus:px-4 focus:py-2 focus:bg-brand-accent focus:text-white focus:font-enHeading focus:text-xs focus:uppercase focus:tracking-widest rounded-full"
       >
         <Translate en="Skip to content" ar="انتقل إلى المحتوى" />
       </a>
 
       <header
-        className={[
+        className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
           scrolled
-            ? 'bg-white/95 backdrop-blur-[12px] border-b border-slate-100 shadow-sm'
-            : 'bg-transparent border-b border-transparent',
-        ].join(' ')}
+            ? 'bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm py-3.5'
+            : 'bg-transparent border-b border-transparent py-5'
+        )}
         role="banner"
       >
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-8 w-full flex items-center justify-between h-18 md:h-20">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8 w-full flex items-center justify-between">
 
           {/* ── Logo ────────────────────────────────────────────────────── */}
           <LocalizedLink href="/" aria-label="Irken Solutions — Home" className="flex items-center shrink-0">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/irken-logo-ligth.png"
-              alt="Irken Solutions"
-              className="h-7 md:h-9 w-auto block"
-            />
+            {scrolled ? (
+              <Image
+                src="/irken-logo-ligth.png"
+                alt="Irken Solutions"
+                width={140}
+                height={36}
+                className="h-8 md:h-9 w-auto block"
+                priority
+              />
+            ) : (
+              <Image
+                src="/newiRkenLogo.png"
+                alt="Irken Solutions"
+                width={140}
+                height={36}
+                className="h-8 md:h-9 w-auto block"
+                priority
+              />
+            )}
           </LocalizedLink>
 
           {/* ── Desktop nav ─────────────────────────────────────────────── */}
           <nav
             aria-label="Primary navigation"
-            className="hidden lg:flex items-center gap-8"
+            className="hidden lg:flex items-center gap-7"
           >
             {mainNav.map((item) => (
               <div
                 key={item.id}
-                className="relative group py-6"
+                className="relative group py-2"
                 onMouseEnter={() => item.subItems && setActiveDropdown(item.id)}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
                 {item.subItems ? (
                   <>
                     <button
-                      className={navLinkClass}
+                      className={cn(navLinkClass, 'flex items-center gap-1 cursor-pointer')}
                       aria-haspopup="true"
                       aria-expanded={activeDropdown === item.id}
                     >
                       <Translate en={item.label.en} ar={item.label.ar} />
+                      <ChevronDown className="w-3.5 h-3.5 opacity-70 transition-transform group-hover:rotate-180" />
                     </button>
                     {/* Dropdown */}
                     <div
-                      className={[
+                      className={cn(
                         'absolute top-full left-0 w-64',
-                        'bg-white border border-slate-100 shadow-lg',
-                        'p-5 flex flex-col gap-4 rounded-2xl',
+                        'bg-white border border-slate-100 shadow-xl',
+                        'p-4 flex flex-col gap-2 rounded-2xl overflow-hidden',
                         'transition-all duration-200',
                         activeDropdown === item.id
-                          ? 'opacity-100 pointer-events-auto translate-y-0'
-                          : 'opacity-0 pointer-events-none -translate-y-1',
-                      ].join(' ')}
+                          ? 'opacity-100 pointer-events-auto translate-y-2'
+                          : 'opacity-0 pointer-events-none translate-y-0'
+                      )}
                       role="menu"
                     >
-                      {/* Cyan top bar */}
-                      <div className="absolute top-0 left-0 w-full h-[2px] bg-brand-accent" />
+                      <div className="absolute top-0 left-0 w-full h-[3px] bg-brand-accent" />
                       {item.subItems.map((sub) => (
                         <LocalizedLink
                           key={sub.id}
                           href={sub.href || '#'}
                           role="menuitem"
-                          className="text-[11px] font-enHeading text-slate-500 hover:text-brand-accent uppercase tracking-[0.15em] transition-colors"
+                          className="text-xs font-enHeading text-slate-700 hover:text-brand-accent hover:bg-slate-50 px-3 py-2.5 rounded-xl uppercase tracking-[0.12em] transition-all"
                         >
                           <Translate en={sub.label.en} ar={sub.label.ar} />
                         </LocalizedLink>
@@ -130,15 +148,6 @@ export default function Header() {
 
           {/* ── Desktop actions ──────────────────────────────────────────── */}
           <div className="hidden lg:flex items-center gap-5">
-            {/* Socials */}
-            <div className="flex items-center gap-4 border-r border-slate-200 pr-5" aria-label="Social media links">
-              <a href="https://linkedin.com/company/irken-solutions" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-brand-accent transition-colors" aria-label="LinkedIn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" aria-hidden="true"><rect x="2" y="2" width="20" height="20" /><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect x="2" y="9" width="4" height="12" /><circle cx="4" cy="4" r="2" /></svg>
-              </a>
-              <a href="https://x.com/irken_solutions" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-brand-accent transition-colors" aria-label="X (Twitter)">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" aria-hidden="true"><path d="M4 4l11.733 16h4.267l-11.733 -16z" /><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" /></svg>
-              </a>
-            </div>
             {/* Language toggle */}
             <button
               onClick={() => {
@@ -146,31 +155,41 @@ export default function Header() {
                 toggleLanguage();
                 posthog?.capture('language_changed', { new_locale: newLocale });
               }}
-              className="text-slate-500 hover:text-brand-accent transition-colors flex items-center gap-1.5 text-[11px] font-enHeading tracking-[0.15em] uppercase min-h-[44px] min-w-[44px] justify-center"
+              className={cn(
+                'flex items-center gap-2 text-xs font-semibold font-enHeading tracking-[0.14em] uppercase px-3 py-2 rounded-full border transition-all cursor-pointer',
+                scrolled
+                  ? 'text-slate-700 border-slate-200 hover:border-brand-accent hover:text-brand-accent'
+                  : 'text-slate-200 border-white/20 hover:border-white hover:text-white bg-white/5'
+              )}
               aria-label={`Switch to ${language === 'en' ? 'Arabic' : 'English'}`}
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <circle cx="12" cy="12" r="10" />
-                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                <path d="M2 12h20" />
-              </svg>
-              <span>{language === 'en' ? 'ع' : 'EN'}</span>
+              <Globe className="w-3.5 h-3.5" />
+              <span>{language === 'en' ? 'العربية' : 'English'}</span>
             </button>
+
             {/* CTA */}
-            <PrimaryButton en="Request Integration" ar="طلب تكامل" href="#integration" className="py-3 text-[11px]" />
+            <PrimaryButton 
+              en="Request Integration" 
+              ar="طلب تكامل" 
+              href="#integration" 
+              className="py-2.5 px-6 text-xs shadow-none" 
+            />
           </div>
 
           {/* ── Mobile hamburger ─────────────────────────────────────────── */}
           <button
-            className="lg:hidden flex flex-col justify-center items-center gap-[5px] w-11 h-11 text-slate-900 hover:text-brand-accent transition-colors"
+            className={cn(
+              'lg:hidden flex items-center justify-center w-11 h-11 rounded-full border transition-colors cursor-pointer',
+              scrolled
+                ? 'text-slate-900 border-slate-200 hover:border-brand-accent'
+                : 'text-white border-white/20 bg-white/10 hover:border-white'
+            )}
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={mobileOpen}
             aria-controls="mobile-nav"
           >
-            <span className={`block w-6 h-px bg-current transition-all duration-300 ${mobileOpen ? 'translate-y-[7px] rotate-45' : ''}`} />
-            <span className={`block w-6 h-px bg-current transition-all duration-300 ${mobileOpen ? 'opacity-0 scale-x-0' : ''}`} />
-            <span className={`block w-6 h-px bg-current transition-all duration-300 ${mobileOpen ? '-translate-y-[7px] -rotate-45' : ''}`} />
+            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </header>
@@ -181,65 +200,54 @@ export default function Header() {
         role="dialog"
         aria-modal="true"
         aria-label="Navigation menu"
-        className={[
-          'fixed inset-0 z-40 lg:hidden',
+        className={cn(
+          'fixed inset-0 z-50 lg:hidden',
           'bg-white flex flex-col',
-          'transition-all duration-300',
-          mobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none',
-        ].join(' ')}
+          'transition-all duration-300 ease-out',
+          mobileOpen ? 'opacity-100 pointer-events-auto translate-x-0' : 'opacity-0 pointer-events-none translate-x-4'
+        )}
       >
-        {/* Blueprint grid overlay */}
-        <div
-          className="absolute inset-0 pointer-events-none opacity-10"
-          style={{
-            backgroundImage: 'linear-gradient(to right, theme(colors.brand.accent) 1px, transparent 1px), linear-gradient(to bottom, theme(colors.brand.accent) 1px, transparent 1px)',
-            backgroundSize: '24px 24px',
-          }}
-        />
-
-        {/* Top bar (matches header height) */}
-        <div className="flex items-center justify-between px-6 h-18 md:h-20 shrink-0 border-b border-slate-100 relative z-10">
+        {/* Top bar */}
+        <div className="flex items-center justify-between px-6 py-5 shrink-0 border-b border-slate-100">
           <LocalizedLink href="/" onClick={() => setMobileOpen(false)} aria-label="Irken Solutions — Home">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/irken-logo-ligth.png" alt="Irken Solutions" className="block h-7 md:h-9 w-auto" />
+            <Image src="/irken-logo-ligth.png" alt="Irken Solutions" width={130} height={32} className="block h-8 w-auto" />
           </LocalizedLink>
           <button
             onClick={() => setMobileOpen(false)}
-            className="w-11 h-11 flex items-center justify-center text-slate-500 hover:text-brand-accent transition-colors"
+            className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 hover:text-brand-accent transition-colors"
             aria-label="Close menu"
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
+            <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Nav links */}
-        <nav className="flex-1 overflow-y-auto px-6 py-10 flex flex-col gap-8 relative z-10">
-          {mainNav.map((item, i) => (
+        <nav className="flex-1 overflow-y-auto px-6 py-8 flex flex-col gap-6">
+          {mainNav.map((item) => (
             <div key={item.id}>
               {item.subItems ? (
-                <div className="flex flex-col gap-4">
-                  <span className="text-xs font-enHeading tracking-[0.15em] text-slate-400 uppercase border-b border-slate-100 pb-3">
+                <div className="flex flex-col gap-3">
+                  <span className="text-xs font-enHeading font-bold tracking-wider text-slate-400 uppercase">
                     <Translate en={item.label.en} ar={item.label.ar} />
                   </span>
-                  {item.subItems.map((sub) => (
-                    <LocalizedLink
-                      key={sub.id}
-                      href={sub.href || '#'}
-                      onClick={() => setMobileOpen(false)}
-                      className="text-base font-enHeading text-slate-900 hover:text-brand-accent transition-colors pl-4 border-l-2 border-transparent hover:border-brand-accent"
-                    >
-                      <Translate en={sub.label.en} ar={sub.label.ar} />
-                    </LocalizedLink>
-                  ))}
+                  <div className="flex flex-col gap-1.5 pl-3 border-l-2 border-slate-100 rtl:border-l-0 rtl:border-r-2 rtl:pr-3">
+                    {item.subItems.map((sub) => (
+                      <LocalizedLink
+                        key={sub.id}
+                        href={sub.href || '#'}
+                        onClick={() => setMobileOpen(false)}
+                        className="text-sm font-medium font-enHeading text-slate-800 hover:text-brand-accent py-2 transition-colors"
+                      >
+                        <Translate en={sub.label.en} ar={sub.label.ar} />
+                      </LocalizedLink>
+                    ))}
+                  </div>
                 </div>
               ) : (
                 <LocalizedLink
                   href={item.href || '#'}
                   onClick={() => setMobileOpen(false)}
-                  className="text-xl font-enHeading text-slate-900 hover:text-brand-accent transition-colors block"
-                  style={{ transitionDelay: `${i * 30}ms` }}
+                  className="text-lg font-bold font-enHeading text-slate-900 hover:text-brand-accent transition-colors block py-1"
                 >
                   <Translate en={item.label.en} ar={item.label.ar} />
                 </LocalizedLink>
@@ -249,7 +257,7 @@ export default function Header() {
         </nav>
 
         {/* Bottom actions */}
-        <div className="px-6 pb-10 pt-6 border-t border-slate-100 flex flex-col gap-4 relative z-10">
+        <div className="px-6 pb-8 pt-5 border-t border-slate-100 flex flex-col gap-4 bg-slate-50/60">
           <div className="flex items-center justify-between">
             <button
               onClick={() => {
@@ -258,24 +266,20 @@ export default function Header() {
                 posthog?.capture('language_changed', { new_locale: newLocale });
                 setMobileOpen(false);
               }}
-              className="flex items-center gap-2 text-sm font-enHeading text-slate-500 hover:text-brand-accent transition-colors uppercase tracking-widest min-h-[44px]"
+              className="flex items-center gap-2 text-xs font-bold font-enHeading text-slate-700 hover:text-brand-accent transition-colors uppercase tracking-wider py-2"
               aria-label={`Switch to ${language === 'en' ? 'Arabic' : 'English'}`}
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <circle cx="12" cy="12" r="10" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /><path d="M2 12h20" />
-              </svg>
-              {language === 'en' ? 'عربي' : 'English'}
+              <Globe className="w-4 h-4" />
+              <span>{language === 'en' ? 'العربية' : 'English'}</span>
             </button>
-            <div className="flex items-center gap-4 text-slate-400" aria-label="Social media links">
-              <a href="https://linkedin.com/company/irken-solutions" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors" aria-label="LinkedIn">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" aria-hidden="true"><rect x="2" y="2" width="20" height="20" /><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect x="2" y="9" width="4" height="12" /><circle cx="4" cy="4" r="2" /></svg>
-              </a>
-              <a href="https://x.com/irken_solutions" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors" aria-label="X (Twitter)">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" aria-hidden="true"><path d="M4 4l11.733 16h4.267l-11.733 -16z" /><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" /></svg>
-              </a>
-            </div>
           </div>
-          <PrimaryButton en="Request Integration" ar="طلب تكامل" href="#integration" className="w-full justify-center py-4" />
+          <PrimaryButton 
+            en="Request Integration" 
+            ar="طلب تكامل" 
+            href="#integration" 
+            onClick={() => setMobileOpen(false)}
+            className="w-full justify-center py-4" 
+          />
         </div>
       </div>
     </>

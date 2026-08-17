@@ -6,16 +6,17 @@ import Reveal from '@/components/ui/Reveal';
 import DashboardShowcase from '@/components/sections/DashboardShowcase';
 import { PrimaryButton, GhostButton } from '@/components/ui/Buttons';
 import { usePostHog } from 'posthog-js/react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 
 export default function HeroSection() {
   const posthog = usePostHog();
   return (
     <section
       id="hero"
-      className="relative min-h-[100svh] flex flex-col pt-20 pb-8 overflow-hidden"
+      className="relative min-h-[100svh] flex flex-col justify-between pt-28 pb-12 overflow-hidden bg-[#0A1118]"
       aria-labelledby="hero-headline"
     >
-      {/* ── Background image ───────────────────────────────────────────── */}
+      {/* ── Background video & gradient ─────────────────────────────────── */}
       <div className="absolute inset-0 z-0" aria-hidden="true">
         <video
           src="/Animate_bg-parking.mp4"
@@ -23,22 +24,21 @@ export default function HeroSection() {
           loop
           muted
           playsInline
-          className="object-cover object-center w-full h-full"
+          className="object-cover object-center w-full h-full opacity-60"
         />
-        {/* Dark gradient overlay for text legibility */}
-        <div className="absolute inset-0 bg-gradient-to-r from-brand-primary/95 via-brand-primary/80 to-brand-primary/40" />
+        {/* High-contrast dark gradient overlay for crystal clear typography */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0A1118]/95 via-[#0A1118]/85 to-[#0A1118]/65" />
         {/* Blueprint grid overlay */}
         <div
-          className="absolute inset-0 opacity-40"
+          className="absolute inset-0 opacity-20"
           style={{
             backgroundImage:
               'linear-gradient(to right, theme(colors.brand.accent) 1px, transparent 1px), linear-gradient(to bottom, theme(colors.brand.accent) 1px, transparent 1px)',
-            backgroundSize: '24px 24px',
-            opacity: 0.1,
+            backgroundSize: '32px 32px',
           }}
         />
-        {/* Cyan edge glow */}
-        <div className="absolute bottom-0 inset-x-0 h-px bg-brand-accent/30" />
+        {/* Cyan bottom edge glow */}
+        <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-accent/40 to-transparent" />
       </div>
 
       {/* ── Content grid ───────────────────────────────────────────────── */}
@@ -48,12 +48,19 @@ export default function HeroSection() {
       >
         {/* ── Left column — copy ───────────────────────────────────────── */}
         <div className="flex flex-col items-start">
+          {/* Badge */}
+          <Reveal delay={0.05}>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-accent/15 border border-brand-accent/30 text-brand-accent text-xs font-semibold uppercase tracking-wider font-enHeading mb-6">
+              <Sparkles className="w-3.5 h-3.5" />
+              <Translate en="Asset-Light Mobility OS" ar="نظام تشغيل التنقل المرن" />
+            </div>
+          </Reveal>
 
           {/* H1 */}
           <Reveal delay={0.1}>
             <h1
               id="hero-headline"
-              className="text-5xl md:text-6xl lg:text-7xl font-bold font-enHeading text-text-primary leading-[1.05] mb-6 tracking-tight"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-enHeading text-white leading-[1.08] mb-6 tracking-tight"
             >
               <Translate
                 en="Digital Transformation for the Mobility Sector."
@@ -64,47 +71,49 @@ export default function HeroSection() {
 
           {/* Subheading */}
           <Reveal delay={0.18}>
-            <p className="text-base md:text-lg text-text-secondary mb-10 max-w-[520px] leading-relaxed">
+            <p className="text-base sm:text-lg text-slate-300 mb-10 max-w-[540px] leading-relaxed">
               <Translate
-                en="Empowering enterprises with cutting-edge software solutions to modernize mobility and parking operations across Egypt and the MENA region."
-                ar="تمكين الشركات بحلول برمجية متطورة لتحديث عمليات التنقل والمواقف في مصر ومنطقة الشرق الأوسط وشمال إفريقيا."
+                en="Empowering real estate developers and operators with cutting-edge software solutions to monetize and modernize parking infrastructure across Egypt & MENA."
+                ar="تمكين المطورين والمشغلين العقاريين بحلول برمجية ذكية لزيادة أرباح وتحديث بنية المواقف في مصر والشرق الأوسط."
               />
             </p>
           </Reveal>
 
           {/* CTAs */}
           <Reveal delay={0.25}>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap items-center gap-4">
               <PrimaryButton
                 en="Calculate Your Revenue"
                 ar="احسب أرباحك المحتملة"
                 href="/services/parking-management/calculate"
                 onClick={() => posthog?.capture('cta_clicked', { cta_name: 'Calculate Your Revenue', location: 'Hero' })}
                 aria-describedby="hero-headline"
+                className="shadow-lg shadow-brand-accent/20"
               />
               <GhostButton
-                en="See How It Works"
-                ar="اكتشف كيف يعمل"
-                href="#platform"
-                onClick={() => posthog?.capture('cta_clicked', { cta_name: 'See How It Works', location: 'Hero' })}
+                en="Explore Solutions"
+                ar="استكشف الحلول"
+                href="#solutions"
+                icon={<ArrowRight className="w-4 h-4 rtl:rotate-180" />}
+                onClick={() => posthog?.capture('cta_clicked', { cta_name: 'Explore Solutions', location: 'Hero' })}
               />
             </div>
           </Reveal>
 
           {/* Trust line */}
           <Reveal delay={0.35}>
-            <div className="mt-12 flex flex-wrap items-center gap-6 text-[11px] font-enHeading uppercase tracking-[0.12em] text-text-secondary">
+            <div className="mt-12 flex flex-wrap items-center gap-6 text-[11px] font-enHeading uppercase tracking-[0.12em] text-slate-400">
               <span className="flex items-center gap-2">
-                <span className="w-4 h-px bg-brand-accent" aria-hidden="true" />
-                <Translate en="Zero CapEx" ar="بدون نفقات رأسمالية" />
+                <span className="w-2 h-2 rounded-full bg-brand-accent animate-pulse" aria-hidden="true" />
+                <Translate en="Zero CapEx Deployment" ar="بدون نفقات رأسمالية" />
               </span>
               <span className="flex items-center gap-2">
-                <span className="w-4 h-px bg-brand-accent" aria-hidden="true" />
-                <Translate en="Live Capacity Engine" ar="محرك السعة الفوري" />
+                <span className="w-2 h-2 rounded-full bg-brand-accent animate-pulse" aria-hidden="true" />
+                <Translate en="Live Dynamic Yield" ar="محرك السعة الفوري" />
               </span>
               <span className="flex items-center gap-2">
-                <span className="w-4 h-px bg-brand-accent" aria-hidden="true" />
-                <Translate en="MENA-Ready" ar="جاهز للمنطقة العربية" />
+                <span className="w-2 h-2 rounded-full bg-brand-accent animate-pulse" aria-hidden="true" />
+                <Translate en="MENA-Ready LPR" ar="أنظمة LPR للمنطقة" />
               </span>
             </div>
           </Reveal>
@@ -115,9 +124,9 @@ export default function HeroSection() {
           <Reveal delay={0.3} direction="left">
             {/* Glow halo behind dashboard */}
             <div
-              className="absolute -inset-6 pointer-events-none"
+              className="absolute -inset-6 pointer-events-none rounded-3xl"
               aria-hidden="true"
-              style={{ background: 'radial-gradient(ellipse at center, theme(colors.brand.accent) 0%, transparent 70%)', opacity: 0.08 }}
+              style={{ background: 'radial-gradient(ellipse at center, rgba(86,155,170,0.2) 0%, transparent 70%)' }}
             />
             <DashboardShowcase />
           </Reveal>
@@ -126,13 +135,16 @@ export default function HeroSection() {
 
       {/* ── Scroll cue ────────────────────────────────────────────────── */}
       <button
-        onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
-        className="mx-auto w-fit z-10 flex flex-col items-center gap-2 text-text-secondary hover:text-brand-accent transition-colors duration-300 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent rounded-md p-2 mt-8 group"
-        aria-label="Scroll down"
+        onClick={() => {
+          const target = document.getElementById('solutions') || document.querySelector('main');
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+        }}
+        className="mx-auto w-fit z-10 flex flex-col items-center gap-2 text-slate-400 hover:text-brand-accent transition-colors duration-300 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent rounded-full p-2 group"
+        aria-label="Scroll to solutions"
       >
-        <span className="text-[10px] font-enHeading uppercase tracking-[0.2em]">Scroll</span>
-        <div className="w-5 h-8 border-2 border-current rounded-md flex justify-center p-1">
-          <div className="w-1 h-2 bg-current rounded-md transition-transform duration-500 ease-out group-hover:translate-y-3" />
+        <span className="text-[10px] font-enHeading uppercase tracking-[0.2em] group-hover:text-brand-accent transition-colors">Scroll</span>
+        <div className="w-5 h-8 border border-slate-600 group-hover:border-brand-accent rounded-full flex justify-center p-1 transition-colors">
+          <div className="w-1 h-2 bg-brand-accent rounded-full transition-transform duration-500 ease-out group-hover:translate-y-3" />
         </div>
       </button>
     </section>

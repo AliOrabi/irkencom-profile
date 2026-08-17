@@ -3,124 +3,156 @@
 import React from 'react';
 import Translate from '@/components/ui/Translate';
 import LocalizedLink from '@/components/ui/LocalizedLink';
-import { Button } from '@mui/material';
+import { cn } from '@/lib/utils';
 
 // ── PrimaryButton ────────────────────────────────────────────────────────────
-interface PrimaryButtonProps {
+export interface PrimaryButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   en: string;
   ar: string;
   href?: string;
-  onClick?: () => void;
-  type?: 'button' | 'submit';
-  disabled?: boolean;
   className?: string;
-  'aria-describedby'?: string;
+  icon?: React.ReactNode;
 }
 
 export function PrimaryButton({
-  en, ar, href, onClick, type = 'button', disabled = false, className = '', ...rest
+  en,
+  ar,
+  href,
+  onClick,
+  type = 'button',
+  disabled = false,
+  className = '',
+  icon,
+  ...rest
 }: PrimaryButtonProps) {
-  const classes = [
-    'inline-flex items-center justify-center gap-2',
-    'px-8 py-4',
-    'bg-brand-accent text-brand-on-accent',
-    'font-enHeading text-xs uppercase tracking-[0.15em]',
-    'border-2 border-brand-accent',
-    'transition-all duration-200',
-    'hover:bg-brand-accent-hover hover:border-brand-accent-hover',
-    'hover:shadow-glow-accent-sm',
-    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-primary',
-    'disabled:opacity-40 disabled:pointer-events-none',
-    'min-h-[44px]',
+  const baseClasses = cn(
+    'inline-flex items-center justify-center gap-2.5',
+    'px-7 py-3.5',
+    'bg-brand-accent text-white font-semibold',
+    'font-enHeading text-xs uppercase tracking-[0.14em]',
+    'border border-brand-accent shadow-sm',
     'rounded-full',
-    className,
-  ].join(' ');
+    'transition-all duration-200 ease-out',
+    'hover:bg-brand-accent-hover hover:border-brand-accent-hover hover:shadow-md hover:-translate-y-0.5',
+    'active:translate-y-0 active:scale-[0.98]',
+    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2',
+    'disabled:opacity-50 disabled:pointer-events-none disabled:transform-none',
+    'min-h-[44px] cursor-pointer select-none',
+    className
+  );
 
   if (href) {
     return (
-      <Button 
-        variant="contained" 
-        color="primary" 
-        component={LocalizedLink} 
-        href={href} 
-        className={classes} 
-        disableFocusRipple
-        {...rest as any}
-      >
+      <LocalizedLink href={href} onClick={onClick} className={baseClasses} {...(rest as any)}>
+        {icon && <span className="shrink-0">{icon}</span>}
         <Translate en={en} ar={ar} />
-      </Button>
+      </LocalizedLink>
     );
   }
 
   return (
-    <Button 
-      variant="contained" 
-      color="primary" 
-      type={type} 
-      onClick={onClick} 
-      disabled={disabled} 
-      className={classes} 
-      disableFocusRipple
-      {...rest as any}
-    >
+    <button type={type} onClick={onClick} disabled={disabled} className={baseClasses} {...rest}>
+      {icon && <span className="shrink-0">{icon}</span>}
       <Translate en={en} ar={ar} />
-    </Button>
+    </button>
   );
 }
 
 // ── GhostButton ──────────────────────────────────────────────────────────────
-interface GhostButtonProps {
+export interface GhostButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   en: string;
   ar: string;
   href?: string;
-  onClick?: () => void;
-  type?: 'button' | 'submit';
-  disabled?: boolean;
   className?: string;
+  icon?: React.ReactNode;
 }
 
 export function GhostButton({
-  en, ar, href, onClick, type = 'button', disabled = false, className = '',
+  en,
+  ar,
+  href,
+  onClick,
+  type = 'button',
+  disabled = false,
+  className = '',
+  icon,
+  ...rest
 }: GhostButtonProps) {
-  const classes = [
-    'inline-flex items-center justify-center gap-2',
-    'px-8 py-4',
-    'bg-transparent text-text-primary',
-    'font-enHeading text-xs uppercase tracking-[0.15em]',
-    'border-2 border-text-primary',
-    'transition-all duration-200',
-    'hover:bg-text-primary hover:text-brand-primary',
-    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-text-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-primary',
-    'disabled:opacity-40 disabled:pointer-events-none',
-    'min-h-[44px]',
+  const baseClasses = cn(
+    'inline-flex items-center justify-center gap-2.5',
+    'px-7 py-3.5',
+    'bg-white/10 hover:bg-white/20 text-white font-semibold',
+    'backdrop-blur-md',
+    'font-enHeading text-xs uppercase tracking-[0.14em]',
+    'border border-white/30 hover:border-white/60',
     'rounded-full',
-    className,
-  ].join(' ');
+    'transition-all duration-200 ease-out',
+    'hover:shadow-md hover:-translate-y-0.5',
+    'active:translate-y-0 active:scale-[0.98]',
+    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2',
+    'disabled:opacity-50 disabled:pointer-events-none disabled:transform-none',
+    'min-h-[44px] cursor-pointer select-none',
+    className
+  );
 
   if (href) {
     return (
-      <Button 
-        variant="outlined" 
-        component={LocalizedLink} 
-        href={href} 
-        className={classes}
-        disableFocusRipple
-      >
+      <LocalizedLink href={href} onClick={onClick} className={baseClasses} {...(rest as any)}>
+        {icon && <span className="shrink-0">{icon}</span>}
         <Translate en={en} ar={ar} />
-      </Button>
+      </LocalizedLink>
     );
   }
 
   return (
-    <Button 
-      variant="outlined" 
-      type={type} 
-      onClick={onClick} 
-      disabled={disabled} 
-      className={classes}
-      disableFocusRipple
-    >
+    <button type={type} onClick={onClick} disabled={disabled} className={baseClasses} {...rest}>
+      {icon && <span className="shrink-0">{icon}</span>}
       <Translate en={en} ar={ar} />
-    </Button>
+    </button>
+  );
+}
+
+// ── SecondaryButton ──────────────────────────────────────────────────────────
+export function SecondaryButton({
+  en,
+  ar,
+  href,
+  onClick,
+  type = 'button',
+  disabled = false,
+  className = '',
+  icon,
+  ...rest
+}: PrimaryButtonProps) {
+  const baseClasses = cn(
+    'inline-flex items-center justify-center gap-2.5',
+    'px-7 py-3.5',
+    'bg-slate-50 hover:bg-slate-100 text-slate-800 font-semibold',
+    'font-enHeading text-xs uppercase tracking-[0.14em]',
+    'border border-slate-200 hover:border-slate-300',
+    'rounded-full',
+    'transition-all duration-200 ease-out',
+    'hover:shadow-sm hover:-translate-y-0.5',
+    'active:translate-y-0 active:scale-[0.98]',
+    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2',
+    'disabled:opacity-50 disabled:pointer-events-none',
+    'min-h-[44px] cursor-pointer select-none',
+    className
+  );
+
+  if (href) {
+    return (
+      <LocalizedLink href={href} onClick={onClick} className={baseClasses} {...(rest as any)}>
+        {icon && <span className="shrink-0">{icon}</span>}
+        <Translate en={en} ar={ar} />
+      </LocalizedLink>
+    );
+  }
+
+  return (
+    <button type={type} onClick={onClick} disabled={disabled} className={baseClasses} {...rest}>
+      {icon && <span className="shrink-0">{icon}</span>}
+      <Translate en={en} ar={ar} />
+    </button>
   );
 }
