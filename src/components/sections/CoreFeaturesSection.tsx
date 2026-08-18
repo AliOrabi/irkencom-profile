@@ -41,9 +41,6 @@ export default function CoreFeaturesSection() {
     <section id="solutions" className="py-28 px-6 max-w-[1280px] mx-auto overflow-hidden">
       <div className="text-center mb-20 max-w-3xl mx-auto">
         <Reveal>
-          <span className="inline-block px-4 py-1.5 rounded-full bg-brand-accent/10 text-brand-accent text-xs font-bold mb-5 uppercase tracking-widest font-enHeading">
-            <Translate en="Core Solutions" ar="الحلول الأساسية" />
-          </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-enHeading mb-5 text-slate-900 tracking-tight">
             <Translate en="Everything you need to modernize mobility" ar="كل ما تحتاجه لتحديث وإدارة عمليات التنقل" />
           </h2>

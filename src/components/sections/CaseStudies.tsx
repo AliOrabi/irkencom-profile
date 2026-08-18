@@ -59,9 +59,6 @@ export default function CaseStudies() {
       <div className="max-w-[1280px] mx-auto px-6 lg:px-8 w-full">
         <Reveal>
           <div className="text-center mb-16 max-w-2xl mx-auto">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-brand-accent/10 text-brand-accent text-xs font-bold mb-4 uppercase tracking-widest font-enHeading">
-              <Translate en="Proven Results" ar="نتائج مثبتة" />
-            </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-enHeading text-slate-900 tracking-tight mb-4">
               <Translate en="Measurable impact across enterprise facilities" ar="تأثير حقيقي وقابل للقياس لمنشآت الشركات" />
             </h2>

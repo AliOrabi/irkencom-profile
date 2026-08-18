@@ -48,14 +48,6 @@ export default function HeroSection() {
       >
         {/* ── Left column — copy ───────────────────────────────────────── */}
         <div className="flex flex-col items-start">
-          {/* Badge */}
-          <Reveal delay={0.05}>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-accent/15 border border-brand-accent/30 text-brand-accent text-xs font-semibold uppercase tracking-wider font-enHeading mb-6">
-              <Sparkles className="w-3.5 h-3.5" />
-              <Translate en="Asset-Light Mobility OS" ar="نظام تشغيل التنقل المرن" />
-            </div>
-          </Reveal>
-
           {/* H1 */}
           <Reveal delay={0.1}>
             <h1
@@ -71,10 +63,10 @@ export default function HeroSection() {
 
           {/* Subheading */}
           <Reveal delay={0.18}>
-            <p className="text-base sm:text-lg text-slate-300 mb-10 max-w-[540px] leading-relaxed">
+            <p className="text-base sm:text-lg text-slate-300 mb-10 max-w-[560px] leading-relaxed">
               <Translate
-                en="Empowering real estate developers and operators with cutting-edge software solutions to monetize and modernize parking infrastructure across Egypt & MENA."
-                ar="تمكين المطورين والمشغلين العقاريين بحلول برمجية ذكية لزيادة أرباح وتحديث بنية المواقف في مصر والشرق الأوسط."
+                en="We connect existing barrier gates and cameras to an intelligent cloud operating system — turning static parking facilities into high-yield, ticketless revenue assets across Egypt & MENA."
+                ar="نربط البوابات والكاميرات الحالية بنظام تشغيل سحابي ذكي — لتحويل مواقف السيارات إلى أصول رقمية عالية العائد وبدون تذاكر في مصر والشرق الأوسط."
               />
             </p>
           </Reveal>
@@ -104,15 +96,15 @@ export default function HeroSection() {
           <Reveal delay={0.35}>
             <div className="mt-12 flex flex-wrap items-center gap-6 text-[11px] font-enHeading uppercase tracking-[0.12em] text-slate-400">
               <span className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-brand-accent animate-pulse" aria-hidden="true" />
+                <span className="w-1.5 h-1.5 rounded-full bg-brand-accent" aria-hidden="true" />
                 <Translate en="Zero CapEx Deployment" ar="بدون نفقات رأسمالية" />
               </span>
               <span className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-brand-accent animate-pulse" aria-hidden="true" />
+                <span className="w-1.5 h-1.5 rounded-full bg-brand-accent" aria-hidden="true" />
                 <Translate en="Live Dynamic Yield" ar="محرك السعة الفوري" />
               </span>
               <span className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-brand-accent animate-pulse" aria-hidden="true" />
+                <span className="w-1.5 h-1.5 rounded-full bg-brand-accent" aria-hidden="true" />
                 <Translate en="MENA-Ready LPR" ar="أنظمة LPR للمنطقة" />
               </span>
             </div>

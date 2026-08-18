@@ -35,9 +35,6 @@ export default function BenefitsSection() {
       <div className="max-w-[1280px] mx-auto">
         <Reveal>
           <div className="text-center max-w-2xl mx-auto mb-20">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-brand-accent/10 text-brand-accent text-xs font-bold mb-4 uppercase tracking-widest font-enHeading">
-              <Translate en="Why Irken Solutions" ar="لماذا إركن سوليوشنز" />
-            </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-enHeading text-slate-900 tracking-tight mb-4">
               <Translate en="Engineered for maximum facility yield" ar="مصمم لتحقيق أعلى عائد لمنشأتك" />
             </h2>

@@ -74,12 +74,12 @@ export default function DashboardShowcase() {
           </div>
         </div>
 
-        {/* Terminal Output */}
+        {/* Telemetry Log */}
         <div className="border border-slate-700/60 bg-black/40 p-4 text-xs font-mono text-slate-300 leading-relaxed rounded-2xl">
-          <div className="text-slate-400">{'>'} INITIATING CAPACITY ALGORITHM...</div>
-          <div>{'>'} STATUS: <span className="text-brand-accent font-bold">YIELD_OPTIMIZED</span></div>
-          <div>{'>'} ACTIVE_LOAD: <span className="text-brand-accent font-bold">{load}%</span></div>
-          <div className="text-slate-400">{'>'} ROUTING REVENUE TO OPERATOR_ID: 9942</div>
+          <div className="text-slate-400 font-medium">LIVE LPR FEED: GATE_04 NORTH [PASS]</div>
+          <div>DISPATCH: <span className="text-brand-accent font-bold">TICKETLESS INGRESS VALIDATED</span></div>
+          <div>DYNAMIC YIELD: <span className="text-brand-accent font-bold">ACTIVE LOAD {load}%</span></div>
+          <div className="text-slate-400">TELEMETRY SYNC: 12ms TO EDGE GATEWAY</div>
         </div>
       </div>
     </div>
