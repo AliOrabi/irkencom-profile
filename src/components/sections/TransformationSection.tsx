@@ -71,7 +71,7 @@ export default function TransformationSection() {
             </h3>
             <p className="text-sm text-text-secondary leading-relaxed">
               <Translate
-                en="Your facility goes live on our booking network. Every booking is tracked, every payment is recorded, and your revenue is reported automatically."
+                en="Your facility goes live on our reservation network. Every reservation is tracked, every payment is recorded, and your revenue is reported automatically."
                 ar="تندمج منشأتك فوراً ضمن شبكة الحجز الخاصة بنا. يتم تتبع كل حجز، وتسجيل كل دفعة مالية، وتصلك تقارير الإيرادات تلقائياً."
               />
             </p>

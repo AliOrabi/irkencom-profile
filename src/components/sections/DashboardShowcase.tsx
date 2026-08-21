@@ -5,10 +5,10 @@ import Translate from '@/components/ui/Translate';
 import Image from 'next/image';
 
 export default function DashboardShowcase() {
-  const [activeBookings, setActiveBookings] = useState(843);
+  const [activeReservations, setActiveReservations] = useState(843);
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveBookings(prev => {
+      setActiveReservations(prev => {
         const change = Math.floor(Math.random() * 5) - 2;
         return prev + change;
       });
@@ -16,7 +16,7 @@ export default function DashboardShowcase() {
     return () => clearInterval(interval);
   }, []);
 
-  const load = Number(((activeBookings / 1250) * 100).toFixed(2));
+  const load = Number(((activeReservations / 1250) * 100).toFixed(2));
 
   return (
     <div className="relative z-10 w-full max-w-lg mx-auto">
@@ -65,9 +65,9 @@ export default function DashboardShowcase() {
           </div>
           <div className="border border-brand-accent/40 p-4 bg-brand-accent/10 rounded-2xl">
             <div className="text-[11px] font-enHeading text-brand-accent uppercase tracking-wider mb-2">
-              <Translate en="Active Bookings" ar="حجم الحجوزات" />
+              <Translate en="Active Reservations" ar="حجم الحجوزات" />
             </div>
-            <div className="text-2xl sm:text-3xl font-bold font-enHeading text-brand-accent mb-1">{activeBookings.toLocaleString()}</div>
+            <div className="text-2xl sm:text-3xl font-bold font-enHeading text-brand-accent mb-1">{activeReservations.toLocaleString()}</div>
             <div className="text-xs text-slate-400">
               <Translate en="Current Occupancy" ar="حمل الإشغال الحالي" />
             </div>

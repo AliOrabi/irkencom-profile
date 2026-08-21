@@ -7,8 +7,8 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   padding: var(--space-lg);
   transition: border-color 0.3s ease, background-color 0.3s ease;
-  /* rounded-md (0.375rem / 6px) per PROJECT_CONTEXT.md — 0rem is prohibited */
-  border-radius: 0.375rem;
+  /* rounded-3xl (1.5rem / 24px) per DESIGN.md Generous Curve Rule */
+  border-radius: 1.5rem;
 }
 
 .feature-card:hover {

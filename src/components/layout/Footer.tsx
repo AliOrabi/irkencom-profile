@@ -29,18 +29,18 @@ export default function Footer() {
           {/* Brand column */}
           <div className="lg:col-span-4">
             <LocalizedLink href="/" aria-label="Irken Solutions — Home" className="inline-block mb-6">
-              <Image 
-                src="/newiRkenLogo.png" 
-                alt="Irken Solutions" 
-                width={140} 
-                height={36} 
-                className="h-8 md:h-9 w-auto block" 
+              <Image
+                src="/newiRkenLogo.png"
+                alt="Irken Solutions"
+                width={140}
+                height={36}
+                className="h-8 md:h-9 w-auto block"
               />
             </LocalizedLink>
             <p className="text-sm text-slate-400 leading-relaxed max-w-[320px] mb-8">
               <Translate
-                en="Venture-building technology firm dedicated to digitizing mobility and parking operations through asset-light digital infrastructure in Egypt & MENA."
-                ar="شركة بناء مشاريع تقنية متخصصة في رقمنة قطاع المواقف والتنقل الذكي عبر بنية تحتية رقمية مرنة في مصر والشرق الأوسط."
+                en="Venture-building technology firm dedicated to digitizing mobility and parking operations through asset-light digital infrastructure in Egypt."
+                ar="شركة بناء مشاريع تقنية متخصصة في رقمنة قطاع المواقف والتنقل الذكي عبر بنية تحتية رقمية مرنة في مصر."
               />
             </p>
             {/* Socials */}
@@ -111,7 +111,7 @@ export default function Footer() {
               <Translate en="Stay Updated" ar="النشرة الإخبارية" />
             </h3>
             <p className="text-sm text-slate-400 mb-5">
-              <Translate en="Subscribe for urban mobility intelligence and product updates." ar="اشترك للحصول على أحدث تحليلات التنقل الحضري والتقارير." />
+              <Translate en="Subscribe for urban mobility intelligence and product updates in Egypt." ar="اشترك للحصول على أحدث تحليلات التنقل الحضري والتقارير في مصر." />
             </p>
 
             <form className="flex gap-2" onSubmit={handleSubscribe}>
@@ -173,14 +173,14 @@ export default function Footer() {
             </span>
             <span className="text-slate-600 hidden sm:inline">|</span>
             <span className="font-enHeading uppercase tracking-wider text-[11px] text-slate-500">
-              Cairo, Egypt · MENA Region
+              Cairo, Egypt
             </span>
           </div>
           <nav aria-label="Legal navigation" className="flex flex-wrap gap-6">
             {footerNav.legal.map((item) => (
-              <LocalizedLink 
-                key={item.id} 
-                href={item.href || '#'} 
+              <LocalizedLink
+                key={item.id}
+                href={item.href || '#'}
                 className="hover:text-brand-accent transition-colors font-enHeading uppercase tracking-wider text-[11px]"
               >
                 <Translate en={item.label.en} ar={item.label.ar} />

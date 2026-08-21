@@ -26,7 +26,7 @@ const steps = [
       </svg>
     ),
     title: { en: 'Track', ar: 'تتبّع' },
-    body: { en: 'Real availability — calculated live by comparing your total capacity against active bookings. Always accurate.', ar: 'سعة حقيقية — تُحسب لحظياً بمقارنة طاقتك الكلية بالحجوزات النشطة.' },
+    body: { en: 'Real availability — calculated live by comparing your total capacity against active reservations. Always accurate.', ar: 'سعة حقيقية — تُحسب لحظياً بمقارنة طاقتك الكلية بالحجوزات النشطة.' },
   },
   {
     id: 'step-manage',

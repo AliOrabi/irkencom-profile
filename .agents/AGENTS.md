@@ -59,10 +59,16 @@ When instructed to unify, setup, or roll out a design system using shadcn, ALWAY
    - General marketing canvases default to clean white (`#FFFFFF`) or Slate 50 (`#F8FAFC`).
    - Video overlays in Hero use deep dark contrast (`from-[#0A1118]/95 via-[#0A1118]/85 to-[#0A1118]/65`) to ensure >4.5:1 text contrast for white display typography.
    - Footers are grounded with FAAC Navy (`#0F172A` / `#1A2530`).
-4. **PropTech Domain Vocabulary:**
-   - Always represent Irken's true domain: Zero CapEx deployment, ticketless LPR ingress/egress, capacity yield intelligence, and commercial real estate/hospitality parking.
+4. **Core Business Model & Positioning (Authoritative):**
+   - **What Irken IS:** Egypt's Digital Parking Network & Online Parking Reservation Marketplace (`irken.eg` + `irken.com.eg`). Transforming underutilized parking spaces into lean, revenue-generating digital assets.
+   - **What Irken is NOT:** NOT a real estate development / PropTech construction company, NOT a payment gateway (GATS), and NOT a hardware manufacturer.
+   - **Terminology Invariant (Strict):** Always use **"Reservation" / "Reserve"** instead of "Booking" / "Book".
+   - **Two Primary Objectives:**
+     1. **B2B Parking Operators & Asset Owners:** Increase occupancy (fill vacant spots), ensure discoverability on search engines, guarantee advance driver reservations & steady cashflow, and provide the Operator Control Panel (Free tier vs. Pro subscription with advanced analytics).
+     2. **B2C Drivers (Vehicle Owners):** Consumer platform (`irken.eg`) to search, compare rates, reserve advance spots, pay online, and manage vehicle accounts.
+   - **Primary Target Audience for `irken.com.eg`:** Licensed parking operators (private & public), parking asset investors seeking smart/cost-effective monetization, and licensed parking/valet professionals.
 5. **No Dead Links:**
-   - Navigation links must target active routes or anchors (`#solutions`, `#integration`, `/services/...`).
+   - Navigation links must target active routes or anchors (`#solutions`, `/pricing`, `/contact`, `/services/...`).
 
 ## 2. 📂 Key Files & Artifacts
 - [`DESIGN.md`](file:///d:/Company-website/irkencom-profile/DESIGN.md): Authoritative design tokens and system principles.

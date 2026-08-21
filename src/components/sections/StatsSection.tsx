@@ -17,7 +17,7 @@ const stats = [
     id: 'stat-booking',
     value: '<3',
     unit: 's',
-    label: { en: 'Average Booking Time', ar: 'متوسط وقت الحجز' },
+    label: { en: 'Average Reservation Time', ar: 'متوسط وقت الحجز' },
     sub:   { en: 'From search to confirmed spot', ar: 'من البحث إلى تأكيد الحجز' },
   },
   {

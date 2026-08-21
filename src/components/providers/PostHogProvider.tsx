@@ -18,4 +18,7 @@ export function CSPostHogProvider({ children }: { children: React.ReactNode }) {
   return <PostHogProvider client={posthog}>{children}</PostHogProvider>;
 }
 
+export { usePostHog } from 'posthog-js/react';
+
+
 

@@ -98,7 +98,7 @@ export default async function RootLayout({
             <CSPostHogProvider>
               <LanguageProvider initialLanguage={locale as 'ar' | 'en'}>
                 <Header />
-                <main>{children}</main>
+                {children}
                 <Footer />
                 <CookieConsent />
                 <FloatingCTA />

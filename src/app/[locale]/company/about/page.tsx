@@ -10,8 +10,8 @@ export default function AboutPage() {
       <PageHero
         titleEn="We turn concrete into cash flow."
         titleAr="نحوّل المساحات الخرسانية إلى تدفقات نقدية مستدامة."
-        descriptionEn="Irken Solutions builds the software that makes parking facilities earn their keep — for real estate developers, operators, and cities across Egypt and MENA."
-        descriptionAr="تبني إركن سوليوشنز البرمجيات التي تضاعف من ربحية مواقف السيارات — لخدمة المطورين العقاريين، المشغلين، والمدن في مصر ومنطقة الشرق الأوسط وشمال إفريقيا."
+        descriptionEn="Irken Solutions builds the software that makes parking facilities earn their keep — for real estate developers, operators, and cities across Egypt."
+        descriptionAr="تبني إركن سوليوشنز البرمجيات التي تضاعف من ربحية مواقف السيارات — لخدمة المطورين العقاريين، المشغلين، والمدن في مصر."
       />
 
       <MissionVisionSection />

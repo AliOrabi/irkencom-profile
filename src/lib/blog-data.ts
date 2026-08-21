@@ -22,19 +22,19 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
-    slug: 'future-of-smart-parking-mena',
+    slug: 'future-of-smart-parking-egypt',
     date: '2026-08-10',
     title: {
-      en: 'The Future of Smart Parking in the MENA Region',
-      ar: 'مستقبل المواقف الذكية في منطقة الشرق الأوسط وشمال أفريقيا',
+      en: 'The Future of Smart Parking in Egypt',
+      ar: 'مستقبل مواقف السيارات الذكية في مصر',
     },
     excerpt: {
-      en: 'How asset-light digital infrastructure is transforming urban mobility and real estate development in Egypt and beyond.',
-      ar: 'كيف تعمل البنية التحتية الرقمية المرنة على تحويل التنقل الحضري والتطوير العقاري في مصر وخارجها.',
+      en: 'How asset-light digital infrastructure is transforming urban mobility and parking operations across Egyptian commercial hubs.',
+      ar: 'كيف تعمل البنية التحتية الرقمية المرنة على تحويل التنقل الحضري وإدارة المواقف في المراكز التجارية المصرية.',
     },
     content: {
-      en: 'The MENA region is experiencing rapid urbanization... (Full article coming soon)',
-      ar: 'تشهد منطقة الشرق الأوسط وشمال أفريقيا تحضراً سريعاً... (المقال الكامل قريباً)',
+      en: 'Egypt is experiencing rapid urban mobility transformation... (Full article coming soon)',
+      ar: 'تشهد المدن والمراكز التجارية في مصر تحولاً سريعاً نحو حلول التنقل الحضري الذكي... (المقال الكامل قريباً)',
     },
     imageUrl: 'https://images.unsplash.com/photo-1573348722427-f1d6819fdf98?q=80&w=2070&auto=format&fit=crop',
     category: { en: 'Smart City', ar: 'المدن الذكية' },

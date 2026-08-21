@@ -6,7 +6,7 @@ import Reveal from '@/components/ui/Reveal';
 import DashboardShowcase from '@/components/sections/DashboardShowcase';
 import { PrimaryButton, GhostButton } from '@/components/ui/Buttons';
 import { usePostHog } from 'posthog-js/react';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export default function HeroSection() {
   const posthog = usePostHog();
@@ -65,8 +65,8 @@ export default function HeroSection() {
           <Reveal delay={0.18}>
             <p className="text-base sm:text-lg text-slate-300 mb-10 max-w-[560px] leading-relaxed">
               <Translate
-                en="We connect existing barrier gates and cameras to an intelligent cloud operating system — turning static parking facilities into high-yield, ticketless revenue assets across Egypt & MENA."
-                ar="نربط البوابات والكاميرات الحالية بنظام تشغيل سحابي ذكي — لتحويل مواقف السيارات إلى أصول رقمية عالية العائد وبدون تذاكر في مصر والشرق الأوسط."
+                en="We connect existing barrier gates and cameras to an intelligent cloud operating system — turning static parking facilities into high-yield, ticketless revenue assets across Egypt."
+                ar="نربط البوابات والكاميرات الحالية بنظام تشغيل سحابي ذكي — لتحويل مواقف السيارات إلى أصول رقمية عالية العائد وبدون تذاكر في مصر."
               />
             </p>
           </Reveal>
@@ -105,7 +105,7 @@ export default function HeroSection() {
               </span>
               <span className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-brand-accent" aria-hidden="true" />
-                <Translate en="MENA-Ready LPR" ar="أنظمة LPR للمنطقة" />
+                <Translate en="Egyptian Plate OCR" ar="قراءة اللوحات المصرية" />
               </span>
             </div>
           </Reveal>

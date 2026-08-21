@@ -63,36 +63,36 @@ export default function PricingTable() {
 
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-[11px] font-semibold font-enHeading uppercase tracking-widest text-slate-500">
+                  <span className="text-[11px] font-bold font-enHeading uppercase tracking-[0.14em] text-slate-500">
                     <Translate en={tier.badge.en} ar={tier.badge.ar} />
                   </span>
                 </div>
 
-                <h3 className="text-2xl sm:text-3xl font-enHeading font-bold text-slate-900 mb-2">
+                <h3 className="text-2xl sm:text-3xl font-enHeading font-bold text-slate-900 mb-2 tracking-tight">
                   <Translate en={tier.name.en} ar={tier.name.ar} />
                 </h3>
 
-                <p className="text-slate-600 text-sm leading-relaxed mb-6">
+                <p className="text-slate-600 text-sm leading-relaxed mb-6 font-normal max-w-prose">
                   <Translate en={tier.description.en} ar={tier.description.ar} />
                 </p>
 
                 <div className="p-6 rounded-2xl bg-slate-50 border border-slate-100 mb-8">
-                  <span className="text-3xl sm:text-4xl font-bold font-enHeading text-slate-900">
+                  <span className="text-3xl sm:text-4xl font-bold font-enHeading text-slate-900 tabular-nums tracking-tight">
                     <Translate en={tier.price.en} ar={tier.price.ar} />
                   </span>
-                  <p className="text-xs text-slate-500 mt-1">
+                  <p className="text-xs text-slate-500 mt-1 font-medium">
                     <Translate en="Revenue-share or transactional model" ar="نموذج مشاركة إيرادات أو رسوم معاملات" />
                   </p>
                 </div>
 
                 {/* Features */}
                 <div className="mb-8">
-                  <h4 className="text-xs font-bold font-enHeading uppercase tracking-wider text-slate-900 mb-4">
+                  <h4 className="text-xs font-bold font-enHeading uppercase tracking-[0.12em] text-slate-900 mb-4">
                     <Translate en="What's included:" ar="ما يتضمنه الحل:" />
                   </h4>
                   <ul className="space-y-3.5" role="list">
                     {tier.features.map((feature, fIdx) => (
-                      <li key={fIdx} className="flex items-start gap-3 text-sm">
+                      <li key={fIdx} className="flex items-start gap-3 text-sm leading-normal">
                         {feature.included ? (
                           <div className="w-5 h-5 rounded-full bg-brand-accent/15 flex items-center justify-center text-brand-accent shrink-0 mt-0.5">
                             <Check className="w-3.5 h-3.5" strokeWidth={2.5} />
@@ -116,7 +116,7 @@ export default function PricingTable() {
                 {tier.highlighted ? (
                   <PrimaryButton
                     href={tier.link}
-                    className="w-full"
+                    className="w-full py-3.5 text-xs font-semibold shadow-lg shadow-brand-accent/25 active:scale-[0.98]"
                     icon={<ArrowRight className="w-4 h-4 rtl:rotate-180" />}
                   >
                     <Translate en={tier.cta.en} ar={tier.cta.ar} />
@@ -124,7 +124,7 @@ export default function PricingTable() {
                 ) : (
                   <SecondaryButton
                     href={tier.link}
-                    className="w-full"
+                    className="w-full py-3.5 text-xs border-slate-300 hover:border-brand-accent active:scale-[0.98]"
                     target="_blank"
                     rel="noopener noreferrer"
                     icon={<ExternalLink className="w-4 h-4" />}

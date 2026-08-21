@@ -26,8 +26,12 @@ export const mainNav: NavItem[] = [
   {
     id: 'nav-solutions',
     label: { en: 'Solutions', ar: 'الحلول' },
-    href: '/#solutions',
     order: 2,
+    subItems: [
+      { id: 'sub-operators', label: { en: 'For Parking Operators', ar: 'لمشغلي المواقف والجراجات' }, href: '/services/operators', order: 1 },
+      { id: 'sub-real-estate', label: { en: 'For Real Estate Developers', ar: 'للمطورين العقاريين' }, href: '/services/real-estate', order: 2 },
+      { id: 'sub-municipalities', label: { en: 'For Municipalities', ar: 'للهيئات والمدن الذكية' }, href: '/services/municipalities', order: 3 },
+    ]
   },
   {
     id: 'nav-pricing',
@@ -36,43 +40,36 @@ export const mainNav: NavItem[] = [
     order: 3,
   },
   {
-    id: 'nav-services',
-    label: { en: 'Services', ar: 'الخدمات' },
+    id: 'nav-technology',
+    label: { en: 'Technology', ar: 'التقنية والتوافق' },
+    href: '/technology',
     order: 4,
-    subItems: [
-      { id: 'sub-parking', label: { en: 'Parking Management', ar: 'إدارة المواقف' }, href: '/services/parking-management', order: 1 },
-      { id: 'sub-access', label: { en: 'Access Control Systems', ar: 'أنظمة التحكم بالوصول' }, href: '/services/access-control', order: 2 },
-      { id: 'sub-lpr', label: { en: 'License Plate Recognition', ar: 'أنظمة التعرف على اللوحات' }, href: '/services/lpr', order: 3 },
-      { id: 'sub-calculator', label: { en: 'ROI Calculator', ar: 'حاسبة العائد' }, href: '/services/parking-management/calculate', order: 4 },
-    ]
   },
   {
     id: 'nav-insights',
-    label: { en: 'Insights', ar: 'الرؤى' },
+    label: { en: 'Insights', ar: 'المقالات' },
     href: '/insights',
     order: 5,
   },
   {
-    id: 'nav-company',
-    label: { en: 'Company', ar: 'الشركة' },
+    id: 'nav-about',
+    label: { en: 'About Us', ar: 'من نحن' },
+    href: '/about',
     order: 6,
-    subItems: [
-      { id: 'sub-about', label: { en: 'About Us', ar: 'من نحن' }, href: '/about', order: 1 },
-      { id: 'sub-contact', label: { en: 'Contact Us', ar: 'تواصل معنا' }, href: '/contact', order: 2 },
-    ]
   },
 ];
 
 export const footerNav = {
   platform: [
-    { id: 'f-plat-1', label: { en: 'Parking Management', ar: 'إدارة المواقف' }, href: '/services/parking-management', order: 1 },
-    { id: 'f-plat-2', label: { en: 'Access Control', ar: 'أنظمة التحكم بالوصول' }, href: '/services/access-control', order: 2 },
-    { id: 'f-plat-3', label: { en: 'LPR Systems', ar: 'أنظمة التعرف على اللوحات' }, href: '/services/lpr', order: 3 },
-    { id: 'f-plat-4', label: { en: 'Revenue Calculator', ar: 'حاسبة العائد' }, href: '/services/parking-management/calculate', order: 4 },
+    { id: 'f-plat-1', label: { en: 'For Parking Operators', ar: 'لمشغلي المواقف' }, href: '/services/operators', order: 1 },
+    { id: 'f-plat-2', label: { en: 'For Real Estate Developers', ar: 'للمطورين العقاريين' }, href: '/services/real-estate', order: 2 },
+    { id: 'f-plat-3', label: { en: 'For Municipalities', ar: 'للهيئات والمدن الذكية' }, href: '/services/municipalities', order: 3 },
+    { id: 'f-plat-4', label: { en: 'Technology & Hardware', ar: 'التقنية والتوافق الفني' }, href: '/technology', order: 4 },
+    { id: 'f-plat-5', label: { en: 'Revenue Yield Simulator', ar: 'حاسبة مضاعفة العائد' }, href: '/#yield-calculator', order: 5 },
   ] as NavItem[],
   corporate: [
     { id: 'f-corp-1', label: { en: 'About Irken', ar: 'عن إركن' }, href: '/about', order: 1 },
-    { id: 'f-corp-2', label: { en: 'Insights & Blog', ar: 'الرؤى والمدونة' }, href: '/insights', order: 2 },
+    { id: 'f-corp-2', label: { en: 'Insights & Trends', ar: 'الرؤى والمقالات' }, href: '/insights', order: 2 },
     { id: 'f-corp-3', label: { en: 'Contact & Support', ar: 'التواصل والدعم' }, href: '/contact', order: 3 },
   ] as NavItem[],
   legal: [

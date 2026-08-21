@@ -50,13 +50,13 @@ export default function ClientLogosPlaceholder() {
         <Reveal>
           <div className="text-center mb-8">
             <p className="text-xs font-enHeading font-bold text-slate-400 uppercase tracking-[0.18em]">
-              <Translate en="Trusted by Developers & Facility Operators Across MENA" ar="محل ثقة المطورين ومشغلي المنشآت في الشرق الأوسط" />
+              <Translate en="Trusted by Developers & Facility Operators Across Egypt" ar="محل ثقة المطورين ومشغلي المنشآت في مصر" />
             </p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
             {SECTOR_PARTNERS.map((sector, i) => (
-              <div 
-                key={i} 
+              <div
+                key={i}
                 className="bg-white border border-slate-200/70 hover:border-brand-accent/40 rounded-2xl p-4 flex flex-col items-center justify-center text-center gap-2 shadow-sm hover:shadow-md transition-all group"
               >
                 <div className="w-9 h-9 rounded-full bg-slate-50 group-hover:bg-brand-accent/10 flex items-center justify-center transition-colors">
