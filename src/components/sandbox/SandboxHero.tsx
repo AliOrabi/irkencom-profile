@@ -3,10 +3,10 @@
 import React, { useState, useEffect } from 'react';
 import Translate from '@/components/ui/Translate';
 import Reveal from '@/components/ui/Reveal';
-import { PrimaryButton, SecondaryButton } from '@/components/ui/Buttons';
-import { 
-  Search, 
-  CalendarCheck, 
+import { PrimaryButton, GhostButton } from '@/components/ui/Buttons';
+import {
+  Search,
+  CalendarCheck,
   ArrowUpRight,
   Activity,
   ShieldCheck
@@ -31,57 +31,48 @@ export default function SandboxHero() {
       aria-labelledby="hero-headline"
       className="relative min-h-[92vh] flex items-center justify-center pt-28 pb-20 overflow-hidden bg-slate-950"
     >
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover object-center opacity-20 z-0 pointer-events-none"
-        poster="/videos/irken-hero-poster.webp"
-      >
-        <source src="/videos/irken-hero-bg.mp4" type="video/mp4" />
-      </video>
+      {/* Hero Background Image */}
+      <Image
+        src="/hero_digital_parking_bg.jpg"
+        alt="Irken Smart Digital Parking Facility"
+        fill
+        priority
+        quality={90}
+        sizes="100vw"
+        className="object-cover object-center opacity-85 z-0 pointer-events-none"
+      />
 
+      {/* Balanced ambient overlay for crisp text contrast */}
       <div
-        className="absolute inset-0 bg-gradient-to-b from-[#0A1118]/90 via-[#0A1118]/85 to-[#0A1118]/95 z-0 pointer-events-none"
+        className="absolute inset-0 bg-gradient-to-b from-[#0A1118]/70 via-[#0A1118]/45 to-[#0A1118]/80 z-0 pointer-events-none"
         aria-hidden="true"
       />
 
-      <div 
-        className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-brand-accent/15 blur-[120px] rounded-full pointer-events-none z-0"
+      <div
+        className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-brand-accent/20 blur-[120px] rounded-full pointer-events-none z-0"
         aria-hidden="true"
       />
 
       <div className="max-w-[1280px] mx-auto my-auto px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-12 lg:gap-16 items-center relative z-10">
         <div className="flex flex-col items-start">
-          <Reveal delay={0.05}>
-            <div className="inline-flex items-center gap-2 border border-brand-accent/40 bg-brand-accent/10 px-4 py-1.5 font-enHeading text-xs text-brand-accent uppercase tracking-widest mb-6 backdrop-blur-xl rounded-full shadow-[0_2px_10px_rgba(86,155,170,0.15)]">
-              <span className="w-2 h-2 rounded-full bg-brand-accent animate-pulse" />
-              <Translate
-                en="Egypt's Digital Parking Reservation Network"
-                ar="شبكة حجز أماكن الركنة الرقمية في مصر"
-              />
-            </div>
-          </Reveal>
 
           <Reveal delay={0.1}>
             <h1
               id="hero-headline"
-              className="text-4xl sm:text-5xl md:text-6xl font-bold font-enHeading text-white leading-[1.15] mb-6 tracking-tight"
+              className="text-4xl sm:text-5xl md:text-6xl font-bold font-enHeading text-white leading-[1.25] sm:leading-[1.2] md:leading-[1.25] rtl:leading-[1.35] sm:rtl:leading-[1.4] mb-6 tracking-tight"
             >
               <Translate
-                en="Transform Vacant Parking Spaces into Guaranteed Digital Revenue."
-                ar="حوّل أماكن الركنة الفاضية في جراجك لدخل يومي مضمون."
+                en="Turn your car park into a profitable business."
+                ar="حوّل جراجك لمشروع استثماري عالي الأرباح."
               />
             </h1>
           </Reveal>
 
           <Reveal delay={0.18}>
-            <p className="text-base sm:text-lg text-slate-300 mb-8 max-w-xl font-normal leading-relaxed">
+            <p className="text-base sm:text-lg text-slate-300 mb-8 max-w-xl font-normal leading-relaxed rtl:leading-[1.8]">
               <Translate
-                en="When drivers search for parking near your zone on irken.eg, your facility appears directly for instant pre-arrival reservation and secure digital payment — turning empty off-peak bays into steady cash flow without buying any new hardware."
-                ar="لما السواقين يدوروا على ركنة قريبة من وجهتهم على تطبيق irken.eg، جراجك بيظهرلهم مباشرة للحجز المسبق والدفع الإلكتروني — عشان تستفيد من الأماكن الفاضية وتضمن دخل يومي ثابت من غير ما تشتري أي أجهزة جديدة."
+                en="Zero risk. Zero costs. If you don't win, neither do we. We provide you with new bookings for drivers looking for parking near your location, but who can't always find you – backed by dedicated 24/7 customer service and instant, recurring settlements."
+                ar="صفر مخاطرة. صفر تكاليف. إذا لم تربح، فلن نربح نحن أيضًا. نوفر لك حجوزات جديدة لسائقين يبحثون عن مواقف سيارات بالقرب منك، لكن دائمًا لا يعثرون عليك - مدعومة بخدمة عملاء مخصصة على مدار الأسبوع 24/7 يومًا وتسويات دورية فورية."
               />
             </p>
           </Reveal>
@@ -89,16 +80,16 @@ export default function SandboxHero() {
           <Reveal delay={0.25}>
             <div className="flex flex-wrap items-center gap-4 w-full sm:w-auto">
               <PrimaryButton
-                en="List Your Parking Facility"
-                ar="سجل جراجك وابدأ الحجز"
+                en="Join as Parking Provider"
+                ar="انضم كمزود لمواقف السيارات"
                 href="#operator-onboard"
                 className="w-full sm:w-auto py-3.5 px-8 text-xs font-semibold shadow-lg shadow-brand-accent/25 active:scale-[0.98]"
               />
-              <SecondaryButton
-                en="Explore Operator Control Panel"
-                ar="استكشف لوحة تحكم المشغلين"
-                href="#control-panel"
-                className="w-full sm:w-auto py-3.5 px-6 text-xs text-white border-white/20 hover:border-brand-accent hover:bg-white/10 active:scale-[0.98]"
+              <GhostButton
+                en="Discover how"
+                ar="اكتشف الميزات"
+                href="#why-operators"
+                className="w-full sm:w-auto py-3.5 px-6 text-xs text-white border-white/25 hover:border-white/60 active:scale-[0.98]"
               />
             </div>
           </Reveal>
@@ -106,16 +97,16 @@ export default function SandboxHero() {
           <Reveal delay={0.3}>
             <div className="flex flex-wrap items-center gap-6 mt-10 pt-8 border-t border-slate-800/80 text-xs text-slate-400">
               <div className="flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-brand-accent" />
+                <span><Translate en="Zero Risks · Zero Setup Fees" ar="صفر مخاطرة · صفر مصاريف تركيب" /></span>
+              </div>
+              <div className="flex items-center gap-2">
                 <Search className="w-4 h-4 text-brand-accent" />
-                <span><Translate en="In-App Driver Matching" ar="ظهور مباشر للسواقين في منطقتك" /></span>
+                <span><Translate en="New Driver Ingress via irken" ar="عملاء وسائقين جدد عبر تطبيق irken" /></span>
               </div>
               <div className="flex items-center gap-2">
                 <CalendarCheck className="w-4 h-4 text-brand-accent" />
-                <span><Translate en="Pre-Arrival Driver Reservations" ar="حجوزات مسبقة ومضمونة" /></span>
-              </div>
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-brand-accent" />
-                <span><Translate en="Secure Payment Gateway" ar="بوابة دفع إلكترونية آمنة ومعتمدة" /></span>
+                <span><Translate en="24/7 Dedicated Support" ar="دعم وخدمة عملاء على مدار اليوم" /></span>
               </div>
             </div>
           </Reveal>
@@ -123,20 +114,20 @@ export default function SandboxHero() {
 
         <Reveal delay={0.2} className="w-full">
           <div className="relative z-10 w-full max-w-lg mx-auto">
-            <div 
+            <div
               className="absolute -inset-1 bg-gradient-to-r from-brand-accent/20 to-teal-500/20 rounded-[2.2rem] blur-xl opacity-60 pointer-events-none"
-              aria-hidden="true" 
+              aria-hidden="true"
             />
-            
+
             <div className="relative border border-slate-700/60 bg-[#0F172A]/90 backdrop-blur-2xl overflow-hidden p-7 sm:p-8 rounded-[2rem] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.7)] shadow-inner">
-              <Image 
-                src="/newiRkenLogo.png" 
-                alt="" 
-                width={180} 
-                height={180} 
-                className="absolute -bottom-[10%] -right-[5%] w-[180px] opacity-[0.03] pointer-events-none" 
+              <Image
+                src="/newiRkenLogo.png"
+                alt=""
+                width={180}
+                height={180}
+                className="absolute -bottom-[10%] -right-[5%] w-[180px] opacity-[0.03] pointer-events-none"
               />
-              
+
               <div className="flex justify-between items-start border-b border-slate-800/80 pb-5 mb-6">
                 <div>
                   <div className="text-[10px] font-bold font-enHeading text-slate-400 uppercase tracking-widest mb-1 flex items-center gap-1.5">
@@ -148,7 +139,7 @@ export default function SandboxHero() {
                   </h3>
                 </div>
                 <div className="text-[10px] font-enHeading text-brand-accent flex items-center gap-1.5 uppercase tracking-wider bg-brand-accent/15 px-3 py-1 rounded-full border border-brand-accent/30 shadow-sm">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" /> 
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                   <Translate en="LIVE ON IRKEN.EG" ar="متصل بالتطبيق IRKEN.EG" />
                 </div>
               </div>

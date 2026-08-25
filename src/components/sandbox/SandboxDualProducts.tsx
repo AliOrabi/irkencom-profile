@@ -1,256 +1,248 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Translate from '@/components/ui/Translate';
 import Reveal from '@/components/ui/Reveal';
-import { 
-  LayoutDashboard, 
-  CheckCircle2, 
-  ExternalLink, 
-  Sparkles, 
-  Zap, 
-  TrendingUp, 
-  Search, 
-  CreditCard, 
-  QrCode 
+import {
+  CalendarCheck2,
+  Wallet,
+  BarChart3,
+  Users,
+  CheckCircle2,
+  ExternalLink,
+  Search,
+  TrendingUp,
+  CreditCard,
+  QrCode,
+  Zap,
+  Sparkles
 } from 'lucide-react';
 import { PrimaryButton } from '@/components/ui/Buttons';
-import { cn } from '@/lib/utils';
 
+/* ── Capability Card Data ──────────────────────────────────────────────── */
+const capabilities = [
+  {
+    icon: CalendarCheck2,
+    titleEn: "Reservation Management",
+    titleAr: "إدارة الحجوزات",
+    descEn: "Every advance reservation your drivers make on irken.eg lands directly in your control panel — with driver name, plate number, arrival time, and spot assignment.",
+    descAr: "كل حجز مسبق يعمله السائق على irken.eg بيوصلك مباشرة على لوحة التحكم — باسم السائق ورقم العربية وميعاد الوصول والمكان المخصص.",
+    bullets: [
+      { en: "Live incoming reservation feed with driver details", ar: "بث لحظي للحجوزات الواردة بتفاصيل السائق" },
+      { en: "Instant check-in verification at the gate — QR scan or plate lookup", ar: "تحقق فوري عند البوابة — مسح QR أو استعلام برقم اللوحة" },
+      { en: "Full reservation history log — searchable by date, driver, or bay", ar: "سجل كامل لكل الحجوزات — بيتبحث بالتاريخ أو السائق أو المكان" }
+    ],
+    accentColor: 'text-brand-accent',
+    bgAccent: 'bg-brand-accent/10',
+    borderAccent: 'group-hover:border-brand-accent/40'
+  },
+  {
+    icon: Wallet,
+    titleEn: "Revenue & Settlements",
+    titleAr: "الإيرادات والتسويات البنكية",
+    descEn: "Every driver pays securely online before arriving. Your earnings are tracked in real-time, and settlements are transferred to your approved Egyptian bank account within 2–3 business days of a withdrawal request.",
+    descAr: "كل سائق بيدفع إلكترونياً بأمان قبل ما يوصل. أرباحك بتتابع في الوقت الفعلي، والتسوية بتتحول لحسابك البنكي المعتمد خلال 2-3 أيام عمل من طلب السحب.",
+    bullets: [
+      { en: "Real-time earnings dashboard — see today's revenue at a glance", ar: "لوحة إيرادات لحظية — شوف كسب اليوم في ثانية" },
+      { en: "Withdrawal requests processed to any approved Egyptian bank in 2–3 business days", ar: "طلبات السحب تتحول لأي بنك مصري معتمد خلال 2-3 أيام عمل" },
+      { en: "Full financial log with per-reservation transaction records", ar: "سجل مالي كامل مع تفاصيل كل حجز على حدة" }
+    ],
+    accentColor: 'text-emerald-600',
+    bgAccent: 'bg-emerald-50',
+    borderAccent: 'group-hover:border-emerald-400/40'
+  },
+  {
+    icon: BarChart3,
+    titleEn: "Smart Pricing & Analytics",
+    titleAr: "التسعير الذكي والتحليلات",
+    descEn: "The dashboard tells you exactly when your garage is full, when it's empty, and which hours drive the most revenue — then suggests optimal rates for peak and off-peak times automatically.",
+    descAr: "لوحة التحكم بتقولك بالظبط امتى جراجك بيتملى، امتى بيكون فاضي، وأيه الساعات اللي بتجيبلك أعلى إيراد — وبتقترح تلقائياً أنسب سعر في كل وقت.",
+    bullets: [
+      { en: "Occupancy heatmap — see your busiest hours and days at a glance", ar: "خريطة حرارية للإشغال — شوف أيام وساعات ذروتك بنظرة واحدة" },
+      { en: "Automated smart rate suggestions for peak hours to maximize yield", ar: "اقتراحات تسعير ذكية تلقائية في أوقات الذروة لتعظيم الإيراد" },
+      { en: "Performance reports — weekly and monthly revenue trends", ar: "تقارير أداء — اتجاهات الإيراد أسبوعياً وشهرياً" }
+    ],
+    accentColor: 'text-violet-600',
+    bgAccent: 'bg-violet-50',
+    borderAccent: 'group-hover:border-violet-400/40'
+  },
+  {
+    icon: Users,
+    titleEn: "Staff & Gate Control",
+    titleAr: "إدارة العمال والبوابات",
+    descEn: "Your gate attendants don't need training, new devices, or app installations. They use the phone they already have. You track their shifts, see who checked in which driver, and catch any revenue gaps — remotely.",
+    descAr: "عمال البوابة عندك ما محتاجوش تدريب، ولا أجهزة جديدة، ولا تثبيت أي تطبيقات. بيستخدموا موبايلهم الموجود. وأنت بتتابع ورديتهم، تشوف مين أدخل مين، وتلاقي أي فجوة في الإيرادات — عن بُعد.",
+    bullets: [
+      { en: "Shift tracking per attendant — who's on gate, when, and for how long", ar: "متابعة الورديات لكل عامل — مين على البوابة، امتى، وقديه" },
+      { en: "Per-transaction attribution — link every reservation to the attendant who verified it", ar: "نسب كل حجز للعامل اللي وثّقه — شفافية كاملة في كل معاملة" },
+      { en: "Cash leakage audit — catch discrepancies between expected and actual intake", ar: "رصد تسريب النقدية — اكتشف أي فرق بين الإيراد المتوقع والفعلي" }
+    ],
+    accentColor: 'text-amber-600',
+    bgAccent: 'bg-amber-50',
+    borderAccent: 'group-hover:border-amber-400/40'
+  }
+];
+
+/* ── Driver Consumer Flow ─────────────────────────────────────────────── */
+const consumerFlow = [
+  {
+    icon: Search,
+    color: 'text-brand-accent',
+    borderHover: 'hover:border-brand-accent/40',
+    en: "1. Search & compare rates near your destination",
+    ar: "١. ابحث وقارن الأسعار بالقرب من وجهتك",
+    badge: { en: "Cairo / Giza", ar: "القاهرة / الجيزة", color: 'text-brand-accent' }
+  },
+  {
+    icon: TrendingUp,
+    color: 'text-emerald-400',
+    borderHover: 'hover:border-emerald-400/40',
+    en: "2. Reserve your bay — it's locked just for you",
+    ar: "٢. احجز مكانك — هيتحجزلك وحده",
+    badge: { en: "Locked Bay", ar: "مكان محجوز", color: 'text-emerald-400' }
+  },
+  {
+    icon: CreditCard,
+    color: 'text-brand-accent',
+    borderHover: 'hover:border-brand-accent/40',
+    en: "3. Pay digitally & get your QR entry pass",
+    ar: "٣. ادفع إلكترونياً وخد تصريح QR بتاعك",
+    badge: { en: "InstaPay", ar: "إنستاباي", color: 'text-brand-accent', hasIcon: true }
+  }
+];
+
+const driverFeatures = [
+  { en: "Search & discover parking near any Egyptian landmark", ar: "البحث واكتشاف أقرب ركنة لأي وجهة في مصر" },
+  { en: "Compare live hourly, daily, and monthly rates side by side", ar: "مقارنة فورية لأسعار الركنة بالساعة واليوم" },
+  { en: "Guaranteed advance spot reservation before leaving home", ar: "حجز مسبق ومضمون للمكان قبل التحرك بالعربية" },
+  { en: "100% cashless digital payment (InstaPay, Meeza, Wallets)", ar: "دفع إلكتروني سلس عبر إنستاباي، ميزة، والمحافظ الإلكترونية" },
+  { en: "Instant digital entry pass via plate number or QR code scan", ar: "تصريح دخول ذكي ومباشر برقم العربية أو كود QR فوري" }
+];
+
+/* ── Component ───────────────────────────────────────────────────────── */
 export default function SandboxDualProducts() {
-  const [billingCycle, setBillingCycle] = useState<'monthly' | 'annual'>('annual');
-
-  const freeFeatures = [
-    { en: "Direct listing on irken.eg driver search app", ar: "ظهور مباشر لجراجك على تطبيق السائقين irken.eg" },
-    { en: "Real-time spot availability counter", ar: "عداد لحظي للأماكن الفاضية والمشغولة" },
-    { en: "Driver reservation check-in & verification list", ar: "كشف فوري بأسماء السائقين القادمين وأرقام العربيات" },
-    { en: "Direct daily payouts via a secure payment gateway", ar: "تسوية يومية سريعة للأرباح عبر بوابة دفع آمنة ومعتمدة" }
-  ];
-
-  const proFeatures = [
-    { en: "Everything in Free Starter, plus:", ar: "كل مميزات باقة البداية المجانية، بالإضافة إلى:" },
-    { en: "AI dynamic surge pricing (maximize peak hour yield)", ar: "تسعير ديناميكي ذكي لمضاعفة أرباح ساعات الذروة تلقائياً" },
-    { en: "Advanced occupancy forecasting & peak heatmaps", ar: "تحليلات متقدمة لنسب الإشغال وساعات الضغط في جراجك" },
-    { en: "Multi-lot centralized management control panel", ar: "لوحة موحدة لإدارة عدة جراجات وفروع من مكان واحد" },
-    { en: "Ground attendant shift tracking & cash leakage audit", ar: "متابعة دقيقة لورديات العمال ومنع أي تسريب نقدي" }
-  ];
-
-  const driverFeatures = [
-    { en: "Search & discover parking near any Egyptian landmark", ar: "البحث واكتشاف أقرب ركنة لأي وجهة في مصر" },
-    { en: "Compare live hourly, daily, and monthly rates", ar: "مقارنة فورية لأسعار الركنة بالساعة واليوم" },
-    { en: "Guaranteed advance spot reservation before departure", ar: "حجز مسبق ومضمون للمكان قبل التحرك بالعربية" },
-    { en: "100% cashless digital payment (InstaPay, Meeza, Wallets)", ar: "دفع إلكتروني سلس عبر إنستاباي، ميزة، والمحافظ الإلكترونية" },
-    { en: "Vehicle profile & instant active digital QR pass", ar: "تصريح دخول ذكي ومباشر برقم العربية أو كود QR" }
-  ];
-
   return (
-    <section id="control-panel" className="py-24 px-6 bg-slate-50/60 border-y border-slate-200/80 overflow-hidden">
+    <section id="control-panel" className="py-16 md:py-24 px-6 bg-slate-50/60 border-y border-slate-200/80 overflow-hidden">
       <div className="max-w-[1280px] mx-auto w-full">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
+
+        {/* ── Section Header ───────────────────────────────────────────── */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
           <Reveal>
-            <span className="inline-block px-4 py-1.5 rounded-full bg-brand-accent/10 text-brand-accent text-xs font-bold uppercase tracking-widest font-enHeading mb-4 border border-brand-accent/20">
-              <Translate en="Two Integrated Objectives" ar="منظومة متكاملة لخدمة المشغل والسائق" />
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-accent/10 text-brand-accent text-xs font-bold uppercase tracking-widest font-enHeading mb-4 border border-brand-accent/20">
+              <Sparkles className="w-3.5 h-3.5" />
+              <Translate en="Operator Control Panel" ar="لوحة تحكم المشغلين" />
             </span>
           </Reveal>
 
           <Reveal delay={0.08}>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-enHeading text-slate-900 tracking-tight mb-5">
-              <Translate en="The Operator Control Panel & Driver Platform" ar="لوحة تحكم المشغلين وتطبيق حجز السائقين" />
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-enHeading text-slate-900 tracking-tight mb-5 rtl:leading-[1.3]">
+              <Translate
+                en="Everything you need to run and grow your parking facility"
+                ar="كل اللي محتاجه لتشغيل وتنمية جراجك"
+              />
             </h2>
           </Reveal>
 
           <Reveal delay={0.14}>
-            <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
-              <Translate 
-                en="Irken pairs powerful B2B operator tools with Egypt's digital parking reservation marketplace." 
-                ar="إركن بتجمع بين لوحة تحكم ذكية لإدارة الجراج وسوق حجز إلكتروني بيوصلك بآلاف السائقين في مصر." 
+            <p className="text-slate-600 text-base sm:text-lg leading-relaxed rtl:leading-[1.8] max-w-2xl mx-auto">
+              <Translate
+                en="One dashboard. Zero new hardware. Works from day one with your existing phones, gates, and attendants — while irken.eg brings you a steady stream of pre-paid driver reservations."
+                ar="لوحة تحكم واحدة. من غير أي أجهزة جديدة. بتشتغل من أول يوم مع موبايلاتك وبواباتك وعمالك الحاليين — وفي نفس الوقت irken.eg بيجبلك سائقين بيحجزوا ويدفعوا مسبقاً."
               />
             </p>
           </Reveal>
+
+          {/* GTM open-access banner */}
+          <Reveal delay={0.2}>
+            <div className="inline-flex items-center gap-2 mt-6 px-5 py-2.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold font-enHeading">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+              <Translate
+                en="Full access — free for all operator partners during our launch phase"
+                ar="وصول كامل — مجاناً لكل الشركاء المشغلين خلال مرحلة الإطلاق"
+              />
+            </div>
+          </Reveal>
         </div>
 
-        {/* ── B2B Section: Operator Control Panel Plans (Free vs Pro) ──── */}
-        <div className="mb-20">
-          
-          {/* Header & Apple-style Segmented Switcher */}
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10 pb-6 border-b border-slate-200/80">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-2xl bg-slate-900 text-white flex items-center justify-center shadow-md">
-                <LayoutDashboard className="w-6 h-6 text-brand-accent" />
-              </div>
-              <div>
-                <span className="text-[11px] font-bold font-enHeading text-brand-accent uppercase tracking-widest">
-                  <Translate en="Objective 1 (B2B For Operators)" ar="الهدف الأول: لأصحاب ومشغلي الجراجات" />
-                </span>
-                <h3 className="text-2xl font-bold font-enHeading text-slate-900">
-                  <Translate en="Irken Operator Control Panel" ar="لوحة تحكم مشغلي الجراجات" />
-                </h3>
-              </div>
-            </div>
+        {/* ── 4 Capability Cards — 2×2 Grid ──────────────────────────── */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-7 mb-14">
+          {capabilities.map((cap, idx) => {
+            const Icon = cap.icon;
+            return (
+              <Reveal key={idx} delay={0.06 + idx * 0.07}>
+                <div className={`group bg-white border border-slate-200/90 rounded-[2rem] p-8 sm:p-9 h-full flex flex-col hover:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.07)] transition-all duration-300 ${cap.borderAccent} hover:border`}>
 
-            {/* Apple Segmented Control for Billing Cycle */}
-            <div className="inline-flex items-center p-1 bg-slate-200/70 rounded-full border border-slate-300/60 shadow-inner">
-              <button
-                type="button"
-                onClick={() => setBillingCycle('monthly')}
-                className={cn(
-                  'px-4 py-1.5 rounded-full text-xs font-bold font-enHeading uppercase tracking-wider transition-all duration-200 cursor-pointer',
-                  billingCycle === 'monthly'
-                    ? 'bg-white text-slate-900 shadow-sm'
-                    : 'text-slate-600 hover:text-slate-900'
-                )}
-              >
-                <Translate en="Monthly Billing" ar="اشتراك شهري" />
-              </button>
-              <button
-                type="button"
-                onClick={() => setBillingCycle('annual')}
-                className={cn(
-                  'px-4 py-1.5 rounded-full text-xs font-bold font-enHeading uppercase tracking-wider transition-all duration-200 cursor-pointer flex items-center gap-1.5',
-                  billingCycle === 'annual'
-                    ? 'bg-white text-slate-900 shadow-sm'
-                    : 'text-slate-600 hover:text-slate-900'
-                )}
-              >
-                <span><Translate en="Annual Billing" ar="اشتراك سنوي" /></span>
-                <span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-extrabold">
-                  <Translate en="SAVE 20%" ar="وفر 20%" />
-                </span>
-              </button>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Free Starter Tier */}
-            <Reveal delay={0.1}>
-              <div className="bg-white border border-slate-200/90 rounded-[2.5rem] p-8 sm:p-10 flex flex-col justify-between h-full shadow-[0_10px_30px_-5px_rgba(0,0,0,0.03)] hover:shadow-xl transition-all duration-300">
-                <div>
-                  <div className="flex justify-between items-start mb-6">
-                    <div>
-                      <span className="px-3.5 py-1 rounded-full text-xs font-bold font-enHeading bg-slate-100 text-slate-700 uppercase tracking-[0.14em] border border-slate-200">
-                        <Translate en="Starter Plan" ar="باقة البداية" />
-                      </span>
-                      <h4 className="text-2xl sm:text-3xl font-bold font-enHeading text-slate-900 mt-3 tracking-tight">
-                        <Translate en="Free Control Panel" ar="لوحة تحكم مجانية (0 جنيه)" />
-                      </h4>
+                  {/* Card icon + title */}
+                  <div className="flex items-start gap-4 mb-5">
+                    <div className={`w-12 h-12 rounded-2xl ${cap.bgAccent} flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-300`}>
+                      <Icon className={`w-6 h-6 ${cap.accentColor}`} />
                     </div>
-                    <div className="text-right">
-                      <div className="text-3xl font-bold font-enHeading text-slate-900 tabular-nums tracking-tight">0 EGP</div>
-                      <div className="text-xs text-slate-500 font-medium tracking-wide"><Translate en="Forever free" ar="مجاناً للأبد" /></div>
+                    <div>
+                      <div className={`text-[10px] font-bold font-enHeading ${cap.accentColor} uppercase tracking-widest mb-1`}>
+                        <Translate en={cap.titleEn} ar={cap.titleAr} />
+                      </div>
+                      <p className="text-sm text-slate-600 leading-relaxed rtl:leading-[1.7]">
+                        <Translate en={cap.descEn} ar={cap.descAr} />
+                      </p>
                     </div>
                   </div>
 
-                  <p className="text-slate-600 text-sm leading-relaxed mb-8 font-normal max-w-prose">
-                    <Translate 
-                      en="Essential tools for licensed lot owners to list their facility on the Irken reservation network and receive advance bookings." 
-                      ar="كل الأدوات الأساسية اللي محتاجها عشان تسجل جراجك على شبكة إركن وتبدأ تستقبل حجوزات السائقين المسبقة فوراً." 
-                    />
-                  </p>
-
-                  <ul className="space-y-3.5 mb-8">
-                    {freeFeatures.map((f, i) => (
-                      <li key={i} className="flex items-start gap-3 text-sm text-slate-700 font-medium leading-normal">
-                        <CheckCircle2 className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
-                        <span><Translate en={f.en} ar={f.ar} /></span>
+                  {/* Concrete capability bullets */}
+                  <ul className="space-y-2.5 mt-auto pt-4 border-t border-slate-100">
+                    {cap.bullets.map((b, bi) => (
+                      <li key={bi} className="flex items-start gap-2.5 text-xs text-slate-700 font-medium leading-normal">
+                        <CheckCircle2 className={`w-3.5 h-3.5 ${cap.accentColor} shrink-0 mt-0.5`} />
+                        <span><Translate en={b.en} ar={b.ar} /></span>
                       </li>
                     ))}
                   </ul>
                 </div>
-
-                <PrimaryButton 
-                  en="Get Started for Free"
-                  ar="سجل جراجك مجاناً"
-                  href="#operator-onboard"
-                  className="w-full py-3.5 text-xs bg-slate-900 hover:bg-slate-800 active:scale-[0.98]"
-                />
-              </div>
-            </Reveal>
-
-            {/* Pro Subscription */}
-            <Reveal delay={0.16}>
-              <div className="relative bg-white border-2 border-brand-accent rounded-[2.5rem] p-8 sm:p-10 flex flex-col justify-between h-full shadow-[0_20px_50px_-10px_rgba(86,155,170,0.18)]">
-                {/* Apple-style floating pill badge */}
-                <div className="absolute -top-3.5 ltr:right-8 rtl:left-8">
-                  <span className="px-4 py-1 rounded-full text-xs font-bold font-enHeading bg-brand-accent text-white uppercase tracking-[0.14em] shadow-md flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5" />
-                    <Translate en="Recommended for Operators" ar="الخيار الأفضل لأعلى أرباح" />
-                  </span>
-                </div>
-
-                <div>
-                  <div className="flex justify-between items-start mb-6">
-                    <div>
-                      <span className="px-3.5 py-1 rounded-full text-xs font-bold font-enHeading bg-brand-accent/10 text-brand-accent uppercase tracking-[0.14em] border border-brand-accent/30">
-                        <Translate en="Pro Subscription" ar="الاشتراك المتقدم" />
-                      </span>
-                      <h4 className="text-2xl sm:text-3xl font-bold font-enHeading text-slate-900 mt-3 flex items-center gap-2 tracking-tight">
-                        <span><Translate en="Operator Pro Dashboard" ar="لوحة التحكم المتقدمة" /></span>
-                        <Zap className="w-5 h-5 text-amber-500 fill-amber-500" />
-                      </h4>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-2xl font-bold font-enHeading text-slate-900 tabular-nums tracking-tight">
-                        {billingCycle === 'annual' ? 'Flexible Annual' : 'Monthly Tier'}
-                      </div>
-                      <div className="text-xs text-brand-accent font-bold tracking-wide">
-                        <Translate en="Advanced Yield & Surge" ar="تسعير ذكي وإشغال أعلى" />
-                      </div>
-                    </div>
-                  </div>
-
-                  <p className="text-slate-600 text-sm leading-relaxed mb-8 font-normal max-w-prose">
-                    <Translate 
-                      en="Empower your operations with algorithmic dynamic pricing, occupancy forecasting heatmaps, and multi-lot centralized governance." 
-                      ar="زود أرباحك بخوارزميات التسعير الذكي في أوقات الذروة، وتحليلات الإشغال، وإدارة فروعك بالكامل من شاشة واحدة." 
-                    />
-                  </p>
-
-                  <ul className="space-y-3.5 mb-8">
-                    {proFeatures.map((f, i) => (
-                      <li key={i} className="flex items-start gap-3 text-sm text-slate-900 font-semibold leading-normal">
-                        <CheckCircle2 className="w-4 h-4 text-brand-accent shrink-0 mt-0.5" />
-                        <span><Translate en={f.en} ar={f.ar} /></span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <PrimaryButton 
-                  en="Upgrade to Pro Control Panel"
-                  ar="اشترك في اللوحة المتقدمة"
-                  href="#operator-onboard"
-                  className="w-full py-3.5 text-xs shadow-lg shadow-brand-accent/25 active:scale-[0.98]"
-                />
-              </div>
-            </Reveal>
-          </div>
+              </Reveal>
+            );
+          })}
         </div>
 
-        {/* ── B2C Section: Driver Platform (irken.eg) ─────────────────── */}
-        <Reveal delay={0.2}>
+        {/* ── Single CTA ─────────────────────────────────────────────── */}
+        <Reveal delay={0.32}>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+            <PrimaryButton
+              en="Register Your Facility for Free"
+              ar="سجل جراجك مجاناً"
+              href="#operator-onboard"
+              className="px-10 py-4 text-xs active:scale-[0.98] shadow-lg shadow-brand-accent/20"
+            />
+            <span className="text-xs text-slate-500 font-medium rtl:leading-[1.6]">
+              <Translate
+                en="No contracts. No setup fees. Full access from day one."
+                ar="من غير عقود. من غير رسوم إعداد. وصول كامل من أول يوم."
+              />
+            </span>
+          </div>
+        </Reveal>
+
+        {/* ── Driver Platform Panel ───────────────────────────────────── */}
+        <Reveal delay={0.38}>
           <div className="bg-slate-950 text-white rounded-[2.5rem] p-8 sm:p-12 relative overflow-hidden shadow-2xl border border-slate-800">
-            {/* Ambient Background Glow */}
-            <div className="absolute top-0 right-0 w-96 h-96 bg-brand-accent/10 blur-[100px] pointer-events-none" />
+            {/* Ambient glow */}
+            <div className="absolute top-0 ltr:right-0 rtl:left-0 w-96 h-96 bg-brand-accent/10 blur-[100px] pointer-events-none" />
 
             <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-10 items-center relative z-10">
               <div>
                 <div className="flex items-center gap-2 mb-4">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                   <span className="text-xs font-bold font-enHeading text-brand-accent uppercase tracking-widest">
-                    <Translate en="Objective 2 (B2C Driver Marketplace)" ar="الهدف الثاني: تطبيق السائقين وحجز الأماكن" />
+                    <Translate en="What Brings Drivers to You" ar="ما الذي يجلب إليك السائقين" />
                   </span>
                 </div>
 
-                <h3 className="text-3xl sm:text-4xl font-bold font-enHeading text-white tracking-tight mb-4">
-                  irken.eg — <Translate en="Egypt's Online Parking Reservation Engine" ar="محرك حجز أماكن الركنة في مصر" />
+                <h3 className="text-3xl sm:text-4xl font-bold font-enHeading text-white tracking-tight mb-4 rtl:leading-[1.3]">
+                  irken.eg — <Translate en="Egypt's Online Parking Reservation App" ar="تطبيق حجز أماكن الركنة في مصر" />
                 </h3>
 
-                <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-8 max-w-2xl">
-                  <Translate 
-                    en="Our consumer platform brings ready-to-pay drivers directly to your facility. Vehicle owners search their destination, reserve their bay in advance, and pay digitally before arrival." 
-                    ar="تطبيقنا بيجيبلك السواقين الجاهزين للدفع لجراجك مباشرة. السواق بيدور على وجهته، يحجز مكانه مسبقاً، ويدفع إلكترونياً قبل ما يتحرك بالعربية." 
+                <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-8 max-w-2xl rtl:leading-[1.8]">
+                  <Translate
+                    en="Our consumer app brings ready-to-pay drivers directly to your facility. Drivers search their destination, reserve their bay in advance, and pay digitally — before they even start the engine."
+                    ar="تطبيقنا بيجيبلك السواقين الجاهزين للدفع لجراجك مباشرة. السواق بيدور على وجهته، يحجز مكانه مسبقاً، ويدفع إلكترونياً — قبل ما يشعل عربيته."
                   />
                 </p>
 
@@ -265,53 +257,49 @@ export default function SandboxDualProducts() {
                   ))}
                 </ul>
 
-                <div className="flex flex-wrap items-center gap-4">
-                  <a 
-                    href="https://irken.eg" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-brand-accent hover:bg-brand-accent/90 text-white font-enHeading text-xs uppercase tracking-wider font-bold transition-all shadow-lg shadow-brand-accent/25 active:scale-[0.98]"
-                  >
-                    <span><Translate en="Visit Driver Platform (irken.eg)" ar="زيارة تطبيق السائقين (irken.eg)" /></span>
-                    <ExternalLink className="w-3.5 h-3.5" />
-                  </a>
-                </div>
+                <a
+                  href="https://irken.eg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-brand-accent hover:bg-brand-accent/90 text-white font-enHeading text-xs uppercase tracking-wider font-bold transition-all shadow-lg shadow-brand-accent/25 active:scale-[0.98]"
+                >
+                  <span><Translate en="Visit Driver App (irken.eg)" ar="زيارة تطبيق السائقين (irken.eg)" /></span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
               </div>
 
-              {/* Visual preview box (Apple-style 3-step consumer flow) */}
-              <div className="bg-slate-900/90 border border-slate-800 rounded-3xl p-6 sm:p-8 flex flex-col justify-between backdrop-blur-xl shadow-2xl">
+              {/* 3-step consumer flow widget — fully bilingual */}
+              <div className="bg-slate-900/90 border border-slate-800 rounded-3xl p-6 sm:p-8 flex flex-col backdrop-blur-xl shadow-2xl">
                 <div className="text-[11px] font-mono text-slate-400 mb-5 flex items-center justify-between border-b border-slate-800 pb-3">
-                  <span>IRKEN.EG // CONSUMER FLOW</span>
-                  <span className="text-brand-accent font-bold">100% DIGITAL</span>
+                  <span>IRKEN.EG · <Translate en="DRIVER FLOW" ar="رحلة السائق" /></span>
+                  <span className="text-brand-accent font-bold"><Translate en="100% DIGITAL" ar="١٠٠٪ إلكتروني" /></span>
                 </div>
-                
+
                 <div className="space-y-3">
-                  <div className="p-3.5 rounded-2xl bg-slate-950/80 border border-slate-800 text-xs flex items-center justify-between hover:border-brand-accent/40 transition-colors">
-                    <div className="flex items-center gap-2.5 text-slate-300 font-medium">
-                      <Search className="w-4 h-4 text-brand-accent" />
-                      <span>1. Search & Compare Rates</span>
-                    </div>
-                    <span className="text-brand-accent font-bold font-mono">Cairo / Giza</span>
-                  </div>
+                  {consumerFlow.map((step, i) => {
+                    const StepIcon = step.icon;
+                    return (
+                      <div key={i} className={`p-3.5 rounded-2xl bg-slate-950/80 border border-slate-800 text-xs flex items-center justify-between ${step.borderHover} transition-colors`}>
+                        <div className="flex items-center gap-2.5 text-slate-300 font-medium min-w-0">
+                          <StepIcon className={`w-4 h-4 ${step.color} shrink-0`} />
+                          <span className="truncate"><Translate en={step.en} ar={step.ar} /></span>
+                        </div>
+                        <span className={`${step.badge.color} font-bold font-mono flex items-center gap-1 shrink-0 ms-2`}>
+                          {step.badge.hasIcon && <QrCode className="w-3.5 h-3.5" />}
+                          <Translate en={step.badge.en} ar={step.badge.ar} />
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
 
-                  <div className="p-3.5 rounded-2xl bg-slate-950/80 border border-slate-800 text-xs flex items-center justify-between hover:border-emerald-400/40 transition-colors">
-                    <div className="flex items-center gap-2.5 text-slate-300 font-medium">
-                      <TrendingUp className="w-4 h-4 text-emerald-400" />
-                      <span>2. Advance Guaranteed Spot</span>
-                    </div>
-                    <span className="text-emerald-400 font-bold font-mono">Locked Bay</span>
-                  </div>
-
-                  <div className="p-3.5 rounded-2xl bg-slate-950/80 border border-slate-800 text-xs flex items-center justify-between hover:border-brand-accent/40 transition-colors">
-                    <div className="flex items-center gap-2.5 text-slate-300 font-medium">
-                      <CreditCard className="w-4 h-4 text-brand-accent" />
-                      <span>3. Secure Payment & QR Pass</span>
-                    </div>
-                    <span className="text-brand-accent font-bold font-mono flex items-center gap-1">
-                      <QrCode className="w-3.5 h-3.5" />
-                      InstaPay
-                    </span>
-                  </div>
+                {/* Zap badge — driver volume signal */}
+                <div className="mt-5 pt-4 border-t border-slate-800 flex items-center gap-2 text-xs text-slate-400">
+                  <Zap className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
+                  <Translate
+                    en="Every completed reservation on irken.eg flows into your operator panel automatically."
+                    ar="كل حجز مكتمل على irken.eg بيوصل لوحة تحكمك تلقائياً."
+                  />
                 </div>
               </div>
             </div>

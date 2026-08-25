@@ -92,7 +92,7 @@ export default async function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
-      <body className={locale === 'ar' ? 'font-arabic' : 'font-english'}>
+      <body suppressHydrationWarning className={locale === 'ar' ? 'font-arabic' : 'font-english'}>
         <EmotionRegistry options={{ key: 'mui' }}>
           <MuiProvider>
             <CSPostHogProvider>

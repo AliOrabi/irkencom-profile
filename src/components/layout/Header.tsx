@@ -15,6 +15,8 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
+import { usePathname } from 'next/navigation';
+
 interface NavItem {
   id: string;
   label: { en: string; ar: string };
@@ -39,6 +41,7 @@ const mainNav: NavItem[] = [
 ];
 
 export default function Header() {
+  const pathname = usePathname();
   const { language, toggleLanguage } = useLanguage();
   const posthog = usePostHog();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -52,6 +55,11 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // If on /sandbox route, let SandboxHeader take exclusive control
+  if (pathname?.includes('/sandbox')) {
+    return null;
+  }
 
   const isLightHeader = isScrolled;
   const navLinkClass = cn(

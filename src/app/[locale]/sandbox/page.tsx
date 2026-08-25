@@ -1,4 +1,5 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import SandboxHeader from '@/components/sandbox/SandboxHeader';
 import SandboxHero from '@/components/sandbox/SandboxHero';
 import SandboxOperatorValue from '@/components/sandbox/SandboxOperatorValue';
@@ -6,59 +7,40 @@ import SandboxDualProducts from '@/components/sandbox/SandboxDualProducts';
 import SandboxRevenueLiftCalculator from '@/components/sandbox/SandboxRevenueLiftCalculator';
 import SandboxTargetAudiences from '@/components/sandbox/SandboxTargetAudiences';
 import SandboxOperatorForm from '@/components/sandbox/SandboxOperatorForm';
-import Translate from '@/components/ui/Translate';
-import LocalizedLink from '@/components/ui/LocalizedLink';
-import { ExternalLink, Radio } from 'lucide-react';
+import SandboxFooter from '@/components/sandbox/SandboxFooter';
+
+export const metadata: Metadata = {
+  title: 'Partner with Irken — List Your Parking Facility | إركن للمشغلين',
+  description:
+    'Join Egypt\'s digital parking reservation network. Zero setup fees, zero hardware, and 24/7 support. List your garage or lot on irken.eg and start receiving pre-paid driver reservations today.',
+  openGraph: {
+    title: 'List Your Parking Facility on irken.eg — Free Partner Program',
+    description:
+      'Zero risk. Zero costs. Irken brings you pre-paid drivers already searching for parking near you. Register your facility in under 2 minutes.',
+    url: 'https://irken.com.eg/sandbox',
+    siteName: 'Irken Solutions',
+    images: [{ url: '/opengraph-image.png', width: 1200, height: 630, alt: 'Irken Operator Partner Program' }],
+    locale: 'ar_EG',
+    alternateLocale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'List Your Parking on irken.eg — Partner Program',
+    description: 'Zero risk. Zero costs. Join Egypt\'s digital parking network.',
+    images: ['/opengraph-image.png'],
+  },
+  robots: { index: true, follow: true },
+};
 
 export default function SandboxPage() {
   return (
     <div className="relative bg-white min-h-screen selection:bg-brand-accent/20 selection:text-brand-accent">
-      
-      {/* ── Dynamic Island Status Banner (Sticky Top) ──────────────────── */}
-      <div className="sticky top-0 z-[60] bg-slate-950/95 backdrop-blur-md text-white px-4 py-2 text-xs border-b border-slate-800/80 shadow-md">
-        <div className="flex items-center gap-3 max-w-[1280px] mx-auto w-full justify-between">
-          <div className="flex items-center gap-2.5">
-            <span className="flex h-2 w-2 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-            </span>
-            <Radio className="w-3.5 h-3.5 text-brand-accent hidden sm:inline" />
-            <span className="font-bold font-enHeading uppercase tracking-widest text-brand-accent text-[11px]">
-              <Translate en="Online Reservation Sandbox" ar="بيئة تجربة شبكة الحجز الإلكتروني" />
-            </span>
-            <span className="text-slate-400 hidden md:inline text-[11px] font-medium border-l border-slate-700 pl-2.5 rtl:border-l-0 rtl:border-r rtl:pl-0 rtl:pr-2.5">
-              <Translate 
-                en="Live simulation of Egypt's parking marketplace & operator control panel." 
-                ar="محاكاة حية لسوق مواقف السيارات الإلكتروني ولوحة تحكم المشغلين في مصر." 
-              />
-            </span>
-          </div>
-
-          <div className="flex items-center gap-4 text-xs font-semibold">
-            <a 
-              href="https://irken.eg" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="hidden sm:flex items-center gap-1 text-brand-accent hover:text-brand-accent/80 transition-colors text-[11px]"
-            >
-              <span>irken.eg</span>
-              <ExternalLink className="w-3 h-3" />
-            </a>
-            <LocalizedLink 
-              href="/"
-              className="text-[11px] font-bold text-slate-300 hover:text-white underline underline-offset-4 transition-colors"
-            >
-              <Translate en="Back to Live Home" ar="العودة للرئيسية الحالية" />
-            </LocalizedLink>
-          </div>
-        </div>
-      </div>
-
       {/* ── Sandbox Dedicated Frosted Glass Navigation Header ─────────── */}
       <SandboxHeader />
 
-      {/* ── Main Landing Flow (Strictly in Sandbox) ───────────────────────── */}
-      <main className="pt-16">
+      {/* ── Main Landing Flow ────────────────────────────────────────── */}
+      <main>
         {/* 1. Hero: Demand Generation & Digital Reservation Network */}
         <SandboxHero />
 
@@ -77,6 +59,9 @@ export default function SandboxPage() {
         {/* 6. Operator Onboarding & Facility Listing Form */}
         <SandboxOperatorForm />
       </main>
+
+      {/* ── Page Closure: What Happens Next + Footer ─────────────────── */}
+      <SandboxFooter />
     </div>
   );
 }

@@ -16,13 +16,17 @@ import {
   Sparkles, 
   ShieldCheck, 
   Clock, 
-  Compass 
+  Compass,
+  AlertCircle
 } from 'lucide-react';
+
+type FormErrors = Record<string, string>;
 
 export default function SandboxOperatorForm() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [cityArea, setCityArea] = useState('');
+  const [formErrors, setFormErrors] = useState<FormErrors>({});
   const posthog = usePostHog();
 
   const popularDistricts = [
@@ -35,11 +39,49 @@ export default function SandboxOperatorForm() {
     { en: "Alexandria", ar: "الإسكندرية" }
   ];
 
+  /* ── Client-side validation ─────────────────────────────────────────── */
+  const validateForm = (data: Record<string, FormDataEntryValue>): FormErrors => {
+    const errors: FormErrors = {};
+    if (!String(data.facilityName ?? '').trim()) {
+      errors.facilityName = 'Facility name is required — اسم الجراج مطلوب';
+    }
+    if (!String(data.cityArea ?? '').trim()) {
+      errors.cityArea = 'City / area is required — المدينة أو المنطقة مطلوبة';
+    }
+    if (!String(data.name ?? '').trim()) {
+      errors.name = 'Your name is required — اسمك مطلوب';
+    }
+    const phone = String(data.phone ?? '').trim();
+    if (!phone) {
+      errors.phone = 'Phone number is required — رقم الموبايل مطلوب';
+    } else if (!/^\+?[\d\s\-().]{7,20}$/.test(phone)) {
+      errors.phone = 'Please enter a valid phone number — رقم غير صحيح';
+    }
+    const email = String(data.email ?? '').trim();
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errors.email = 'Please enter a valid email — بريد إلكتروني غير صحيح';
+    }
+    return errors;
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true);
     const formData = new FormData(e.currentTarget);
+    // Merge controlled cityArea back in
+    formData.set('cityArea', cityArea);
     const data = Object.fromEntries(formData.entries());
+
+    const errors = validateForm(data);
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+      // Scroll to first error
+      const firstErrorEl = e.currentTarget.querySelector('[aria-invalid="true"]');
+      (firstErrorEl as HTMLElement)?.focus();
+      return;
+    }
+
+    setFormErrors({});
+    setLoading(true);
     
     try {
       await fetch('/api/lead', {
@@ -50,7 +92,7 @@ export default function SandboxOperatorForm() {
           ...data
         })
       });
-      posthog?.capture('operator_form_submitted', { role: data.operatorRole, plan: data.desiredPlan });
+      posthog?.capture('operator_form_submitted', { role: data.operatorRole, capacity: data.capacity });
       setSubmitted(true);
     } catch (error) {
       console.error("Failed to submit", error);
@@ -59,23 +101,31 @@ export default function SandboxOperatorForm() {
     }
   };
 
+  /* ── Field error helper ─────────────────────────────────────────────── */
+  const fieldError = (name: string) => formErrors[name];
+  const fieldClass = (name: string, base: string) =>
+    `${base} ${fieldError(name) ? 'border-red-400 focus:border-red-500 focus:ring-red-200' : 'focus:border-brand-accent focus:ring-brand-accent/20'}`;
+
+
+
   return (
-    <section id="operator-onboard" className="py-24 px-6 bg-slate-50/70 border-t border-slate-200/80">
+    <section id="operator-onboard" className="py-16 md:py-24 px-6 bg-slate-50/70 border-t border-slate-200/80">
       <div className="max-w-[800px] mx-auto w-full">
         <div className="bg-white border border-slate-200/90 rounded-[2.5rem] p-8 sm:p-12 lg:p-14 shadow-[0_20px_50px_-15px_rgba(0,0,0,0.06)]">
           
           {/* Form Header */}
           <div className="text-center mb-10">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-brand-accent/10 text-brand-accent text-xs font-bold uppercase tracking-wider font-enHeading mb-3 border border-brand-accent/20">
-              <Translate en="Operator Onboarding" ar="انضم لشبكة مشغلي الجراجات" />
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-accent/10 text-brand-accent text-xs font-bold uppercase tracking-wider font-enHeading mb-3 border border-brand-accent/20">
+              <Sparkles className="w-3.5 h-3.5" />
+              <Translate en="Founding Partner Program" ar="برنامج الشركاء المؤسسين" />
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold font-enHeading text-slate-900 tracking-tight mb-3">
-              <Translate en="List Your Parking Facility" ar="سجل جراجك وابدأ استقبال الحجوزات" />
+            <h2 className="text-3xl sm:text-4xl font-bold font-enHeading text-slate-900 tracking-tight mb-3 rtl:leading-[1.3]">
+              <Translate en="Register Your Facility & Start Receiving Reservations" ar="سجل جراجك وابدأ استقبال الحجوزات فوراً" />
             </h2>
-            <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-lg mx-auto">
+            <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-lg mx-auto rtl:leading-[1.7]">
               <Translate 
-                en="Start receiving advance driver reservations and manage your bays with the Irken Operator Control Panel." 
-                ar="سجل بيانات جراجك واستقبل حجوزات السائقين المسبقة وأدر أماكن الركنة بسهولة من لوحة تحكم إركن." 
+                en="Zero setup costs, zero new hardware, and zero commitments. Fill in your facility details and our team will activate your dashboard within 24 hours." 
+                ar="بدون أي مصاريف تأسيس، بدون أجهزة جديدة، وبدون أي عقود ملزمة. سجل بيانات جراجك وفريقنا هيفعل حسابك خلال 24 ساعة." 
               />
             </p>
           </div>
@@ -86,19 +136,19 @@ export default function SandboxOperatorForm() {
               <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center shadow-sm">
                 <CheckCircle2 className="w-8 h-8" />
               </div>
-              <h3 className="text-2xl font-bold font-enHeading text-slate-900">
-                <Translate en="Facility Registration Received" ar="تم استلام طلب تسجيل الجراج بنجاح" />
+              <h3 className="text-2xl font-bold font-enHeading text-slate-900 rtl:leading-[1.3]">
+                <Translate en="Facility Registration Received Successfully" ar="تم استلام طلب تسجيل الجراج بنجاح" />
               </h3>
-              <p className="text-slate-600 text-sm sm:text-base max-w-md leading-relaxed">
+              <p className="text-slate-600 text-sm sm:text-base max-w-md leading-relaxed rtl:leading-[1.7]">
                 <Translate 
-                  en="Our operator onboarding team will verify your facility details and activate your Control Panel access within 24 hours." 
-                  ar="فريق الدعم هيراجع بيانات جراجك ويفعل حسابك على لوحة التحكم خلال 24 ساعة لتبدأ استقبال الحجوزات فوراً." 
+                  en="Our operator onboarding team will verify your facility details and activate your Control Panel access within 24 hours to begin receiving driver reservations." 
+                  ar="فريق الدعم هيراجع بيانات جراجك ويفعل حسابك على لوحة التحكم خلال 24 ساعة لتبدأ استقبال حجوزات السائقين فوراً." 
                 />
               </p>
               <div className="flex items-center gap-6 mt-4 pt-4 border-t border-emerald-200/80 text-xs text-emerald-800 font-semibold">
                 <div className="flex items-center gap-1.5">
                   <Clock className="w-4 h-4 text-emerald-600" />
-                  <span><Translate en="24-Hour Activation" ar="تفعيل سريع خلال 24 ساعة" /></span>
+                  <span><Translate en="24-Hour Fast Activation" ar="تفعيل سريع خلال 24 ساعة" /></span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <ShieldCheck className="w-4 h-4 text-emerald-600" />
@@ -107,14 +157,14 @@ export default function SandboxOperatorForm() {
               </div>
             </div>
           ) : (
-            /* Apple Settings-style Grouped Inset Form */
+            /* Grouped Inset Form */
             <form onSubmit={handleSubmit} className="flex flex-col gap-6">
               
-              {/* Group 1: Role & Desired Plan */}
+              {/* Group 1: Role & Facility Capacity */}
               <div className="bg-slate-50/70 p-6 rounded-3xl border border-slate-200/70 space-y-4">
                 <div className="text-xs font-bold font-enHeading uppercase tracking-wider text-slate-500 flex items-center gap-1.5 pb-2 border-b border-slate-200/60">
                   <Sparkles className="w-3.5 h-3.5 text-brand-accent" />
-                  <Translate en="Account & Plan Configuration" ar="إعدادات الحساب ونوع الباقة" />
+                  <Translate en="Partner Classification" ar="تصنيف الشريك والسعة" />
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -126,12 +176,12 @@ export default function SandboxOperatorForm() {
                       <select 
                         name="operatorRole"
                         className="w-full bg-white border border-slate-200 text-slate-900 px-4 py-3.5 rounded-2xl text-sm font-medium outline-none transition-all focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/20 appearance-none cursor-pointer shadow-sm"
-                        defaultValue="licensed_operator"
+                        defaultValue="parking_operator"
                         required
                       >
-                        <option value="licensed_operator">مشغل جراج أو موقف مرخص (Licensed Operator)</option>
-                        <option value="asset_investor">مالك أو مستثمر عقار ومساحات ركن (Asset Investor)</option>
-                        <option value="valet_pro">محترف إدارة خدمات فاليه (Valet Professional)</option>
+                        <option value="parking_operator">مشغل جراج أو سايس مرخص (Parking Operator / Sayes)</option>
+                        <option value="facility_manager">مالك عقار أو مدير مرافق تجارية (Property Owner / Facility Manager)</option>
+                        <option value="valet_provider">مزود خدمات فاليه (Valet Service Provider)</option>
                       </select>
                       <ChevronDown className="w-4 h-4 text-slate-400 absolute top-1/2 -translate-y-1/2 right-4 rtl:right-auto rtl:left-4 pointer-events-none" />
                     </div>
@@ -139,18 +189,21 @@ export default function SandboxOperatorForm() {
 
                   <div className="flex flex-col gap-2">
                     <label className="text-xs font-bold font-enHeading uppercase tracking-wider text-slate-700">
-                      <Translate en="Desired Control Panel *" ar="نوع لوحة التحكم المطلوبة *" />
+                      <Translate en="Capacity (Spaces) *" ar="السعة الاستيعابية (عدد الأماكن) *" />
                     </label>
                     <div className="relative">
                       <select 
-                        name="desiredPlan"
-                        className="w-full bg-white border border-slate-200 text-slate-900 px-4 py-3.5 rounded-2xl text-sm font-medium outline-none transition-all focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/20 appearance-none cursor-pointer shadow-sm"
-                        defaultValue="free_starter"
+                        name="capacity"
+                        className="w-full bg-white border border-slate-200 text-slate-900 px-4 py-3.5 ltr:pl-11 rtl:pr-11 rounded-2xl text-sm font-medium outline-none transition-all focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/20 appearance-none cursor-pointer shadow-sm"
+                        defaultValue="50-200"
                         required
                       >
-                        <option value="free_starter">باقة البداية المجانية (0 جنيه / Free Starter)</option>
-                        <option value="pro_subscription">الاشتراك المتقدم (تسعير ذكي وإشغال أعلى / Pro)</option>
+                        <option value="<50">أقل من 50 مكان ركنة (&lt; 50 Spaces)</option>
+                        <option value="50-200">50 إلى 200 مكان ركنة (50 - 200 Spaces)</option>
+                        <option value="200-500">200 إلى 500 مكان ركنة (200 - 500 Spaces)</option>
+                        <option value="500+">أكثر من 500 مكان / عدة فروع (500+ Spaces)</option>
                       </select>
+                      <Car className="w-4 h-4 text-slate-400 absolute top-1/2 -translate-y-1/2 ltr:left-4 rtl:right-4 pointer-events-none" />
                       <ChevronDown className="w-4 h-4 text-slate-400 absolute top-1/2 -translate-y-1/2 right-4 rtl:right-auto rtl:left-4 pointer-events-none" />
                     </div>
                   </div>
@@ -172,13 +225,22 @@ export default function SandboxOperatorForm() {
                     <div className="relative">
                       <input 
                         name="facilityName"
+                        id="facilityName"
                         type="text" 
-                        placeholder="مثال: جراج مول التجمع الشمالي"
+                        placeholder="مثال: جراج النيل الدولي - الدقي"
+                        aria-invalid={!!fieldError('facilityName')}
+                        aria-describedby={fieldError('facilityName') ? 'facilityName-error' : undefined}
                         required 
-                        className="w-full bg-white border border-slate-200 text-slate-900 px-4 py-3.5 ltr:pl-11 rtl:pr-11 rounded-2xl text-sm font-medium outline-none transition-all placeholder:text-slate-400 focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/20 shadow-sm" 
+                        className={fieldClass('facilityName', 'w-full bg-white border text-slate-900 px-4 py-3.5 ltr:pl-11 rtl:pr-11 rounded-2xl text-sm font-medium outline-none transition-all placeholder:text-slate-400 focus:ring-2 shadow-sm')} 
                       />
                       <Building2 className="w-4 h-4 text-slate-400 absolute top-1/2 -translate-y-1/2 ltr:left-4 rtl:right-4" />
                     </div>
+                    {fieldError('facilityName') && (
+                      <p id="facilityName-error" role="alert" className="flex items-center gap-1.5 text-[11px] text-red-600 font-medium mt-1">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        {fieldError('facilityName')}
+                      </p>
+                    )}
                   </div>
 
                   <div className="flex flex-col gap-2">
@@ -188,15 +250,24 @@ export default function SandboxOperatorForm() {
                     <div className="relative">
                       <input 
                         name="cityArea"
+                        id="cityArea"
                         type="text" 
                         value={cityArea}
                         onChange={(e) => setCityArea(e.target.value)}
                         placeholder="مثال: التجمع الخامس، وسط البلد، الشيخ زايد"
+                        aria-invalid={!!fieldError('cityArea')}
+                        aria-describedby={fieldError('cityArea') ? 'cityArea-error' : undefined}
                         required 
-                        className="w-full bg-white border border-slate-200 text-slate-900 px-4 py-3.5 ltr:pl-11 rtl:pr-11 rounded-2xl text-sm font-medium outline-none transition-all placeholder:text-slate-400 focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/20 shadow-sm" 
+                        className={fieldClass('cityArea', 'w-full bg-white border text-slate-900 px-4 py-3.5 ltr:pl-11 rtl:pr-11 rounded-2xl text-sm font-medium outline-none transition-all placeholder:text-slate-400 focus:ring-2 shadow-sm')} 
                       />
                       <MapPin className="w-4 h-4 text-slate-400 absolute top-1/2 -translate-y-1/2 ltr:left-4 rtl:right-4" />
                     </div>
+                    {fieldError('cityArea') && (
+                      <p id="cityArea-error" role="alert" className="flex items-center gap-1.5 text-[11px] text-red-600 font-medium mt-1">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        {fieldError('cityArea')}
+                      </p>
+                    )}
 
                     {/* Quick District Selection Chips */}
                     <div className="flex items-center gap-1.5 flex-wrap pt-1.5">
@@ -216,29 +287,9 @@ export default function SandboxOperatorForm() {
                       ))}
                     </div>
                   </div>
-
-                  <div className="flex flex-col gap-2 sm:col-span-2">
-                    <label className="text-xs font-bold font-enHeading uppercase tracking-wider text-slate-700">
-                      <Translate en="Capacity (Spaces) *" ar="السعة الاستيعابية (عدد أماكن الركنة) *" />
-                    </label>
-                    <div className="relative">
-                      <select 
-                        name="capacity"
-                        className="w-full bg-white border border-slate-200 text-slate-900 px-4 py-3.5 ltr:pl-11 rtl:pr-11 rounded-2xl text-sm font-medium outline-none transition-all focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/20 appearance-none cursor-pointer shadow-sm"
-                        defaultValue="50-200"
-                        required
-                      >
-                        <option value="<50">أقل من 50 مكان ركنة (&lt; 50 Spaces)</option>
-                        <option value="50-200">50 إلى 200 مكان ركنة (50 - 200 Spaces)</option>
-                        <option value="200-500">200 إلى 500 مكان ركنة (200 - 500 Spaces)</option>
-                        <option value="500+">أكثر من 500 مكان / عدة فروع (500+ Spaces)</option>
-                      </select>
-                      <Car className="w-4 h-4 text-slate-400 absolute top-1/2 -translate-y-1/2 ltr:left-4 rtl:right-4 pointer-events-none" />
-                      <ChevronDown className="w-4 h-4 text-slate-400 absolute top-1/2 -translate-y-1/2 right-4 rtl:right-auto rtl:left-4 pointer-events-none" />
-                    </div>
-                  </div>
                 </div>
               </div>
+
 
               {/* Group 3: Contact Details */}
               <div className="bg-slate-50/70 p-6 rounded-3xl border border-slate-200/70 space-y-4">
@@ -255,13 +306,22 @@ export default function SandboxOperatorForm() {
                     <div className="relative">
                       <input 
                         name="name"
+                        id="name"
                         type="text" 
                         placeholder="مثال: أحمد رضوان"
+                        aria-invalid={!!fieldError('name')}
+                        aria-describedby={fieldError('name') ? 'name-error' : undefined}
                         required 
-                        className="w-full bg-white border border-slate-200 text-slate-900 px-4 py-3.5 ltr:pl-10 rtl:pr-10 rounded-2xl text-sm font-medium outline-none transition-all placeholder:text-slate-400 focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/20 shadow-sm" 
+                        className={fieldClass('name', 'w-full bg-white border text-slate-900 px-4 py-3.5 ltr:pl-10 rtl:pr-10 rounded-2xl text-sm font-medium outline-none transition-all placeholder:text-slate-400 focus:ring-2 shadow-sm')} 
                       />
                       <User className="w-4 h-4 text-slate-400 absolute top-1/2 -translate-y-1/2 ltr:left-3.5 rtl:right-3.5" />
                     </div>
+                    {fieldError('name') && (
+                      <p id="name-error" role="alert" className="flex items-center gap-1.5 text-[11px] text-red-600 font-medium mt-1">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        {fieldError('name')}
+                      </p>
+                    )}
                   </div>
 
                   <div className="flex flex-col gap-2">
@@ -271,25 +331,33 @@ export default function SandboxOperatorForm() {
                     <div className="relative">
                       <input 
                         name="phone"
+                        id="phone"
                         type="tel" 
                         placeholder="+20 1..."
+                        aria-invalid={!!fieldError('phone')}
+                        aria-describedby={fieldError('phone') ? 'phone-error' : undefined}
                         required 
-                        className="w-full bg-white border border-slate-200 text-slate-900 px-4 py-3.5 ltr:pl-10 rtl:pr-10 rounded-2xl text-sm font-medium outline-none transition-all placeholder:text-slate-400 focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/20 shadow-sm" 
+                        className={fieldClass('phone', 'w-full bg-white border text-slate-900 px-4 py-3.5 ltr:pl-10 rtl:pr-10 rounded-2xl text-sm font-medium outline-none transition-all placeholder:text-slate-400 focus:ring-2 shadow-sm')} 
                       />
                       <Phone className="w-4 h-4 text-slate-400 absolute top-1/2 -translate-y-1/2 ltr:left-3.5 rtl:right-3.5" />
                     </div>
+                    {fieldError('phone') && (
+                      <p id="phone-error" role="alert" className="flex items-center gap-1.5 text-[11px] text-red-600 font-medium mt-1">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        {fieldError('phone')}
+                      </p>
+                    )}
                   </div>
 
                   <div className="flex flex-col gap-2">
                     <label className="text-xs font-bold font-enHeading uppercase tracking-wider text-slate-700">
-                      <Translate en="Work Email *" ar="البريد الإلكتروني *" />
+                      <Translate en="Work Email (Optional)" ar="البريد الإلكتروني (اختياري)" />
                     </label>
                     <div className="relative">
                       <input 
                         name="email"
                         type="email" 
-                        placeholder="ahmed@garage.com"
-                        required 
+                        placeholder="contact@garage.com"
                         className="w-full bg-white border border-slate-200 text-slate-900 px-4 py-3.5 ltr:pl-10 rtl:pr-10 rounded-2xl text-sm font-medium outline-none transition-all placeholder:text-slate-400 focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/20 shadow-sm" 
                       />
                       <Mail className="w-4 h-4 text-slate-400 absolute top-1/2 -translate-y-1/2 ltr:left-3.5 rtl:right-3.5" />
@@ -298,15 +366,52 @@ export default function SandboxOperatorForm() {
                 </div>
               </div>
 
-              {/* Submit CTA */}
-              <div className="pt-2">
+              {/* Submit CTA & WhatsApp Fast-Track */}
+              <div className="pt-2 flex flex-col items-center gap-4">
                 <PrimaryButton 
-                  en={loading ? "Submitting Registration..." : "Submit Facility Registration"}
-                  ar={loading ? "جاري إرسال البيانات..." : "تأكيد تسجيل الجراج"}
+                  en={loading ? "Submitting Registration..." : "Join as Partner"}
+                  ar={loading ? "جاري إرسال البيانات..." : "انضم كشريك"}
                   type="submit"
                   disabled={loading}
                   className="w-full py-4 text-sm font-bold shadow-lg shadow-brand-accent/25 active:scale-[0.98]"
                 />
+
+                {/* Direct WhatsApp Fast-Track Option */}
+                <div className="w-full flex items-center gap-3">
+                  <div className="flex-1 h-[1px] bg-slate-200" />
+                  <span className="text-xs text-slate-400 font-semibold font-enHeading uppercase tracking-wider">
+                    <Translate en="Or Instant Direct Chat" ar="أو تواصل معنا فوراً عبر واتساب" />
+                  </span>
+                  <div className="flex-1 h-[1px] bg-slate-200" />
+                </div>
+
+                <a
+                  href="https://wa.me/201222200479?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%81%D8%B1%D9%8A%D9%82%20%D8%A5%D8%B1%D9%83%D9%86%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%AA%D8%B3%D8%AC%D9%8A%D9%84%20%D8%AC%D8%B1%D8%A7%D8%AC%D9%8A%20%D8%B6%D9%85%D9%86%20%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D8%AC%20%D8%A7%D9%84%D8%B4%D8%B1%D9%83%D8%A7%D8%A1%20%D8%A7%D9%84%D9%85%D8%A4%D8%B3%D8%B3%D9%8A%D9%86."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-3.5 px-6 rounded-full border border-emerald-500/30 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 hover:border-emerald-500 font-enHeading text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 active:scale-[0.98] shadow-2xs"
+                >
+                  <Phone className="w-4 h-4 text-emerald-600" />
+                  <span>
+                    <Translate en="Instant WhatsApp Registration (+20 1222200479)" ar="تسجيل سريع عبر محادثة واتساب (+20 1222200479)" />
+                  </span>
+                </a>
+
+                {/* Trust Footer Signals */}
+                <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-[11px] text-slate-500 font-medium pt-1 text-center">
+                  <span className="flex items-center gap-1">
+                    <ShieldCheck className="w-3.5 h-3.5 text-brand-accent" />
+                    <Translate en="Zero Setup Costs" ar="صفر تكلفة تأسيس" />
+                  </span>
+                  <span>•</span>
+                  <span>
+                    <Translate en="Zero Contract Lock-in" ar="بدون عقود ملزمة" />
+                  </span>
+                  <span>•</span>
+                  <span>
+                    <Translate en="24-Hour Dashboard Activation" ar="تفعيل الحساب خلال 24 ساعة" />
+                  </span>
+                </div>
               </div>
             </form>
           )}
