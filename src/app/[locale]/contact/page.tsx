@@ -1,31 +1,43 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import PageHero from '@/components/sections/PageHero';
 import ContactForm from '@/components/sections/ContactForm';
 import Translate from '@/components/ui/Translate';
-import { Mail, Phone, MapPin, Clock } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, MessageSquare } from 'lucide-react';
 import { contactChannels } from '@/config/contact';
 import Reveal from '@/components/ui/Reveal';
+
+export const metadata: Metadata = {
+  title: 'Contact Irken Operations & Operator Support | تواصل مع إركن',
+  description:
+    'Have questions about listing your parking facility, reservation payouts, or partnering with Irken? Our operations team is available 24/7 via WhatsApp and email.',
+  openGraph: {
+    title: 'Contact Irken — Partner & Operator Support',
+    description: 'Get in touch with the Irken operations team in Cairo. WhatsApp: +201222200479.',
+    url: 'https://irken.com.eg/contact',
+  },
+};
 
 const Icons: Record<string, React.ElementType> = {
   Phone,
   Mail,
   MapPin,
-  Clock
+  Clock,
 };
 
 export default function ContactPage() {
   return (
     <main className="bg-slate-50/50 min-h-screen">
       <PageHero 
-        titleEn="Connect with our Solutions Team"
-        titleAr="تواصل مع فريق الحلول المتخصصة"
-        descriptionEn="Find out how much revenue your facility is leaving on the table. Our engineers respond within 24 hours."
-        descriptionAr="اكتشف حجم الإيرادات غير المستغلة في منشأتك. فريقنا الهندسي يستجيب خلال 24 ساعة."
-        badgeEn="GET IN TOUCH"
-        badgeAr="تواصل معنا"
+        titleEn="Connect with Irken Operations"
+        titleAr="تواصل مع فريق عمليات إركن"
+        descriptionEn="Have questions about listing your parking bays, payment settlements, or operator onboarding? We are ready to assist you."
+        descriptionAr="لديك استفسار حول تسجيل موقفك، تسوية المستحقات المالية، أو خطوات الانضمام؟ فريقنا جاهز لمساعدتك فوراً."
+        badgeEn="OPERATOR & PARTNER SUPPORT"
+        badgeAr="دعم المشغلين والشركاء"
       />
 
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-24 relative overflow-hidden" aria-labelledby="contact-heading">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             
@@ -33,13 +45,13 @@ export default function ContactPage() {
             <div className="lg:col-span-5 flex flex-col gap-8">
               <Reveal direction="up" delay={0.1}>
                 <div>
-                  <h2 className="text-2xl sm:text-3xl font-bold font-enHeading text-slate-900 mb-3">
+                  <h2 id="contact-heading" className="text-2xl sm:text-3xl font-bold font-enHeading text-slate-900 mb-3">
                     <Translate en="Direct Channels" ar="قنوات الاتصال المباشر" />
                   </h2>
                   <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
                     <Translate 
-                      en="Reach out to our operations team or enterprise support desk anytime." 
-                      ar="تواصل مع فريق العمليات أو مكتب دعم الشركات في أي وقت." 
+                      en="Reach out to our operations team or partner support desk anytime via phone, WhatsApp, or email." 
+                      ar="تواصل مع مسؤولي العمليات أو مكتب دعم الشركاء في أي وقت عبر الهاتف أو واتساب أو البريد." 
                     />
                   </p>
                 </div>
@@ -48,33 +60,79 @@ export default function ContactPage() {
               <div className="flex flex-col gap-4">
                 {contactChannels.map((channel, idx) => {
                   const ChannelIcon = Icons[channel.icon] || Mail;
+                  const isPhone = channel.type === 'phone';
+                  const isEmail = channel.type === 'email';
+                  const href = isPhone ? `tel:${channel.value}` : isEmail ? `mailto:${channel.value}` : undefined;
+
                   return (
                     <Reveal key={channel.id} direction="up" delay={0.15 + idx * 0.08}>
-                      <div className="bg-white border border-slate-200/80 p-6 rounded-3xl flex gap-5 items-center shadow-[0_10px_30px_-5px_rgba(0,0,0,0.03)] hover:border-brand-accent/40 transition-all duration-300 group">
-                        <div className="w-12 h-12 rounded-2xl bg-brand-accent/10 border border-brand-accent/20 flex items-center justify-center text-brand-accent group-hover:scale-105 group-hover:bg-brand-accent group-hover:text-white transition-all duration-300 shrink-0">
-                          <ChannelIcon className="w-5 h-5" strokeWidth={1.75} />
-                        </div>
-                        <div>
-                          <div className="font-enHeading text-slate-900 font-semibold mb-0.5 text-xs uppercase tracking-wider">
-                            <Translate en={channel.label.en} ar={channel.label.ar} />
+                      {href ? (
+                        <a
+                          href={href}
+                          className="bg-white border border-slate-200/80 p-6 rounded-3xl flex gap-5 items-center shadow-[0_10px_30px_-5px_rgba(0,0,0,0.03)] hover:border-brand-accent/40 hover:shadow-md transition-all duration-300 group cursor-pointer"
+                        >
+                          <div className="w-12 h-12 rounded-2xl bg-brand-accent/10 border border-brand-accent/20 flex items-center justify-center text-brand-accent group-hover:scale-105 group-hover:bg-brand-accent group-hover:text-white transition-all duration-300 shrink-0">
+                            <ChannelIcon className="w-5 h-5" strokeWidth={1.75} />
                           </div>
-                          <div className="text-slate-600 text-sm font-medium">
-                            <span 
-                              dir={channel.type === 'phone' || channel.type === 'email' ? 'ltr' : undefined} 
-                              className={channel.type === 'phone' || channel.type === 'email' ? 'inline-block' : undefined}
-                            >
+                          <div>
+                            <div className="font-enHeading text-slate-900 font-semibold mb-0.5 text-xs uppercase tracking-wider">
+                              <Translate en={channel.label.en} ar={channel.label.ar} />
+                            </div>
+                            <div className="text-slate-600 text-sm font-medium group-hover:text-brand-accent transition-colors">
+                              <span dir="ltr" className="inline-block font-mono">
+                                {channel.displayValue ? (
+                                  <Translate en={channel.displayValue.en} ar={channel.displayValue.ar} />
+                                ) : (
+                                  channel.value
+                                )}
+                              </span>
+                            </div>
+                          </div>
+                        </a>
+                      ) : (
+                        <div className="bg-white border border-slate-200/80 p-6 rounded-3xl flex gap-5 items-center shadow-[0_10px_30px_-5px_rgba(0,0,0,0.03)] group">
+                          <div className="w-12 h-12 rounded-2xl bg-brand-accent/10 border border-brand-accent/20 flex items-center justify-center text-brand-accent shrink-0">
+                            <ChannelIcon className="w-5 h-5" strokeWidth={1.75} />
+                          </div>
+                          <div>
+                            <div className="font-enHeading text-slate-900 font-semibold mb-0.5 text-xs uppercase tracking-wider">
+                              <Translate en={channel.label.en} ar={channel.label.ar} />
+                            </div>
+                            <div className="text-slate-600 text-sm font-medium">
                               {channel.displayValue ? (
                                 <Translate en={channel.displayValue.en} ar={channel.displayValue.ar} />
                               ) : (
                                 channel.value
                               )}
-                            </span>
+                            </div>
                           </div>
                         </div>
-                      </div>
+                      )}
                     </Reveal>
                   );
                 })}
+
+                {/* WhatsApp Fast-Track card */}
+                <Reveal direction="up" delay={0.35}>
+                  <a
+                    href="https://wa.me/201222200479?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%81%D8%B1%D9%8A%D9%82%20%D8%A5%D8%B1%D9%83%D9%86%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D8%AC%20%D8%A7%D9%84%D9%85%D8%B4%D8%BA%D9%84%D9%8A%D9%86."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-6 rounded-3xl bg-emerald-500/10 border border-emerald-500/20 hover:border-emerald-500/40 flex items-center gap-4 transition-all duration-300 group cursor-pointer"
+                  >
+                    <div className="w-12 h-12 rounded-2xl bg-emerald-500 text-white flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                      <MessageSquare className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <h4 className="text-xs font-bold font-enHeading uppercase tracking-wider text-emerald-800 mb-0.5">
+                        <Translate en="Direct WhatsApp Chat" ar="محادثة واتساب مباشرة" />
+                      </h4>
+                      <p className="text-xs text-emerald-700 font-medium">
+                        <Translate en="Instant responses from our Cairo support reps" ar="ردود فورية من فريق العمليات في القاهرة" />
+                      </p>
+                    </div>
+                  </a>
+                </Reveal>
               </div>
 
               {/* SLA badge */}
@@ -85,10 +143,10 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h4 className="text-xs font-bold font-enHeading uppercase tracking-wider text-slate-900 mb-0.5">
-                      <Translate en="24-Hour Response SLA" ar="التزام بالرد خلال 24 ساعة" />
+                      <Translate en="Rapid Response SLA" ar="استجابة سريعة لطلبات المشغلين" />
                     </h4>
                     <p className="text-xs text-slate-500">
-                      <Translate en="Enterprise feasibility audits completed within 48 hours." ar="دراسات الجدوى للشركات تكتمل خلال 48 ساعة." />
+                      <Translate en="Operator facility listings processed within 24 hours." ar="معاينة وتفعيل المواقف تتم خلال 24 إلى 48 ساعة." />
                     </p>
                   </div>
                 </div>
@@ -103,10 +161,10 @@ export default function ContactPage() {
                   
                   <div className="mb-8">
                     <h2 className="text-2xl sm:text-3xl font-enHeading font-bold text-slate-900 mb-2">
-                      <Translate en="Send us a Message" ar="أرسل لنا رسالة" />
+                      <Translate en="Send us a Message" ar="أرسل لنا استفسارك" />
                     </h2>
                     <p className="text-sm text-slate-500">
-                      <Translate en="Tell us about your facility or requirements." ar="أخبرنا عن منشأتك أو متطلباتك وسنتواصل معك فوراً." />
+                      <Translate en="Tell us about your facility or questions, and we will get back to you promptly." ar="أخبرنا عن موقفك أو استفسارك وسيتواصل معك أحد مسؤولي إركن فوراً." />
                     </p>
                   </div>
 

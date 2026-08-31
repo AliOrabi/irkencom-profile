@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-17T16:33:00Z",
+  "generatedAt": "2026-08-30T09:50:00Z",
   "title": "Design System: Irken Solutions",
   "extensions": {
     "colorMeta": {
@@ -10,31 +10,75 @@
         "canonical": "#569BAA",
         "tonalRamp": ["#11252A", "#1D3A42", "#294F5B", "#366474", "#457A8D", "#569BAA", "#74B2C0", "#A2CFD8"]
       },
+      "primary-hover": {
+        "role": "primary",
+        "displayName": "Irken Teal Hover",
+        "canonical": "#457A87",
+        "tonalRamp": ["#0E1E22", "#1A3038", "#274049", "#35525C", "#457A87", "#569BAA", "#74B2C0", "#9DCBD5"]
+      },
       "canvas-dark": {
         "role": "neutral",
         "displayName": "FAAC Navy / Dark Ground",
         "canonical": "#0F172A",
         "tonalRamp": ["#05080E", "#0A101D", "#0F172A", "#1E293B", "#334155", "#475569", "#64748B", "#94A3B8"]
       },
+      "navy-ground": {
+        "role": "neutral",
+        "displayName": "Deep FAAC Navy",
+        "canonical": "#1A2530",
+        "tonalRamp": ["#080D11", "#101820", "#1A2530", "#253342", "#334455", "#475669", "#64748B", "#94A3B8"]
+      },
       "canvas-light": {
         "role": "neutral",
         "displayName": "Slate White Canvas",
         "canonical": "#FFFFFF",
         "tonalRamp": ["#CBD5E1", "#E2E8F0", "#F1F5F9", "#F8FAFC", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF"]
+      },
+      "canvas-subtle": {
+        "role": "neutral",
+        "displayName": "Slate 50 Subtle",
+        "canonical": "#F8FAFC",
+        "tonalRamp": ["#94A3B8", "#CBD5E1", "#E2E8F0", "#F1F5F9", "#F8FAFC", "#FFFFFF", "#FFFFFF", "#FFFFFF"]
+      },
+      "text-dark": {
+        "role": "neutral",
+        "displayName": "Slate 900 Text",
+        "canonical": "#0F172A",
+        "tonalRamp": ["#020408", "#05080E", "#0F172A", "#1E293B", "#334155", "#475569", "#64748B", "#94A3B8"]
+      },
+      "text-muted": {
+        "role": "neutral",
+        "displayName": "Slate 500 Muted",
+        "canonical": "#64748B",
+        "tonalRamp": ["#1E293B", "#334155", "#475569", "#64748B", "#94A3B8", "#CBD5E1", "#E2E8F0", "#F8FAFC"]
+      },
+      "border-light": {
+        "role": "neutral",
+        "displayName": "Slate 200 Border",
+        "canonical": "#E2E8F0",
+        "tonalRamp": ["#334155", "#475569", "#94A3B8", "#CBD5E1", "#E2E8F0", "#F1F5F9", "#F8FAFC", "#FFFFFF"]
       }
     },
     "typographyMeta": {
       "display": {
         "displayName": "Display & Headline",
-        "purpose": "Hero display headers and high-impact section headlines (Space Grotesk)."
+        "purpose": "Hero display headers and high-impact section headlines (Space Grotesk, 800 weight, -0.02em tracking)."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Main section titles and feature group headers (Space Grotesk, 700 weight)."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card titles, feature highlights, and metric labels (Space Grotesk, 600 weight)."
       },
       "body": {
         "displayName": "Body",
-        "purpose": "Operational explanations and reading copy (Inter)."
+        "purpose": "Operational explanations and reading copy (Inter, 400 weight, 1.6 line-height)."
       },
       "arabic": {
         "displayName": "Arabic Display & Body",
-        "purpose": "High-legibility geometric Arabic Naskh (Tajawal)."
+        "purpose": "High-legibility geometric Arabic Naskh (Tajawal, 500 weight) for RTL bilingual sections."
       }
     },
     "shadows": [
@@ -103,6 +147,14 @@
       "description": "Light, accessible form input with smooth focus ring.",
       "html": "<input class=\"ds-input\" type=\"text\" placeholder=\"e.g. SODIC Developments\" />",
       "css": ".ds-input { width: 100%; box-sizing: border-box; background-color: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 16px; padding: 14px 18px; font-family: Inter, sans-serif; font-size: 14px; color: #0F172A; outline: none; transition: all 0.2s ease; } .ds-input:focus { background-color: #FFFFFF; border-color: #569BAA; box-shadow: 0 0 0 3px rgba(86, 155, 170, 0.2); } .ds-input::placeholder { color: #94A3B8; }"
+    },
+    {
+      "name": "Navigation Header",
+      "kind": "nav",
+      "refersTo": "nav-header",
+      "description": "Dual-state header: transparent on hero, frosted white on scroll.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-nav-logo\">irken</span><a class=\"ds-nav-link\" href=\"#solutions\">Solutions</a><a class=\"ds-nav-link\" href=\"#pricing\">Pricing</a><button class=\"ds-btn-primary\" style=\"font-size:11px;padding:10px 20px;\">REQUEST INTEGRATION</button></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; gap: 32px; padding: 16px 32px; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid #E2E8F0; } .ds-nav-logo { font-family: 'Space Grotesk', Inter, sans-serif; font-size: 20px; font-weight: 800; color: #0F172A; letter-spacing: -0.02em; margin-right: auto; } .ds-nav-link { font-family: Inter, sans-serif; font-size: 14px; font-weight: 500; color: #64748B; text-decoration: none; transition: color 0.2s; } .ds-nav-link:hover { color: #0F172A; }"
     }
   ],
   "narrative": {
@@ -127,6 +179,11 @@
         "section": "colors"
       },
       {
+        "name": "The Contrast Guard Rule",
+        "body": "All text rendered on dark overlays must maintain a minimum 4.5:1 contrast ratio against the backdrop.",
+        "section": "colors"
+      },
+      {
         "name": "The Generous Curve Rule",
         "body": "All structural cards and containers must use 24px (rounded-3xl) or 32px (rounded-[2rem]) corner radii. Sharp corners (0px–8px) are prohibited on cards.",
         "section": "shapes"
@@ -135,6 +192,11 @@
         "name": "The Strict Pill Rule",
         "body": "All interactive buttons, status tags, and sector badges must use full pill geometry (rounded-full / 9999px).",
         "section": "shapes"
+      },
+      {
+        "name": "The Clean Float Rule",
+        "body": "Depth is created using clean white floating containers over light slate backgrounds rather than harsh multi-layer drop shadows.",
+        "section": "elevation"
       },
       {
         "name": "The Bilingual Symmetry Rule",
@@ -146,14 +208,15 @@
       "Do use rounded-full for all buttons, badges, and status pills.",
       "Do use 24px+ radii (rounded-3xl, rounded-[2rem]) for cards and containers.",
       "Do maintain generous vertical whitespace (py-20 to py-28) across marketing sections.",
-      "Do preserve authentic PropTech and smart mobility domain language (Zero CapEx, LPR Flow, Yield Intelligence).",
+      "Do preserve authentic smart parking domain language (Zero CapEx, LPR Flow, Yield Intelligence).",
       "Do use inline SVG or uniform Lucide icons with 1.75–2px stroke weights."
     ],
     "donts": [
       "Don't use rectangular or squarish (4px–8px) buttons.",
       "Don't use dense, text-heavy developer UI blocks on public marketing surfaces.",
       "Don't hardcode ad-hoc hex colors in components; use semantic theme tokens and CSS variables.",
-      "Don't create dead anchor links; always route to active anchors (#solutions, #integration) or live routes."
+      "Don't create dead anchor links; always route to active anchors (#solutions, #integration) or live routes.",
+      "Don't use 'Booking' or 'Book' — always use 'Reservation' or 'Reserve'."
     ]
   }
 }

@@ -34,11 +34,13 @@ const tajawal = Tajawal({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://irken.com.eg"),
-  title: "Irken Solutions | Unlocking Urban Potential",
-  description: "Asset-Light digital infrastructure for real estate developers and municipalities in Egypt. PropTech, Smart Parking, and Access Control solutions.",
+  title: "Irken Solutions — Egypt's Digital Parking Network",
+  description:
+    "Join Egypt's digital parking reservation network. List your garage or parking lot on irken.eg — zero setup fees, zero hardware, pre-paid advance reservations from real drivers.",
   openGraph: {
-    title: "Irken Solutions | Asset-Light Digital Infrastructure",
-    description: "Transforming Egypt's real estate and municipalities with cutting-edge PropTech and Smart Parking solutions.",
+    title: "Irken Solutions — Egypt's Digital Parking Network",
+    description:
+      "List your parking facility on irken.eg. Zero risk, zero costs. Irken brings you pre-paid drivers already searching for parking near your location.",
     url: "https://irken.com.eg",
     siteName: "Irken Solutions",
     images: [
@@ -54,8 +56,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Irken Solutions",
-    description: "Asset-Light digital infrastructure for real estate developers in Egypt.",
+    title: "Irken Solutions — Egypt's Digital Parking Network",
+    description: "Zero risk. Zero costs. Join Egypt's parking reservation network.",
     images: ["/opengraph-image.png"],
   },
 };

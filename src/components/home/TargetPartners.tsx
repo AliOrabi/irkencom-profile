@@ -12,7 +12,7 @@ import {
 } from 'lucide-react';
 import { PrimaryButton } from '@/components/ui/Buttons';
 
-export default function SandboxTargetAudiences() {
+export default function TargetPartners() {
   return (
     <section id="partnership" className="py-16 md:py-24 px-6 max-w-[1280px] mx-auto w-full overflow-hidden">
 
@@ -47,7 +47,7 @@ export default function SandboxTargetAudiences() {
       {/* ── 2 Staggered Feature Story Cards ────────────────────────────── */}
       <div className="space-y-12 md:space-y-16">
 
-        {/* ── Persona 1: Parking Providers & Licensed Sayes / Attendants ── */}
+        {/* ── Persona 1: Parking Providers & Licensed Operators ── */}
         <Reveal delay={0.1}>
           <div className="bg-white border border-slate-200/90 rounded-[2.5rem] p-6 sm:p-10 lg:p-12 shadow-[0_20px_50px_-15px_rgba(0,0,0,0.05)] hover:shadow-xl transition-all duration-300">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -65,7 +65,7 @@ export default function SandboxTargetAudiences() {
                 <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6">
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-[11px] font-bold font-enHeading uppercase tracking-wider backdrop-blur-md">
                     <Smartphone className="w-3.5 h-3.5" />
-                    <Translate en="No Extra Devices Needed" ar="يعمل على موبايل العامل الموجود" />
+                    <Translate en="No Extra Devices Needed" ar="يعمل على هاتف العامل الحالي" />
                   </span>
                 </div>
               </div>
@@ -75,17 +75,14 @@ export default function SandboxTargetAudiences() {
                 <div>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="px-3.5 py-1 rounded-full text-xs font-bold font-enHeading bg-brand-accent/10 text-brand-accent uppercase tracking-wider border border-brand-accent/25">
-                      <Translate en="Category 01" ar="الفئة الأولى" />
-                    </span>
-                    <span className="text-xs font-bold text-slate-500 font-enHeading uppercase tracking-wider">
-                      <Translate en="Ground Operations" ar="التشغيل الميداني" />
+                      <Translate en="Street-Level Operations" ar="التشغيل الميداني" />
                     </span>
                   </div>
 
                   <h3 className="text-2xl sm:text-3xl font-bold font-enHeading text-slate-900 tracking-tight mb-2 rtl:leading-[1.3]">
                     <Translate
                       en="Parking Providers & Licensed Operators"
-                      ar="مشغلو المواقف، الجراجات، السايس "
+                      ar="مشغلو المواقف والجراجات والساحات المرخصة"
                     />
                   </h3>
 
@@ -103,7 +100,7 @@ export default function SandboxTargetAudiences() {
                     </span>
                     <Translate
                       en="Off-peak lulls leave your bays empty, while manual paper tickets create shift handover disputes and cash leakage."
-                      ar="أوقات الركود بتسيب أماكنك فاضية، والتذاكر الورقية والحساب اليدوي بيعملوا مشاكل في تسليم الورديات وفقدان جزء من الدخل."
+                      ar="أوقات الركود تترك الأماكن شاغرة، والتذاكر الورقية والحساب اليدوي يسببان مشاكل في تسليم الورديات وفقدان جزء من الدخل."
                     />
                   </div>
 
@@ -112,11 +109,11 @@ export default function SandboxTargetAudiences() {
                     {[
                       {
                         en: "Fill empty bays with drivers searching for parking in your area on irken.eg",
-                        ar: "املأ الأماكن الفاضية بسائقين بيدوروا فعلاً على ركنة في منطقتك عبر irken.eg"
+                        ar: "املأ الأماكن الفاضية بسائقين يبحثون فعلياً عن ركنة في منطقتك عبر irken.eg"
                       },
                       {
-                        en: "Instant gate check-in using your attendant's existing Android or iPhone — zero new hardware",
-                        ar: "تحقق فوري عند البوابة باستخدام موبايل العامل العادي — من غير ما تشتري أي جهاز جديد"
+                        en: "Instant gate check-in using your attendant's existing smartphone — zero new hardware",
+                        ar: "تحقق فوري عند البوابة باستخدام هاتف العامل العادي — بدون شراء أي أجهزة جديدة"
                       },
                       {
                         en: "Shift tracking and transparent audit logs to eliminate revenue leakage",
@@ -137,8 +134,8 @@ export default function SandboxTargetAudiences() {
 
                 <div>
                   <PrimaryButton
-                    en="Partner With Us as an Operator"
-                    ar="انضم كشريك تشغيل مجاناً"
+                    en="Join as Operator"
+                    ar="انضم كمشغل الآن"
                     href="#operator-onboard"
                     className="w-full sm:w-auto px-8 py-3.5 text-xs active:scale-[0.98]"
                   />
@@ -159,10 +156,7 @@ export default function SandboxTargetAudiences() {
                 <div>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="px-3.5 py-1 rounded-full text-xs font-bold font-enHeading bg-emerald-50 text-emerald-700 uppercase tracking-wider border border-emerald-200">
-                      <Translate en="Category 02" ar="الفئة الثانية" />
-                    </span>
-                    <span className="text-xs font-bold text-slate-500 font-enHeading uppercase tracking-wider">
-                      <Translate en="Asset Monetization" ar="استثمار الأصول" />
+                      <Translate en="Commercial Asset Owners" ar="استثمار أصول المواقف" />
                     </span>
                   </div>
 
@@ -187,7 +181,7 @@ export default function SandboxTargetAudiences() {
                     </span>
                     <Translate
                       en="Basement and dedicated parking structures sit underutilized for large parts of the week, generating subpar returns on prime land value."
-                      ar="مساحات الجراجات في البدروم والمباني المخصصة بتفضل غير مستغلة معظم أيام الأسبوع وبتحقق عائد ضعيف مقارنة بقيمة الأرض والعقار."
+                      ar="مساحات الجراجات في البدروم والمباني المخصصة تظل غير مستغلة معظم أيام الأسبوع وبتحقق عائد ضعيف مقارنة بقيمة الأرض والعقار."
                     />
                   </div>
 
@@ -195,20 +189,20 @@ export default function SandboxTargetAudiences() {
                   <ul className="space-y-3 mb-8">
                     {[
                       {
-                        en: "Transform fixed parking spaces into high-yield recurring digital revenue assets",
-                        ar: "تحويل مساحات الركن الثابتة لأصول مدرة لدخل رقمي متكرر وعالي العائد"
+                        en: "Transform fixed parking spaces into high-yield recurring revenue assets",
+                        ar: "تحويل مساحات الركن الشاغرة لأصول مدرة للدخل المتكرر وعالي العائد"
                       },
                       {
                         en: "Zero expensive civil construction or hardware overhaul needed to get started",
                         ar: "بدون أي مصاريف إنشائية باهظة أو استبدال للأجهزة وبوابات الدخول الحالية"
                       },
                       {
-                        en: "Centralized management dashboard with real-time occupancy heatmaps and financial auditing",
+                        en: "Centralized management dashboard with real-time occupancy maps and financial auditing",
                         ar: "لوحة تحكم موحدة مع تحليلات لحظية لنسب الإشغال وسجلات مالية شفافة بالكامل"
                       },
                       {
-                        en: "Increase property commercial valuation by integrating into Egypt's digital reservation network",
-                        ar: "رفع القيمة الاستثمارية والتشغيلية للعقار بربطه بشبكة الحجز الرقمي في مصر"
+                        en: "Increase property commercial valuation by integrating into Irken digital reservation network",
+                        ar: "رفع القيمة الاستثمارية والتشغيلية للعقار بربطه بشبكة حجز إركن الرقمية"
                       }
                     ].map((b, i) => (
                       <li key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 font-medium leading-relaxed">
@@ -221,8 +215,8 @@ export default function SandboxTargetAudiences() {
 
                 <div>
                   <PrimaryButton
-                    en="Monetize Commercial Assets"
-                    ar="استثمر مساحات عقارك كشريك"
+                    en="Partner with Irken"
+                    ar="انضم كشريك الآن"
                     href="#operator-onboard"
                     className="w-full sm:w-auto px-8 py-3.5 text-xs bg-slate-900 hover:bg-slate-800 active:scale-[0.98]"
                   />

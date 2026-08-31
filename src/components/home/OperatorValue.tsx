@@ -15,57 +15,57 @@ import {
   ShieldCheck
 } from 'lucide-react';
 
-export default function SandboxOperatorValue() {
+export default function OperatorValue() {
   const pillars = [
     {
       icon: ShieldCheck,
-      titleEn: "Zero risks. Zero costs. If you don't win, neither do we.",
-      titleAr: "صفر مخاطرة. صفر تكلفة. ومكسبنا مرتبط بنجاحك.",
+      titleEn: "Zero cost. Zero risks. If you don't win, neither do we.",
+      titleAr: "صفر تكلفة. صفر مخاطرة. إذا لم تربح، فلن نربح نحن أيضاً.",
       descEn: "No setup fees, no monthly software costs, and no hardware to buy. We earn a small commission only when a driver successfully reserves and pays — making your partnership 100% risk-free from day one.",
-      descAr: "من غير رسوم اشتراك، ومن غير مصاريف برمجيات، ومن غير ما تشتري أي حاجة جديدة. عمولتنا البسيطة بتكون بس لما السائق يحجز ويدفع فعلاً — يعني شراكتك معانا خالية تماماً من أي خسارة.",
-      proofEn: "No contract. No minimum term.",
-      proofAr: "من غير عقد. من غير التزامات."
+      descAr: "بدون أي رسوم اشتراك لأول 6 أشهر، وبدون مصاريف برمجيات، وبدون شراء أي أجهزة جديدة. عمولة إركن تحتسب على عمليات الحجز المؤكدة والمدفوعة فقط — شراكتك معنا خالية تماماً من المخاطر.",
+      proofEn: "Zero Cost · Zero Risk",
+      proofAr: "6 أشهر بدون رسوم اشتراك · بدون مخاطر رأسمالية"
     },
     {
       icon: Search,
-      titleEn: "We bring you drivers who are already looking for parking near you.",
-      titleAr: "بنجبلك سائقين بيدوروا فعلاً على ركنة في منطقتك.",
-      descEn: "Stop relying only on cars passing by chance. Drivers actively searching for parking near hospitals, offices, and commercial centers in your area on irken are routed directly to your facility — before they get in their car.",
-      descAr: "بلاش تعتمد بس على العربيات اللي بتعدي صدفة في الشارع. السائقين اللي بيدوروا على ركنة قريبة من وجهاتهم في منطقتك على تطبيق irken بيتحولوا مباشرة لجراجك — حتى قبل ما يركبوا عربيتهم.",
-      proofEn: "Drivers who searched in your neighborhood.",
-      proofAr: "سائقين بيدوروا فعلاً في حيّك."
+      titleEn: "We bring you new drivers who are already looking for parking near you.",
+      titleAr: "نجلب لك سائقين يبحثون بالفعل عن موقف سيارات بالقرب منك.",
+      descEn: "Stop relying only on cars passing by chance. Drivers actively searching for parking near hospitals, offices, and commercial centers in your area on Irken are routed directly to your facility — before they get in their car.",
+      descAr: "لا تعتمد فقط على السيارات العابرة بالصدفة في الشارع. السائقون الذين يبحثون عن ركنة قريبة من وجهاتهم في منطقتك على منصة إركن يتم توجيههم مباشرة لجراجك قبل انطلاقهم.",
+      proofEn: "Active drivers searching in your area",
+      proofAr: "سائقون يبحثون فعلياً في منطقتك"
     },
     {
       icon: Headphones,
-      titleEn: "24/7 Dedicated Support — for you, your staff, and your drivers.",
-      titleAr: "دعم مخصص 24/7 — ليك ولعمالك ولسائقيك.",
-      descEn: "Our support team is available around the clock via WhatsApp to assist your facility managers, gate attendants, and incoming drivers. No ticket systems — a real person who picks up.",
-      descAr: "فريق الدعم متاح 24/7 على واتساب لمساعدة مدير الجراج، وعامل البوابة، وأي سائق عنده استفسار. مش نظام تيكيت — ناس حقيقيين بيردوا.",
-      proofEn: "WhatsApp support — not a ticket system.",
-      proofAr: "دعم على واتساب — مش نظام تيكيت."
+      titleEn: "24/7 Dedicated Support — for you and your staff",
+      titleAr: "دعم مخصص 24/7 — لك ولفريقك",
+      descEn: "Our support team is available 24/7 via WhatsApp and direct channels to assist facility managers and gate staff, alongside ongoing operational consulting.",
+      descAr: "فريق الدعم لدينا متوفر على مدار الساعة عبر واتساب وقنوات الدعم المباشرة لمساعدة مديري المرافق وموظفي البوابات، بالإضافة إلى الاستشارات التشغيلية لتنمية أرباحك.",
+      proofEn: "WhatsApp support · Operational advisory",
+      proofAr: "دعم واتساب مباشر · استشارات تشغيلية"
     },
     {
       icon: Wallet,
-      titleEn: "Confirmed reservations & fast bank settlements.",
-      titleAr: "حجوزات مؤكدة وتحويل بنكي سريع لحسابك.",
-      descEn: "Drivers pay securely online through certified Egyptian payment gateways (Fawry, Paymob, and others) before arriving. Settlements are processed and transferred to your bank account within 2-3 business days from your withdrawal request.",
-      descAr: "السائق بيدفع إلكترونياً بأمان عبر بوابات دفع معتمدة في مصر (فوري، Paymob، وغيرهم) قبل ما يوصل. التسوية بتتحول لحسابك البنكي في CIB، بنك مصر، أو أي بنك مصري خلال 2-3 أيام عمل من طلب السحب.",
-      proofEn: "Transfers to any Egyptian bank within 2-3 business days.",
-      proofAr: "تحويل لأي بنك مصري خلال 2-3 أيام عمل."
+      titleEn: "Confirmed reservations directly to your account",
+      titleAr: "حجوزات مؤكدة مباشرة لحسابك",
+      descEn: "Drivers pay securely through the Irken platform before arriving at your location. Earnings are tracked in real time and transferred within 2–3 business days of your payout request.",
+      descAr: "يدفع السائقون بشكل آمن عبر منصة إركن قبل الوصول لموقفك. وبمجرد تسجيل الوصول، تتم معالجة مستحقاتك وتحويلها إلى حسابك خلال 2-3 أيام عمل من طلب السحب.",
+      proofEn: "Bank accounts, InstaPay, and mobile wallets",
+      proofAr: "حسابات بنكية، إنستاباي، ومحافظ إلكترونية"
     }
   ];
 
   const compatibilityModes = [
-    { icon: Smartphone, labelEn: "Attendant's Own Android or iPhone", labelAr: "موبايل العامل الموجود عنده" },
+    { icon: Smartphone, labelEn: "Attendant's Own Smartphone", labelAr: "على موبايل موظف البوابة أو (السايس)" },
     { icon: ScanLine, labelEn: "Instant QR Scan at the Gate", labelAr: "مسح QR فوري عند البوابة" },
-    { icon: Search, labelEn: "Plate or Phone Number Lookup", labelAr: "استعلام برقم اللوحة أو الموبايل" },
+    { icon: Search, labelEn: "Plate or Reservation ID Lookup", labelAr: "استعلام برقم اللوحة أو رقم الحجز" },
     { icon: Cpu, labelEn: "Works with Existing Automated Gates", labelAr: "متوافق مع بواباتك الإلكترونية الحالية" }
   ];
 
   return (
     <section id="why-operators" className="py-16 md:py-24 overflow-hidden">
 
-      {/* ── Photorealistic Egyptian Context Banner ─────────────────────────── */}
+      {/* ── Context Banner ─────────────────────────────────────────────────── */}
       <Reveal>
         <div className="relative w-full max-w-[1280px] mx-auto px-6 lg:px-8 mb-16">
           <div className="relative w-full h-[260px] sm:h-[320px] md:h-[380px] rounded-[2rem] overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.18)]">
@@ -85,14 +85,14 @@ export default function SandboxOperatorValue() {
               <Reveal delay={0.1}>
                 <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-accent/20 border border-brand-accent/40 text-brand-accent text-[11px] font-bold font-enHeading uppercase tracking-widest mb-3 backdrop-blur-sm w-fit">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  <Translate en="Zero Hardware. Works Today." ar="من غير أجهزة جديدة. يشتغل من النهارده." />
+                  <Translate en="Zero Hardware · Works from Day One" ar="بدون أجهزة جديدة · يبدأ العمل من اليوم الأول" />
                 </span>
               </Reveal>
               <Reveal delay={0.15}>
                 <h3 className="text-white font-bold font-enHeading text-xl sm:text-2xl md:text-3xl leading-snug max-w-md rtl:leading-relaxed">
                   <Translate
                     en="Your attendant already has everything he needs."
-                    ar="عامل البوابة عنده كل اللي محتاجه."
+                    ar="موظف البوابة لديه كل ما يحتاجه بالفعل."
                   />
                 </h3>
               </Reveal>
@@ -106,21 +106,21 @@ export default function SandboxOperatorValue() {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <Reveal>
             <span className="inline-block px-4 py-1.5 rounded-full bg-brand-accent/10 text-brand-accent text-xs font-bold uppercase tracking-widest font-enHeading mb-4 border border-brand-accent/20">
-              <Translate en="Why Partner with Irken" ar="ليه تشارك مع إركن؟" />
+              <Translate en="Why Partner with Irken" ar="لماذا تنضم كمشغل مع إركن؟" />
             </span>
           </Reveal>
 
           <Reveal delay={0.08}>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-enHeading text-slate-900 tracking-tight mb-5 rtl:leading-[1.3]">
-              <Translate en="A Partnership Built on Mutual Success" ar="شراكة مبنية على المصلحة المشتركة" />
+              <Translate en="Every empty parking space is missed revenue." ar="كل مساحة ركن شاغرة = إيراد ضائع يصعب تعويضه" />
             </h2>
           </Reveal>
 
           <Reveal delay={0.14}>
             <p className="text-slate-600 text-base sm:text-lg leading-relaxed rtl:leading-[1.8]">
               <Translate
-                en="Zero risks, zero costs, and 24/7 support. We help you fill your empty bays by routing new drivers straight to your facility — every single day."
-                ar="صفر مخاطرة، صفر تكلفة، ودعم 24/7. بنساعدك تملي الأماكن الفاضية في جراجك بجذب سائقين جدد مباشرة ليك — كل يوم."
+                en="Irken helps you fill your empty bays by routing pre-paid drivers straight to your facility every single day."
+                ar="إركن تساعدك على ملء المساحات الشاغرة بتوجيه سائقين بحجوزات مسبقة مباشرة إلى موقفك يومياً."
               />
             </p>
           </Reveal>
@@ -147,7 +147,6 @@ export default function SandboxOperatorValue() {
                     </p>
                   </div>
 
-                  {/* Unique proof line per card — not identical stamps */}
                   <div className="pt-4 border-t border-slate-100 flex items-center gap-2 text-xs font-bold font-enHeading text-brand-accent uppercase tracking-wider">
                     <FileX2 className="w-4 h-4 text-brand-accent shrink-0" />
                     <span><Translate en={pillar.proofEn} ar={pillar.proofAr} /></span>
@@ -158,7 +157,7 @@ export default function SandboxOperatorValue() {
           })}
         </div>
 
-        {/* ── Hardware & Access Compatibility Reassurance Strip ──────────── */}
+        {/* ── Hardware & Access Compatibility Strip ───────────────────────── */}
         <Reveal delay={0.25}>
           <div className="bg-slate-50/90 border border-slate-200/90 rounded-[2rem] p-6 sm:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 shadow-sm">
             <div className="flex items-center gap-3.5">
@@ -167,10 +166,10 @@ export default function SandboxOperatorValue() {
               </div>
               <div>
                 <div className="text-xs font-bold font-enHeading uppercase tracking-widest text-brand-accent">
-                  <Translate en="Zero New Hardware Required" ar="من غير ما تشتري أي حاجة جديدة" />
+                  <Translate en="Zero New Hardware Required" ar="بدون الحاجة لشراء أجهزة جديدة" />
                 </div>
                 <h4 className="text-base sm:text-lg font-bold font-enHeading text-slate-900 rtl:leading-[1.4]">
-                  <Translate en="Works with Your Existing Gate & Attendant Setup" ar="يشتغل مباشرة مع بواباتك وعمالك الحاليين" />
+                  <Translate en="Works with Your Existing Gate & Attendant Setup" ar="تعمل مباشرة مع بوابتك وطاقم العمل الحالي" />
                 </h4>
               </div>
             </div>

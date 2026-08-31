@@ -11,34 +11,11 @@ import {
   Menu, 
   X, 
   Globe, 
-  ChevronDown
+  ExternalLink,
+  Sparkles
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-
 import { usePathname } from 'next/navigation';
-
-interface NavItem {
-  id: string;
-  label: { en: string; ar: string };
-  href?: string;
-  subItems?: { id: string; label: { en: string; ar: string }; href: string }[];
-}
-
-const mainNav: NavItem[] = [
-  {
-    id: 'solutions',
-    label: { en: 'Solutions', ar: 'الحلول' },
-    subItems: [
-      { id: 'developers', label: { en: 'For Real Estate Developers', ar: 'للمطورين العقاريين' }, href: '/services/real-estate' },
-      { id: 'operators', label: { en: 'For Parking Operators', ar: 'لمشغلي المواقف' }, href: '/services/operators' },
-      { id: 'municipalities', label: { en: 'For Municipalities', ar: 'للهيئات والمدن الذكية' }, href: '/services/municipalities' },
-    ],
-  },
-  { id: 'pricing', label: { en: 'Pricing', ar: 'الأسعار' }, href: '/pricing' },
-  { id: 'technology', label: { en: 'Technology', ar: 'التقنية' }, href: '/technology' },
-  { id: 'about', label: { en: 'About Us', ar: 'من نحن' }, href: '/about' },
-  { id: 'insights', label: { en: 'Insights', ar: 'المقالات' }, href: '/insights' },
-];
 
 export default function Header() {
   const pathname = usePathname();
@@ -46,7 +23,6 @@ export default function Header() {
   const posthog = usePostHog();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -56,24 +32,32 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // If on /sandbox route, let SandboxHeader take exclusive control
-  if (pathname?.includes('/sandbox')) {
-    return null;
-  }
+  // Strip locale prefix (/en/, /ar/) for route matching
+  const strippedPath = pathname.replace(/^\/(?:en|ar)(?=\/|$)/, '') || '/';
 
-  const isLightHeader = isScrolled;
-  const navLinkClass = cn(
-    'text-xs font-semibold font-enHeading tracking-[0.12em] uppercase transition-colors py-1 whitespace-nowrap select-none',
-    isLightHeader
-      ? 'text-slate-600 hover:text-brand-accent'
-      : 'text-slate-200 hover:text-white'
+  const isActive = (href: string) => {
+    if (href === '/') return strippedPath === '/';
+    // Ignore hash-only anchors (e.g. /#yield-calculator) — never mark as active
+    if (href.startsWith('/#')) return false;
+    return strippedPath.startsWith(href);
+  };
+
+  const navLinkClass = (href: string) => cn(
+    'text-[11px] xl:text-xs font-semibold font-enHeading tracking-[0.06em] xl:tracking-[0.1em] uppercase transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent py-1.5 xl:py-2 px-2.5 xl:px-3.5 rounded-full whitespace-nowrap select-none',
+    isActive(href)
+      ? isScrolled
+        ? 'text-brand-accent bg-brand-accent/10 hover:bg-brand-accent/15'
+        : 'text-white bg-white/15 hover:bg-white/20'
+      : isScrolled
+        ? 'text-slate-700 hover:text-brand-accent hover:bg-slate-100/70'
+        : 'text-slate-200 hover:text-white hover:bg-white/10'
   );
 
   return (
     <>
       {/* ── Skip to content ───────────────────────────────────────────── */}
       <a
-        href="#hero-content"
+        href="#hero"
         className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[999] focus:px-4 focus:py-2 focus:bg-brand-accent focus:text-white focus:font-enHeading focus:text-xs focus:uppercase focus:tracking-widest rounded-full"
       >
         <Translate en="Skip to content" ar="انتقل إلى المحتوى" />
@@ -82,106 +66,82 @@ export default function Header() {
       <header
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-          isLightHeader
-            ? 'bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm py-3.5'
-            : 'bg-transparent border-b border-transparent py-4 xl:py-5'
+          isScrolled
+            ? 'bg-white/90 backdrop-blur-2xl border-b border-slate-200/80 shadow-[0_4px_24px_-6px_rgba(0,0,0,0.06)] py-2.5 xl:py-3'
+            : 'bg-slate-950/60 backdrop-blur-xl border-b border-white/10 py-3 xl:py-3.5'
         )}
         role="banner"
       >
-        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 w-full flex items-center justify-between gap-3">
-          {/* Logo */}
-          <LocalizedLink href="/" aria-label="Irken Solutions — Home" className="flex items-center shrink-0">
-            {isLightHeader ? (
-              <Image
-                src="/irken-logo-ligth.png"
-                alt="Irken Solutions"
-                width={140}
-                height={36}
-                className="h-7 sm:h-8 md:h-9 w-auto block"
-                priority
-              />
-            ) : (
-              <Image
-                src="/newiRkenLogo.png"
-                alt="Irken Solutions"
-                width={140}
-                height={36}
-                className="h-7 sm:h-8 md:h-9 w-auto block"
-                priority
-              />
-            )}
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 w-full flex items-center justify-between gap-2 lg:gap-3 xl:gap-4">
+          
+          {/* Logo + Operator Program Badge */}
+          <LocalizedLink href="/" aria-label="Irken Solutions — Home" className="flex items-center gap-2 xl:gap-3 shrink-0 group">
+            <Image
+              src={isScrolled ? '/irken-logo-ligth.png' : '/newiRkenLogo.png'}
+              alt="Irken Solutions"
+              width={130}
+              height={34}
+              className="h-7 md:h-8 w-auto block transition-transform group-hover:scale-[1.02]"
+              priority
+            />
+            <span className={cn(
+              "hidden xl:inline-flex items-center gap-1.5 px-3 py-1 text-[10px] font-bold font-enHeading rounded-full uppercase tracking-widest whitespace-nowrap shrink-0",
+              isScrolled
+                ? "bg-brand-accent/10 text-brand-accent border border-brand-accent/20"
+                : "bg-white/10 text-white border border-white/20"
+            )}>
+              <Sparkles className="w-3 h-3 text-brand-accent" />
+              <Translate en="Operator Program" ar="برنامج المشغلين" />
+            </span>
           </LocalizedLink>
 
-          {/* Floating Island Center Navigation */}
+          {/* Desktop Navigation Links */}
           <nav
             aria-label="Primary navigation"
-            className={cn(
-              'hidden lg:flex items-center gap-3 xl:gap-5 px-4 xl:px-6 py-2 rounded-full border transition-all duration-300 shrink-0',
-              isLightHeader 
-                ? 'bg-slate-50/90 border-slate-200/80 shadow-sm backdrop-blur-xl' 
-                : 'bg-slate-900/60 border-white/15 shadow-2xl backdrop-blur-2xl'
-            )}
+            className="hidden lg:flex items-center gap-0.5 xl:gap-1 min-w-0"
           >
-            {mainNav.map((item) => (
-              <div
-                key={item.id}
-                className="relative group py-1"
-                onMouseEnter={() => item.subItems && setActiveDropdown(item.id)}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                {item.subItems ? (
-                  <>
-                    <button
-                      className={cn(navLinkClass, 'flex items-center gap-1 cursor-pointer')}
-                      aria-haspopup="true"
-                      aria-expanded={activeDropdown === item.id}
-                    >
-                      <Translate en={item.label.en} ar={item.label.ar} />
-                      <ChevronDown className="w-3.5 h-3.5 opacity-70 transition-transform group-hover:rotate-180 shrink-0" />
-                    </button>
-                    {/* Dropdown */}
-                    <div
-                      className={cn(
-                        'absolute top-full ltr:left-0 rtl:right-0 min-w-[240px]',
-                        'bg-white border border-slate-100 shadow-xl',
-                        'p-3 flex flex-col gap-1.5 rounded-2xl overflow-hidden',
-                        'transition-all duration-200 z-50',
-                        activeDropdown === item.id
-                          ? 'opacity-100 pointer-events-auto translate-y-2'
-                          : 'opacity-0 pointer-events-none translate-y-0'
-                      )}
-                      role="menu"
-                    >
-                      <div className="absolute top-0 left-0 w-full h-[3px] bg-brand-accent" />
-                      {item.subItems.map((sub) => (
-                        <LocalizedLink
-                          key={sub.id}
-                          href={sub.href || '#'}
-                          role="menuitem"
-                          className="text-xs font-enHeading text-slate-700 hover:text-brand-accent hover:bg-slate-50 px-3 py-2.5 rounded-xl uppercase tracking-[0.12em] transition-all whitespace-nowrap"
-                        >
-                          <Translate en={sub.label.en} ar={sub.label.ar} />
-                        </LocalizedLink>
-                      ))}
-                    </div>
-                  </>
-                ) : (
-                  <LocalizedLink href={item.href || '#'} className={navLinkClass}>
-                    <Translate en={item.label.en} ar={item.label.ar} />
-                  </LocalizedLink>
-                )}
-              </div>
-            ))}
+            <LocalizedLink href="/how-it-works" className={navLinkClass('/how-it-works')}>
+              <Translate en="How It Works" ar="كيف نعمل" />
+            </LocalizedLink>
+
+            <LocalizedLink href="/#yield-calculator" className={navLinkClass('/#yield-calculator')}>
+              <Translate en="Yield Calculator" ar="حاسبة العائد" />
+            </LocalizedLink>
+
+            <LocalizedLink href="/about" className={navLinkClass('/about')}>
+              <Translate en="About Us" ar="من نحن" />
+            </LocalizedLink>
+
+            <LocalizedLink href="/insights" className={navLinkClass('/insights')}>
+              <Translate en="Insights" ar="المقالات" />
+            </LocalizedLink>
+
+            <LocalizedLink href="/contact" className={navLinkClass('/contact')}>
+              <Translate en="Contact" ar="تواصل معنا" />
+            </LocalizedLink>
+
+            {/* B2C Driver Platform External Link */}
+            <a 
+              href="https://irken.eg" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className={cn(
+                "inline-flex items-center gap-1 px-2.5 xl:px-3.5 py-1.5 rounded-full text-[11px] xl:text-xs font-bold font-enHeading uppercase tracking-wider transition-all ms-1 whitespace-nowrap shrink-0",
+                isScrolled
+                  ? "bg-brand-accent/10 hover:bg-brand-accent/20 text-brand-accent"
+                  : "bg-white/10 hover:bg-white/20 text-white border border-white/15"
+              )}
+            >
+              <span>irken.eg</span>
+              <span className="hidden 2xl:inline text-[10px] opacity-70 font-normal">
+                (<Translate en="Driver App" ar="تطبيق السائقين" />)
+              </span>
+              <ExternalLink className="w-3 h-3 ms-0.5 opacity-70" />
+            </a>
           </nav>
 
-          {/* Actions with Network Beacon Pill */}
-          <div className="hidden lg:flex items-center gap-2.5 xl:gap-4 shrink-0">
-            {/* Live Network Beacon */}
-            <div className="hidden 2xl:inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 whitespace-nowrap shrink-0">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-              <span>IRKEN.EG LIVE</span>
-            </div>
-
+          {/* Right Actions: Language toggle & CTA */}
+          <div className="hidden lg:flex items-center gap-2 xl:gap-3 shrink-0">
             {/* Language toggle */}
             <button
               onClick={() => {
@@ -190,38 +150,37 @@ export default function Header() {
                 posthog?.capture('language_changed', { new_locale: newLocale });
               }}
               className={cn(
-                'flex items-center gap-2 text-xs font-semibold font-enHeading tracking-[0.12em] uppercase px-3 py-2 rounded-full border transition-all cursor-pointer whitespace-nowrap shrink-0',
-                isLightHeader
-                  ? 'text-slate-700 border-slate-200 hover:border-brand-accent hover:text-brand-accent'
-                  : 'text-slate-200 border-white/20 hover:border-white hover:text-white bg-white/5'
+                'flex items-center gap-1.5 xl:gap-2 text-[11px] xl:text-xs font-bold font-enHeading tracking-[0.08em] xl:tracking-[0.12em] uppercase px-3 xl:px-3.5 py-1.5 xl:py-2 rounded-full border transition-all cursor-pointer active:scale-95 whitespace-nowrap shrink-0',
+                isScrolled
+                  ? 'border-slate-200/80 bg-slate-50/60 text-slate-700 hover:border-brand-accent hover:text-brand-accent hover:bg-white'
+                  : 'border-white/20 bg-white/10 text-white hover:border-white/40 hover:bg-white/20'
               )}
               aria-label={`Switch to ${language === 'en' ? 'Arabic' : 'English'}`}
             >
-              <Globe className="w-3.5 h-3.5 shrink-0" />
+              <Globe className="w-3.5 h-3.5 shrink-0 opacity-80" />
               <span>{language === 'en' ? 'العربية' : 'English'}</span>
             </button>
 
-            {/* CTA */}
+            {/* Direct CTA */}
             <PrimaryButton 
-              en="Request Integration" 
-              ar="طلب تكامل" 
-              href="/contact" 
-              className="py-2.5 px-5 xl:px-6 text-xs shadow-lg shadow-brand-accent/20 whitespace-nowrap shrink-0" 
+              en="Join as Partner" 
+              ar="انضم كشريك" 
+              href="/#operator-onboard" 
+              className="py-2 xl:py-2.5 px-4 xl:px-6 text-[11px] xl:text-xs shadow-md shadow-brand-accent/20 active:scale-[0.98] whitespace-nowrap" 
             />
           </div>
 
           {/* Mobile hamburger */}
           <button
             className={cn(
-              'lg:hidden flex items-center justify-center w-11 h-11 rounded-full border transition-colors cursor-pointer',
-              isLightHeader
-                ? 'text-slate-900 border-slate-200 hover:border-brand-accent'
-                : 'text-white border-white/20 bg-white/10 hover:border-white'
+              'lg:hidden flex items-center justify-center w-10 h-10 rounded-full border transition-colors cursor-pointer active:scale-95',
+              isScrolled
+                ? 'border-slate-200 text-slate-900 hover:border-brand-accent'
+                : 'border-white/20 bg-white/10 text-white hover:border-white'
             )}
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={mobileOpen}
-            aria-controls="mobile-nav"
           >
             {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -230,86 +189,102 @@ export default function Header() {
 
       {/* ── Mobile drawer overlay ────────────────────────────────────────── */}
       <div
-        id="mobile-nav"
         role="dialog"
         aria-modal="true"
-        aria-label="Navigation menu"
         className={cn(
-          'fixed inset-0 z-50 lg:hidden',
-          'bg-white flex flex-col',
-          'transition-all duration-300 ease-out',
+          'fixed inset-0 z-50 lg:hidden bg-white/95 backdrop-blur-2xl flex flex-col transition-all duration-300 ease-out',
           mobileOpen ? 'opacity-100 pointer-events-auto translate-x-0' : 'opacity-0 pointer-events-none translate-x-4'
         )}
       >
-        <div className="flex items-center justify-between p-6 border-b border-slate-100">
-          <Image
-            src="/irken-logo-ligth.png"
-            alt="Irken Solutions"
-            width={130}
-            height={32}
-            className="h-7 w-auto"
-          />
+        <div className="flex items-center justify-between px-6 py-5 shrink-0 border-b border-slate-100">
+          <LocalizedLink href="/" onClick={() => setMobileOpen(false)}>
+            <Image src="/irken-logo-ligth.png" alt="Irken Solutions" width={130} height={32} className="block h-8 w-auto" />
+          </LocalizedLink>
           <button
             onClick={() => setMobileOpen(false)}
-            aria-label="Close navigation menu"
-            className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-700 hover:border-brand-accent cursor-pointer"
+            className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 hover:text-brand-accent transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        <nav className="flex-1 overflow-y-auto px-6 py-8 flex flex-col gap-6">
-          {mainNav.map((item) => (
-            <div key={item.id} className="flex flex-col gap-2">
-              {item.subItems ? (
-                <>
-                  <div className="text-xs font-bold font-enHeading text-slate-400 uppercase tracking-widest">
-                    <Translate en={item.label.en} ar={item.label.ar} />
-                  </div>
-                  <div className="flex flex-col gap-3 pl-3 border-l-2 border-slate-100 rtl:border-l-0 rtl:border-r-2 rtl:pr-3 rtl:pl-0 mt-1">
-                    {item.subItems.map((sub) => (
-                      <LocalizedLink
-                        key={sub.id}
-                        href={sub.href || '#'}
-                        onClick={() => setMobileOpen(false)}
-                        className="text-base font-medium text-slate-800 hover:text-brand-accent transition-colors py-1"
-                      >
-                        <Translate en={sub.label.en} ar={sub.label.ar} />
-                      </LocalizedLink>
-                    ))}
-                  </div>
-                </>
-              ) : (
-                <LocalizedLink
-                  href={item.href || '#'}
-                  onClick={() => setMobileOpen(false)}
-                  className="text-lg font-semibold font-enHeading text-slate-800 hover:text-brand-accent transition-colors"
-                >
-                  <Translate en={item.label.en} ar={item.label.ar} />
-                </LocalizedLink>
-              )}
-            </div>
-          ))}
-        </nav>
-
-        <div className="p-6 border-t border-slate-100 flex flex-col gap-4 bg-slate-50">
-          <button
-            onClick={() => {
-              toggleLanguage();
-              setMobileOpen(false);
-            }}
-            className="flex items-center justify-center gap-2 py-3 rounded-full border border-slate-200 bg-white text-slate-700 font-semibold font-enHeading text-xs uppercase tracking-wider"
+        <nav className="flex-1 overflow-y-auto px-6 py-6 flex flex-col gap-3">
+          <LocalizedLink
+            href="/how-it-works"
+            onClick={() => setMobileOpen(false)}
+            className="text-base font-bold font-enHeading py-2.5 px-3 rounded-2xl border-b border-slate-100 text-slate-900 hover:text-brand-accent transition-colors"
           >
-            <Globe className="w-4 h-4 text-brand-accent" />
-            <span>{language === 'en' ? 'العربية' : 'English'}</span>
-          </button>
-          
-          <PrimaryButton
-            en="Request Integration"
-            ar="طلب تكامل"
+            <Translate en="How It Works" ar="كيف نعمل" />
+          </LocalizedLink>
+          <LocalizedLink
+            href="/#yield-calculator"
+            onClick={() => setMobileOpen(false)}
+            className="text-base font-bold font-enHeading py-2.5 px-3 rounded-2xl border-b border-slate-100 text-slate-900 hover:text-brand-accent transition-colors"
+          >
+            <Translate en="Yield Calculator" ar="حاسبة العائد" />
+          </LocalizedLink>
+          <LocalizedLink
+            href="/about"
+            onClick={() => setMobileOpen(false)}
+            className="text-base font-bold font-enHeading py-2.5 px-3 rounded-2xl border-b border-slate-100 text-slate-900 hover:text-brand-accent transition-colors"
+          >
+            <Translate en="About Us" ar="من نحن" />
+          </LocalizedLink>
+          <LocalizedLink
+            href="/insights"
+            onClick={() => setMobileOpen(false)}
+            className="text-base font-bold font-enHeading py-2.5 px-3 rounded-2xl border-b border-slate-100 text-slate-900 hover:text-brand-accent transition-colors"
+          >
+            <Translate en="Insights & News" ar="الرؤى والمقالات" />
+          </LocalizedLink>
+          <LocalizedLink
             href="/contact"
             onClick={() => setMobileOpen(false)}
-            className="w-full py-3.5 text-xs text-center"
+            className="text-base font-bold font-enHeading py-2.5 px-3 rounded-2xl border-b border-slate-100 text-slate-900 hover:text-brand-accent transition-colors"
+          >
+            <Translate en="Contact & Support" ar="تواصل معنا" />
+          </LocalizedLink>
+          <a
+            href="https://irken.eg"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setMobileOpen(false)}
+            className="text-base font-bold font-enHeading text-brand-accent py-2.5 px-3 rounded-2xl flex items-center justify-between mt-2"
+          >
+            <span><Translate en="Driver App (irken.eg)" ar="تطبيق السائقين (irken.eg)" /></span>
+            <ExternalLink className="w-4 h-4" />
+          </a>
+
+          {/* Trust anchor — fills drawer dead space purposefully */}
+          <div className="mt-auto pt-6 pb-2">
+            <p className="text-[11px] text-slate-400 leading-relaxed">
+              <Translate
+                en="Egypt&rsquo;s digital parking reservation network &middot; Operated from Cairo"
+                ar="شبكة حجز مواقف السيارات الرقمية في مصر &middot; من القاهرة"
+              />
+            </p>
+          </div>
+        </nav>
+
+        <div className="px-6 pb-8 pt-5 border-t border-slate-100 flex flex-col gap-4 bg-slate-50/80">
+          <button
+            onClick={() => {
+              const newLocale = language === 'en' ? 'ar' : 'en';
+              toggleLanguage();
+              posthog?.capture('language_changed', { new_locale: newLocale });
+              setMobileOpen(false);
+            }}
+            className="flex items-center gap-2 text-xs font-bold font-enHeading text-slate-700 hover:text-brand-accent transition-colors uppercase tracking-wider py-2"
+          >
+            <Globe className="w-4 h-4" />
+            <span>{language === 'en' ? 'العربية' : 'English'}</span>
+          </button>
+          <PrimaryButton 
+            en="Join as Partner" 
+            ar="انضم كشريك" 
+            href="/#operator-onboard" 
+            onClick={() => setMobileOpen(false)}
+            className="w-full justify-center py-3.5" 
           />
         </div>
       </div>

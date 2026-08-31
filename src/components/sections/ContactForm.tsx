@@ -16,11 +16,10 @@ interface ContactFormData {
 }
 
 const INQUIRY_OPTIONS = [
-  { value: 'sales',       en: 'Facility Monetization / Sales', ar: 'تسييل مواقف المنشآت / المبيعات' },
-  { value: 'support',     en: 'Technical Integration Support', ar: 'الدعم الفني والربط البرمجي' },
-  { value: 'partnership', en: 'Strategic Partnership',         ar: 'شراكة استراتيجية' },
-  { value: 'media',       en: 'Media & Press',                 ar: 'الإعلام والصحافة' },
-  { value: 'other',       en: 'Other Inquiry',                 ar: 'استفسار آخر' },
+  { value: 'onboarding',  en: 'List / Register a Parking Facility', ar: 'تسجيل موقف سيارات أو جراج جديد' },
+  { value: 'support',     en: 'Existing Partner & Operator Support', ar: 'دعم المشغلين والشركاء الحاليين' },
+  { value: 'commercial',  en: 'Commercial Facility & Valet Partnership', ar: 'شراكات المولات والمراكز التجارية والفاليه' },
+  { value: 'other',       en: 'General Inquiry / Other', ar: 'استفسار عام أو موضوع آخر' },
 ];
 
 export default function ContactForm() {

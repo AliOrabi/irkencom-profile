@@ -7,7 +7,7 @@ import { Calculator, TrendingUp, Sparkles, MapPin, CheckCircle2, ArrowRight } fr
 
 type LocationTier = 'high_density' | 'commercial' | 'residential';
 
-export default function SandboxRevenueLiftCalculator() {
+export default function RevenueCalculator() {
   const [bays, setBays] = useState(60);
   const [hourlyRate, setHourlyRate] = useState(20);
   const [turnoverHours, setTurnoverHours] = useState(10);
@@ -200,10 +200,10 @@ export default function SandboxRevenueLiftCalculator() {
               <div className="bg-slate-50/80 p-5 rounded-3xl border border-slate-200/60 hover:border-brand-accent/30 transition-colors">
                 <div className="flex justify-between items-center mb-3">
                   <label className="text-xs sm:text-sm font-bold font-enHeading text-slate-800 uppercase tracking-wider">
-                    <Translate en="Daily Active Operating Hours" ar="ساعات التشغيل اليومية" />
+                    <Translate en="Daily Operating / Active Hours" ar="ساعات التشغيل اليومية" />
                   </label>
                   <span className="text-base font-bold font-enHeading text-brand-accent px-3.5 py-1 bg-white border border-brand-accent/30 rounded-full shadow-sm tabular-nums">
-                    {turnoverHours} <Translate en="Hours" ar="ساعات" />
+                    {turnoverHours} <Translate en="Hrs/Day" ar="ساعة/يوم" />
                   </span>
                 </div>
                 <input
@@ -217,87 +217,84 @@ export default function SandboxRevenueLiftCalculator() {
                   className="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-brand-accent focus:outline-none"
                 />
                 <div className="flex justify-between text-[11px] text-slate-400 font-mono mt-2">
-                  <span>6 hrs (<Translate en="Shift" ar="وردية" />)</span>
-                  <span>12 hrs (<Translate en="Standard" ar="يومي معتاد" />)</span>
-                  <span>24 hrs (<Translate en="24/7 Gate" ar="٢٤ ساعة" />)</span>
+                  <span>6 <Translate en="Hrs" ar="ساعات" /></span>
+                  <span>12 <Translate en="Hrs (Standard)" ar="ساعة (المعتاد)" /></span>
+                  <span>24 <Translate en="Hrs (24/7 Facility)" ar="ساعة (طوال اليوم)" /></span>
                 </div>
               </div>
+
             </div>
 
-            {/* ── Right: Results Telemetry Box ────────────────────────────── */}
-            <div className="bg-slate-950 text-white rounded-[2.2rem] p-7 sm:p-9 flex flex-col justify-between shadow-2xl border border-slate-800 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-60 h-60 bg-emerald-500/10 blur-[80px] pointer-events-none" />
-
-              <div className="relative z-10">
-                <div className="text-[11px] font-bold font-enHeading uppercase tracking-widest text-brand-accent mb-2 flex items-center gap-1.5">
-                  <TrendingUp className="w-3.5 h-3.5 text-emerald-400" />
-                  <Translate en="Projected Monthly Revenue Lift" ar="الزيادة الشهرية الإضافية المتوقعة" />
-                </div>
+            {/* ── Right: Clear Breakdown & Impact Card ───────────────────── */}
+            <div className="relative">
+              <div className="bg-gradient-to-b from-[#0F172A] to-[#1E293B] text-white p-8 sm:p-10 rounded-[2.2rem] shadow-2xl border border-slate-700/80 relative overflow-hidden flex flex-col justify-between">
                 
-                {/* Additional Lift Display with Dynamic Calculation */}
-                <div className="text-3xl sm:text-4xl lg:text-5xl font-bold font-enHeading text-emerald-400 mb-1 tracking-tight tabular-nums transition-all duration-200">
-                  +{additionalMonthlyLift.toLocaleString()} EGP
-                </div>
-                <div className="text-xs text-slate-400 mb-6 flex items-center gap-1.5 rtl:leading-[1.6]">
-                  <Sparkles className="w-3 h-3 text-emerald-400 shrink-0" />
-                  <Translate 
-                    en="From advance reservations and filling off-peak empty slots" 
-                    ar="أرباح جديدة من الحجوزات المسبقة وشغل الأماكن الفاضية في أوقات الركود" 
-                  />
-                </div>
+                {/* Glow Accent */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-brand-accent/15 blur-[80px] pointer-events-none" />
 
-                {/* Dynamic Visual Occupancy Bar */}
-                <div className="space-y-2 mb-6 bg-slate-900/80 p-4 rounded-2xl border border-slate-800">
-                  <div className="flex justify-between text-[11px] text-slate-300 font-semibold">
-                    <span><Translate en="Estimated Occupancy Growth" ar="نمو نسبة الإشغال المتوقع" /></span>
-                    <span className="text-emerald-400 font-bold font-mono">
-                      {currentTier.baselineOccupancy}% → {projectedOccupancy}% (+{currentTier.liftPercent}%)
+                <div>
+                  <div className="flex items-center justify-between border-b border-slate-700/80 pb-4 mb-6">
+                    <span className="text-xs font-bold font-enHeading text-slate-400 uppercase tracking-wider">
+                      <Translate en="Projected Monthly Gain" ar="صافي الزيادة المتوقعة شهرياً" />
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold font-mono">
+                      <TrendingUp className="w-3.5 h-3.5" />
+                      +{currentTier.liftPercent}% Lift
                     </span>
                   </div>
-                  <div className="w-full h-2.5 bg-slate-800 rounded-full overflow-hidden flex">
-                    <div 
-                      className="h-full bg-slate-600 rounded-l-full transition-all duration-300" 
-                      style={{ width: `${currentTier.baselineOccupancy}%` }} 
-                      title={`Baseline: ${currentTier.baselineOccupancy}%`} 
-                    />
-                    <div 
-                      className="h-full bg-emerald-400 rounded-r-full animate-pulse transition-all duration-300" 
-                      style={{ width: `${currentTier.liftPercent}%` }} 
-                      title={`Irken Lift: +${currentTier.liftPercent}%`} 
-                    />
+
+                  {/* Big Number: Net Additional Revenue */}
+                  <div className="mb-6">
+                    <div className="text-[11px] font-bold font-enHeading text-brand-accent uppercase tracking-widest mb-1">
+                      <Translate en="Additional Monthly Earnings" ar="أرباح إضافية صافية كل شهر" />
+                    </div>
+                    <div className="text-4xl sm:text-5xl font-black font-enHeading text-emerald-400 tracking-tight tabular-nums flex items-baseline gap-2">
+                      <span>+{additionalMonthlyLift.toLocaleString()}</span>
+                      <span className="text-sm sm:text-base font-normal text-slate-300">EGP / <Translate en="mo" ar="شهر" /></span>
+                    </div>
+                    <div className="text-xs text-slate-400 mt-1">
+                      ≈ +{annualizedLift.toLocaleString()} EGP <Translate en="annualized additional revenue" ar="زيادة سنوية إضافية في الدخل" />
+                    </div>
+                  </div>
+
+                  {/* Concrete Breakdown Metrics */}
+                  <div className="space-y-3 pt-6 border-t border-slate-700/80 mb-8 text-xs">
+                    <div className="flex justify-between items-center text-slate-300">
+                      <span><Translate en="Baseline Current Revenue:" ar="الإيراد الحالي التقديري:" /></span>
+                      <span className="font-mono font-bold text-slate-200 tabular-nums">
+                        {baselineMonthly.toLocaleString()} EGP
+                      </span>
+                    </div>
+                    <div className="flex justify-between items-center text-slate-300">
+                      <span><Translate en="Total Projected Revenue:" ar="إجمالي الإيراد بعد إركن:" /></span>
+                      <span className="font-mono font-bold text-brand-accent tabular-nums">
+                        {totalProjectedMonthly.toLocaleString()} EGP
+                      </span>
+                    </div>
+                    <div className="flex justify-between items-center text-slate-300">
+                      <span><Translate en="Estimated Occupancy Shift:" ar="تغير نسبة الإشغال:" /></span>
+                      <span className="font-mono font-bold text-emerald-400">
+                        {currentTier.baselineOccupancy}% → {projectedOccupancy}%
+                      </span>
+                    </div>
                   </div>
                 </div>
 
-                {/* Tabular breakdown */}
-                <div className="space-y-3 py-4 border-y border-slate-800 text-xs">
-                  <div className="flex justify-between text-slate-400">
-                    <span><Translate en="Estimated Current Baseline" ar="الإيراد الحالي التقديري" /></span>
-                    <span className="font-mono text-slate-200 tabular-nums">{baselineMonthly.toLocaleString()} EGP / mo</span>
-                  </div>
-                  <div className="flex justify-between text-emerald-400 font-semibold">
-                    <span><Translate en="Annualized Revenue Growth" ar="إجمالي الزيادة السنوية" /></span>
-                    <span className="font-mono tabular-nums">+{annualizedLift.toLocaleString()} EGP / yr</span>
-                  </div>
-                  <div className="flex justify-between text-white font-bold pt-2 border-t border-slate-800/80">
-                    <span><Translate en="Total Projected Monthly" ar="إجمالي الإيراد الشهري المتوقع" /></span>
-                    <span className="font-mono text-emerald-400 text-sm tabular-nums">{totalProjectedMonthly.toLocaleString()} EGP / mo</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-8 pt-2 relative z-10">
+                {/* Direct Action Link to Onboard Form */}
                 <button
                   type="button"
                   onClick={handleApplyToForm}
-                  className="w-full py-4 px-6 rounded-full bg-brand-accent hover:bg-brand-accent/90 text-white text-xs font-bold font-enHeading uppercase tracking-wider transition-all shadow-lg shadow-brand-accent/25 active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full py-4 rounded-full bg-brand-accent hover:bg-brand-accent-hover text-white font-bold font-enHeading text-xs uppercase tracking-widest transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-brand-accent/30 cursor-pointer active:scale-[0.98]"
                 >
-                  <span><Translate en="Calculate My Exact Facility Plan" ar="احسب خطة جراجك وانضم مجاناً" /></span>
+                  <span><Translate en="Lock in Your Facility's Lift" ar="سجل موقفك وضاعف إيرادك الآن" /></span>
                   <ArrowRight className="w-4 h-4 rtl:rotate-180" />
                 </button>
+
               </div>
             </div>
 
           </div>
+
         </div>
       </Reveal>
     </section>

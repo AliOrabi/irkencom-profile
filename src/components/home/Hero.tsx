@@ -9,11 +9,12 @@ import {
   CalendarCheck,
   ArrowUpRight,
   Activity,
-  ShieldCheck
+  ShieldCheck,
+  Sparkles
 } from 'lucide-react';
 import Image from 'next/image';
 
-export default function SandboxHero() {
+export default function Hero() {
   const [activeReservations, setActiveReservations] = useState(843);
   const [searchImpressions, setSearchImpressions] = useState(14290);
 
@@ -33,8 +34,8 @@ export default function SandboxHero() {
     >
       {/* Hero Background Image */}
       <Image
-        src="/hero_digital_parking_bg.jpg"
-        alt="Irken Smart Digital Parking Facility"
+        src="/hero_parking_cairo_v2.jpg"
+        alt="Modern digital parking facility in Cairo with QR check-in kiosk — powered by Irken"
         fill
         priority
         quality={90}
@@ -56,62 +57,85 @@ export default function SandboxHero() {
       <div className="max-w-[1280px] mx-auto my-auto px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-12 lg:gap-16 items-center relative z-10">
         <div className="flex flex-col items-start">
 
+          {/* Program Pill */}
+          <Reveal delay={0.05}>
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-accent/20 text-brand-accent border border-brand-accent/30 text-xs font-bold font-enHeading uppercase tracking-widest mb-5 backdrop-blur-md">
+              <Sparkles className="w-3.5 h-3.5" />
+              <Translate en="Operator Partner Network" ar="شبكة شركاء ومزودي المواقف" />
+            </span>
+          </Reveal>
+
+          {/* H1 Primary Headline */}
           <Reveal delay={0.1}>
             <h1
               id="hero-headline"
-              className="text-4xl sm:text-5xl md:text-6xl font-bold font-enHeading text-white leading-[1.25] sm:leading-[1.2] md:leading-[1.25] rtl:leading-[1.35] sm:rtl:leading-[1.4] mb-6 tracking-tight"
+              className="text-4xl sm:text-5xl md:text-6xl font-bold font-enHeading text-white leading-[1.25] sm:leading-[1.2] md:leading-[1.25] rtl:leading-[1.35] sm:rtl:leading-[1.4] mb-5 tracking-tight"
             >
               <Translate
-                en="Turn your car park into a profitable business."
-                ar="حوّل جراجك لمشروع استثماري عالي الأرباح."
+                en="Turn your parking facility into a high-yield digital business."
+                ar="حوّل موقف سياراتك إلى مشروع استثماري عالي الأرباح."
               />
             </h1>
           </Reveal>
 
-          <Reveal delay={0.18}>
-            <p className="text-base sm:text-lg text-slate-300 mb-8 max-w-xl font-normal leading-relaxed rtl:leading-[1.8]">
+          {/* AEO Standalone Extraction Block */}
+          <Reveal delay={0.15}>
+            <div className="my-2 text-sm sm:text-base text-slate-200 leading-relaxed rtl:leading-[1.8] max-w-xl font-normal">
               <Translate
-                en="Zero risk. Zero costs. If you don't win, neither do we. We provide you with new bookings for drivers looking for parking near your location, but who can't always find you – backed by dedicated 24/7 customer service and instant, recurring settlements."
-                ar="صفر مخاطرة. صفر تكاليف. إذا لم تربح، فلن نربح نحن أيضًا. نوفر لك حجوزات جديدة لسائقين يبحثون عن مواقف سيارات بالقرب منك، لكن دائمًا لا يعثرون عليك - مدعومة بخدمة عملاء مخصصة على مدار الأسبوع 24/7 يومًا وتسويات دورية فورية."
+                en="Irken is Egypt's digital parking reservation network, connecting commercial garages and lot operators with drivers seeking pre-paid, guaranteed parking without new hardware or upfront fees."
+                ar="إركن هي شبكة حجز مواقف السيارات الرقمية في مصر، تربط الجراجات والساحات المرخصة بالسائقين بحجوزات مسبقة ومؤكدة بدون أي أجهزة جديدة أو مصاريف إعداد."
+              />
+            </div>
+          </Reveal>
+
+          {/* Psychological Proof & Core Value Proposition */}
+          <Reveal delay={0.2}>
+            <p className="text-sm sm:text-base text-slate-300 my-5 max-w-xl font-normal leading-relaxed rtl:leading-[1.8]">
+              <Translate
+                en="Zero setup costs, zero hardware purchases. Fill empty off-peak bays by routing pre-paid drivers straight to your entrance, backed by 24/7 dedicated operational support."
+                ar="بدون أي مصاريف إعداد، وبدون شراء أجهزة جديدة. املأ الأماكن الشاغرة في أوقات الهدوء بسائقين يدفعون مسبقاً قبل وصولهم، مع دعم فني وتشغيلي مخصص على مدار الساعة."
               />
             </p>
           </Reveal>
 
+          {/* Action CTAs */}
           <Reveal delay={0.25}>
             <div className="flex flex-wrap items-center gap-4 w-full sm:w-auto">
               <PrimaryButton
-                en="Join as Parking Provider"
-                ar="انضم كمزود لمواقف السيارات"
+                en="Register Facility for Free"
+                ar="سجّل موقفك مجاناً الآن"
                 href="#operator-onboard"
                 className="w-full sm:w-auto py-3.5 px-8 text-xs font-semibold shadow-lg shadow-brand-accent/25 active:scale-[0.98]"
               />
               <GhostButton
-                en="Discover how"
-                ar="اكتشف الميزات"
-                href="#why-operators"
+                en="Estimate Your Revenue Lift"
+                ar="احسب أرباحك الإضافية"
+                href="#yield-calculator"
                 className="w-full sm:w-auto py-3.5 px-6 text-xs text-white border-white/25 hover:border-white/60 active:scale-[0.98]"
               />
             </div>
           </Reveal>
 
+          {/* Value Micro-Signals */}
           <Reveal delay={0.3}>
-            <div className="flex flex-wrap items-center gap-6 mt-10 pt-8 border-t border-slate-800/80 text-xs text-slate-400">
+            <div className="flex flex-wrap items-center gap-6 mt-8 pt-6 border-t border-slate-800/80 text-xs text-slate-400">
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-brand-accent" />
-                <span><Translate en="Zero Risks · Zero Setup Fees" ar="صفر مخاطرة · صفر مصاريف تركيب" /></span>
+                <span><Translate en="Free during launch period" ar="مجاني بالكامل خلال فترة الإطلاق" /></span>
               </div>
               <div className="flex items-center gap-2">
                 <Search className="w-4 h-4 text-brand-accent" />
-                <span><Translate en="New Driver Ingress via irken" ar="عملاء وسائقين جدد عبر تطبيق irken" /></span>
+                <span><Translate en="Direct driver demand discovery" ar="جلب سائقين يبحثون في منطقتك" /></span>
               </div>
               <div className="flex items-center gap-2">
                 <CalendarCheck className="w-4 h-4 text-brand-accent" />
-                <span><Translate en="24/7 Dedicated Support" ar="دعم وخدمة عملاء على مدار اليوم" /></span>
+                <span><Translate en="Weekly bank & InstaPay payouts" ar="تحويلات بنكية وإنستاباي منتظمة" /></span>
               </div>
             </div>
           </Reveal>
         </div>
 
+        {/* Live Operator Widget */}
         <Reveal delay={0.2} className="w-full">
           <div className="relative z-10 w-full max-w-lg mx-auto">
             <div
@@ -132,29 +156,31 @@ export default function SandboxHero() {
                 <div>
                   <div className="text-[10px] font-bold font-enHeading text-slate-400 uppercase tracking-widest mb-1 flex items-center gap-1.5">
                     <Activity className="w-3 h-3 text-brand-accent" />
-                    <Translate en="Irken Operator Control Panel" ar="لوحة تحكم مشغلي إركن" />
+                    <Translate en="Operator Dashboard" ar="لوحة تحكم المشغل" />
                   </div>
                   <h3 className="font-enHeading text-lg sm:text-xl font-bold text-white flex items-center gap-2">
-                    <span>Cairo Downtown Facility #04</span>
+                    <span>
+                      <Translate en="Cairo Downtown Facility #04" ar="جراج وسط البلد رقم 4" />
+                    </span>
                   </h3>
                 </div>
                 <div className="text-[10px] font-enHeading text-brand-accent flex items-center gap-1.5 uppercase tracking-wider bg-brand-accent/15 px-3 py-1 rounded-full border border-brand-accent/30 shadow-sm">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  <Translate en="LIVE ON IRKEN.EG" ar="متصل بالتطبيق IRKEN.EG" />
+                  <Translate en="LIVE" ar="متصل" />
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div className="border border-brand-accent/30 p-4 bg-brand-accent/10 rounded-2xl backdrop-blur-md">
                   <div className="text-[10px] font-enHeading text-brand-accent uppercase tracking-wider mb-1.5">
-                    <Translate en="Advance Reservations" ar="حجوزات مسبقة ومؤكدة" />
+                    <Translate en="Prepaid reservations" ar="حجوزات مؤكدة" />
                   </div>
                   <div className="text-2xl sm:text-3xl font-bold font-enHeading text-brand-accent mb-1 tracking-tight tabular-nums">
                     {activeReservations.toLocaleString()}
                   </div>
                   <div className="text-[11px] text-slate-300 flex items-center gap-1">
                     <ArrowUpRight className="w-3 h-3 text-emerald-400" />
-                    <Translate en="Drivers arriving today" ar="سواقين حاجزين النهاردة" />
+                    <Translate en="Drivers arriving today" ar="السائقون يصلون اليوم" />
                   </div>
                 </div>
 
@@ -166,22 +192,22 @@ export default function SandboxHero() {
                     {searchImpressions.toLocaleString()}
                   </div>
                   <div className="text-[11px] text-slate-400">
-                    <Translate en="via irken.eg driver app" ar="على تطبيق السائقين irken.eg" />
+                    <Translate en="via Irken platform" ar="على منصة إركن" />
                   </div>
                 </div>
               </div>
 
-              <div className="border border-slate-800/80 bg-slate-950/70 p-4 text-[11px] font-mono text-slate-300 leading-relaxed rounded-2xl space-y-1.5 shadow-inner">
-                <div className="flex items-center justify-between text-slate-400 font-medium border-b border-slate-800/60 pb-1 text-[10px]">
-                  <span>DISPATCH TELEMETRY // REAL-TIME</span>
+              <div className="border border-slate-800/80 bg-slate-950/70 p-4 text-[11px] font-enHeading text-slate-300 leading-relaxed rounded-2xl space-y-1.5 shadow-inner">
+                <div className="flex items-center justify-between text-slate-400 font-medium border-b border-slate-800/60 pb-1 text-[10px] uppercase tracking-wider">
+                  <span><Translate en="Live Reservation Feed" ar="سجل الحجوزات المباشر" /></span>
                   <span className="text-emerald-400 flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    SYNCED
+                    <Translate en="Synced" ar="مباشر" />
                   </span>
                 </div>
-                <div>PLATE: <span className="text-brand-accent font-bold">ق س د ٩٢٨١</span> · BAY: <span className="text-white font-bold">SECTION A-12</span></div>
-                <div>PAYMENT: <span className="text-emerald-400 font-bold">ONLINE SECURE PRE-SETTLED</span></div>
-                <div className="text-slate-400">ARRIVAL WINDOW: 14:00 - 18:00 (GUARANTEED SPOT)</div>
+                <div><Translate en="Plate:" ar="رقم اللوحة:" /> <span className="text-brand-accent font-bold">ق س د ٩٢٨١</span> · <Translate en="Bay:" ar="المكان:" /> <span className="text-white font-bold">Section A-12</span></div>
+                <div><Translate en="Payment:" ar="الدفع:" /> <span className="text-emerald-400 font-bold"><Translate en="Online — Pre-settled" ar="إلكتروني — مدفوع مسبقاً" /></span></div>
+                <div className="text-slate-400"><Translate en="Arrival:" ar="الوصول:" /> 02:00 – 06:00 · <Translate en="Guaranteed Spot" ar="مكان مؤكد" /></div>
               </div>
             </div>
           </div>
