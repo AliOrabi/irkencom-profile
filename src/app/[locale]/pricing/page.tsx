@@ -4,10 +4,41 @@ import PricingTable from '@/components/pricing/PricingTable';
 import PageHero from '@/components/sections/PageHero';
 import ConversionCTA from '@/components/sections/ConversionCTA';
 
-export const metadata: Metadata = {
-  title: 'Pricing | Irken - Smart Parking Solutions',
-  description: 'Transparent, asset-light pricing for facility operators and drivers. Zero CapEx deployment with immediate ROI.',
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const isArabic = locale === 'ar';
+
+  return {
+    title: isArabic
+      ? 'أسعار إركن | باقات مجانية واشتراكات مشغلي الجراجات وساحات الانتظار'
+      : 'Irken Pricing | Zero-CapEx Plans for Parking Operators & Drivers in Egypt',
+    description: isArabic
+      ? 'تسعير بسيط وشفاف بدون أي مصاريف تأسيس أو شراء أجهزة. باقة إدراج مجانية لساحات الانتظار والجراجات وباقات احترافية لتحليلات الإشغال.'
+      : 'Transparent, zero-CapEx pricing for parking facility operators and drivers. Free listing with instant pre-paid reservations.',
+    keywords: [
+      'أسعار إركن',
+      'اركن',
+      'إركن',
+      'اسعار الجراجات',
+      'تكلفة إدارة ساحات الانتظار',
+      'حجز ركنة',
+      'سعر ركنة العربية',
+      'irken pricing',
+      'Irken Solutions',
+    ],
+    alternates: {
+      canonical: `https://irken.com.eg/${locale}/pricing`,
+      languages: {
+        ar: 'https://irken.com.eg/ar/pricing',
+        en: 'https://irken.com.eg/en/pricing',
+      },
+    },
+  };
+}
 
 export default function PricingPage() {
   return (

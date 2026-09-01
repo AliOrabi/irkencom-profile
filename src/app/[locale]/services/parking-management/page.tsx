@@ -1,8 +1,46 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import { Feature } from '@/types';
 import PageHero from '@/components/sections/PageHero';
 import FeatureGrid from '@/components/sections/FeatureGrid';
 import ConversionCTA from '@/components/sections/ConversionCTA';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const isArabic = locale === 'ar';
+
+  return {
+    title: isArabic
+      ? 'نظام إدارة ساحات الانتظار والجراجات في مصر | إركن سوليوشنز'
+      : 'Parking Management System & Facility Operations in Egypt | Irken Solutions',
+    description: isArabic
+      ? 'حل رقمي متكامل لإدارة ساحات الانتظار والجراجات في مصر. راقب الإشغال اللحظي، امنع التلاعب النقدي، واحصل على حجوزات مسبقة بدون أجهزة باهظة.'
+      : 'Centralized parking management system for garage operators and property managers in Egypt. Real-time capacity monitoring and dynamic yield optimization.',
+    keywords: [
+      'إدارة ساحات الانتظار',
+      'نظام إدارة الجراجات',
+      'برنامج باركينج',
+      'تنظيم مواقف السيارات',
+      'اركن',
+      'إركن',
+      'ركنة',
+      'بديل السايس',
+      'parking management Egypt',
+      'Irken Solutions',
+    ],
+    alternates: {
+      canonical: `https://irken.com.eg/${locale}/services/parking-management`,
+      languages: {
+        ar: 'https://irken.com.eg/ar/services/parking-management',
+        en: 'https://irken.com.eg/en/services/parking-management',
+      },
+    },
+  };
+}
 
 export default function ParkingManagementPage() {
   const features: Feature[] = [

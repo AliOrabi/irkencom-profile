@@ -3,12 +3,25 @@ import { blogPosts } from '@/lib/blog-data';
 
 const baseUrl = 'https://irken.com.eg';
 const locales = ['ar', 'en'];
+
 const routes = [
   { path: '', priority: 1.0, changeFrequency: 'weekly' as const },
-  { path: '/how-it-works', priority: 0.9, changeFrequency: 'monthly' as const },
+  { path: '/how-it-works', priority: 0.95, changeFrequency: 'monthly' as const },
+  { path: '/pricing', priority: 0.9, changeFrequency: 'weekly' as const },
+  { path: '/solutions', priority: 0.85, changeFrequency: 'monthly' as const },
   { path: '/about', priority: 0.8, changeFrequency: 'monthly' as const },
-  { path: '/insights', priority: 0.8, changeFrequency: 'weekly' as const },
-  { path: '/contact', priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: '/insights', priority: 0.85, changeFrequency: 'weekly' as const },
+  { path: '/contact', priority: 0.85, changeFrequency: 'monthly' as const },
+  { path: '/technology', priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: '/services/parking-management', priority: 0.85, changeFrequency: 'monthly' as const },
+  { path: '/services/operators', priority: 0.85, changeFrequency: 'monthly' as const },
+  { path: '/services/access-control', priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: '/services/lpr', priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: '/services/municipalities', priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: '/services/real-estate', priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: '/providers/reservation', priority: 0.75, changeFrequency: 'monthly' as const },
+  { path: '/providers/epayment', priority: 0.75, changeFrequency: 'monthly' as const },
+  { path: '/providers/attendant-mgmt', priority: 0.75, changeFrequency: 'monthly' as const },
   { path: '/privacy', priority: 0.3, changeFrequency: 'yearly' as const },
   { path: '/terms', priority: 0.3, changeFrequency: 'yearly' as const },
   { path: '/cookies', priority: 0.3, changeFrequency: 'yearly' as const },

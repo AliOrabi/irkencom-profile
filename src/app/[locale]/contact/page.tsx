@@ -7,16 +7,43 @@ import { Mail, Phone, MapPin, Clock, MessageSquare } from 'lucide-react';
 import { contactChannels } from '@/config/contact';
 import Reveal from '@/components/ui/Reveal';
 
-export const metadata: Metadata = {
-  title: 'Contact Irken Operations & Operator Support | تواصل مع إركن',
-  description:
-    'Have questions about listing your parking facility, reservation payouts, or partnering with Irken? Our operations team is available 24/7 via WhatsApp and email.',
-  openGraph: {
-    title: 'Contact Irken — Partner & Operator Support',
-    description: 'Get in touch with the Irken operations team in Cairo. WhatsApp: +201222200479.',
-    url: 'https://irken.com.eg/contact',
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const isArabic = locale === 'ar';
+
+  return {
+    title: isArabic
+      ? 'تواصل معنا | دعم مشغلي المواقف وحجز ساحات الانتظار — إركن مصر'
+      : 'Contact Irken Operations & Parking Partner Support — Cairo, Egypt',
+    description: isArabic
+      ? 'تواصل مع فريق عمليات إركن للاستفسار عن تسجيل الجراجات وساحات الانتظار، حجز الركنات، وتسوية المستحقات المالية عبر الواتساب أو الهاتف: 01222200479.'
+      : 'Get in touch with Irken operations team in Cairo. Inquiries about parking facility listings, driver reservation payouts, and technical support.',
+    keywords: [
+      'تواصل مع إركن',
+      'اركن',
+      'إركن',
+      'اركن فين',
+      'خدمة عملاء إركن',
+      'تسجيل جراج',
+      'إدارة ساحات الانتظار',
+      'حجز ركنة',
+      'واتساب إركن',
+      'Irken Solutions',
+      'contact irken',
+    ],
+    alternates: {
+      canonical: `https://irken.com.eg/${locale}/contact`,
+      languages: {
+        ar: 'https://irken.com.eg/ar/contact',
+        en: 'https://irken.com.eg/en/contact',
+      },
+    },
+  };
+}
 
 const Icons: Record<string, React.ElementType> = {
   Phone,

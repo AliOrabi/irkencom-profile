@@ -1,8 +1,44 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import { Feature } from '@/types';
 import PageHero from '@/components/sections/PageHero';
 import FeatureGrid from '@/components/sections/FeatureGrid';
 import ConversionCTA from '@/components/sections/ConversionCTA';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const isArabic = locale === 'ar';
+
+  return {
+    title: isArabic
+      ? 'أنظمة التحكم في الدخول للبوابات والجراجات | إركن مصر'
+      : 'Access Control & Smart Gate Integration in Egypt | Irken Solutions',
+    description: isArabic
+      ? 'تحكم ذكي في دخول وخروج السيارات في الجراجات وساحات الانتظار بدون أجهزة معقدة. تكامل مباشر مع بوابات FAAC و BFT وكاميرات المراقبة.'
+      : 'Hardware-agnostic access control for parking gates and garages in Egypt. Automated entry for reserved vehicles.',
+    keywords: [
+      'التحكم في الدخول',
+      'بوابات الجراجات',
+      'اركن',
+      'إركن',
+      'ساحات انتظار',
+      'بوابات إلكترونية',
+      'باركينج',
+      'Irken Solutions',
+    ],
+    alternates: {
+      canonical: `https://irken.com.eg/${locale}/services/access-control`,
+      languages: {
+        ar: 'https://irken.com.eg/ar/services/access-control',
+        en: 'https://irken.com.eg/en/services/access-control',
+      },
+    },
+  };
+}
 
 export default function AccessControlPage() {
   const features: Feature[] = [

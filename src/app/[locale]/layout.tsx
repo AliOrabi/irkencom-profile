@@ -12,20 +12,56 @@ import MuiProvider from "@/components/providers/MuiProvider";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://irken.com.eg"),
-  title: "Irken Solutions — Egypt's Digital Parking Network",
+  title: "إركن | Irken Solutions — شبكة حجز مواقف وساحات انتظار السيارات في مصر",
   description:
-    "Join Egypt's digital parking reservation network. List your garage or parking lot on irken.eg — zero setup fees, zero hardware, pre-paid advance reservations from real drivers.",
+    "اركن عربيتك بسهولة أو أدرج جراجك وساحة الانتظار على شبكة إركن الرقمية. احجز ركنة مسبقاً، تخلّص من عشوائية السايس، وحوّل مواقف السيارات إلى عوائد مضمونة في القاهرة ومصر.",
+  keywords: [
+    "اركن",
+    "إركن",
+    "اركن فين",
+    "ركنة",
+    "ركنه",
+    "باركينج",
+    "Parkin",
+    "Parking",
+    "جراج",
+    "جراجات",
+    "موقف",
+    "مواقف سيارات",
+    "ساحات انتظار",
+    "ساحة انتظار",
+    "سايس",
+    "السايس",
+    "بديل السايس",
+    "حجز ركنة",
+    "حجز جراج",
+    "إدارة ساحات الانتظار",
+    "irken",
+    "Irken",
+    "Irken Solutions",
+    "irken.eg",
+    "parking in Cairo",
+    "parking Egypt",
+  ],
+  alternates: {
+    canonical: "https://irken.com.eg",
+    languages: {
+      "ar": "https://irken.com.eg/ar",
+      "en": "https://irken.com.eg/en",
+    },
+  },
   openGraph: {
-    title: "Irken Solutions — Egypt's Digital Parking Network",
+    title: "إركن | Irken Solutions — شبكة حجز مواقف السيارات وساحات الانتظار في مصر",
     description:
-      "List your parking facility on irken.eg. Zero risk, zero costs. Irken brings you pre-paid drivers already searching for parking near your location.",
+      "اركن في أمان واحجز ركنتك أونلاين. انضم لشبكة إركن لإدارة ساحات الانتظار والجراجات بدون أجهزة أو مصاريف تأسيس.",
     url: "https://irken.com.eg",
-    siteName: "Irken Solutions",
+    siteName: "إركن | Irken Solutions",
     images: [
       {
         url: "/opengraph-image.png",
         width: 1200,
         height: 630,
+        alt: "Irken Solutions — Egypt's Digital Parking Reservation Network",
       },
     ],
     locale: "ar_EG",
@@ -34,25 +70,68 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Irken Solutions — Egypt's Digital Parking Network",
-    description: "Zero risk. Zero costs. Join Egypt's parking reservation network.",
+    title: "إركن | Irken Solutions — شبكة حجز مواقف السيارات في مصر",
+    description: "احجز ركنتك أو أدرج ساحة الانتظار والجراج على شبكة إركن الرقمية.",
     images: ["/opengraph-image.png"],
   },
 };
 
 const structuredData = {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "Irken Solutions",
-  url: "https://irken.com.eg",
-  logo: "https://irken.com.eg/logo.png",
-  description: "Asset-Light digital infrastructure for real estate developers and municipalities in Egypt.",
-  address: {
-    "@type": "PostalAddress",
-    addressCountry: "EG",
-  },
-  sameAs: [
-    "https://linkedin.com/company/irken-solutions",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://irken.com.eg/#organization",
+      name: "Irken Solutions",
+      alternateName: [
+        "إركن",
+        "اركن",
+        "شركة إركن",
+        "شبكة إركن",
+        "تطبيق إركن",
+        "اركن سوليوشنز",
+        "Irken",
+        "irken",
+        "Irken Solutions",
+        "irken.eg",
+      ],
+      url: "https://irken.com.eg",
+      logo: "https://irken.com.eg/newiRkenLogo.png",
+      description:
+        "شبكة حجز مواقف وساحات انتظار السيارات الرقمية في مصر — منصة إركن لربط الجراجات والساحات بالسائقين.",
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+201222200479",
+        contactType: "customer service",
+        areaServed: "EG",
+        availableLanguage: ["Arabic", "English"],
+      },
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Cairo",
+        addressCountry: "EG",
+      },
+      sameAs: [
+        "https://irken.eg",
+        "https://linkedin.com/company/irken-solutions",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://irken.com.eg/#website",
+      url: "https://irken.com.eg",
+      name: "إركن | Irken Solutions",
+      alternateName: ["اركن", "Irken Parking", "شبكة إركن"],
+      publisher: {
+        "@id": "https://irken.com.eg/#organization",
+      },
+      inLanguage: ["ar-EG", "en-US"],
+      potentialAction: {
+        "@type": "SearchAction",
+        target: "https://irken.eg/?q={search_term_string}",
+        "query-input": "required name=search_term_string",
+      },
+    },
   ],
 };
 

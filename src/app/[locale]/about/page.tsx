@@ -8,11 +8,48 @@ import MissionVisionSection from '@/components/sections/MissionVisionSection';
 import ConversionCTA from '@/components/sections/ConversionCTA';
 import { ExternalLink, Mail } from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'About Irken — Digitizing Egypt\'s Parking Network | من نحن',
-  description:
-    'Irken connects licensed parking operators with thousands of daily drivers across Cairo and Egyptian cities — turning vacant bays into steady digital revenue. Zero hardware, zero setup fees.',
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const isArabic = locale === 'ar';
+
+  return {
+    title: isArabic
+      ? 'من نحن | إركن سوليوشنز — بناء شبكة حجز مواقف السيارات الرقمية في مصر'
+      : "About Irken Solutions — Building Egypt's Digital Parking Network",
+    description: isArabic
+      ? 'تعرف على قصة إركن ورؤيتنا في القضاء على أزمة البحث عن ركنة وعشوائية السايس، عبر رقمنة الجراجات وساحات الانتظار في القاهرة ومصر بدون أي مصاريف تأسيس.'
+      : "Discover Irken's mission to digitize parking reservations across Egypt, connecting licensed garage operators with drivers through an asset-light marketplace.",
+    keywords: [
+      'من نحن إركن',
+      'اركن',
+      'إركن',
+      'اركن سوليوشنز',
+      'ركنة',
+      'باركينج',
+      'جراج',
+      'موقف',
+      'ساحات انتظار',
+      'سايس',
+      'بديل السايس',
+      'حجز ركنة',
+      'شركة إركن',
+      'علي عرابي',
+      'Irken Solutions',
+      'irken',
+    ],
+    alternates: {
+      canonical: `https://irken.com.eg/${locale}/about`,
+      languages: {
+        ar: 'https://irken.com.eg/ar/about',
+        en: 'https://irken.com.eg/en/about',
+      },
+    },
+  };
+}
 
 /* ── Team data ─────────────────────────────────────────────────────────── */
 const team = [

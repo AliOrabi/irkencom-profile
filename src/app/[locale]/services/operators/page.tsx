@@ -12,10 +12,46 @@ import {
   Zap 
 } from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'For Parking Operators | Irken Solutions',
-  description: 'Monetize vacant parking bays into guaranteed digital revenue. Zero hardware CapEx, direct in-app driver discovery on irken.eg, and pre-settled daily payouts in Egypt.',
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const isArabic = locale === 'ar';
+
+  return {
+    title: isArabic
+      ? 'حلول مشغلي الجراجات وساحات الانتظار في مصر | إركن سوليوشنز'
+      : 'Parking Operators & Facility Monetization Solutions in Egypt | Irken',
+    description: isArabic
+      ? 'حوّل الأماكن الشاغرة في جراجك إلى دخل رقمي مضمون. صفر مصاريف تأسيس، ظهور مباشر للسائقين على irken.eg، وتسوية مستحقات دورية بدون أجهزة جديدة.'
+      : 'Monetize vacant parking bays into guaranteed digital revenue. Zero hardware CapEx, direct in-app driver discovery on irken.eg, and pre-settled daily payouts in Egypt.',
+    keywords: [
+      'مشغلي المواقف',
+      'اركن',
+      'إركن',
+      'اركن فين',
+      'ركنة',
+      'باركينج',
+      'جراج',
+      'ساحات انتظار',
+      'سايس',
+      'السايس',
+      'حجز ركنة',
+      'استثمار الجراجات',
+      'irken operators',
+      'Irken Solutions',
+    ],
+    alternates: {
+      canonical: `https://irken.com.eg/${locale}/services/operators`,
+      languages: {
+        ar: 'https://irken.com.eg/ar/services/operators',
+        en: 'https://irken.com.eg/en/services/operators',
+      },
+    },
+  };
+}
 
 export default function OperatorsSolutionPage() {
   const operatorPillars = [

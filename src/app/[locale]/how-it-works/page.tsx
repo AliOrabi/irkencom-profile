@@ -16,15 +16,88 @@ import {
   HelpCircle
 } from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'How Irken Works for Parking Operators | كيف تعمل منصة إركن للمشغلين',
-  description:
-    "Discover how easy it is to list your parking facility on irken.eg. 3 simple steps: Register online, quick activation, and start receiving guaranteed pre-paid reservations from Egyptian drivers.",
-  openGraph: {
-    title: 'How Irken Works — Operator Onboarding in 3 Steps',
-    description: 'Zero hardware costs. Zero upfront fees. Monetize vacant parking bays in Cairo and Egyptian cities.',
-    url: 'https://irken.com.eg/how-it-works',
-  },
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const isArabic = locale === 'ar';
+
+  return {
+    title: isArabic
+      ? 'كيف تعمل منصة إركن | خطوات حجز وإدارة ساحات الانتظار والجراجات في مصر'
+      : 'How Irken Works | Digital Parking Reservation & Facility Management in Egypt',
+    description: isArabic
+      ? 'تعرف على خطوات حجز ركنة سيارة وإدراج الجراجات وساحات الانتظار على شبكة إركن الرقمية في مصر. 3 خطوات بسيطة لملء الأماكن الشاغرة بدون أي أجهزة.'
+      : 'Learn how to list your parking facility or reserve a guaranteed parking bay on Irken in 3 simple steps with zero hardware costs.',
+    keywords: [
+      'كيف تعمل إركن',
+      'اركن',
+      'إركن',
+      'اركن فين',
+      'ركنة',
+      'باركينج',
+      'جراج',
+      'موقف',
+      'ساحات انتظار',
+      'سايس',
+      'السايس',
+      'حجز ركنة',
+      'حجز جراج',
+      'إدارة ساحات الانتظار',
+      'irken',
+      'Irken Solutions',
+    ],
+    alternates: {
+      canonical: `https://irken.com.eg/${locale}/how-it-works`,
+      languages: {
+        ar: 'https://irken.com.eg/ar/how-it-works',
+        en: 'https://irken.com.eg/en/how-it-works',
+      },
+    },
+    openGraph: {
+      title: isArabic
+        ? 'كيف تعمل منصة إركن | خطوات حجز وإدارة مواقف السيارات'
+        : 'How Irken Works — Operator Onboarding in 3 Steps',
+      description: isArabic
+        ? 'صفر مصاريف تأسيس، صفر أجهزة جديدة. كيف تدرج موقفك على شبكة إركن وتبدأ في استقبال السائقين.'
+        : 'Zero hardware costs. Zero upfront fees. Monetize vacant parking bays in Cairo and Egyptian cities.',
+      url: `https://irken.com.eg/${locale}/how-it-works`,
+      siteName: 'Irken Solutions',
+    },
+  };
+}
+
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "كيفية إدراج ساحة انتظار أو جراج على شبكة إركن الرقمية لحجز المواقف",
+  description: "3 خطوات سهلة لتحويل مواقف السيارات وساحات الانتظار في مصر إلى عوائد مالية بدون شراء أجهزة.",
+  totalTime: "PT5M",
+  step: [
+    {
+      "@type": "HowToStep",
+      position: 1,
+      name: "تسجيل بيانات الموقف أو ساحة الانتظار",
+      text: "املأ نموذج التسجيل السريع بموقع الموقف، السعة الاستيعابية، ساعات العمل، والتعريفة المعتادة في أقل من دقيقتين.",
+      url: "https://irken.com.eg/how-it-works#step-1",
+    },
+    {
+      "@type": "HowToStep",
+      position: 2,
+      name: "التفعيل الفوري وتدريب موظف البوابة",
+      text: "يتواصل معك فريق إركن لتفعيل حساب لوحة التحكم وتدريب مسؤولي الساحة على استخدام مسح QR بهواتفهم الذكية.",
+      url: "https://irken.com.eg/how-it-works#step-2",
+    },
+    {
+      "@type": "HowToStep",
+      position: 3,
+      name: "استقبال السائقين وتحصيل المستحقات",
+      text: "تبدأ في استقبال السائقين بحجوزات مسبقة ومؤكدة عبر تطبيق irken.eg وتستلم مستحقاتك بتحويل بنكي دوري ومباشر.",
+      url: "https://irken.com.eg/how-it-works#step-3",
+    },
+  ],
 };
 
 const steps = [
@@ -128,6 +201,10 @@ const faqs = [
 export default function HowItWorksPage() {
   return (
     <main className="bg-white min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+      />
       <PageHero
         titleEn="How Irken Works for Parking Operators"
         titleAr="كيف تعمل منصة إركن لمشغلي المواقف"

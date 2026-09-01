@@ -1,8 +1,44 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import { Feature } from '@/types';
 import PageHero from '@/components/sections/PageHero';
 import FeatureGrid from '@/components/sections/FeatureGrid';
 import ConversionCTA from '@/components/sections/ConversionCTA';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const isArabic = locale === 'ar';
+
+  return {
+    title: isArabic
+      ? 'نظام قراءة لوحات السيارات (LPR) في مصر | إركن سوليوشنز'
+      : 'License Plate Recognition (LPR) Parking System in Egypt | Irken',
+    description: isArabic
+      ? 'تقنية ذكية للتعرف التلقائي على لوحات السيارات المصرية بدقة 99.8%. دخول وخروج فوري بدون تذاكر ورقية للجراجات وساحات الانتظار.'
+      : 'Automated License Plate Recognition (LPR) optimized for Egyptian license plates. Ticketless entry and exit for smart parking facilities.',
+    keywords: [
+      'قراءة لوحات السيارات',
+      'LPR مصر',
+      'كاميرات الجراجات',
+      'اركن',
+      'إركن',
+      'باركينج ذكي',
+      'ساحات انتظار',
+      'Irken Solutions',
+    ],
+    alternates: {
+      canonical: `https://irken.com.eg/${locale}/services/lpr`,
+      languages: {
+        ar: 'https://irken.com.eg/ar/services/lpr',
+        en: 'https://irken.com.eg/en/services/lpr',
+      },
+    },
+  };
+}
 
 export default function LPRPage() {
   const features: Feature[] = [
