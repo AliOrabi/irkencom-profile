@@ -12,7 +12,6 @@ import {
   X,
   Globe,
   ExternalLink,
-  Sparkles
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
