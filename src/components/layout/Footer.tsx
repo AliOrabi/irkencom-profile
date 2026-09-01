@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import LocalizedLink from '@/components/ui/LocalizedLink';
 import Translate from '@/components/ui/Translate';
-import Reveal from '@/components/ui/Reveal';
 import { footerNav } from '@/config/navigation';
 import {
   Mail,
@@ -198,9 +197,13 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="py-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-xs text-slate-500">
-          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
             <span>
               <Translate en="© 2026 Irken Solutions. All rights reserved." ar="© 2026 إركن سوليوشنز. جميع الحقوق محفوظة." />
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+              <Translate en="Beta Version" ar="نسخة تجريبية" />
             </span>
             <span className="text-slate-600 hidden sm:inline">|</span>
             <span className="font-enHeading uppercase tracking-wider text-[11px] text-slate-500">

@@ -3,8 +3,9 @@
 import React, { useState } from 'react';
 import Translate from '@/components/ui/Translate';
 import Reveal from '@/components/ui/Reveal';
-import { ChevronDown, HelpCircle, Sparkles } from 'lucide-react';
+import { ChevronDown, HelpCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface FAQItem {
   questionEn: string;
@@ -60,7 +61,7 @@ export default function OperatorFAQ() {
   };
 
   return (
-    <section id="faq" className="py-16 md:py-24 px-6 max-w-[1280px] mx-auto w-full overflow-hidden">
+    <section id="faq" className="py-20 md:py-28 px-6 max-w-[1280px] mx-auto w-full overflow-hidden">
       <div className="text-center max-w-3xl mx-auto mb-14">
         <Reveal>
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-accent/10 text-brand-accent text-xs font-bold uppercase tracking-widest font-enHeading mb-4 border border-brand-accent/20">
@@ -94,29 +95,39 @@ export default function OperatorFAQ() {
           const isOpen = openIndex === idx;
           return (
             <Reveal key={idx} delay={0.05 + idx * 0.05}>
-              <div className="bg-white border border-slate-200/90 rounded-2xl overflow-hidden shadow-sm hover:border-brand-accent/30 transition-all duration-200">
+              <div className="bg-white border border-slate-200/90 rounded-3xl overflow-hidden shadow-sm hover:border-brand-accent/30 hover:shadow-md transition-all duration-300">
                 <button
                   type="button"
                   onClick={() => toggleFAQ(idx)}
-                  className="w-full text-left rtl:text-right p-6 flex items-center justify-between gap-4 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent"
+                  className="w-full text-left rtl:text-right p-6 sm:p-7 flex items-center justify-between gap-4 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent"
                   aria-expanded={isOpen}
                 >
                   <h3 className="text-base sm:text-lg font-bold font-enHeading text-slate-900 leading-snug rtl:leading-[1.4]">
                     <Translate en={faq.questionEn} ar={faq.questionAr} />
                   </h3>
                   <div className={cn(
-                    "w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 shrink-0 transition-transform duration-200",
+                    "w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 shrink-0 transition-transform duration-300",
                     isOpen && "rotate-180 bg-brand-accent text-white"
                   )}>
                     <ChevronDown className="w-4 h-4" />
                   </div>
                 </button>
 
-                {isOpen && (
-                  <div className="px-6 pb-6 pt-1 text-slate-600 text-sm sm:text-base leading-relaxed rtl:leading-[1.8] border-t border-slate-100 mt-1">
-                    <Translate en={faq.answerEn} ar={faq.answerAr} />
-                  </div>
-                )}
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 sm:px-7 pb-6 pt-1 text-slate-600 text-sm sm:text-base leading-relaxed rtl:leading-[1.8] border-t border-slate-100 mt-1">
+                        <Translate en={faq.answerEn} ar={faq.answerAr} />
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             </Reveal>
           );

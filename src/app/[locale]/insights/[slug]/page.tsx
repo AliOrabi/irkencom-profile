@@ -1,6 +1,6 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
-import Link from 'next/link';
+import LocalizedLink from '@/components/ui/LocalizedLink';
 import Image from 'next/image';
 import { blogPosts } from '@/lib/blog-data';
 import Translate from '@/components/ui/Translate';
@@ -42,13 +42,13 @@ export default async function InsightPostPage({ params }: { params: Promise<{ sl
           
           {/* Back Link */}
           <Reveal direction="up" delay={0.05}>
-            <Link 
+            <LocalizedLink 
               href="/insights"
               className="inline-flex items-center gap-2 text-xs font-bold font-enHeading uppercase tracking-widest text-slate-600 hover:text-brand-accent transition-colors mb-8 px-4 py-2 rounded-full bg-white border border-slate-200/80 shadow-sm"
             >
               <ArrowLeft className="w-3.5 h-3.5 rtl:rotate-180" />
               <Translate en="Back to Insights" ar="العودة للمقالات والرؤى" />
-            </Link>
+            </LocalizedLink>
           </Reveal>
 
           {/* Header */}

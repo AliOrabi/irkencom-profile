@@ -37,7 +37,7 @@ export default function LPRPage() {
   ];
 
   return (
-    <main>
+    <main className="bg-slate-50/50 min-h-screen">
       <PageHero 
         titleEn="AI License Plate Recognition"
         titleAr="التعرف بالذكاء الاصطناعي على اللوحات"

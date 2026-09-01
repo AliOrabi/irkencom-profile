@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'next/link';
+import LocalizedLink from '@/components/ui/LocalizedLink';
 import Image from 'next/image';
 import { blogPosts } from '@/lib/blog-data';
 import Translate from '@/components/ui/Translate';
@@ -25,7 +25,7 @@ export default function InsightsPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogPosts.map((post, index) => (
             <Reveal key={post.slug} direction="up" delay={0.08 + index * 0.08}>
-              <Link
+              <LocalizedLink
                 href={`/insights/${post.slug}`}
                 className="group flex flex-col h-full bg-white border border-slate-200/80 rounded-[2rem] overflow-hidden shadow-[0_10px_30px_-5px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent"
               >
@@ -85,7 +85,7 @@ export default function InsightsPage() {
                     </div>
                   </div>
                 </div>
-              </Link>
+              </LocalizedLink>
             </Reveal>
           ))}
         </div>

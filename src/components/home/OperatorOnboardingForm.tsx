@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import Translate from '@/components/ui/Translate';
 import { usePostHog } from 'posthog-js/react';
-import { PrimaryButton } from '@/components/ui/Buttons';
 import {
   CheckCircle2,
   ChevronDown,
@@ -16,7 +15,6 @@ import {
   Sparkles,
   ShieldCheck,
   Clock,
-  Compass,
   AlertCircle
 } from 'lucide-react';
 

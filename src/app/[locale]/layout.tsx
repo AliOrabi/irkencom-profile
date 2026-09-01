@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter, Tajawal, Geist } from "next/font/google";
 import "../globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -8,29 +7,8 @@ import CookieConsent from "@/components/ui/CookieConsent";
 import FloatingCTA from "@/components/ui/FloatingCTA";
 import { CSPostHogProvider } from "@/components/providers/PostHogProvider";
 import { Analytics } from "@vercel/analytics/react";
-import { cn } from "@/lib/utils";
 import EmotionRegistry from "@/components/providers/EmotionRegistry";
 import MuiProvider from "@/components/providers/MuiProvider";
-
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
-
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-en-heading",
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-});
-
-const inter = Inter({
-  variable: "--font-en-body",
-  subsets: ["latin"],
-  weight: ["400", "500"],
-});
-
-const tajawal = Tajawal({
-  variable: "--font-ar",
-  subsets: ["arabic"],
-  weight: ["400", "500", "700"],
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://irken.com.eg"),
@@ -78,6 +56,10 @@ const structuredData = {
   ],
 };
 
+export function generateStaticParams() {
+  return [{ locale: 'ar' }, { locale: 'en' }];
+}
+
 export default async function RootLayout({
   children,
   params,
@@ -87,8 +69,10 @@ export default async function RootLayout({
 }>) {
   const { locale } = await params;
   return (
-    <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'} className={cn(spaceGrotesk.variable, inter.variable, tajawal.variable, "font-sans", geist.variable)} suppressHydrationWarning>
+    <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'} className="font-sans" suppressHydrationWarning>
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

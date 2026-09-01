@@ -57,12 +57,18 @@ export default function Hero() {
       <div className="max-w-[1280px] mx-auto my-auto px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-12 lg:gap-16 items-center relative z-10">
         <div className="flex flex-col items-start">
 
-          {/* Program Pill */}
+          {/* Program Pill & Beta Badge */}
           <Reveal delay={0.05}>
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-accent/20 text-brand-accent border border-brand-accent/30 text-xs font-bold font-enHeading uppercase tracking-widest mb-5 backdrop-blur-md">
-              <Sparkles className="w-3.5 h-3.5" />
-              <Translate en="Operator Partner Network" ar="شبكة شركاء ومزودي المواقف" />
-            </span>
+            <div className="flex flex-wrap items-center gap-2.5 mb-5">
+              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-accent/20 text-brand-accent border border-brand-accent/30 text-xs font-bold font-enHeading uppercase tracking-widest backdrop-blur-md">
+                <Sparkles className="w-3.5 h-3.5" />
+                <Translate en="Operator Partner Network" ar="شبكة شركاء ومزودي المواقف" />
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-400/20 text-amber-300 border border-amber-400/40 text-xs font-bold uppercase tracking-wider backdrop-blur-md">
+                <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+                <Translate en="Beta Version" ar="نسخة تجريبية" />
+              </span>
+            </div>
           </Reveal>
 
           {/* H1 Primary Headline */}

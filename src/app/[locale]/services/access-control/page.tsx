@@ -37,7 +37,7 @@ export default function AccessControlPage() {
   ];
 
   return (
-    <main>
+    <main className="bg-slate-50/50 min-h-screen">
       <PageHero 
         titleEn="Smart Access Control"
         titleAr="التحكم الذكي في الدخول"

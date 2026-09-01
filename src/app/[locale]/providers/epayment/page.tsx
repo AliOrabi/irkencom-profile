@@ -37,7 +37,7 @@ export default function EPaymentPage() {
   ];
 
   return (
-    <main>
+    <main className="bg-slate-50/50 min-h-screen">
       <PageHero 
         titleEn="Digital Payment Solutions"
         titleAr="حلول الدفع الرقمي"

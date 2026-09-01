@@ -4,7 +4,7 @@ import Translate from '@/components/ui/Translate';
 import Reveal from '@/components/ui/Reveal';
 import PageHero from '@/components/sections/PageHero';
 import ConversionCTA from '@/components/sections/ConversionCTA';
-import { PrimaryButton, SecondaryButton } from '@/components/ui/Buttons';
+import { PrimaryButton } from '@/components/ui/Buttons';
 import { 
   ClipboardCheck, 
   MapPin, 
@@ -13,7 +13,6 @@ import {
   Smartphone, 
   Clock, 
   CheckCircle2, 
-  ArrowRight,
   HelpCircle
 } from 'lucide-react';
 

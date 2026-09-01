@@ -37,7 +37,7 @@ export default function ParkingManagementPage() {
   ];
 
   return (
-    <main>
+    <main className="bg-slate-50/50 min-h-screen">
       <PageHero 
         titleEn="Smart Parking Management"
         titleAr="الإدارة الذكية للمواقف"

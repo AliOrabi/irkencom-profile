@@ -7,10 +7,10 @@ import Translate from '@/components/ui/Translate';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 import { usePostHog } from 'posthog-js/react';
 import { PrimaryButton } from '@/components/ui/Buttons';
-import { 
-  Menu, 
-  X, 
-  Globe, 
+import {
+  Menu,
+  X,
+  Globe,
   ExternalLink,
   Sparkles
 } from 'lucide-react';
@@ -73,9 +73,9 @@ export default function Header() {
         role="banner"
       >
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 w-full flex items-center justify-between gap-2 lg:gap-3 xl:gap-4">
-          
-          {/* Logo + Operator Program Badge */}
-          <LocalizedLink href="/" aria-label="Irken Solutions — Home" className="flex items-center gap-2 xl:gap-3 shrink-0 group">
+
+          {/* Logo + Beta Badge + Operator Program Badge */}
+          <LocalizedLink href="/" aria-label="Irken Solutions — Home" className="flex items-center gap-2 xl:gap-2.5 shrink-0 group">
             <Image
               src={isScrolled ? '/irken-logo-ligth.png' : '/newiRkenLogo.png'}
               alt="Irken Solutions"
@@ -84,15 +84,18 @@ export default function Header() {
               className="h-7 md:h-8 w-auto block transition-transform group-hover:scale-[1.02]"
               priority
             />
+            {/* Beta Version Badge (علامة: نسخة تجريبية) */}
             <span className={cn(
-              "hidden xl:inline-flex items-center gap-1.5 px-3 py-1 text-[10px] font-bold font-enHeading rounded-full uppercase tracking-widest whitespace-nowrap shrink-0",
+              "inline-flex items-center gap-1.5 px-2.5 py-0.5 text-[10px] font-bold rounded-full border tracking-wide whitespace-nowrap shrink-0 transition-colors select-none",
               isScrolled
-                ? "bg-brand-accent/10 text-brand-accent border border-brand-accent/20"
-                : "bg-white/10 text-white border border-white/20"
+                ? "bg-amber-500/10 text-amber-700 border-amber-500/30"
+                : "bg-amber-400/20 text-amber-300 border-amber-400/40 backdrop-blur-md"
             )}>
-              <Sparkles className="w-3 h-3 text-brand-accent" />
-              <Translate en="Operator Program" ar="برنامج المشغلين" />
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+              <Translate en="BETA" ar="نسخة تجريبية" />
             </span>
+
+
           </LocalizedLink>
 
           {/* Desktop Navigation Links */}
@@ -113,7 +116,7 @@ export default function Header() {
             </LocalizedLink>
 
             <LocalizedLink href="/insights" className={navLinkClass('/insights')}>
-              <Translate en="Insights" ar="المقالات" />
+              <Translate en="Insights" ar="الرؤى" />
             </LocalizedLink>
 
             <LocalizedLink href="/contact" className={navLinkClass('/contact')}>
@@ -121,23 +124,7 @@ export default function Header() {
             </LocalizedLink>
 
             {/* B2C Driver Platform External Link */}
-            <a 
-              href="https://irken.eg" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className={cn(
-                "inline-flex items-center gap-1 px-2.5 xl:px-3.5 py-1.5 rounded-full text-[11px] xl:text-xs font-bold font-enHeading uppercase tracking-wider transition-all ms-1 whitespace-nowrap shrink-0",
-                isScrolled
-                  ? "bg-brand-accent/10 hover:bg-brand-accent/20 text-brand-accent"
-                  : "bg-white/10 hover:bg-white/20 text-white border border-white/15"
-              )}
-            >
-              <span>irken.eg</span>
-              <span className="hidden 2xl:inline text-[10px] opacity-70 font-normal">
-                (<Translate en="Driver App" ar="تطبيق السائقين" />)
-              </span>
-              <ExternalLink className="w-3 h-3 ms-0.5 opacity-70" />
-            </a>
+
           </nav>
 
           {/* Right Actions: Language toggle & CTA */}
@@ -155,18 +142,18 @@ export default function Header() {
                   ? 'border-slate-200/80 bg-slate-50/60 text-slate-700 hover:border-brand-accent hover:text-brand-accent hover:bg-white'
                   : 'border-white/20 bg-white/10 text-white hover:border-white/40 hover:bg-white/20'
               )}
-              aria-label={`Switch to ${language === 'en' ? 'Arabic' : 'English'}`}
+              aria-label={`Switch to ${language === 'en' ? 'Ar' : 'En'}`}
             >
               <Globe className="w-3.5 h-3.5 shrink-0 opacity-80" />
-              <span>{language === 'en' ? 'العربية' : 'English'}</span>
+              <span>{language === 'en' ? 'ع' : 'En'}</span>
             </button>
 
             {/* Direct CTA */}
-            <PrimaryButton 
-              en="Join as Partner" 
-              ar="انضم كشريك" 
-              href="/#operator-onboard" 
-              className="py-2 xl:py-2.5 px-4 xl:px-6 text-[11px] xl:text-xs shadow-md shadow-brand-accent/20 active:scale-[0.98] whitespace-nowrap" 
+            <PrimaryButton
+              en="Join as Partner"
+              ar="انضم كشريك"
+              href="/#operator-onboard"
+              className="py-2 xl:py-2.5 px-4 xl:px-6 text-[11px] xl:text-xs shadow-md shadow-brand-accent/20 active:scale-[0.98] whitespace-nowrap"
             />
           </div>
 
@@ -197,9 +184,15 @@ export default function Header() {
         )}
       >
         <div className="flex items-center justify-between px-6 py-5 shrink-0 border-b border-slate-100">
-          <LocalizedLink href="/" onClick={() => setMobileOpen(false)}>
-            <Image src="/irken-logo-ligth.png" alt="Irken Solutions" width={130} height={32} className="block h-8 w-auto" />
-          </LocalizedLink>
+          <div className="flex items-center gap-2.5">
+            <LocalizedLink href="/" onClick={() => setMobileOpen(false)}>
+              <Image src="/irken-logo-ligth.png" alt="Irken Solutions" width={130} height={32} className="block h-8 w-auto" />
+            </LocalizedLink>
+            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 text-[10px] font-bold rounded-full bg-amber-500/10 text-amber-700 border border-amber-500/30">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
+              <Translate en="BETA" ar="نسخة تجريبية" />
+            </span>
+          </div>
           <button
             onClick={() => setMobileOpen(false)}
             className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 hover:text-brand-accent transition-colors"
@@ -235,7 +228,7 @@ export default function Header() {
             onClick={() => setMobileOpen(false)}
             className="text-base font-bold font-enHeading py-2.5 px-3 rounded-2xl border-b border-slate-100 text-slate-900 hover:text-brand-accent transition-colors"
           >
-            <Translate en="Insights & News" ar="الرؤى والمقالات" />
+            <Translate en="Insights" ar="الرؤى" />
           </LocalizedLink>
           <LocalizedLink
             href="/contact"
@@ -251,7 +244,7 @@ export default function Header() {
             onClick={() => setMobileOpen(false)}
             className="text-base font-bold font-enHeading text-brand-accent py-2.5 px-3 rounded-2xl flex items-center justify-between mt-2"
           >
-            <span><Translate en="Driver App (irken.eg)" ar="تطبيق السائقين (irken.eg)" /></span>
+            <span><Translate en="Irken Now" ar="احجز ركنتك" /></span>
             <ExternalLink className="w-4 h-4" />
           </a>
 
@@ -259,8 +252,8 @@ export default function Header() {
           <div className="mt-auto pt-6 pb-2">
             <p className="text-[11px] text-slate-400 leading-relaxed">
               <Translate
-                en="Egypt&rsquo;s digital parking reservation network &middot; Operated from Cairo"
-                ar="شبكة حجز مواقف السيارات الرقمية في مصر &middot; من القاهرة"
+                en="Egypt&rsquo;s online parking reservation network"
+                ar="شبكة حجز مواقف السيارات في مصر"
               />
             </p>
           </div>
@@ -277,14 +270,14 @@ export default function Header() {
             className="flex items-center gap-2 text-xs font-bold font-enHeading text-slate-700 hover:text-brand-accent transition-colors uppercase tracking-wider py-2"
           >
             <Globe className="w-4 h-4" />
-            <span>{language === 'en' ? 'العربية' : 'English'}</span>
+            <span>{language === 'en' ? 'ع' : 'En'}</span>
           </button>
-          <PrimaryButton 
-            en="Join as Partner" 
-            ar="انضم كشريك" 
-            href="/#operator-onboard" 
+          <PrimaryButton
+            en="Join as Partner"
+            ar="انضم كشريك"
+            href="/#operator-onboard"
             onClick={() => setMobileOpen(false)}
-            className="w-full justify-center py-3.5" 
+            className="w-full justify-center py-3.5"
           />
         </div>
       </div>

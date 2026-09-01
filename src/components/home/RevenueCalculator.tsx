@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Translate from '@/components/ui/Translate';
 import Reveal from '@/components/ui/Reveal';
-import { Calculator, TrendingUp, Sparkles, MapPin, CheckCircle2, ArrowRight } from 'lucide-react';
+import { Calculator, TrendingUp, MapPin, CheckCircle2, ArrowRight } from 'lucide-react';
 
 type LocationTier = 'high_density' | 'commercial' | 'residential';
 

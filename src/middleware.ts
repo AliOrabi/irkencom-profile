@@ -12,12 +12,13 @@ export function middleware(request: NextRequest) {
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
 
-  if (pathnameHasLocale) return;
+  if (pathnameHasLocale) return NextResponse.next();
 
   // Redirect if there is no locale
   const locale = defaultLocale;
-  request.nextUrl.pathname = `/${locale}${pathname}`;
-  return NextResponse.redirect(request.nextUrl);
+  const url = request.nextUrl.clone();
+  url.pathname = `/${locale}${pathname}`;
+  return NextResponse.redirect(url);
 }
 
 export const config = {

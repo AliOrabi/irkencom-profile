@@ -17,7 +17,6 @@ import {
   Sparkles,
   TicketCheckIcon
 } from 'lucide-react';
-import { PrimaryButton } from '@/components/ui/Buttons';
 
 /* ── Capability Card Data ──────────────────────────────────────────────── */
 const capabilities = [
