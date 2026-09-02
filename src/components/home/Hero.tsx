@@ -94,8 +94,8 @@ export default function Hero() {
           <Reveal delay={0.2}>
             <p className="text-sm sm:text-base text-slate-300 my-5 max-w-xl font-normal leading-relaxed rtl:leading-[1.8]">
               <Translate
-                en="Zero setup costs, zero hardware purchases. Fill empty off-peak bays by routing pre-paid drivers straight to your entrance, backed by 24/7 dedicated operational support."
-                ar="بدون أي مصاريف إعداد، وبدون شراء أجهزة جديدة. املأ الأماكن الشاغرة في أوقات الهدوء بسائقين يدفعون مسبقاً قبل وصولهم، مع دعم فني وتشغيلي مخصص على مدار الساعة."
+                en="Fill empty off-peak lots by routing pre-paid drivers straight to your entrance, backed by 24/7 dedicated operational support."
+                ar="املأ الأماكن الشاغرة في أوقات الهدوء بسائقين يدفعون مسبقاً قبل وصولهم، مع دعم فني وتشغيلي مخصص على مدار الساعة."
               />
             </p>
           </Reveal>
@@ -127,11 +127,11 @@ export default function Hero() {
               </div>
               <div className="flex items-center gap-2">
                 <Search className="w-4 h-4 text-brand-accent" />
-                <span><Translate en="Direct driver demand discovery" ar="جلب سائقين يبحثون في منطقتك" /></span>
+                <span><Translate en="Direct driver demand discovery" ar="سائقين يبحثون في منطقتك" /></span>
               </div>
               <div className="flex items-center gap-2">
                 <CalendarCheck className="w-4 h-4 text-brand-accent" />
-                <span><Translate en="Weekly bank & InstaPay payouts" ar="تحويلات بنكية وإنستاباي منتظمة" /></span>
+                <span><Translate en="Weekly bank & InstaPay payouts" ar="بوابة دفع تستقبل من خلالها مستحقاتك" /></span>
               </div>
             </div>
           </Reveal>
