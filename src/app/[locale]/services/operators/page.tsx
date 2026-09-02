@@ -5,11 +5,11 @@ import Reveal from '@/components/ui/Reveal';
 import PageHero from '@/components/sections/PageHero';
 import ConversionCTA from '@/components/sections/ConversionCTA';
 import { PrimaryButton } from '@/components/ui/Buttons';
-import { 
-  Search, 
-  ShieldCheck, 
-  TrendingUp, 
-  Zap 
+import {
+  Search,
+  ShieldCheck,
+  TrendingUp,
+  Zap
 } from 'lucide-react';
 
 export async function generateMetadata({
@@ -58,40 +58,40 @@ export default function OperatorsSolutionPage() {
     {
       icon: Search,
       title: { en: "1. Direct In-App Driver Discovery", ar: "1. ظهور مباشر للسائقين على irken.eg" },
-      description: { 
-        en: "When drivers search for parking near your zone on the irken.eg app, your facility is matched instantly for advance reservation.", 
-        ar: "لما السائقين يبحثوا عن ركنة قريبة من وجهتهم على تطبيق irken.eg، جراجك بيظهرلهم فوراً للحجز المسبق." 
+      description: {
+        en: "When drivers search for parking near your zone on the irken.eg app, your facility is matched instantly for advance reservation.",
+        ar: "لما السائقين يبحثوا عن ركنة قريبة من وجهتهم على تطبيق irken.eg، جراجك بيظهرلهم فوراً للحجز المسبق."
       }
     },
     {
       icon: Zap,
       title: { en: "2. Zero Hardware CapEx (Works With Existing Gates)", ar: "2. بدون شراء أجهزة جديدة (متوافق مع بواباتك)" },
-      description: { 
-        en: "No expensive servers or barrier replacement. We overlay directly on FAAC, BFT, CAME, ZKTeco, RFID, LPR, or manual attendant apps in 48 hours.", 
-        ar: "مش هتحتاج تشتري بوابات أو سيرفرات جديدة. نظامنا بيركب على بواباتك الحالية وكاميراتك أو تطبيق العمال خلال 48 ساعة فقط." 
+      description: {
+        en: "No expensive servers or barrier replacement. We overlay directly on FAAC, BFT, CAME, ZKTeco, RFID, LPR, or manual attendant apps in 48 hours.",
+        ar: "مش هتحتاج تشتري بوابات أو سيرفرات جديدة. نظامنا بيركب على بواباتك الحالية وكاميراتك أو تطبيق العمال خلال 48 ساعة فقط."
       }
     },
     {
       icon: TrendingUp,
       title: { en: "3. Guaranteed Advance Spot Cashflow", ar: "3. دخل مسبق ومضمون من الأماكن الفاضية" },
-      description: { 
-        en: "Turn slow, off-peak hours into steady income. Drivers reserve and pay before they even start their engine.", 
-        ar: "حوّل أوقات الركود والهدوء لدخل ثابت. السائق بيحجز ويدفع إلكترونياً قبل ما يتحرك بعربيته." 
+      description: {
+        en: "Turn slow, off-peak hours into steady income. Drivers reserve and pay before they even start their engine.",
+        ar: "حوّل أوقات الركود والهدوء لدخل ثابت. السائق بيحجز ويدفع إلكترونياً قبل ما يتحرك بعربيته."
       }
     },
     {
       icon: ShieldCheck,
       title: { en: "4. Rapid Pre-Settled Daily Payouts", ar: "4. تسوية مالية يومية سريعة وآمنة" },
-      description: { 
-        en: "All revenue is processed via an accredited, secure payment gateway in Egypt and deposited directly into your bank account.", 
-        ar: "كل المعاملات بتتم عبر بوابة دفع إلكترونية آمنة ومعتمدة في مصر وتتحول لحسابك البنكي بانتظام وبدون تأخير." 
+      description: {
+        en: "All revenue is processed via an accredited, secure payment gateway in Egypt and deposited directly into your bank account.",
+        ar: "كل المعاملات بتتم عبر بوابة دفع إلكترونية آمنة ومعتمدة في مصر وتتحول لحسابك البنكي بانتظام وبدون تأخير."
       }
     }
   ];
 
   return (
     <main className="bg-slate-50/50 min-h-screen">
-      <PageHero 
+      <PageHero
         titleEn="Transform Vacant Parking Bays into Guaranteed Digital Revenue."
         titleAr="حوّل أماكن الركنة الفاضية في جراجك لدخل يومي مضمون."
         descriptionEn="Egypt's premier parking marketplace connects your facility directly with high-intent drivers searching on irken.eg — with zero hardware costs and 48-hour activation."
@@ -112,9 +112,9 @@ export default function OperatorsSolutionPage() {
                 <Translate en="Egypt's Digital Parking Network" ar="شبكة حجز المواقف الرقمية" />
               </h3>
               <p className="text-xs text-slate-600 leading-relaxed font-normal">
-                <Translate 
-                  en="Irken is a technology platform connecting licensed parking facilities with thousands of Egyptian drivers." 
-                  ar="إركن منصة تقنية متخصصة في ربط الجراجات المرخصة بآلاف السائقين في القاهرة والجيزة وكافة المحافظات." 
+                <Translate
+                  en="Irken is a technology platform connecting parking spaces with thousands of Egyptian drivers."
+                  ar="إركن منصة تقنية متخصصة في ربط أماكن الإنتظار (الركنة) بآلاف السائقين في القاهرة والجيزة وكافة المحافظات."
                 />
               </p>
             </div>
@@ -127,9 +127,9 @@ export default function OperatorsSolutionPage() {
                 <Translate en="Higher Occupancy & Zero Cash Leakage" ar="إشغال أعلى ومنع التسريب" />
               </h3>
               <p className="text-xs text-slate-600 leading-relaxed font-normal">
-                <Translate 
-                  en="Fill empty off-peak spaces with pre-paid advance reservations, automated check-in, and instant digital settlements." 
-                  ar="ملء المساحات الفاضية في أوقات الهدوء بحجوزات مسبقة ومضمونة، ومطابقة مالية دقيقة لكل قرش يدخل جراجك." 
+                <Translate
+                  en="Fill empty off-peak spaces with pre-paid advance reservations, automated check-in, and instant digital settlements."
+                  ar="ملء المساحات الفاضية في أوقات الهدوء بحجوزات مسبقة ومضمونة، ومطابقة مالية دقيقة لكل قرش يدخل جراجك."
                 />
               </p>
             </div>
@@ -142,9 +142,9 @@ export default function OperatorsSolutionPage() {
                 <Translate en="48-Hour Instant Activation" ar="تفعيل سريع خلال 48 ساعة" />
               </h3>
               <p className="text-xs text-slate-600 leading-relaxed font-normal">
-                <Translate 
-                  en="Register for free (0 EGP) -> Connect existing gates/staff -> Start receiving advance driver reservations immediately." 
-                  ar="سجل مجاناً (0 جنيه) -> اربط بواباتك وعمالك الحالية -> ابدأ استقبال حجوزات السائقين المسبقة فوراً." 
+                <Translate
+                  en="Register for free (0 EGP) -> Connect existing gates/staff -> Start receiving advance driver reservations immediately."
+                  ar="سجل مجاناً (0 جنيه) -> اربط جراجك -> استقبل حجوزاتك عملائك."
                 />
               </p>
             </div>
@@ -159,9 +159,9 @@ export default function OperatorsSolutionPage() {
             <Translate en="OPERATOR VALUE ENGINE" ar="محرك القيمة للمشغلين" />
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold font-enHeading text-slate-900 tracking-tight">
-            <Translate 
-              en="Four Direct Advantages for Every Garage in Egypt" 
-              ar="أربع مزايا مباشرة لكل صاحب ومشغل جراج في مصر" 
+            <Translate
+              en="Four Direct Advantages for Every Garage in Egypt"
+              ar="أربع مزايا مباشرة لكل صاحب ومشغل جراج في مصر"
             />
           </h2>
         </div>
@@ -198,9 +198,9 @@ export default function OperatorsSolutionPage() {
               <Translate en="Operator Control Panel Tiers" ar="باقات لوحة تحكم المشغلين" />
             </h2>
             <p className="text-slate-600 text-sm leading-relaxed">
-              <Translate 
-                en="Start completely free or unlock advanced dynamic pricing and shift auditing." 
-                ar="ابدأ مجاناً تماماً أو اشترك في اللوحة المتقدمة للتسعير الديناميكي ومتابعة ورديات العمال." 
+              <Translate
+                en="Start completely free or unlock advanced dynamic pricing and shift auditing."
+                ar="ابدأ مجاناً تماماً أو اشترك في اللوحة المتقدمة للتسعير الديناميكي ومتابعة ورديات العمال."
               />
             </p>
           </div>
@@ -215,17 +215,17 @@ export default function OperatorsSolutionPage() {
                   0 EGP / <span className="text-sm font-normal text-slate-500">Forever Free</span>
                 </div>
                 <p className="text-xs text-slate-600 mb-6 leading-relaxed">
-                  <Translate 
-                    en="Full listing on irken.eg, spot counter, and daily pre-settled digital revenue." 
-                    ar="ظهور كامل على تطبيق السائقين irken.eg، عداد الأماكن الفاضية، وتسوية يومية للأرباح." 
+                  <Translate
+                    en="Full listing on irken.eg, spot counter, and daily pre-settled digital revenue."
+                    ar="ظهور كامل على تطبيق السائقين irken.eg، عداد الأماكن الفاضية، وتسوية يومية للأرباح."
                   />
                 </p>
               </div>
-              <PrimaryButton 
-                en="List Your Facility for Free" 
-                ar="سجل جراجك مجاناً" 
-                href="/#operator-onboard" 
-                className="w-full text-xs py-3.5" 
+              <PrimaryButton
+                en="List Your Facility for Free"
+                ar="سجل جراجك مجاناً"
+                href="/#operator-onboard"
+                className="w-full text-xs py-3.5"
               />
             </div>
 
@@ -238,24 +238,24 @@ export default function OperatorsSolutionPage() {
                   Flexible Tier / <span className="text-sm font-normal text-slate-400">Monthly/Annual</span>
                 </div>
                 <p className="text-xs text-slate-400 mb-6 leading-relaxed">
-                  <Translate 
-                    en="AI dynamic surge pricing, occupancy heatmaps, and cash leakage prevention shift audits." 
-                    ar="تسعير ديناميكي ذكي في أوقات الذروة، خرائط حرارية للإشغال، ومنع التسريب النقدي." 
+                  <Translate
+                    en="AI dynamic surge pricing, occupancy heatmaps, and cash leakage prevention shift audits."
+                    ar="تسعير ديناميكي ذكي في أوقات الذروة، خرائط حرارية للإشغال، ومنع التسريب النقدي."
                   />
                 </p>
               </div>
-              <PrimaryButton 
-                en="Request Pro Demo" 
-                ar="طلب تجربة الباقة المتقدمة" 
-                href="/contact" 
-                className="w-full text-xs py-3.5 bg-brand-accent hover:bg-brand-accent/90" 
+              <PrimaryButton
+                en="Request Pro Demo"
+                ar="طلب تجربة الباقة المتقدمة"
+                href="/contact"
+                className="w-full text-xs py-3.5 bg-brand-accent hover:bg-brand-accent/90"
               />
             </div>
           </div>
         </div>
       </section>
 
-      <ConversionCTA 
+      <ConversionCTA
         titleEn="Ready to monetize your empty parking bays?"
         titleAr="جاهز تبدأ في تحويل أماكن الركنة الفاضية لأرباح؟"
         descriptionEn="Join Egypt's fastest growing parking network. Complete the 2-minute registration and our technical team will activate your lot within 24 hours."
