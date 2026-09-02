@@ -165,12 +165,12 @@ Organic, friendly, and soft.
 - **Focus:** White background (`focus:bg-white`), Irken Teal border (`focus:border-brand-accent`), focus ring 2px.
 
 ### Navigation Header
-- **Top State:** Transparent on dark hero video with white logo (`newiRkenLogo.png`) and white navigation links.
-- **Scrolled State:** White blurred background (`bg-white/90 backdrop-blur-md`) with dark logo (`irken-logo-ligth.png`) and `text-slate-700` links.
+- **Top State:** Transparent on dark hero video with white logo (`irken-white.png`) and white navigation links.
+- **Scrolled State:** White blurred background (`bg-white/90 backdrop-blur-md`) with dark logo (`irken-dark.png`) and `text-slate-700` links.
 - **CTA:** "Request Integration" pill button anchored to `#integration`.
 
 ### Footer
-- **Canvas:** FAAC Navy (`#0F172A` / `#1A2530`) with white logo, `text-slate-400` body copy, inline newsletter subscription with pill submit button, and legal link bar.
+- **Canvas:** FAAC Navy (`#0F172A` / `#1A2530`) with white logo (`irken-white.png`), `text-slate-400` body copy, inline newsletter subscription with pill submit button, and legal link bar.
 
 ## Do's and Don'ts
 

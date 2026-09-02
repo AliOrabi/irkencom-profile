@@ -29,7 +29,7 @@ export default function DashboardShowcase() {
       {/* Main Card */}
       <div className="relative border border-slate-700/60 bg-[#0F1D2B]/95 backdrop-blur-xl overflow-hidden p-7 sm:p-8 rounded-3xl shadow-2xl">
         <Image 
-          src="/newiRkenLogo.png" 
+          src="/irken-white.png" 
           alt="" 
           width={160} 
           height={160} 

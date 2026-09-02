@@ -151,7 +151,7 @@ export default function Hero() {
 
             <div className="relative border border-slate-700/60 bg-[#0F172A]/90 backdrop-blur-2xl overflow-hidden p-7 sm:p-8 rounded-[2rem] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.7)] shadow-inner">
               <Image
-                src="/newiRkenLogo.png"
+                src="/irken-white.png"
                 alt=""
                 width={180}
                 height={180}

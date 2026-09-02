@@ -50,6 +50,11 @@ export const metadata: Metadata = {
       "en": "https://irken.com.eg/en",
     },
   },
+  icons: {
+    icon: "/Favicon.png",
+    shortcut: "/Favicon.png",
+    apple: "/Favicon.png",
+  },
   openGraph: {
     title: "إركن | Irken Solutions — شبكة حجز مواقف السيارات وساحات الانتظار في مصر",
     description:
@@ -96,7 +101,7 @@ const structuredData = {
         "irken.eg",
       ],
       url: "https://irken.com.eg",
-      logo: "https://irken.com.eg/newiRkenLogo.png",
+      logo: "https://irken.com.eg/irken-dark.png",
       description:
         "شبكة حجز مواقف وساحات انتظار السيارات الرقمية في مصر — منصة إركن لربط الجراجات والساحات بالسائقين.",
       contactPoint: {

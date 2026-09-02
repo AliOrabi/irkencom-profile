@@ -35,7 +35,7 @@ export default function Footer() {
           <div className="lg:col-span-4">
             <LocalizedLink href="/" aria-label="Irken Solutions Home" className="inline-block mb-6">
               <Image
-                src="/newiRkenLogo.png"
+                src="/irken-white.png"
                 alt="Irken Solutions"
                 width={140}
                 height={36}
