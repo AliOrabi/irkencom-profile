@@ -62,11 +62,7 @@ export default function Hero() {
             <div className="flex flex-wrap items-center gap-2.5 mb-5">
               <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-accent/20 text-brand-accent border border-brand-accent/30 text-xs font-bold font-enHeading uppercase tracking-widest backdrop-blur-md">
                 <Sparkles className="w-3.5 h-3.5" />
-                <Translate en="Operator Partner Network" ar="شبكة شركاء ومزودي المواقف" />
-              </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-400/20 text-amber-300 border border-amber-400/40 text-xs font-bold uppercase tracking-wider backdrop-blur-md">
-                <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-                <Translate en="Beta Version" ar="نسخة تجريبية" />
+                <Translate en="1# Parking Network in Egypt" ar="شبكة مواقف السيارات الأولى في مصر" />
               </span>
             </div>
           </Reveal>
@@ -78,8 +74,8 @@ export default function Hero() {
               className="text-4xl sm:text-5xl md:text-6xl font-bold font-enHeading text-white leading-[1.25] sm:leading-[1.2] md:leading-[1.25] rtl:leading-[1.35] sm:rtl:leading-[1.4] mb-5 tracking-tight"
             >
               <Translate
-                en="Turn your parking facility into a high-yield digital business."
-                ar="حوّل موقف سياراتك إلى مشروع استثماري عالي الأرباح."
+                en="Quick and easy parking reservations for your customers!"
+                ar="وفر لعملائك حجز موقف لسياراتهم بسرعة وسهولة!"
               />
             </h1>
           </Reveal>
@@ -88,8 +84,8 @@ export default function Hero() {
           <Reveal delay={0.15}>
             <div className="my-2 text-sm sm:text-base text-slate-200 leading-relaxed rtl:leading-[1.8] max-w-xl font-normal">
               <Translate
-                en="Irken is Egypt's digital parking reservation network, connecting commercial garages and lot operators with drivers seeking pre-paid, guaranteed parking without new hardware or upfront fees."
-                ar="إركن هي شبكة حجز مواقف السيارات الرقمية في مصر، تربط الجراجات والساحات المرخصة بالسائقين بحجوزات مسبقة ومؤكدة بدون أي أجهزة جديدة أو مصاريف إعداد."
+                en="Irken is a parking reservation platform in Egypt, connecting parking operators with drivers looking for guaranteed parking ."
+                ar="إركن هي منصة لحجز مواقف السيارات في مصر، تربط مشغلي مواقف السيارات بسائقين يبحثون عن مواقف مضمونة."
               />
             </div>
           </Reveal>
@@ -108,14 +104,14 @@ export default function Hero() {
           <Reveal delay={0.25}>
             <div className="flex flex-wrap items-center gap-4 w-full sm:w-auto">
               <PrimaryButton
-                en="Register Facility for Free"
-                ar="سجّل موقفك مجاناً الآن"
+                en="List your Parking Now"
+                ar="سجّل جراجك الآن"
                 href="#operator-onboard"
                 className="w-full sm:w-auto py-3.5 px-8 text-xs font-semibold shadow-lg shadow-brand-accent/25 active:scale-[0.98]"
               />
               <GhostButton
-                en="Estimate Your Revenue Lift"
-                ar="احسب أرباحك الإضافية"
+                en="Learn More"
+                ar="اكتشف المزيد"
                 href="#yield-calculator"
                 className="w-full sm:w-auto py-3.5 px-6 text-xs text-white border-white/25 hover:border-white/60 active:scale-[0.98]"
               />
