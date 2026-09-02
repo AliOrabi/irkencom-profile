@@ -101,7 +101,7 @@ const structuredData = {
         "irken.eg",
       ],
       url: "https://irken.com.eg",
-      logo: "https://irken.com.eg/irken-dark.png",
+      logo: "https://irken.com.eg/irken-logo-dark.svg",
       description:
         "شبكة حجز مواقف وساحات انتظار السيارات الرقمية في مصر — منصة إركن لربط الجراجات والساحات بالسائقين.",
       contactPoint: {
