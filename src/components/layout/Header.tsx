@@ -78,9 +78,9 @@ export default function Header() {
             <Image
               src={isScrolled ? '/irken-logo-dark.svg' : '/irken-logo-light.svg'}
               alt="Irken Solutions"
-              width={130}
-              height={34}
-              className="h-7 md:h-8 w-auto block transition-transform group-hover:scale-[1.02]"
+              width={140}
+              height={40}
+              className="h-8 md:h-9 lg:h-10 w-auto block transition-transform group-hover:scale-[1.02]"
               priority
             />
             {/* Beta Version Badge (علامة: نسخة تجريبية) */}
@@ -185,7 +185,7 @@ export default function Header() {
         <div className="flex items-center justify-between px-6 py-5 shrink-0 border-b border-slate-100">
           <div className="flex items-center gap-2.5">
             <LocalizedLink href="/" onClick={() => setMobileOpen(false)}>
-              <Image src="/irken-logo-dark.svg" alt="Irken Solutions" width={130} height={32} className="block h-8 w-auto" />
+              <Image src="/irken-logo-dark.svg" alt="Irken Solutions" width={140} height={40} className="block h-9 w-auto" />
             </LocalizedLink>
             <span className="inline-flex items-center gap-1 px-2.5 py-0.5 text-[10px] font-bold rounded-full bg-amber-500/10 text-amber-700 border border-amber-500/30">
               <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
