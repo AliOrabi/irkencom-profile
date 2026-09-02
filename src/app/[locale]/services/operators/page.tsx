@@ -22,11 +22,11 @@ export async function generateMetadata({
 
   return {
     title: isArabic
-      ? 'حلول مشغلي الجراجات وساحات الانتظار في مصر | إركن سوليوشنز'
-      : 'Parking Operators & Facility Monetization Solutions in Egypt | Irken',
+      ? 'وفر حجز مواقف السيارات لعملائك بسرعة وسهولة | إركن سوليوشنز'
+      : 'Quick and easy parking reservation for your customers | Irken',
     description: isArabic
-      ? 'حوّل الأماكن الشاغرة في جراجك إلى دخل رقمي مضمون. صفر مصاريف تأسيس، ظهور مباشر للسائقين على irken.eg، وتسوية مستحقات دورية بدون أجهزة جديدة.'
-      : 'Monetize vacant parking bays into guaranteed digital revenue. Zero hardware CapEx, direct in-app driver discovery on irken.eg, and pre-settled daily payouts in Egypt.',
+      ? 'حوّل الأماكن الشاغرة في جراجك إلى دخل رقمي مضمون. صفر مصاريف تأسيس، ظهور مباشر للسائقين على irken، وتسوية مستحقات دورية بدون أجهزة جديدة.'
+      : 'Monetize vacant parking bays into guaranteed digital revenue. Zero hardware CapEx, direct in-app driver discovery on irken, and pre-settled daily payouts in Egypt.',
     keywords: [
       'مشغلي المواقف',
       'اركن',
@@ -59,8 +59,8 @@ export default function OperatorsSolutionPage() {
       icon: Search,
       title: { en: "1. Direct In-App Driver Discovery", ar: "1. ظهور مباشر للسائقين على irken.eg" },
       description: {
-        en: "When drivers search for parking near your zone on the irken.eg app, your facility is matched instantly for advance reservation.",
-        ar: "لما السائقين يبحثوا عن ركنة قريبة من وجهتهم على تطبيق irken.eg، جراجك بيظهرلهم فوراً للحجز المسبق."
+        en: "When drivers search for parking near your zone on the irken app, your facility is matched instantly for advance reservation.",
+        ar: "لما السائقين يبحثوا عن ركنة قريبة من وجهتهم على تطبيق irken، جراجك بيظهرلهم فوراً للحجز المسبق."
       }
     },
     {
