@@ -38,8 +38,8 @@ export default function Footer() {
                 src="/irken-logo-light.svg"
                 alt="Irken Solutions"
                 width={160}
-                height={45}
-                className="h-9 md:h-10 lg:h-11 w-auto block"
+                height={48}
+                className="h-10 md:h-11 lg:h-12 w-auto block"
               />
             </LocalizedLink>
             <p className="text-sm text-slate-400 leading-relaxed max-w-[320px] mb-8">
